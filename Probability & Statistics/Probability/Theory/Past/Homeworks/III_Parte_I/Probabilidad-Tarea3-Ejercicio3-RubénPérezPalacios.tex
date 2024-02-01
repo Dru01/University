@@ -1,0 +1,252 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+	\title{Probabilidad \\Tarea III - Ejercicio 3}
+    \author{Rubén Pérez Palacios\\Ricardo Alberto Gloria Picazzo\\Mercé Nachón Moreno\\ Josue Emmanuel Ornelas Hernández\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+			
+		\item (Rubén Pérez Palacios) Sea $F$ una distribución y sea $c \in (0,1)$. Demuestre que
+		
+		\[G(x) = (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x), x \in \RR,\]
+
+		es una función de distribución y calcule su función característica.
+
+		Sean $X_1,\cdots,X_n$ variables aleatorias con distirbución $F$ independientes luego entonces
+
+		\[F_{X_1+\cdots+X_N}(x) = F^{*n}(x).\]
+
+		Puesto que $F^{*n}$ es una función de distribución entonces
+
+		\[F^{*n}(x) \leq 1, \forall x \in \RR,\]
+
+		por lo tanto
+
+		\[G(x) = (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x) \leq (1-c)\sum_{n=0}^{\infty} c^n, x \in \RR,\]
+
+		y al ser $0 < c < 1$ tenemos
+		
+		\[\sum_{n=0}^{\infty} c^n = \frac{1}{1-c},\]
+		
+		por lo tanto
+		
+		\[\sum_{n=0}^{\infty} c^nF^{*n}(x)\]
+		
+		converge.
+
+		Ahora veremos que se cumplen las tres propiedades de una distribución para $G$.
+
+		\begin{itemize}
+			\item \textbf{Monótona no decreciente}
+			
+			Sea $x < y$ tales que son $F$ medibles. Por ser $F^{*n}$ por ser una distirbución entonces se cumple
+
+			\[F^{*n}(x) \leq F^{*n}(y),\]
+
+			y al ser $0 < c < 1$ tenemos
+
+			\[c^n F^{*n}(x) \leq c^n F^{*n}(y),\]
+
+			al converger $\frac{G(x)}{(1-c)}$ concluimos
+			
+			\[G(x) = (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x) \leq (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(y) = G(y).\]
+
+			\item \textbf{Continua por la derecha}
+			
+			Al ser $F^{*n}$ una distribucion entonces es continua por la derecha es decir para todo $a \in \RR$ existe el
+
+			\[\lim_{x\to a^+} F^{*n}(x),\]
+
+			por linealidad del operador límite, existe el
+
+			\[\lim_{x\to a^+} c^nF^{*n}(x),\]
+
+			como $G(x)/(1-c)$ converge y como la sucesión $c^nF^{*n}$ es dominada entonces existe el
+
+			\[\lim_{x\to a^+} \sum_{n=0}^{\infty} c^nF^{*n}(x),\]
+
+			por linealidad del operador límite, concluimos que existe el
+
+			\[\lim_{x\to a^+} (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x) = \lim_{x\to a^+} G(x).\]
+
+			\item \textbf{límites infinitos}
+			
+			Como habiamos visto nuestra sucesión $c^nF^{*n}(x)$ esta dominada por $c^n$ cuya serie convergía, luego por convergencia dominada tenemos que
+
+			\[\limxinf \sum_{n=0}^{\infty} c^nF^{*n}(x) = \sum_{n=0}^{\infty} \limxinf c^nF^{*n}(x),\]
+
+			por linealidad del operador límite y por continuidad de $P$ tenemos que
+
+			\[\limxinf \sum_{n=0}^{\infty} c^nF^{*n}(x) = \sum_{n=0}^{\infty}  c^nF^{*n}(\limxinf x),\]
+
+			analogamente obtenemos
+
+			\[\lim_{x\to-\infty} \sum_{n=0}^{\infty} c^nF^{*n}(x) = \sum_{n=0}^{\infty}  c^nF^{*n}(\lim_{x\to-\infty} x),\]
+
+			Luego por ser $F^{*n}(x)$ una función de distribución concluimos
+
+			\[\limxinf (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x) = (1-c)\sum_{n=0}^{\infty}  c^n = 1,\]
+
+			y
+
+			\[\lim_{x\to-\infty} (1-c)\sum_{n=0}^{\infty} c^nF^{*n}(x) = (1-c)\sum_{n=0}^{\infty}  c^n\cdot0 = 0.\]
+			
+		\end{itemize}
+
+		\newpage
+
+		\item (Rubén Pérez Palacios) El siguiente ejercicio demuestra que la convergencia en distribucion \textbf{no} implica la convergencia de las
+		funciones de densidad, cuando estas existen. Sean $\set{X_n}$ v.a. con funciones de distribución
+
+		\[F_n(x) = \pars{x - \frac{\sin\pars{2\pi nx}}{2\pi n}} \1{(0,1)}(x) + \1_{[1,\infty)]}(x).\]
+
+		Por conveniencia expresaremos a $F_n(x)$ como 
+
+		\[F_n(x) = \begin{cases}
+			0 & \text{si } x \leq 0\\
+			\pars{x - \frac{\sin\pars{2\pi nx}}{2\pi n}} & \text{si } 0 < x < 1\\
+			1 & \text{si } 1 \leq x\\
+		\end{cases}.\]
+
+		Luego veamos que pasa cuando $0 < x < 1$. Por linealidad de la derivada tenemos que
+
+		\[\diff{F_n(x)}{x} = \diff{x}{x} - \diff{\sin\pars{2\pi nx}}{2\pi n} = 1 - \cos\pars{2\pi nx} = f_n(x).\]
+
+		Ahora veamos que $F_n(x)$ converge a una distribución uniforme
+
+		\[\limninf F_n(x) = \limninf \pars{x - \frac{\sin\pars{2\pi nx}}{2\pi n}},\]
+
+		por linealidad del operador límite tenemos
+
+		\[\limninf F_n(x) = x - \limninf \frac{\sin\pars{2\pi nx}}{2\pi n},\]
+
+		puesto que $|sin(2\pi nx)| \leq 1$ entonces tenemos que
+
+		\[\limninf F_n(x) = x - 0 = x.\]
+
+		Ahora fijemonos en $cos(2\pi n x)$, pero esta no converge a la función de densidad de una distribución $\mathcal{U}\bracs{0,1}$, ya que cuando $x = \frac{p}{q}$ es un racional no existe $\limninf cos(2\pi nx)$,  esto puesto que si nos agarramos la subseción $n_k = k*q$ entonces esta subseción converge a $cos(2\pi n_kx) = cos(2\pi kp) = cos(2\pi) = 0$, pero si nos agarramos la subseción $n_l = ql + 1$ entonces esta converge a $cos(2\pi n_lx) = cos(2\pi (ql + 1)p/q) = cos(2\pi lp + 2\pi p/q) = cos(2\pi p/q) \neq 0$ por lo tanto $\limninf cos(2\pi nx)$ no existe. Es decir
+
+		\[\limninf f_n(x), \forall x \in \bracs{0,1}\cap\QQ,\]
+
+		por lo tanto
+
+		\[\limninf f_n(x) \neq 1, x\in[0,1].\]
+
+
+    \end{enumerate}
+
+	\end{document}
+			

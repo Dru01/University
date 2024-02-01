@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fullpage}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+\newtheorem*{demo}{Demostración}
+\newtheorem*{sol}{Solución}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\Lp}{\mathcal{L}_p}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\om}{\Omega}
+\def\CC{\mathbb{C}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\pai}{\left(}
+\newcommand{\pad}{\right)}
+\newcommand{\ci}{\left[}
+\newcommand{\cd}{\right]}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\lphi}{\widehat{\phi}}
+\newcommand{\D}{\mathfrak{D}}
+
+\begin{document}
+
+\centering{\large{Tarea 4, Probabilidad \\ Ejercicio 2} \\ \small{Integrantes: Ricardo Alberto Gloria Picazo, Rubén Pérez Palacios y Mercé Nachón Moreno}}
+
+\medskip
+\begin{demo}
+(Mercé Nachón Moreno)
+\begin{enumerate}
+    \item[(a)] Si $\Vec{X}$ es de dimensión $d$ y $A\in M_{q\times d}$, entonces $\Vec{X}A^t$ tiene dimensión $q$. Ahora tomemos $a\in\R^q$ tal que
+    \begin{align*}
+        (\Vec{X}A^t)a^t &= \Vec{X}(A^ta^t) \\
+                        &= \Vec{X}(a A)^t.
+    \end{align*}
+    Llamemos $b^t = (a A)^t \in \R^d$ a modo que
+    \[  \Vec{X}b^t \sim N(\Vec{\mu}b^t, b\Sigma b^t),   \]
+    es decir
+    \[  (\Vec{X}A^t)a^t \sim N((\Vec{\mu}A^t)a^t, a(A\Sigma A^t)a^t).  \]
+    Se sigue por la Definición $9.3$:
+    \[ \Vec{X}A^t \sim N_q(\Vec{\mu}A^t, A\Sigma A^t).  \]
+    
+    \newpage
+    \item[(b)] Veamos que el producto de una matriz $B \in M_{n\times l}$ con su transpuesta es de la forma
+    \begin{equation}
+        BB^t = \sum_{k=1}^l \Vec{b_k}\Vec{b_k}^t,
+    \end{equation}
+    donde $\Vec{b_k}$ es la $k$-ésima columna vector de $A$. Además es fácil ver que para $C \in B \in M_{l\times m}$
+    \begin{align*}
+        x &= \Vec{b}^t\Vec{c} \\
+        y &= \Vec{c}^t\Vec{b} = x^t = x \\
+        xy &= \Vec{b}^t\Vec{c}\Vec{c}^t\Vec{b} = x^2 \\
+        &= \left(\Vec{b}^t\Vec{c}\right)^2 .
+    \end{align*}
+    El producto de inversas se define como
+    \[(BC)^{-1} = C^{-1}B^{-1}.\]
+    
+    Para una matriz $B$ resolvamos $B\Vec{u}=\sigma\Vec{u}$. Donde $\sigma$ será un valor propio de la matriz y $\Vec{u}$ un vector propio. Cuando colocamos los vectores propios en una matriz $U$ de tal forma que
+    \begin{align*}
+        BU &= U\Lambda \\
+        B &= U\Lambda U^{-1}
+    \end{align*}
+    donde $\Lambda$ es la matriz diagonal de los valores propios $\lambda_i$. Para matrices simétricas $U$ será una matriz ortogonal, es decir $U^{-1} = U^t$ y así
+    \[B = U\Lambda U^t.\]
+    Además si queremos $B = B^{1/2}B^{1/2}$ o $B^{-1}$, entonces
+    \[B^{1/2} = U \Lambda^{1/2} U^t\]
+    y
+    \begin{align*}
+        B^{-1} &= (U\Lambda U^{-1})^{-1} \\
+        &= (U^{-1})^{-1} \lambda^{-1} U^{-1} \\
+        &= U \lambda^{-1} U^{-1} \\
+        &= U \lambda^{-1} U^t,
+    \end{align*}
+    donde $\Lambda^{-1} = \Lambda$, por lo que $A^{-1} = A$.
+    
+    Explicado lo anterior, notemos que siendo $\Sigma$ una matriz simétrica de tamaño $d\times d$, podemos decir que es invertible, donde
+    \[\Sigma^{-1} = U\lambda^{-1} U^t\]
+    y por $(1)$ llegamos a 
+    \[\Sigma^{-1} = \sum_{k=1}^d \lambda_k^{-1}\Vec{u}_k\Vec{u}_k^t,\]
+    donde $\Vec{u}_k$ es el $k$-ésimo vector propio correspondiente a $\lambda_k$. De esta forma podemos decir que 
+    \begin{align*}
+        (\Vec{X}-\Vec{\mu})^t \Sigma^{-1} (\Vec{X}-\Vec{\mu}) &= (\Vec{X}-\Vec{\mu})^t \left( \sum_{k=1}^d \lambda_k^{-1}\Vec{u}_k\Vec{u}_k^t \right) (\Vec{X}-\Vec{\mu}) \\
+        &= \sum_{k=1}^d \lambda_k^{-1}(\Vec{X} - \Vec{\mu})^t\Vec{u}_k\Vec{u}_k^t(\Vec{X} - \Vec{\mu}) \\
+        &= \sum_{k=1}^d \lambda_k^{-1}\left( \Vec{u}_k^t(\Vec{X} - \Vec{\mu} \right)^2 \\
+        &= \sum_{k=1}^d \left( \lambda_k^{-1/2} \Vec{u}_k^t(\Vec{X} - \Vec{\mu} \right)^2 \\
+        &= \sum_{k=1}^d Y_k^2,
+    \end{align*}
+    donde $Y_k$ es una nueva variable basada en el vector $\Vec{X}$. Podemos decir que $\Vec{Z} = \Vec{X} - \Vec{\mu} \sim N(0,\Sigma)$, dado que por el Teorema $9.1$ obtenemos que
+    \begin{align*}
+        \E[e^{i(\Vec{X} - \Vec{\mu})s^t}] &= e^{-i\Vec{\mu})s^t} \E[e^{i \Vec{X} s^t}] \\
+        &= e^{-i\Vec{\mu})s^t} \left( e^{i\Vec{\mu})s^t - \frac{1}{2}s\Sigma s^t}\right) \\
+        &= e^{-\frac{1}{2}s\Sigma s^t}.
+    \end{align*}
+    Observemos ahora que 
+    \[\sigma_k^{-1}e_k = \lambda_k^{-1/2}\Vec{u}_k^t\]
+    siendo $e_k$ el $k$-ésimo vector columna de la matriz identidad, tal que así por la proposición $9.3$ numeral $(1)$,
+    \[Y_k = \sigma_k^{-1}e_k Z = \frac{X_k-\mu_k}{\sigma} \sim N(0,1).\]
+    Por último tendremos que $Y_k^2 \sim \Gamma(1/2,1/2)$, y por la proposición $9.4$, 
+    \[(\Vec{X}-\Vec{\mu})^t \Sigma^{-1} (\Vec{X}-\Vec{\mu}) = \sum_{k=1}^d Y_k^2 \sim \chi_n.\]
+    
+    \newpage
+    \item[(c)] Sabemos que la densidad conjunta de $\Vec{X}$ se define como
+    \[ f_{\Vec{X}}(x_1, \ldots, x_d) = \prod_{i=1}^d f_{X_i}(x_i),\]  
+    tal que así para $X_i \sim N(\mu_i,\sigma_i^2)$, implementando lo obtenido en el inciso anterior, tendremos
+    \begin{align*}
+        f_{\Vec{X}}(x_1, \ldots, x_d) &= \prod_{i=1}^d \frac{1}{\sigma_i\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x_i-\mu_i}{\sigma}\right)^2} \\
+        &= \left(\frac{1}{2\pi}\right)^{d/2} e^{-\frac{1}{2} \sum_{i=1}^d\left(\frac{x_i - \mu_i}{\sigma}\right)^2}\prod_{i=1}^d \frac{1}{\frac{1}{\sigma_i}(e_i\Sigma e_i^t)} \\
+        &= \left(\frac{1}{2\pi}\right)^{d/2} \left(\frac{1}{\abs{\Sigma}}\right)^{d/2}  e^{-\frac{1}{2} (\Vec{X} - \Vec{\mu})^t \Sigma^{-1} (\Vec{X} - \Vec{\mu})}.
+    \end{align*}
+\end{enumerate}
+\end{demo}
+
+\end{document}

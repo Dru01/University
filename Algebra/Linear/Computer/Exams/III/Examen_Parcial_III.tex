@@ -1,0 +1,389 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+	\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+	\newcommand{\x}{\mathrm x}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Datos
+	\title{Calcula Diferencial e Integral III\\Examen Tarea}
+	\author{Rubén Pérez Palacios\\Profesor: Dr. Manuel Cruz López}
+	\date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+		
+		\item Si $f:\Omega\subset \R^n\To \R^m$, prueba que las siguientes afirmaciones son equivalentes:
+		\begin{enumerate}
+			\item $f$ es continua en $\Omega$,
+			\item para cada sucesion $\pars{x_k}_{k\in\N}$ en $\Omega$ que converge a $x_0\in \Omega$ se cumple que la sucesi\'on $(f(x_k))_{k\in \N}$ converge a $f(x_0)$,
+			\item para cada subconjunto cerrado $C\subset \R^m$ se cumple que $f^{-1}(C)=D\cap \Omega$, para alg\'un subconjunto cerrado $D\subset \R^n$.
+		\end{enumerate} 
+
+		\begin{proof}
+
+			Empezaremos por demostrar la equivalencia del $a)$ y $b)$. Por definición $f$ es continua en $x_0$ si y sólo si $\forall \varepsilon > 0$ existe $\delta > 0$ tales que si $x\in B_\delta(x_0)$ entonces $f(x)\in B_\varepsilon(f(x_0))$, es decir $f$ es continua en $x_0$ si y sólo si el limite de $f$ en $x_0$ es $f(x_0)$; por equivalencia en definción por sucesiones de límite concluimos que $f$ es continua en $x_0$ si y sólo si $\forall \pars{x_k}_{k\in\N}$ en $\Omega\setminus\set{x_0}$ que converge a $x_0$ se cumple que la sucesión $(f(x_k))_{k\in \N}$ converge a $f(x_0)$.
+	
+			Ahora demostraremos la equivalencia de $a)$ y $c)$. Puesto que $\forall A\subset \R^m$ se cumple que
+			
+			\[f^{-1}\pars{A^c} = \pars{f^{-1}\pars{A}}^c,\]
+			
+			entonces si $C' \subset \R^m$ es abierto se cumple que $f^{-1}(C)=D\cap \Omega$, para algún subconjunto abierto $D\subset \R^n$ si y sólo si se cumple que $f^{-1}(C)=D\cap \Omega$, para alg\'un subconjunto cerrado $D\subset \R^n$. Al ser $f$ continua si y sólo si para cada subconjunto abierto $C'\subset \R^m$ se cumple que $f^{-1}(C)=D\cap \Omega$, para algún subconjunto abierto $D\subset \R^n$, concluimos que $a)$ y $c)$ son equivalentes.
+			
+		\end{proof}
+
+		\item Sea $f:\R^n\To \R$ diferenciable. Si $f(0)=0$ y $f(t\x)=tf(\x)$ para toda $t\in \R$ y $\x\in \R^n$, prueba que $f(\x)=\nabla f(0)\cdot \x$ para toda $\x\in \R^n$. En particular, $f$ es lineal.
+		
+		\begin{proof}
+
+			Si $f$ es diferenciable en $x_0\in\Omega$ entonces existe una función polinomial lineal
+
+			\[P(x) = f(x_0) + df_{x_0}\pars{x-x_0} = f(x_0) + \nabla f(x_0)\cdot\pars{x-x_0},\]
+
+			tal que
+
+			\[\lim_{x\to\x_0} \frac{f(x)-P(x)}{\norm{x-x_0}} = 0.\]
+
+			Sea
+
+			\[R(x) = f(x) - P(x),\]
+
+			entonces
+
+			\[\lim_{x\to\x_0} \frac{R(x)}{\norm{x-x_0}} = 0,\]
+
+			y
+
+			\[f(x) = f(x_0) + \nabla f(x_0)\cdot\pars{x-x_0} + R(x).\]
+
+			Evaluando la ecuación anterior en $\lambda x$ y $x_0 = 0$ obtenemos
+
+			\[f(\lambda x) = f(0) + \nabla f(0)\cdot\pars{\lambda x} + R(\lambda x),\]
+
+			puesto que $f(0) = 0$, por linealidad del producto punto y por definición de $f$ obtenemos
+
+			\[\lambda f(x) = \lambda \nabla f(0)\cdot\pars{x} + R(\lambda x),\]
+
+			entonces
+
+			\[R(\lambda x) = \lambda f(x) - \lambda \nabla f(0)\cdot\pars{x} = \lambda \pars{f(x) - \nabla f(0)\cdot\pars{x}} = \lambda R(x).\]
+
+			Ahora por definición de $R(x)$ tenemos
+
+			\[0 = \lim_{\lambda \to 0^{+}} \frac{R(\lambda x)}{\norm{\lambda x}} = \lim_{\lambda \to 0^{+}} \frac{\lambda R(x)}{\norm{\lambda x}} = \lim_{\lambda \to 0^{+}} \frac{|\lambda|R(x)}{\norm{\lambda x}} = \lim_{\lambda \to 0^{+}} \frac{R(x)}{\norm{x}} = \frac{R(x)}{\norm{x}},\]
+
+			para toda $x \in \R^n \setminus \set{0}$, para el es caso $x = 0$ ya se cumple la hipotesis. Por lo tanto concluimos que
+
+			\[f(\x)=\nabla f(0)\cdot \x.\]
+
+		\end{proof}
+
+		\item Usa multiplicadores de Lagrange para encontrar la distancia mínima entre la circunferencia unitaria $x^2+y^2=1$ y la línea  $x+y=4$.
+		
+		La distancia de un punto $(x_0,y_0)$ a la línea $x+y=4$ es
+
+		\[f(\x) = \pars{\frac{4-y+x}{2} - x}^2 + \pars{\frac{4+y-x}{2} - y}^2,\]
+
+		Sea $g(\x) = x^2+y^2-1$ y
+
+		\[S = \set{\x \in \R^2 | g(\x) = 0},\]
+
+		por el teorema de multiplicadores de Lagrange si $\x_0\in S$ es un punto en el que $f$ alcanza su valor mínimo sobre $S$ entonces debe existir $\lambda$ tal que
+
+		\[\nabla f(\x_0) = \lambda g(\x_0),\]
+
+		es decir
+
+		\[\frac{\partial f}{\partial x}(\x_0) = \lambda\frac{\partial g}{\partial x}(\x_0), \quad \frac{\partial f}{\partial y}(\x_0) = \lambda\frac{\partial g}{\partial y}(\x_0).\]
+
+		De lo cual obtenemos el siguiente sistema de ecuaciones
+
+		\begin{align*}
+			x+y-4 &= \lambda 2x\\
+			x+y-4 &= \lambda 2y\\
+			x^2+y^2 &= 1,
+		\end{align*}
+
+		las primeras dos ecuaciones obtenemos que $x = y$, luego utilizando esto y despejando $x$ de la primera ecuación obtenemos $x = \frac{-2}{\lambda-1}$ sustituyendo en la última ecuación obtenemos que $\lambda = 1 \pm 2\sqrt{2}$, por lo que obtenemos los siguientes dos soluciones del sistema de ecuaciones
+
+		\begin{align*}
+			\lambda &= 1-2\sqrt{2} &, 1+2\sqrt{2}\\
+			x &= \frac{1}{\sqrt{2}} &, -\frac{1}{\sqrt{2}}\\
+			y &= \frac{1}{\sqrt{2}} &, -\frac{1}{\sqrt{2}}
+		\end{align*}
+
+		evaluando ambos puntos en la función $f$ concluimos que la distancia mínima es $2\sqrt{2}-1$.
+		
+		\item Si $f:\R^2\To \R$ es de clase $\mathfrak{C}^2$ y $h(r,\theta)=f(r\cos(\theta),r\sen(\theta))$, verifica que el laplaciano de $f$ se escribe en coordenadas polares en la forma:
+		
+		\[\Delta f = \frac{\partial^2 h}{\partial r^2} + \frac{1}{r^2}\frac{\partial^2 h}{\partial \theta^2} + \frac{1}{r}\frac{\partial h}{\partial r}.\]
+
+		\begin{proof}
+			Por regla de la cadena tenemos que
+
+			\[\frac{\partial f}{\partial x} = \frac{\partial h}{\partial r}\frac{\partial r}{\partial x} + \frac{\partial h}{\partial \theta}\frac{\partial \theta}{\partial x},\]
+
+			analogamente
+
+			\[\frac{\partial f}{\partial y} = \frac{\partial h}{\partial r}\frac{\partial r}{\partial y} + \frac{\partial h}{\partial \theta}\frac{\partial \theta}{\partial y},\]
+
+			luego al ser $r = \norm{(x,y)}$ y $\theta = arctan(y/x)$ se cumple que
+
+			\[\frac{\partial f}{\partial x} = \frac{\partial h}{\partial r}cos(\theta) - \frac{\partial h}{\partial \theta}\frac{sin(\theta)}{r},\]
+
+			también
+
+			\[\frac{\partial f}{\partial y} = \frac{\partial h}{\partial r}sin(\theta) + \frac{\partial h}{\partial \theta}\frac{cod(\theta)}{r},\]
+
+			Ahora volviendo a derivar por $X$ las ultimas dos funciones y aplicando de nuevo la regla de la cadena obtenemos
+
+			\[\frac{\partial \frac{\partial f}{\partial x}}{\partial x} = \frac{\partial \frac{\partial f}{\partial x}}{\partial r}\frac{\partial r}{\partial x} + \frac{\partial \frac{\partial f}{\partial x}}{\partial \theta}\frac{\partial \theta}{\partial x},\]
+
+			analogamente
+
+			\[\frac{\partial \frac{\partial f}{\partial y}}{\partial y} = \frac{\partial \frac{\partial f}{\partial y}}{\partial r}\frac{\partial r}{\partial y} + \frac{\partial \frac{\partial f}{\partial y}}{\partial \theta}\frac{\partial \theta}{\partial y},\]
+
+			luego sustituyendo obtenemos y calculando cada derivada parcial obtenemos
+
+			\[\frac{\partial \frac{\partial f}{\partial x}}{\partial x} = \pars{\frac{\partial^2 h}{\partial r^2}cos(\theta) - \frac{\partial^2}{\partial r\partial \theta}\frac{sen(\theta)}{r} + \frac{\partial h}{\partial \theta} \frac{sin(\theta)}{r}}cos(\theta)\]\[ - \pars{\frac{\partial^2 h}{\partial \theta \partial r}cos(\theta) - \frac{\partial h}{\partial r}sin(\theta) - \frac{\partial^2 h}{\partial \theta^2}\frac{sin(\theta)}{r} - \frac{\partial h}{\partial \theta}\frac{cos(\theta)}{r}}\frac{sin(\theta)}{r},\]
+
+			por lo que
+
+			\[\frac{\partial^2 f}{\partial x^2} = \pars{\frac{\partial^2 h}{\partial r^2}cos(\theta)^2 - \frac{\partial^2 h}{\partial r\partial \theta}\frac{sen(\theta)cos(\theta)}{r} + \frac{\partial h}{\partial \theta} \frac{sin(\theta)cos(\theta)}{r}}\]\[ - \pars{\frac{\partial^2 h}{\partial \theta \partial r}\frac{sin(\theta)cos(\theta)}{r} - \frac{\partial h}{\partial r}\frac{sin(\theta)^2}{r} - \frac{\partial^2 h}{\partial \theta^2}\frac{sin(\theta)^2}{r^2} - \frac{\partial h}{\partial \theta}\frac{cos(\theta)sin(\theta)}{r^2}},\]
+
+			es decir
+
+			\[\frac{\partial^2 f}{\partial x^2} = \frac{\partial^2 h}{\partial r^2}cos(\theta)^2 + \frac{\partial h}{\partial \theta}\frac{2cos(\theta)sin(\theta)}{r^2} - \frac{\partial^2 h}{\partial \theta \partial r}\frac{2sin(\theta)cos(\theta)}{r} + \frac{\partial h}{\partial r}\frac{sin(\theta)^2}{r} + \frac{\partial^2 h}{\partial \theta^2} \frac{cos(\theta)^2}{r^2}.\]
+
+			Analogamente
+
+			\[\frac{\partial^2 f}{\partial y^2} = \frac{\partial^2 h}{\partial r^2}sin(\theta)^2 - \frac{\partial h}{\partial \theta}\frac{2cos(\theta)sin(\theta)}{r^2} + \frac{\partial^2 h}{\partial \theta \partial r}\frac{2sin(\theta)cos(\theta)}{r} + \frac{\partial h}{\partial r}\frac{cos(\theta)^2}{r} + \frac{\partial^2 h}{\partial \theta^2} \frac{sin(\theta)^2}{r^2}.\]
+
+			Por lo que el laplaciano de $f$ es
+
+			\[\Delta f = \frac{\delta^2 f}{\delta x^2} + \frac{\delta^2 f}{\delta y^2},\]
+
+			esto es
+
+			\[\Delta f = \frac{\partial^2 h}{\partial r^2}cos(\theta)^2 + \frac{\partial^2 h}{\partial r^2}sin(\theta)^2 + \frac{\partial h}{\partial r}\frac{cos(\theta)^2}{r} + \frac{\partial h}{\partial r}\frac{sin(\theta)^2}{r} + \frac{\partial^2 h}{\partial \theta^2}\frac{cos(\theta)^2}{r^2} + \frac{\partial^2 h}{\partial \theta^2}\frac{sin(\theta)^2}{r^2},\]
+
+			factorizando obtenemos
+
+			\[\Delta f = \frac{\partial^2 h}{\partial r^2}\pars{cos(\theta)^2 + sin(\theta)^2} + \frac{\partial h}{\partial r}\pars{\frac{cos(\theta)^2}{r} + \frac{sin(\theta)^2}{r}} + \frac{\partial^2 h}{\partial \theta^2}\pars{\frac{cos(\theta)^2}{r^2} + \frac{sin(\theta)^2}{r^2}},\]
+
+			puesto que $cos(x)^2 + sin(x)^2 = 1$ concluimos que
+
+			\[\Delta f = \frac{\partial^2 h}{\partial r^2} + \frac{\partial h}{\partial r}\pars{\frac{1}{r}} + \frac{\partial^2 h}{\partial \theta^2}\pars{\frac{1}{r^2}},\]
+		\end{proof}
+
+		\item Usa el polinomio de Taylor de grado 2 de la función $f(x,y)=\cos(x+y)$ para calcular el límite
+		\[\lim_{\x\to (0,0)} \frac{1 - \cos(x+y)}{(x^2+y^2)^{1/2}}, \quad \x = (x,y).\]
+
+		El polinomio de Taylor de grado 2 de la función $f(x,y)=\cos(x+y)$ en $(0,0)$ es
+
+		\[P(\x) = \cos(0) - \sin(0)(x) - \sin(0)y - \frac{\cos(0)x^2 - 2\cos(0)xy - \cos(0)y^2}{2} = 1-\frac{x^2+2xy+y^2}{2},\]
+
+		y sea 
+
+		\[R(\x) = P(\x) - f(\x),\]
+
+		entonces
+
+		\[\lim_{\x\to(0,0)} \frac{R(\x)}{\norm{\x}^2} = 0,\]
+
+		por lo tanto
+
+		\[\lim_{\x\to(0,0)} \frac{R(\x)}{\norm{\x}^{\frac{1}{2}}} = 0.\]
+
+		Ahora por la desigualdad de Cauchy-Schwarz obtenemos
+
+		\[2xy = \inprod{(x,y),(y,x)} \leq \norm{(x,y)}\norm{(y,x)} = x^2+y^2,\]
+
+		por lo que
+
+		\[\frac{\frac{x^2+2xy+y^2}{2}}{(x^2+y^2)^{1/2}} \leq \frac{x^2+y^2}{(x^2+y^2)^{1/2}} = (x^2+y^2)^{1/2},\]
+
+		por el teorema del emparedado obtenemos
+
+		\[\lim_{\x\to(0,0)} \frac{\frac{x^2+2xy+y^2}{2}}{(x^2+y^2)^{1/2}} = 0\]
+
+		Regresando al límite original concluimos
+
+		\[\lim_{\x\to (0,0)} \frac{\frac{x^2+2xy+y^2}{2} + R(\x)}{(x^2+y^2)^{1/2}} = \lim_{\x\to (0,0)} \frac{\frac{x^2+2xy+y^2}{2}}{(x^2+y^2)^{1/2}} + \frac{R(\x)}{(x^2+y^2)^{1/2}} = 0.\]
+
+		\item Prueba que si una superficie de revoluci\'on $S$ en $\R^3$ est\'a definida a partir de una curva regular entonces $S$ es una superficie diferenciable. 
+
+		\item Prueba que el toro bidimensional $\mathbb{T}^2\subset \R^3$ es una superficie diferenciable y describe el plano tangente al toro en un punto.
+
+		\item Sea $\Omega\subset \R^n$ un dominio y $f:\Omega\To \R^n$ de clase $\mathfrak{C}^1$ en $\Omega$. Si $Jf(\x)\neq 0$ para toda $\x\in \Omega$, prueba que $f(\Omega)$ es un subconjunto abierto y $f^{-1}:f(\Omega)\To \Omega$ es diferenciable.
+		
+		\begin{proof}
+			Como $Jf(\x)\neq 0$ entonces por el Teorema de la función inversa se cumple que para todo $x\in\Omega$ existe una vecindad abierta $U\subset\Omega$ de $x$ y otra vecindad abierta $V\subset f(\Omega)$ de $f(x)$ tal que $f(U) = V$, y que $f$ es invertible con $f^{-1}:V \to U$ la cual es continua y diferenciable.
+
+			Si nos fijamos en $y\in f(\Omega)$ y $f^{-1}(y) \in \Omega$ entonces por el Teorema de la función inversa se cumple que existe una vecindad abierta $V\subset\Omega$ de $y$ y otra vecindad abierta $U\subset f(\Omega)$ de $f^{-1}(y)$ tal que $f^{-1}(U) = V$, y que $f^{-1}$ es invertible con $f:U \to V$ la cual es continua y diferenciable cuya inversa es diferenciable, es decir $f^{-1}:V\to \Omega$ es diferenciable en cualquier $y\in f\Omega)$.
+
+			Ahora como para toda $g$ continua se cumple que $g(A\cup B) = g(A) \cup g(B)$ entonces si nos fijamos en la vecindad producida por la inversa local en $y\in\Omega$ $V_y$ tenemos que$f(\Omega) = \Cup_{y\in\Omega} V_y,$ por lo que concluimos que $f$ es invertible que es
+			
+			\[f^{-1}: f(\Omega) \to \Omega,\]
+
+			la cual es diferenciable para todo $y\in f(\Omega)$, por lo que es continua para todo $y\in f(\Omega)$ por definición de continuidad concluimos que $f(\Omega)$ es abierto.
+		\end{proof}
+
+		\item Supongamos que $f=(f_1,f_2):\R^2\To \R^2$ es de clase $\mathfrak{C}^1$ y satisface las \textsf{Ecuaciones de Cauchy -- Riemann}
+		
+		\[ \frac{\partial f_1}{\partial x} = \frac{\partial f_2}{\partial y} \qquad \text{y}\qquad \frac{\partial f_1}{\partial  y} = -\frac{\partial f_2}{\partial x}.\]
+		
+		\begin{enumerate}
+			\item Prueba que $Jf(x,y)=0$ si y sólo si $Df(x,y)=0$. Por lo tanto $f$ es localmente invertible si y sólo si $Df(x,y)\neq 0$.
+			
+			\begin{proof}
+				Veamos lo siguiente
+				
+				\[Df(x,y)=\begin{pmatrix}
+					\frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial  y}\\
+					-\frac{\partial f_1}{\partial  y} & \frac{\partial f_1}{\partial x}
+				\end{pmatrix},\]
+
+				por lo que
+
+				\[Jf(x,y) = \pars{\frac{\partial f_1}{\partial x}}^2 + \pars{\frac{\partial f_1}{\partial  y}}^2,\]
+
+				por lo que si $Jf(x,y)$ entonces al tener una suma de cuadrados entonces ambos tienen que ser $0$, es decir $\pars{\frac{\partial f_1}{\partial x}}^2, \pars{\frac{\partial f_1}{\partial  y}}^2 = 0$. Entonces si $Df(x,y)\neq 0$ por lo anterior $Jf(x,y)\neq 0$ por lo tanto $f$ es localmente invertible.
+			\end{proof}
+
+			\item exhibe un ejemplo que muestre que la afirmación (1) es falsa si $f$ no satisface las ecuaciones de Cauchy -- Riemann.
+			
+			La proyección de un punto sobre algunos de los ejes es un contra ejemplo de esto, puesto que si $f(x,y) = (0,y)$ entonces
+
+			\[Df(x,y)=\begin{pmatrix}
+				0 & 0\\
+				0 & 1
+			\end{pmatrix},\]
+
+			pero
+
+			\[Jf(x,y) = 0,\]
+
+			además $f(x,y)$ no es inyectiva por lo que no es invertible. Por lo que $f$ es un contra ejemplo.
+
+		\end{enumerate}
+
+		\item Demuestra que si $f:\R^3\To \R$ es diferenciable y $c\in \R$ es un valor regular de $f$ entonces $f^{-1}(c)$ es una superficie diferenciable.
+
+    \end{enumerate}
+
+	\end{document}
+			

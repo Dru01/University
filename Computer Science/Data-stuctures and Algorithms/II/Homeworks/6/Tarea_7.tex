@@ -1,0 +1,140 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage{setspace}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.in
+	]
+	{geometry}
+	\onehalfspacing
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Estructuras de dator y álgoritmos II \\ Tarea 6}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Jean-Bernard Hayet}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\section{String matching problems}
+	
+	\begin{enumerate}
+		\item Se implemento el algoritmo Boyer Moore contar el número de ocurrencias en que una palabra aparece en una frase. Para ello se uso el código proporcionado en las notas, con dos modificacione. La primera fue cambiar el tipo de dato del tipo de valor del map devuelto por $computeR$ puesto que el tamaño de las cadenas pueden exceder lo que un $short int$ puede almacenar. La segunda fue no interrumpir el algoritmo cuando haya encontrado una ocurrencia sino agregarla al contador y hacer el $shift$ correspondiente.
+		\item Para la solución de este problema lo resolvemos inductivamente. Supongamos que tenemos actualmente una palabra $w$ que tiene $s$ diferentes subcadenas. Ahora le agregamos un caracter $c$ a $w$ resutando en una cadena $t = w+c$, notemos que todas las subcadenas distantes de $w$ también lo son de $t$, pero este tiene algunas subcadenas más las cuales terminan en $c$. Para contar cuantas distintas notemos que si un sufijo de $t$ también es prefijo de algún sufijo de $t$ entonces esta ya se econtraba en $w$ en caso de no ser así entonces es una nueva subcadena, entonces si encontramos el sufijo mas grande de $t$ que también es prefijo de algún sufijo de $t$, entonces habremos encontrado todas las cadenas que ya estaban en $w$ y el resto son nuevas, para cálcular esto último haremos uso del arreglo $lsp$ de $t$ que nos dices cual es el prefijo propio más grande de cada prefijo de $t$ que también es sufijo de ese prefijo de $t$ tomando el máximo de $lsp$ encontramos el número de subcadenas ya anteriormente contenidas en $w$. Haciendo esto iterativamente para cada sufijo $t$ de $w$ encontrariamos la cantidad de cadenas distintas de $w$. Puesto que el cálcular el $lsp$ de una cadena toma $O(N)$ y lo hacemos para cada prefijo de $w$ la complejidad final es $O(N^2)$.
+		\item Recordemos que por definición $lps[i]$ de una cadena $w$ es el prefijo propio más grande que también es un sufijo y termina en la posición $i$, por lo que si recorremos todas las posiciones $i$ y nos fijamos cuales son los prefijos que aparecen y terminan en $i$ entonces encontrariamos cada una de las ocurrencias de estos, recordemos que si tenemos un sufijo $t$ que aparece y termina en $i$ entonces el siguiente más grande sufijo que aparece y termina en $i$ es $word[0\cdots lps[i]-1]$ recursivamente así encontraremos todos los prefijos deseados. Para hacer el precalculo toma $O(N)$, y luego se revisan todos los prefijos que son sufijos que lo mas son $N$, por lo tanto nuestra complejidad es $O(N)$.
+	\end{enumerate}
+\end{document}
+

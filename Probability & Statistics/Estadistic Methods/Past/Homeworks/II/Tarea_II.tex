@@ -1,0 +1,268 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Métodos Estadísticos \\Tarea II}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesora: Dra. Eloísa Díaz Francés Murguía}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\subsection*{Preguntas comunes para todos los alumnos para hacer en la casa:}
+
+	\begin{enumerate}
+		\item Si $X$ tiene una distribución $F(x; \theta, \sigma)$ que pertenece a la familia de localización y escala con $\theta$ parametro de localizaicón y $\sigma$ de escala, entonces da una expresión para el cuantil $Q_\alpha$ en términos de los parametros $(\theta,\sigma)$, aprovechando la relación que guardan $F$ y $G$, donde $G$ es la distribución del miembro estándar de esta familia. El miembro $G$ corresponde al caso $\theta = 0$ y $\sigma = 1$,
+		
+		\[F(x; \theta, \sigma) = G\pars{\frac{x-\theta}{\sigma}}.\]
+
+		Recuérdese que como $X$ es variable aletoria contínua, la función de cuantiles es simplemente la inversa de la distribución,
+
+		\[Q_\alpha = Q(\alpha) = F_X^{-1}(\alpha).\]
+
+		Notar que la definición de un cuantil $Q_\alpha$ es el valor donde se acumula una probabilidad $\alpha$, de manera que
+
+		\[F_X(Q_\alpha; \theta, \alpha) = P\bracs{X\leq Q_\alpha} = \alpha.\]
+
+		Bajo estas consideraciones, el parámetro $\theta$ resulta ser él mismo un cuantil de cierta probabilidad. Indica cuál es esta probabilidad.
+
+		\begin{sol}
+			Primero veamos que por la relación que guardan $F$ y $G$ se cumple que
+
+			\[F^{-1}(x) = G^{-1}(x)\sigma + \theta,\]
+
+			por lo que
+
+			\[Q_{\alpha} = F^{-1}(\alpha) = G^{-1}(\alpha)\sigma + \theta.\]
+
+			Ahora por esta misma relación tenemos que
+
+			\[F(\theta; \theta, \sigma) = G\pars{\frac{\theta-\theta}{\sigma}} = G(0)\]
+		\end{sol}
+
+		\item Considera una variable $T$ Student con 9 grados de libertad. Da el valor del cuantil $b > 0$ tal que $P[-b \leq T \leq b] = 0.90$. Da un par de valores $(a,c)$ con $a \neq -c$ tales que $P[a \leq T \leq c] = 0.90$ y muestra que $|c-a| > 2b$. Nota que el intervalo más corto con probabilidad $0.90$ tiene la propiedad de que en sus extremos la función de densidad t de student tiene la misma altura. Es decir se obtiene al hacer un corte horizontal a la función de densidad.
+		
+		\begin{sol}
+			Se anexa a la entrega de esta tarea un script de R en el cual se calculan los siguientes datos obtenidos, a travez de una busqueda binaria.
+
+			\[b = -1.833112933, a = -2, c = 1.699484154.\]
+
+			De donde
+
+			\[|c-a| = 3.699484154 \geq -3.666225865 = 2b.\]
+
+		\end{sol}
+		
+		\item Si $X$ es una $F(a,b)$ de Fisher demuestra que $Y = \frac{1}{X}$ se distribuye como una $F$ de Fisher con sus grados de libertad $(b,a)$.
+		
+		\begin{proof}
+			El teorema del cambio de variable nos dice que si $Y = g(X) = 1/x$ entonces
+
+			\[f_Y(y) = f_X(g^{-1}(y)) \abs{\diff{g^{-1}(y)}{y}},\]
+
+			al ser el soporte de una Fisher $(0,\infty)$ obtenemos
+
+			\[f_Y(y) = f_X\pars{\frac{1}{y}} \frac{1}{y^2}.\]
+
+			Recordemos que la distribución de una vairable $F$ de Fisher es la siguiente 
+
+			\[f_X(x) = \frac{1}{B\pars{\frac{a}{2},\frac{b}{2}}} \pars{\frac{a}{b}}^{\frac{a}{2}} x^{\frac{a}{2}-1} \pars{1+\frac{a}{b}x}^{-\frac{a+b}{2}}.\]
+
+			remplazando en nuestra ecuación anterior obtenemos
+
+			\[f_Y(y) = \frac{1}{B\pars{\frac{a}{2},\frac{b}{2}}} \pars{\frac{a}{b}}^{\frac{a}{2}} \pars{\frac{1}{y}}^{\frac{a}{2}-1} \pars{1+\frac{a}{b}\pars{\frac{1}{y}}}^{-\frac{a+b}{2}} \frac{1}{y^2},\]
+
+			puesto que la función Beta es simétrica tenemos que
+
+			\[f_Y(y) = \frac{1}{B\pars{\frac{b}{2},\frac{a}{2}}} \pars{\frac{a}{b}}^{\frac{a}{2}-1} \pars{\frac{1}{y}}^{\frac{a}{2}-1} \pars{1+\frac{a}{b}\pars{\frac{1}{y}}}^{-\frac{a+b}{2}} \frac{1}{y^2},\]
+
+			factorizando y haciendo uso de las leyes de exponentes obtenemos
+
+			\[f_Y(y) = \frac{1}{B\pars{\frac{b}{2},\frac{a}{2}}} \pars{\frac{b}{a}y}^{\frac{a}{2}} \pars{1+\frac{b}{a}y}^{-\frac{a+b}{2}} \frac{1}{y},\]
+
+			por lo tanto
+
+			\[f_Y(y) = \frac{1}{B\pars{\frac{b}{2},\frac{a}{2}}} \pars{\frac{b}{a}}^{\frac{a}{2}} y^{\frac{a}{2}-1} \pars{1+\frac{b}{a}y}^{-\frac{a+b}{2}},\]
+
+			la cual es la función de densidad de una $F$ de Fisher con sus grados de libertad $(b,a)$, por lo tanto concluimos que $Y$ se distribuye como $F$ de Fisher con grados de libertad $(b,a)$.
+
+		\end{proof}
+
+		\item Usa la función generadora de momentos $M(t)$ como se sugiere en la sección 4.7 del Hogg y Craig (1978) para mostrar cómo se distribuye la suma $T = \sum_{i = 1}^n X_i$ de n variables aleatorias independientes $X_1,\cdots,X_n$ idénticamente distribuidas como exponenciales con parámetro de escala $\beta$. Indica cual es la distribución de la cantidad pivotal $\frac{T}{\beta}$.
+		
+		No se como hacerlo :'(
+		
+	\end{enumerate}
+
+	\subsection*{Preguntas para discutir dentro de los equipos}
+
+    \begin{enumerate}
+        
+		\item Demuestra si la variable exponencial con tiempo de vida garantizado $\alpha>0$ y párametro de escala $\theta$ cuya densidad es
+		
+		\[f(x;\alpha, \theta) = \frac{1}{\theta} \exp\bracs{-\frac{\pars{x-\alpha}}{\theta}} \1_{[\alpha,\infty)}(x),\]
+
+		pertenece a la familia de localización y escala, o no. Di si pertenece a la familia exponencial de distribuciones. Nota que el soporte de la variable $X$ es desde $\alpha > 0$ hasta infinito; es decir $X\geq\alpha>0$.
+
+		Puesto que el soporte es desconocido entonces la variable exponencial no pertenece a la familia de localización y escala.
+
+		\item Si $X$ se distribuye como Gama con parametros $\alpha, \beta$, ¿cómo se distribuye $Y = aX$ con $a$ una constante positiva?
+		
+		Por el teorema de cambio de variable tenemos que
+
+		\[f_Y(y) = f_{aX}(y) = \frac{f_X\pars{\frac{y}{a}}}{a},\]
+
+		como $X$ se distribuye como Gama esto es
+
+		\[f_Y(y) = \frac{\frac{\beta^{\alpha}\pars{\frac{y}{a}}^{\alpha-1}e^{-\beta\pars{\frac{y}{a}}}}{\Gamma(\alpha)}}{a} = \frac{\pars{\frac{\beta}{\alpha}}^{\alpha}\pars{y}^{\alpha-1}e^{-\pars{\frac{\beta}{a}}y}}{\Gamma(\alpha)},\]
+
+		al tener $Y$ una función de densidad Gamma con parámetros $\alpha$ y $\frac{\beta}{a}$ concluimos que $Y$ se distribuye Gamma con parámetros $\alpha$ y $\frac{\beta}{a}$.
+
+		\item Se tienen $k$ variables aleatorias normales independientes $X_1,\cdots,X_k$ donde $X_i$ tiene media $\mu_i$ y varianza $\sigma^2$. Indica como se distribuye la suma $T = \sum_{i=1}^n Z_i$ de las $k$ variables asociadas
+		
+		\[Z_i = \pars{\frac{X_i-\mu_i}{\sigma}}^2, \quad \text{para } i = 1,\cdots, n.\]
+
+		Primero recordemos que si $Z$ se distribuye $N(\mu,\sigma)$ entonces $aZ+b$ se distribuye $N(a\mu + b, |a|\sigma)$ por lo que $\frac{X_i-\mu_i}{\sigma}$ se distribuye normal estándar, y por definición $\sum_{i=1}^n \pars{\frac{X_i-\mu_i}{\sigma}}^2$ se distirbuye como chi-cuadrada.
+
+		\item Considera la variable aleatoria $Z$ Cauchy de parámetros $\pars{\theta, \sigma}$ y demuestra que pertenece a la familia de localización y escala. Sabiendo que una variable Cauchy $\pars{0,1}$ se genera como la razón de dos variables normales estándar $X/Y$ entonces di cómo es que puedes simular realizaciones de $Z$, a partir de números aleatorios normales estándar.
+		
+		Para generar realizaciones de $Z$ solo basta con generar dos realizaciones $x$ y $y$ con distribución normal estandar y entonces $x/y$ será una realización de $Z$.
+
+		Ahora veamos que la distribución Cauchy pertenece a la familia de Localización y Escala
+
+		\begin{proof}
+			Recordemos que la función de distribución de $Z$ es
+			
+			\[f(x;\theta,\sigma) = \frac{1}{\pi\sigma\bracs{1+\pars{\frac{x-\theta}{\sigma}}^2}}\1_{\pars{-\infty,\infty}}(x).\]
+
+			Podemos ver que su soporte no depende de parámetros desconocidos. Ahora veamos que podemos reexpresar a la densidad como
+
+			\[f(x;\theta,\sigma) = \pars{\frac{1}{\sigma}}\frac{1}{\pi\bracs{1+\pars{\frac{x-\theta}{\sigma}}^2}}\1_{\pars{-\infty,\infty}}(x) = \frac{1}{\sigma}f_0\pars{\frac{x-\theta}{\sigma}},\]
+
+			donde
+
+			\[f_0(x) = \frac{1}{\pi\pars{1 + x^2}}.\]
+
+			Ahora si $Y = \frac{X-\theta}{\sigma}$ por el Teorema de Cambio de Variable con $g(x) = \frac{x-\theta}{\sigma}$ vemos que la densidad de $Y$ es $f_0(x)$ la cual no depende de parametros desconocidos, por lo tanto concluioms que la distirbución Cauchy pertenece a la familia de localización y escala.
+		\end{proof}
+
+    \end{enumerate}
+
+	\end{document}
+			

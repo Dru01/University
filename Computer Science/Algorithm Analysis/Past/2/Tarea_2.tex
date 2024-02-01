@@ -1,0 +1,138 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+        \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+        \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+        \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+  \title{Análisis de Algoritmos e introducción a Matemáticas Discretas \\ Tarea 2}
+  \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Carlos Segura González}
+  \date{\today}
+
+\begin{document}
+
+\maketitle
+
+La solución propuesta al problema es con un algoritmo Divide and Conquere. Para un punto $p$ usaremos la notación $p.x$ y $p.y$, para referirnos a la coordenada $x$ y $y$ del punto $p$ respectivamente. El algoritmo dado un conjunto $P$ de puntos crea una partición de dos subconjuntos $PL$ y $PR$ tal que para todos los puntos $p\in PL,q\in PR$ se cumple que $p < q$ (con orden lexicográfico primero por $x$ y luego por $y$) y $\abs{PL-PR}$ es a lo más uno; cuenta los puntso dominados de un conjunto por los puntos del otro conjunto, y recursivamente hace lo mismo para $PL$ y $PR$. Si un punto $p\in P$ domina otro punto $q\in P$ entonces siempre se cuenta esto puesto que se hace en ese momento en el alguna recursión del algoritmo.
+
+Ahora veremos como contar los puntos dominados entre puntos de $PL$ y $PR$. Notemos que por construcción de $PL$ y $PR$ ningún punto de $PR$ dominara a alguno de $PL$, entonces solo hace falta contar para cada punto de $PL$ cuantos puntos domina de los puntos de $PR$. Por construcción todo los puntos de $PL$ tienen una coordenada $x$ menor o igual a los de $PR$, por lo que para contar para un punto $p\in PL$ cuantos puntos de $PR$ domina solo hace falta ver cuantos de ellos tienen una coordenada $y$ mayor o igual. Para ello supongamos que tenemos ordenados los puntos tanto de $PL$ como de $PR$ por $y$ de menor a mayor, entonces tomamos los primeros puntos $p\in PL$ y $q\in PR$, si $p.y\leq q.y$ entonces $p$ dominara a todos los puntos en $PR$ por lo que acumulamos la cantidaad $|PR|$ a los puntos que $p$ domina, luego descartamos al punto $p$ de $PL$ en caso de qque $p.y > q.y$ entonces descartamos a $q.y$, y repetimos lo mismo para los nuevos primeros puntso de $PL$ y $PR$. Si un punto $p\in PL$ domina otro punto $q\in PR$ entonces $p.y\leq q.y$ y por construcción lo habrá contado el algoritmo. Este proceso tiene una complejidad de $\theta\pars{M}$, donde $M=|PL|$ si los datos estan ordenados (esto se consigue haciendo uso de un merge sort mientras dividimos los conjuntos), en caso contrario sería de $\theta\pars{M\log\pars{M}}$.
+
+Por lo tanto al final el agoritmos habrá contado cuantos puntos dominada cada punto. Ahora analizaremos la complejidad de este con un conjunto de entrada de tamaño $N$, para ello nos apoyaremos del arbol de recursión de este. Notemos que para cada nodo con $M$ datos este se divide en dos nodos que contienen la $\frac{M}{2}$ datos (difieren en a lo más uno pero este se ignora ya que en cada nodo la complejidad es de $\Theta(M)$), por lo que para todo nodo en el nivel $i$ tendrán $\frac{N}{2^{i}}$ de datos por lo que ell trabajo de cada nodo es de $\frac{N}{2^{i}}$, luego la cantidad de nodos en el nivel $i$ es de $2^{i}$, por lo tanto concluimos
+
+\[T(N) = \sum_{i=0}^{log_2(N)} 2^{i}\frac{N}{2^{i}} = N\log_2\pars{N} = \theta(N\log\pars{N}).\]
+
+\end{document}

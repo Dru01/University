@@ -1,0 +1,243 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Tarea II}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{20 de Septiembre 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Convergencía en media r-ésima
+		
+		\begin{enumerate}
+			\item Diferencias con convergencía en $L_p$.
+			
+			Esta permite convergencía con respecto de $0<p<1$.
+
+			\item ¿Porqué no se puede definir convergencúa en $L_p$ para $p\in(0,1)$? O ¿sí se puede?
+			
+			Primero veamos que $||\cdot||_p$ ya no es métrica cuando $0<p<1$. Considermos el espacio $([0,2],B[0,2],\lambda)$ (donde $\lambda$ es la medida de Lebesgue normalizada en $[0,2]$) y $L_p$ con repecto a este espacio medible, y las siguientes indicadoras 
+			
+			\[\mathbbm{1}_{[0,1)}, \mathbbm{1}_{[1,2]}.\]
+
+			Recordemos que
+
+			\[E[|\mathbbm{1}_A|^p]^{1/p} = E[\mathbbm{1}_A^p]^{1/p} = E[\mathbbm{1}_A]^{1/p} = P[A]^{1/p} < \infty,\]
+
+			por lo que $\mathbbm{1}_{[0,1)}, \mathbbm{1}_{[1,2]} \in L_p$. También es claro que la variable aleatoria $0 \in L_p$.
+
+			Ahora si veamos lo siguiente
+
+			\[d(\mathbbm{1}_{[0,1)}, -\mathbbm{1}_{[1,2]}) = ||\mathbbm{1}_{[0,1)} + \mathbbm{1}_{[1,2]}||_p = ||\mathbbm{1}_{[0,2]}||_p = E[|\mathbbm{1}_{[0,2]}|^p]^{1/p} = P([0,2])^{1/p} = 1,\]
+
+			y también
+
+			\[d(\mathbbm{1}_{[0,1)},0) = ||\mathbbm{1}_{[0,1)}||_p = E[|\mathbbm{1}_{[0,1)}|^p]^{1/p} = P([0,1))^{1/p} = \left(\frac{1}{2}\right)^{1/p},\]
+			\[d(0,-\mathbbm{1}_{[1,2]}) = ||\mathbbm{1}_{[1,2]}||_p = E[|\mathbbm{1}_{[1,2]}|^p]^{1/p} = P([1,2])^{1/p} = \left(\frac{1}{2}\right)^{1/p}\]
+
+
+			Al ser $0<p<1$ tenemos que
+
+			\[2\left(\frac{1}{2}\right)^{1/p} = \left(\frac{1}{2}\right)^{1/p - 1} < 1,\]
+
+			por lo tanto
+
+			\[d(\mathbbm{1}_{[0,1)}, -\mathbbm{1}_{[1,2]}) > d(\mathbbm{1}_{[0,1)},0) + d(0,-\mathbbm{1}_{[1,2]}),\]
+
+			con lo que concluimos que $||\cdot||_p$ ya no es métrica cuando $0<p<1$. Esto genera que no podamos hablar convergencia con esta métrica en $L_p$ pero podria haber otra métrica que permita $p>0$. Al menos es lo que supongo qusieron decir cuaando nos dijeron que demostramos esto, pero estuve leyendo un poco e invesitgando y creo el problema en general es que si $1<p<\infty$ entonces se cumple que para toda suceción $\set{X_n}\in L_p$ convergente se cumple que
+
+			\[\limninf{X_n} \in L_p,\]
+
+			pero esto no necesariamente es cierto si $0 < p < 1$, bajo la definición de que $X \in L_p$ ssi 
+
+			\[E[|X|^p]<\infty.\]
+
+			Ya no tuve tiempo de desarrollar esta idea por hacer la otra demostración. Intentare seguirla.
+
+			\item Conjunto denso en $\mathcal{L}_p$
+			
+			Un conjunto $S \in \mathcal{L}_p$ es denso si $\forall w \in S$ se cumple que para toda bola abierta de s interseca a $L_{p}$ en un punto diferente a el, usando la métrica
+			
+			\[d(x,y) = ||X-Y||_p\]
+			
+			$\forall s \in S$
+
+			\item Ejemplo conjunto denso
+			
+			No lo encontre.
+
+		\end{enumerate}
+
+		\item Pendiente
+		
+		\item Sea $X_1,\cdots,X_n$ una colección de v.a. iid con distribución $\mathcal{U}[0,\theta]$ con $\theta > 0$ y desconocido.
+		
+		\begin{enumerate}
+			\item Estimador de máxima verosimilitud de $\theta$.
+			
+			Primero veamos cual es la verosimilitud de nuestra muestra
+
+			\[L(\theta, x_1, \cdots, x_n) = \prod_{i=1}^n f_{X_i}(x_i) = \prod_{i=1}^n f_{\mathcal{U}[0,\theta]}(x_i) = \frac{\prod_{i=1}^n \mathbbm{1}_{[0,\theta](x_i)}}{\theta^n},\]
+
+			luego esta función es decreciente para $\theta \geq \max(x_1,\cdots,x_n)$, y es $0$ para $0 < theta < \max(x_1,\cdots,x_n)$ por lo que su maximo es en $\theta = \max(x_1,\cdots,x_n)$. Por lo tanto
+
+			\[\hat{\theta}_n = \max(x_1,\cdots,x_n).\]
+
+			\item Ahora vemos las convergencias
+			
+			\begin{itemize}
+				\item Convergencia casi segura:
+				
+				Por lo visto en el Tarea 1 problema 4 tenemos que $\hat{\theta}_n$ converge al extremo derecho $w_f$, que en este caso es $\theta$.
+
+				\item Convergencia en Probabilidad:
+				
+				Esta se cumple puesto que convergen casis seguramente.
+
+				\item Convergencia en $L_p$
+				
+				Aún no me sale
+			\end{itemize}
+
+			\item Gráfica
+
+		\end{enumerate}
+
+		\item Componentes
+		
+		\begin{itemize}
+			\item Convergencia casi segura
+			
+			Si $X_n \rightarrow X$ casi seguramente entonces existe un $N$ nulo tal que $\forall w \in N^c$ se cumple que $X_n(w) \rightarrow X(w)$. ahora como una función converge si y sólo si sus componentes convergen tenemos que $X_{n,i}(w) \rightarrow X_i(w), i = {1,2}$. Por lo que el mismo nulo de la convergencia casi segura original funciona para la convergencia casi segura de las componentes.
+
+			Si $X_{n,i}(w) \rightarrow X_i(w), i = {1,2}$ casi seguramente entonces tenemos que existe un $N_i$ nulo tal que $\forall w_i \in N_i^c$ se cumple que $X_{n,i}(w) \rightarrow X_i(w)$, entonces sea $N = N_1 \cup N_2$ tenemos que $\forall w \in N^c$ se cumple que $X_{n,i}(w) \rightarrow X_i(w)$, y como una función converge si y sólo si sus componentes convergen tenemos que $X_n(w) \rightarrow X(w)$. Por lo que la union de los nulos de la convergencia casi segura de las componentes funciona para la convergencia casi segura de la bivariada.
+
+			\item Convergencia en Probabilidad
+			
+			La ida se sigue del teorema del mape continuo.
+
+			Si $X_{n,i}(w) \rightarrow X_i(w), i = {1,2}$ en probabilidad entonces $P[|X_{n,i} - X_i| > \epsilon] \rightarrow 0$. Ahora veamos que por desigualdad del triangulo tenemos que
+
+			\[\set{|X_{n,1} - X_1| < \epsilon/2} \cap \set{|X_{n,2} - X_2| < \epsilon/2} \subset \set{|X_n - X| < \epsilon},\]
+
+			por complementos obtenemos
+
+			\[\set{|X_n - X| > \epsilon} \subset \set{|X_{n,1} - X_1| > \epsilon/2} \cup \set{|X_{n,2} - X_2| > \epsilon/2},\]
+
+			por subaditividad obtenemos que
+
+			\[P(|X_n - X| > \epsilon) \leq P(|X_{n,1} - X_1| > \epsilon/2) \cup P(|X_{n,2} - X_2| > \epsilon/2),\]
+
+			por lo tanto concluimos que
+
+			\[X_n \xrightarrow{P} X\]
+
+
+		\end{itemize}
+
+    \end{enumerate}
+
+	\end{document}
+			

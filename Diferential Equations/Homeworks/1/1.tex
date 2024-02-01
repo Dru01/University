@@ -1,0 +1,170 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Ecuaciones Diferenciales Ordinarias \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Manuel Cruz López}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+
+		\item Analiza el campo de pendientes definido por las ecuaciones diferenciales dadas y bosqueja la gr\'afica de las curvas soluci\'on:
+		
+		\begin{enumerate}
+
+			\item $x'=x^2-t$.
+			
+			\item $x'=-tx+x^2$.
+			
+		\end{enumerate}
+		
+		\item Resuelve los problemas de valor inicial dados y determina los dominios de las soluciones:
+		
+		\begin{enumerate}
+
+			\item $\displaystyle{\frac{dx}{dt}=\frac{t}{x}}, \; x(2)=1$.
+			
+			\item $\displaystyle{\frac{dx}{dt}=2(x-1)(x+2)}, \; x(0)=2$.
+			
+		\end{enumerate}
+		
+		\item Resuelve el problema de valor inicial para $t>1$:
+		\[ \frac{dx}{dt} = \frac{2\sqrt{x}e^{-t}}{t},\quad x(1)=4. \]
+		
+		\item Prueba que para una condici\'on inicial dada $x(t_0)=x_0\neq 0$, la soluci\'on de la ecuaci\'on diferencial $x'=a(t)x$ est\'a dada por
+		\[ x(t) = x_0\exp\left( \int_{t_0}^t a(\tau)d\tau \right). \]
+		
+		
+		\item Una bola de masa $m$ se tira hacia arriba desde un edificio a altura $h$ con velocidad inicial $v$. Supongamos que la \'unica fuerza que act\'ua sobre la bola es la fuerza de gravedad $F=-mg$. Si $x(t)$ denota la altura de la bola sobre el piso al tiempo $t$, resuelve el problema de valor inicial determinado por la segunda ley de Newton y prueba que la altura al tiempo $t>0$ est\'a dada por la f\'ormula 
+		\[ x(t) = -\frac{1}{2}gt^2 + vt + h, \quad (t>0). \]
+		
+		\item Cuatro gramos de una muestra radioisot\'opica decae a 0.8 gramos en 3 años. ?`Cu\'al es la constante de decaimiento $\lambda$? ?`Cu\'al es la \emph{vida promedio}, o el tiempo en que solo la mitad de la muestra permanece?
+		
+		\item Un censo del año 1999 estimaba que la poblaci\'on mundial era de 6 billones de habitantes y se iba incrementando a raz\'on de 212,000 personas por d\'ia. ?`Cu\'al es la tasa de crecimiento anual? A este ritmo de crecimiento, ?`cu\'al es la poblaci\'on mundial que se predice para el año 2050?
+		
+		\item Una poblaci\'on de insectos muere exponencialmente y este decrecimiento est\'a governado por la ley $p'(t)=-\lambda p(t)$ donde $\lambda$ es la tasa de mortalidad. Si 1000 insectos hatch y solo 90 permanencen despu\'es de 2 dias, ?`cu\'al es la tasa de mortalidad? 		
+	
+		\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,389 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1.3in]{geometry}
+
+\usepackage{float}
+\usepackage{bbold}
+\usepackage{eufrak}
+\usepackage{calligra}
+\usepackage{aurical}
+\usepackage{frcursive}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+% Formato {
+    \usepackage{framed}
+    \usepackage{titlesec}
+    \usepackage{eufrak}
+% }
+    
+% Ambientes {
+    \usepackage{amsthm,amsmath, amssymb}
+    \usepackage{etoolbox}
+    
+    % Indentación {
+        %puse estas llaves para que puedan comprimir esto y no les estorbe
+        \makeatletter
+        \patchcmd{\@thm}
+          {\trivlist}
+          {\list{}{\leftmargin=\thm@leftmargin\rightmargin=\thm@rightmargin}}
+          {}{}
+        \patchcmd{\@endtheorem}
+          {\endtrivlist}
+          {\endlist}
+          {}{}
+        \newlength{\thm@leftmargin}
+        \newlength{\thm@rightmargin}
+        
+        \newcommand{\xnewtheorem}[3]{%
+          \newenvironment{#3}
+            {\thm@leftmargin=#1\relax\thm@rightmargin=#2\relax\begin{#3INNER}}
+            {\end{#3INNER}}%
+            
+          \theoremstyle{definition}%
+          \newtheorem{#3INNER}%
+        }
+        \makeatother
+    % }
+    
+    % Ejercicio {
+        % Uso: \ejercicio[Título opcional]{Enunciado del teorema}
+        \theoremstyle{definition}
+        \newtheorem{ejerciciothm}{Ejercicio}
+        \newcommand{\ejercicio}[2][]{
+            \begin{ejerciciothm}[#1]
+                 #2
+            \end{ejerciciothm}
+        }
+    % }
+    
+    % Inciso {
+        \makeatletter
+            \newcounter{subproblem}[ejerciciothm]
+            \newenvironment{subproblem}
+                {\hfill\refstepcounter{subproblem}\par\noindent
+                \thesubproblem\normalsize}
+                {\vspace{0.5mm}}
+            \renewcommand\thesubproblem{\alph{subproblem})}
+        \makeatother
+        \newcommand{\inciso}[1]{
+            \begin{subproblem}
+                #1
+            \end{subproblem}
+        }
+    % }
+
+    % Lema {
+        % Uso: \lema[Título opcional]
+        \theoremstyle{definition}
+        \xnewtheorem{2.5em}{2.5em}{lemathm}{Lema}
+        \newcommand{\lema}[2][]{
+            \begin{lemathm}[#1]
+                 #2
+            \end{lemathm}
+        }
+    % }
+% }
+
+%Definir comandos{
+    \newcommand{\N}{ \mathbb{N} }
+    \newcommand{\R}{ \mathbb{R} }
+    \newcommand{\Pn}{ \mathbb{P} }
+    \newcommand{\Aes}{ \mathcal{A} }
+    \newcommand{\ToInf}{ \rightarrow \infty}
+    %\QEDA para hacer cuadrito de QED.
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+    \newcommand{\ci}{\left[}
+    \newcommand{\cd}{\right]}
+    \newcommand{\pareni}{\left(}
+    \newcommand{\parend}{\right)}
+    \newcommand{\comillas}{``}
+    %\newcommand{\ls}{\limsup\limits_{n\rightarrow \infty}}
+    %\newcommand{\li}{\liminf\limits_{n\rightarrow \infty}}
+	\makeatletter
+        \newcommand{\titulo}{\@title}
+    \makeatother
+	
+	% Para Santiago
+	\usepackage{etoolbox}
+
+    \newcommand\ls[1][]{%
+      \ifstrempty{#1}{%
+        \limsup_{n\to\infty}
+      }{%
+        \limsup_{#1\to\infty}
+      }%
+    }
+
+    \newcommand\li[1][]{%
+      \ifstrempty{#1}{%
+        \liminf_{n\to\infty}
+      }{%
+        \liminf_{#1\to\infty}
+      }%
+    }
+    
+    % Nuria, aquí están los comandos que pusiste. Atte. Nuria
+    \renewcommand*{\qedhere}{\tag*{$\square$}}
+    \newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+    \newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+    
+    \renewcommand*{\P}{ \mathbb{P} }
+    
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	
+% 	\newcommand{\txty}{\quad\text{y}\quad}
+% 	\newcommand{\Txty}{\qquad\text{y}\qquad}
+% }
+
+\title{Cálculo II\\Tarea 06}
+\author{Rubén Pérez Palacios\\Profesor: Dr. Fernando Nuñez Medina}
+\date{25 Febrero 2020}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problemas}
+
+\begin{enumerate}
+    
+  \item Halla
+  
+  \[\int_{a}^{b} \frac{f'(t)}{f(t)}dt\]
+
+  (para $f > 0$ en $[a,b]$).
+
+  Fijemonos en la derivadad de la composición $log \circ f$, vista en la tarea pasada,
+
+  \[(log \circ f)'(x) = \frac{f'(x)}{f(x)}.\]
+
+  Luego $(log \circ f)(x)$ es primitiva de $\frac{f'(x)}{f(x)}$, por el segundo teorema fundamental del cálcuo conlcuimos que
+
+  \[\int_{a}^{b} \frac{f'(x)}{f(x)} = (log \circ f)(b) - (log \circ f)(a) = \log\left(\frac{f(b)}{f(a)}\right).\]
+
+  \item Calcula las siguientes integrales
+
+  \begin{enumerate}
+    \item $\int \frac{dx}{\sqrt{1-x^2}}$
+    
+    Sea $\sin(u) = x$ entonces $dx = cos(u) du$, por lo tanto
+
+    \[\int \frac{dx}{\sqrt{1-x^2}} = \int \frac{cos(u)du}{\sqrt{1-\sin^2(x)^2}} = \int du = u = sin^{-1}(x).\]
+
+    \item $\int \frac{dx}{\sqrt{1+x^2}}$
+    
+    Sea $\tan(u) = x$ entonces $dx = sec(u)^2 du$, por lo tanto
+
+    \[\int \frac{dx}{\sqrt{1+x^2}} = \int \frac{sec(u)^2du}{\sqrt{1+\tan(x)^2}} =\int sec(u)du = log(sec(u) + tan(u))\]\[ = log(\sqrt{1+x^2} + x^2).\]
+
+    \item $\int \frac{dx}{\sqrt{x^2-1}}$
+    
+    Sea $sec(u) = x$ entonces $dx = sec(u)tan(u)du$, por lo tanto
+
+    \[\int \frac{dx}{\sqrt{x^2-1}} = \int \frac{sec(u)tan(u)du}{tan(u)} = \int sec(u)du = log(sec(u) + tan(u))\]\[ = log(x + \sqrt{x^2-1}).\]
+
+  \end{enumerate}
+
+  \item Calcule las siguientes integrales
+  
+  \begin{enumerate}
+    \item $\int \frac{2x^2+7x-1}{x^3+x^2+x-1}dx$
+    
+    Expresaremos lo anterior por fracciones parciales
+
+    \begin{align*}
+      \frac{2x^2+7x-1}{x^3+x^2+x-1} &= \frac{2x^2+7x-1}{(x+1)^2(x-1)}\\
+      &= \frac{A}{(x+1)^2 }+ \frac{B}{x+1} + \frac{C}{x-1}\\
+      &= \frac{A(x-1) + B(x^2-1) + C(x+1)^2}{x^3+x^2+x-1}\\
+      &= \frac{(B+C)x^2 + (A+2C)x + (C-B-A)}{x^3+x^2+x-1}.
+    \end{align*}
+
+    De lo que obtenemos el siguiente sistema de ecuaciones
+
+    \begin{align*}
+      B + C &= 2\\
+      A + 2C &= 7\\
+      A + B - C &= 1,
+    \end{align*}
+
+    resolviendo el sistema de ecuaciones obtenemos
+
+    \[A = 3 \quad B = 0 \quad C = 2\].
+
+    Sustituyendo en la integral tenemos
+
+    \begin{align*}
+      \int \frac{2x^2+7x-1}{x^3+x^2+x-1}dx &= \int \left(\frac{3}{(x+1)^2}+ \frac{0}{x+1} + \frac{2}{x-1}\right)dx\\
+      &= 3 \int \frac{2dx}{(x+1)^2} + 2\int \frac{dx}{x-1}\\
+      &= -\frac{3}{(x+1)} + 2log(x-1)
+    \end{align*}
+
+    \item $\int \frac{2x+1}{x^3-3x^2+3x-1}dx$
+    
+    Expresaremos lo anterior por fracciones parciales
+
+    \begin{align*}
+      \frac{2x+1}{x^3-3x^2+3x-1} &= \frac{2x^2+7x-1}{(x-1)^3}\\
+      &= \frac{A}{(x-1)^3}+ \frac{B}{(x-1)^2} + \frac{C}{x-1}\\
+      &= \frac{A + B(x-1) +  C(x-1)^2}{(x-1)^3}\\
+      &= \frac{Cx^2 + (B-2C)x + (A-B+C)}{(x-1)^3}.
+    \end{align*}
+
+    De lo que obtenemos el siguiente sistema de ecuaciones
+
+    \begin{align*}
+      C &= 0\\
+      B - 2C &= 2\\
+      A - B + C &= 1,
+    \end{align*}
+
+    resolviendo el sistema de ecuaciones obtenemos
+
+    \[A = 3 \quad B = 2 \quad C = 0\].
+
+    Sustituyendo en la integral tenemos
+
+    \begin{align*}
+      \int \frac{2x+1}{x^3-3x^2+3x-1}dx &= \int \left(\frac{3}{(x-1)^3}+ \frac{2}{(x-1)^2} + \frac{0}{x-1}\right)dx\\
+      &= 3\int \frac{dx}{(x-1)^3} + 2\int \frac{dx}{(x-1)^2}\\
+      &= -\frac{3}{2(x-1)^2} - \frac{2}{x-1}\\
+      &= \frac{1-4x}{2(x-1)^2}
+    \end{align*}
+    
+    \item $\int \frac{x^3+7x^2-5x+5}{(x-1)^2(x+1)^3}dx$
+    
+    Expresaremos lo anterior por fracciones parciales
+
+    \begin{align*}
+      &\frac{x^3+7x^2-5x+5}{(x-1)^2(x+1)^3}\\
+      &= \frac{A}{(x-1)^2}+ \frac{B}{x-1} + \frac{C}{(x+1)^3} + \frac{D}{(x+1)^2} + \frac{E}{x+1}\\
+      &= \frac{A(x+1)^3 + B(x-1)(x+1)^3 + C(x-1)^2 + D(x-1)^2(x+1) + E(x-1)^2(x+1)^2}{(x-1)^2(x+1)^3}\\
+      &= \frac{ (B+E)x^4 + (A+2B+D)x^3 + (3A+C-D-2E)x^2}{(x-1)^2(x+1)^3}\\
+      &+ \frac{(3A-2B-2C-D)x + (A-B+C+D+E) }{(x-1)^2(x+1)^3}.
+    \end{align*}
+
+    De lo que obtenemos el siguiente sistema de ecuaciones
+
+    \begin{align*}
+      B+E&=0\\
+      A+2B+D&=1\\
+      3A+C-D-2E&=7\\
+      3A-2B-2C-D&=-5\\
+      A-B+C+D+E&=5\\
+    \end{align*}
+
+    resolviendo el sistema de ecuaciones obtenemos
+    
+    \begin{align*}
+      A&=1, & B&=0, & C&=4, & D&=0, & &\text{y}& E&=0.
+    \end{align*}
+    
+    Sustituyendo en la integral tenemos
+
+    \begin{align*}
+      &\int \frac{x^3+7x^2-5x+5}{(x-1)^2(x+1)^3}dx\\
+      &= \int \left(\frac{1}{(x-1)^2}+ \frac{0}{(x-1)^2} + \frac{4}{(x+1)^3} + \frac{0}{(x+1)^2} + \frac{0}{x+1}\right)dx\\
+      &= \int\frac{dx}{(x-1)^2} + 4\int\frac{dx}{(x+1)^3}\\
+      &= -\frac{1}{x-1} - \frac{2}{(x+1)^2}
+    \end{align*}
+
+  \end{enumerate}
+
+  \item Calcula las siguientes integrales
+  
+  \begin{enumerate}
+    \item $\int \frac{a^x}{b^x}dx$
+    
+    Veamos que $\frac{a^x}{b^x}dx = \left(\frac{a}{b}\right)^xdx$, por lo tanto
+
+    \[\int \frac{a^x}{b^x}dx = \int \left(\frac{a}{b}\right)^xdx = \frac{\left(\frac{a}{b}\right)^x}{log(\frac{a}{b})}\]
+
+    \item $\int tan(x)^2dx$
+    
+    Veamos lo siguiente
+
+    \[\int tan(x)^2dx = \int sex(x)^2dx - \int dx = tan(x) - x\]
+
+    \item $\int frac{dx}{a+x^2}dx$
+    
+    Si $a = 0$ entonces $\int frac{dx}{a+x^2}dx = -\frac{1}{x}$, si $a \neq 0$ entonces
+
+    \[\int frac{dx}{a+x^2}dx = \frac{1}{a} \int \frac{1}{a} \frac{dx}{1 + \left(\frac{x}{a}\right)^2} = -\frac{arctan(x/a)}{a}\]
+  \end{enumerate}
+
+  \item Calcula las siguientes integrales
+  
+  \begin{enumerate}
+    \item $\int \frac{e^xdx}{e^{2x} + 2e^x + 1}$
+    
+    Sea $u = e^x$, entonces $du = e^xdx$, por lo tanto
+
+    \[\int \frac{e^xdx}{e^{2x} + 2e^x + 1} = \int \frac{du}{(u + 1)^2} = -\frac{1}{u+1} = -\frac{1}{e^x+1}\]
+
+    \item $\int e^{e^x} e^x dx$
+    
+    Sea $u = e^x$, entonces $du = e^x dx$, por lo tanto
+
+    \[\int e^{e^x} e^x dx = \int e^u du = e^u = e^{e^x}\]
+
+    \item $\int \frac{xdx}{\sqrt{1-x^4}}$
+    
+    Sea $u = x^2$, entonces $du = 2xdx$, y sea $sin(v) = u$ entonces $du = cos(v)dv$. Veamos lo siguiente
+
+    \[\frac{1}{2} \int \frac{2xdx}{\sqrt{1-x^4}} = \frac{v}{2}\]
+
+    Por lo tanto
+
+    \[\int \frac{xdx}{\sqrt{1-x^4}} = \frac{\sin^{-1}(x^2)}{2}\]
+
+  \end{enumerate}
+
+  \item Integración por partes
+  
+  \begin{enumerate}
+    \item $\int x^2sin(x)dx$
+    
+    Sea $u = x^2$ y $v = -cos(x)$, entonces $du = 2xdx$ y $dv = sen(x)dx$, por lo tanto
+
+    \[\int x^2sin(x)dx = -x^2cos(x) - 2\int cos(x)xdx\]
+
+    Sea $u = x$ y $v = sen(x)$, entonces $du = dx$ y $dv = -cos(x)dx$, por lo tanto
+
+    \[\int x^2sin(x)dx = -x^2cos(x) + 2\left(xsen(x) - \int sin(x)dx\right) = cos(x)(2-x^2) + 2xsen(x)\]
+
+    \item $log(x)^3dx$
+    
+    Sea $u = log(x)^3$ y $v = x$, entonces $du = 3log(x)^2(1/x)dx$ y $dv = dx$, por lo tanto
+
+    \[\int log(x)^3dx = log(x)^3x - 3\int log(x)^2dx\]
+
+    Sea $u = log(x)^2$ y $v = x$, entonces $du = 2log(x)(1/x)dx$ y $dv = dx$, por lo tanto
+
+    \[\int log(x)^3dx = log(x)^3x - 3\left(log(x)^2x - 2\int log(x)dx\right)\]
+
+    Sea $u = log(x)$ y $v = x$, entonces $du = (1/x)dx$ y $dv = dx$, por lo tanto
+
+    \[\int log(x)^3dx = log(x)^3x - 3\left(log(x)^2x - 2\left(log(x)x - \int dx\right)\right)\]\[ = log(x)^3x -3log(x)^2x + 6log(x)x - 6x\]
+
+    \item $\int \frac{log(log(x))}{x}dx$
+    
+    Sea $u = log(x)$ entonces $du = dx/x$ por lo tanto
+
+    \[\int \frac{log(log(x))}{x}dx = \int log(u)du\]
+
+    Sea $v = log(x)$ y $w = x$, entonces $du = (1/x)dx$ y $dv = du$, por lo tanto
+
+    \[\int \frac{log(log(x))}{x}dx = log(u)u - \int du = (log(u)-1)u\]
+
+    Con lo que concluimos que
+
+    \[\int \frac{log(log(x))}{x}dx = log(u)u - \int du = (log(log(x))-1)log(x)\]
+
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

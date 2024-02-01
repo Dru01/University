@@ -1,0 +1,306 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Álgebra Lineal I\\Tarea 08}
+    \author{Rubén Pérez Palacios\\Profesor: Rafael Herrera Guzmán}
+    \date{02 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $p(x) = a_0 + a_1x + a_2x^2 + a_3x^3 \in P_3(\R)$, entonces $T(p(x)) = p'(x) = a_1 + 2a_2x + 3a_2x^2$. Ahora sabemos que
+		
+		\[A[p]_\beta = [p']_\gamma,\]
+
+		como la siguiente matriz cumple la igualdad y es única entonces
+
+		\[A = \begin{pmatrix}
+			0 & 1 & 0 & 0\\
+			0 & 0 & 2 & 0\\
+			0 & 0 & 0 & 3
+		\end{pmatrix}.\]
+
+		Ahora veamos que
+
+		\item Respuestas
+		
+		\begin{enumerate}
+		
+			\item Veamos que
+			
+			\begin{align*}
+				(a_1,a_2) &= a_1(1,0) + a_2(0,1) &= a_1e_1 + a_2e_2\\
+				(b_1,b_2) &= b_1(1,0) + b_2(0,1) &= b_1e_1 + b_2e_2
+			\end{align*}
+
+			por lo que la matriz que buscamos es
+
+			\[Q = \begin{pmatrix}
+				a_1 & b_1\\
+				a_2 & b_2
+			\end{pmatrix}.\]
+
+			\item Veamos que
+			
+			\[3(2,5) + 5(-1,-3) = (1,0) = e_1\]
+			\[-1(2,5) - 2(-1,-3) = (0,1) = e_2\]
+
+			Por lo tanto la matriz que buscamos es
+
+			\[Q = \begin{pmatrix}
+				3 & -1\\
+				5 & -2
+			\end{pmatrix}\]
+
+		\end{enumerate}
+
+		\item Para los siguientes ejercicios queremos encontrar una matriz de la siguiente forma
+		
+		\[Q = \begin{pmatrix}
+			q_0 & q_3 & q_6\\
+			q_1 & q_4 & q_7\\
+			q_2 & q_5 & q_8
+		\end{pmatrix}\]
+
+		\begin{enumerate}
+
+			\item Los coeficiente de la matriz $Q$ deben cumplir
+			
+			\begin{align*}
+				a_2x^2 + a_1x + a_0 &= q_0x^2 + q_1x + q_2\\
+				b_2x^2 + b_1x + b_0 &= q_3x^2 + q_4x + q_5\\
+				c_2x^2 + c_1x + c_0 &= q_6x^2 + q_7x + q_8
+			\end{align*}
+
+			por lo tanto la matriz $Q$ que buscamos es
+
+			\[Q = \begin{pmatrix}
+				a_2 & b_2 & c_2\\
+				a_1 & b_1 & c_1\\
+				a_0 & b_0 & c_0
+			\end{pmatrix}\]
+
+			\item Los coeficiente de la matriz $Q$ deben cumplir
+			
+			\begin{align*}
+				a_2x^2 + a_1x + a_0 &= q_0 + q_1x + q_2x^2\\
+				b_2x^2 + b_1x + b_0 &= q_3 + q_4x + q_5x^2\\
+				c_2x^2 + c_1x + c_0 &= q_6 + q_7x + q_8x^2
+			\end{align*}
+
+			por lo tanto la matriz $Q$ que buscamos es
+
+			\[Q = \begin{pmatrix}
+				a_0 & b_0 & c_0\\
+				a_1 & b_1 & c_1\\
+				a_2 & b_2 & c_2
+			\end{pmatrix}\]
+		
+		\end{enumerate}
+
+		\item Respuestas
+		
+		\begin{enumerate}
+
+			\item Sea $Q$ tal que
+			
+			\[Q = \begin{pmatrix}
+				q_0 & q_2\\
+				q_1 & q_3
+			\end{pmatrix},\]
+		
+			entonces tenemos que
+		
+			\[1 + x = q_0 + xq_1,\]
+			\[1 - x = q_2 + xq_3,\]
+		
+			por lo tanto
+		
+			\[q_0 = q_1 = q_2 = 1, \quad q_3 = -1.\]
+		
+			Conlcuimos que
+		
+			\[Q = \begin{pmatrix}
+				1 & 1\\
+				1 & -1
+			\end{pmatrix}.\]
+		
+			\item Sea $Q^{-1}$ tal que
+			
+			\[Q^{-1} = \begin{pmatrix}
+				q_0 & q_2\\
+				q_1 & q_3
+			\end{pmatrix},\]
+		
+			luego veamos que
+		
+			\[Q^{-1}Q = \begin{pmatrix}
+				q_0+q_1 & q_0-q_1\\
+				q_2+q_3 & q_2-q_3
+			\end{pmatrix}.\]
+		
+			Por definición de matriz inversa tenemos que
+			
+			\[Q^{-1}Q = I_2,\]
+		
+			por lo tanto
+		
+			\[q_0+q_1 = 1, q_0-q_1 = 0, q_2+q_3 = 0, q_2-q_3=1,\]
+		
+			con lo que concluimos que
+		
+			\[Q = \begin{pmatrix}
+				\frac{1}{2} & \frac{1}{2}\\
+				\frac{1}{2} & -\frac{1}{2}
+			\end{pmatrix}.\]
+		
+			\item Sea $p(x) = ax + b$, entonces $T(p(x)) = p'(x) = b$. Luego sabemos que
+		
+			\[A[p]_\beta = A[p']_\beta,\]
+		
+			si 
+		
+			\[A = \begin{pmatrix}
+				t_0 & t_1\\
+				t_2 & t_3\\
+			\end{pmatrix}\]
+		
+			entonces
+		
+			\[aq_0 + bq_1 = b, \quad aq_2 + bq_3 = 0.\]
+		
+			Por lo tanto
+		
+			\[A = \begin{pmatrix}
+				0 & 1\\
+				0 & 0
+			\end{pmatrix}\]
+		
+			Ahora también sabemos que
+		
+			\[B[p]_\beta = B[p']_\beta,\]
+		
+			si 
+		
+			\[B = \begin{pmatrix}
+				t_0 & t_1\\
+				t_2 & t_3\\
+			\end{pmatrix}\]
+		
+			entonces
+		
+			\[\frac{a+b}{2}q_0 + \frac{a-b}{2}q_1 = b, \quad \frac{a+b}{2}q_2 + \frac{a-b}{2}q_3 = 0.\]
+		
+			Por lo tanto
+		
+			\[B = \begin{pmatrix}
+				\frac{1}{2} & -\frac{1}{2}\\
+				\frac{1}{2} & -\frac{1}{2}
+			\end{pmatrix}\]
+		
+		\end{enumerate}
+
+	\end{enumerate}
+	
+\end{document}

@@ -1,0 +1,149 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Tarea II - Problema 5}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{20 de Septiembre 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $\set{X_n}$ una sucesión de variables aleatorías con varianza finita $\sigma^2$. Sea 
+		
+		\[S_n^2 = \frac{1}{n-1}\sum_{j=1}^n \pars{X_j - \overline{X}_n}^2.\]
+
+		$S_n^2$ se le conoce como la \textbf{varianza muestral} construida con la muestra aleatroia \linebreak $X_1,\cdots,X_n$. Demuestre que $S_n^2\rightarrow\sigma$ cuando $n \rightarrow \infty$ en $c.s$.
+
+		Veamos primero la convergencia en $c.s$ esto pues veamos lo siguiente
+
+		\begin{align*}
+			\frac{n-1}{n} S_n^2 &= \frac{1}{n}\sum_{i=1}^n\pars{X_i-\overline{X}_n}^2\\
+			&= \frac{1}{n}\sum_{i=1}^n\pars{\pars{X_i-\mu}+\pars{\mu-\overline{X}_n}}^2\\
+			&= \frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 + \frac{2\pars{\mu - \overline{X}_n}}{n}\sum_{i=1}^n\pars{X_i-\mu} + \frac{1}{n}\sum_{i=1}^n\pars{\mu-\overline{X}_n}^2\\
+			&= \frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 + \frac{2\pars{\mu - \overline{X}_n}}{n}\pars{\sum_{i=1}^nX_i - \sum_{i=1}^n\mu} + \pars{\mu-\overline{X}_n}^2\\
+			&= \frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 - 2\pars{\overline{X}_n - \mu}^2 + \pars{\mu-\overline{X}_n}^2\\
+			&= \frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 - \pars{\overline{X}_n - \mu}^2\\
+		\end{align*}
+
+		Luego por ley de grandes números sabemos 
+
+		\[X_n \xrightarrow{c.s} \mu\]
+
+		También por ley de grandes números tenemos
+
+		\[\frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 \xrightarrow{c.s} E\bracs{\pars{X_i-\mu}^2} = \sigma^2\]
+
+		Por lo tanto concluimos que
+
+		\begin{align*}
+			\limninf S_n^2 &= \limninf \frac{n-1}{n}S_n\\
+			&= \limninf\pars{\frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 - \pars{\overline{X}_n - \mu}^2}\\
+			&= \limninf \frac{1}{n}\sum_{i=1}^n\pars{X_i-\mu}^2 - \limninf \pars{\overline{X}_n - \mu}^2\\
+			&= \sigma^2
+		\end{align*}
+
+    \end{enumerate}
+
+	\end{document}
+			

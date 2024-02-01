@@ -1,0 +1,119 @@
+\documentclass[10pt]{extarticle}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,times}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{multicol}
+\usepackage{appendix}
+%\usepackage{dsfont}
+\usepackage{mathrsfs}
+%\spanishdecimal{.}
+\usepackage[sort&compress]{natbib}
+\bibliographystyle{plainnat}
+%\usepackage{suthesis-2e}
+%\usepackage{verbatim}
+%\spanishdecimal{.}
+\def\theequation{\thesection.\arabic{equation}}
+
+\textwidth=6.5in
+%\lineskip .25cm
+%\lineskiplimit .25cm
+\textheight=9.5in
+\topmargin=-.75in
+\topskip=-4pt
+\evensidemargin=-2pt
+\oddsidemargin=-1pt
+%%%%%%%%%%%%%%%%%%%%
+%\oddsidemargin 0in \textwidth 6.75in \topmargin 0in \textheight
+%8.5in
+\parindent 0em
+\parskip 1ex
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{propo}{Proposition}
+\newtheorem{teo}{Theorem}
+\newtheorem{coro}{Corollary}
+\newtheorem{ejer}{Ejercicio}
+\newtheorem{defi}{Definition}
+\newtheorem{notac}{Notation}
+\newtheorem{hypo}{Hypothesis}
+%\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\def\CC{\mathbb{C}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\pai}{\left(}
+\newcommand{\pad}{\right)}
+\newcommand{\ci}{\left[}
+\newcommand{\cd}{\right]}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\lphi}{\widehat{\phi}}
+\newcommand{\D}{\mathfrak{D}}
+%\renewcommand{\qedsymbol}{\rule{1ex}{1ex}}
+
+\begin{document}
+ \begin{flushright}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  \ \ $E_1$\ \ &\ \ $E_2$\ \ &\ \ $E_3$\ \ &\ \ $E_4$\ \ &\ \ $E_5$\ \ &Calif.\\
+  \hline
+  & &  & & & \\
+    & &  & & &\\
+   \hline
+ \end{tabular}\\
+ \end{flushright}
+\begin{center}
+\large
+Probabilidad\\
+Rubén Pérez Palacios Lic. Computación Matemática NUA 424730
+\normalsize
+
+Agosto - Diciembre de 2020\\
+
+Parcial 2 (13 de noviembre)
+\end{center}
+
+Resuelva \textbf{formal y detalladamente} los siguientes ejercicios, de manera totalmente individual.
+
+Está estrictamente prohibido consultar cualquier otro tipo de bibliografía distinto a las notas del curso. Ante cualquier sospecha de esto, el examen se anulará (se calificará automáticamente con cero) sin derecho a réplica.
+
+Coloque una y solamente una respuesta a cada ejercicio. En caso de colocar más de una, solamente se revisará la primera.
+
+La nota de este examen será el promedio de las puntuaciones obtenidas en cada ejercicio.
+
+\begin{enumerate}
+\item (100 pts.) Sea $Z\sim N(0,1)$ y $X\sim\Gamma( \nu/2,1/2)$ con $\nu>0$ no precisamente entero. Utilice el Teorema de Cambio de Variable Multivariado para demostrar que $T=\frac{Z}{\sqrt{X/\nu}}$ tiene distribución $t_\nu$, bajo la hipótesis $Z\perp X$.
+
+\item (100 pts.) Sean $X\sim\Gamma( \nu/2,1/2)$ y $Y\sim\Gamma( \mu/2,1/2)$ con $\nu,\mu>0$ no precisamente enteros. Utilizando Probabilidad Total halle la distribución de $F=\frac{\mu X}{\nu Y}$, bajo la hipótesis $X\perp Y$.
+
+\item Una sucesión de vectores aleatorios $\{\vec{X}_n\}$ converge en distribución a otro vector aleatorio $\vec{X}$ ssi $F_{\vec{X}_n}(\vec{x})$ converge a $F_{\vec{X}}(\vec{x})$ para todo $\vec{x}$ en el que $F_{\vec{X}}$ es continua (según la distancia euclidiana).
+\begin{enumerate}
+\item (70 pts.) Demuestre que si $\{\vec{X}_n\}$ es una sucesión de vectores aleatorios tales que convergen en distribución a $\vec{X}$, entonces cada entrada de $\{\vec{X}_n\}$ converge a la correspondiente entrada de $\vec{X}$. ¿Se cumple el recíproco?
+
+\item (30 pts.) Sea $\vec{X}\sim N_d(\mu \vec{1},\sigma^2 I_d)$. Halle la distribución de $\overline{X}_d$ condicionada a $\max\{X_1,\dots,X_d\}-\min\{X_1,\dots,X_d\}$.
+\end{enumerate}
+
+\item (100 pts.) Sean $\{X_n\}$ variables aleatorias iid con media $\mu$ y varianza finita $\sigma^2$. Demuestre que 
+$$\sqrt{n}\pai e^{\overline{X}_n}-e^\mu\pad\overset{d}{\to} \sigma e^\mu Z,\quad Z\sim N(0,1).$$
+\item (100 pts.) Sea $\{X_n\}$ una sucesión de variables aleatorias iid cuya función de distribución tiene extremo derecho infinito. Para $x>0$ fijo, sea
+
+$$T(x):=\inf\{n\in\nn:X_n>x\}.$$
+
+$T(x)$ es el índice de la primera variable de la sucesión que toma un valor mayor a $x$. Sea $X$ otra variable aleatoria con la misma distribución que las $X_n$ e independiente de todas las $X_n$ y sea $\{Y_n\}$ v.a. iid con distribución $Bernoulli(\p\ci X>x\cd)$. Sea $m\in\nn$ arbitrario, demuestre que 
+$$ \frac{1}{mx}T(x)\sum\limits_{j=1}^{\lceil mx\rceil}Y_j\overset{d}{\to} E,x\to\infty,\quad E\sim exp(1).$$
+
+\item (10 pts. extra en la nota final del examen). Sea $A\in\mathcal{B}(\rr)$ y definamos
+$$\partial A:=\{x:\exists \{y_n\}\subseteq A, y_n\to x\wedge \exists \{z_n\}\subseteq A^c, z_n\to x\}.$$
+
+$\partial A$ se conoce como la \textbf{frontera de $A$}. Sea $\{X_n\}$ una sucesión de v.a. con funciones de distribución $\{F_n\}$ y sea $X$ otra v.a. con función de distribución $F$. Demuestre que $X_n\overset{d}{\to}X$ssi 
+$$\int_A F_n(dx)\to \int_A F(dx), n\to\infty,$$
+para todo $A$ tal que $F(\partial A)=0$. ($F(A):=\p\ci X\in A\cd$).
+\end{enumerate}
+
+\end{document}

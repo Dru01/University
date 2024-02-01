@@ -1,0 +1,170 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Álgebra Lineal I\\Tarea 08}
+    \author{Rubén Pérez Palacios\\Profesor: Rafael Herrera Guzmán}
+    \date{02 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $v \in V$ luego
+        
+        \[T(v) = [T]_b [v]_b\].
+
+        $T$ es invertible por definición si y sólo si
+
+        \[T^{-1}(T(v)) = v, \quad T(T^{-1}(v)) = v\]
+
+        esto por los teoremas 2.11 y 2.14 esto es si y sólo si
+
+        \[[v]_\beta = [T^{-1}]_\beta[T]_\beta[v]_\beta, \quad [v]_\beta = [T]_\beta[T^{-1}]_\beta[v]_\beta\]
+
+        esto es si y sólo si
+
+        \[I_n = [T^{-1}]_\beta[T]_\beta, \quad I_n = [T]_\beta[T^{-1}]_\beta\]
+
+        esto es si y sólo si $[T]_\beta$ es invertible. Además de lo anterior obtenemos que
+
+        \[[T^{-1}]_\beta = ([T]_\beta)^{-1}.\]
+
+        \item Por el problema anterior sabemos que si $A$ es invertible entonces también $L_A$, ya que $L_A : F^n \rightarrow F^n$; además $(L_A)^{-1} = L^{-1}_A$.
+		
+		\newpage
+
+		\item Sea $w \in W$ y $\beta = \{v_1,\cdot,v_n\}$ una base de $V$, luego
+		
+		\[T^{-1}(w) \in V,\]
+
+		por lo que
+
+		\[T^{-1}(w) = \sum_{i=1}^n a_iv_i, a_i \in F,\]
+
+		por definición de función inversa y al ser esta lineal obtenemos que
+
+		\[w = \sum_{i=1}^na_iT(v_i).\]
+
+		Ahora los $T(v_i)$ son linealmente independientes de no ser así $v_i$ no serían linealmente independientes. Concluimos que $T(\beta)$ es base de $W$.
+
+		\item Al ser AB invertible entonces $L_AL_B$ también lo es, por lo que $L_AL_B$ es biyectiva. Por el problema 3 de la Tarea 7 $L_A$ es supreyectiva y $L_B$ es inyectiva. Al ser sus dominios y codominios de misma dimensión (de hecho iguales), entonces $L_A$ y $L_B$ son biyectivas por lo tanto son ivertibles. Conlcuimos que $A$ y $B$ son invertibles. Cuando no son cuadradas no necesariamente son biyectivas el ejemplo es el siguiente:
+		
+		\[A = \begin{pmatrix}
+			1 & 0 & 0\\
+			0 & 1 & 0
+		\end{pmatrix}, \quad B = \begin{pmatrix}
+			1 & 0\\
+			0 & 1\\
+			0 & 0
+		\end{pmatrix}\]
+
+		\[AB = \begin{pmatrix}
+			1 & 0\\
+			0 & 1
+		\end{pmatrix}\]
+
+		Como $L_A$ y $L_B$ no son invertibles entonces $A$ y $B$ no lo son, pero $AB$ si es invertible.
+
+    \end{enumerate}
+
+\end{document}

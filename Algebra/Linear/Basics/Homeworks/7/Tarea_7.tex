@@ -1,0 +1,231 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Álgebra Lineal I\\Tarea 05}
+    \author{Rubén Pérez Palacios\\Profesor: Rafael Herrera Guzmán}
+    \date{02 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $T,U: \R^2 \rightarrow \R^2$ tales que
+        
+        \[T((x,y)) = (x+y,-(x+y)) \Txty U((x,y)) = (x + y,x + y),\] 
+        
+        por lo tanto
+        
+        \[U(T((x,y))) = 0 \Txty T(U((x,y))) = (2(x + y), -2(x + y)).\]
+
+        Sea $\alpha = \{(1,0),(0,1)\}$ una base ordenada de $\R^2$, entonces
+
+        \[[T]_\alpha = \begin{pmatrix}
+            1 & 1\\
+            -1 & -1
+        \end{pmatrix} \Txty [U]_\alpha = \begin{pmatrix}
+            1 & 1\\
+            1 & 1
+        \end{pmatrix}\]
+
+        y además
+
+        \[[U]_\alpha [T]_\alpha = \begin{pmatrix}
+            0 & 0\\
+            0 & 0
+        \end{pmatrix}, \Txty [T]_\alpha [U]_\alpha = \begin{pmatrix}
+            2 & 2\\
+            -2 & -2
+        \end{pmatrix}.\]
+
+        \item Sea $T(v) \in R(T)$.
+        
+        Si $T^2 = T_0$ entonces $T(T(v)) = 0$, por definición $T(v) \in N(T)$, por lo tanto 
+        
+        \[R(T) \subset N(T).\]
+
+        Si $R(T) \subset N(T)$ entonces $T(v) \in N(T)$, por definición $T(T(v)) = 0$, por lo tanto
+        
+        \[T^2 = T_0.\]
+
+        \newpage
+
+        \item Sean $V,W \txty Z$ especios vectoriales y sean $T : V \rightarrow W$ y $U : W \rightarrow Z$ lineales.
+        
+        \begin{enumerate}
+            \item Supongamos que $T$ no es inyectiva entonces existen $x,y \in V$ tales que $T(x) = T(y), x \neq y$. Entonces $UT(x) = UT(y)$, lo cual es una contradicción ya que $UT$ es inyectiva. Por lo tanto concluimos que $T$ es inyectiva.
+            
+            \item Como $UT$ es sobreyectiva entonces $\forall z \in Z$ existe $v \in V$ tal que $UT(v) = z$ entonces existe $T(v) \in W$ tal que $U(T(v)) = z$, por lo tanto $U$ es sobreyectiva.
+            
+            \bigskip
+            
+            El contra ejemplo a las preguntas de los dos anteriores incisos es $T : \R^2 \rightarrow \R^3$ dada por 
+            
+            \[T((x,y)) = (x,y,0), \quad \text{la cual es inyectiva y no suprayectiva},\]
+            
+            y $U: \R^3 \rightarrow \R^2$ dada por 
+            
+            \[U((x,y,z)) = (x,y) \quad \text{la cual es suprayectiva y no inyectiva},\]
+            
+            entonces podemos ver que $UT(x,y) = (x,y)$ la cual es biyectiva.
+
+            \bigskip
+
+            \item 
+            
+            Al ser $T$ inyectiva entonces $\forall v_1,v_2 \in V$ tal que $v_1 \neq v_2$ y se cumple que $T(v_1) \neq T(v_2)$, al ser $U$ inyectiva entonces $U(T(v_1)) \neq U(T(v_2))$, por lo tanto $UT$ es inyectiva.
+            
+            Al ser $U$ suprayectiva entonces para todo $z \in Z$ existe $w \in W$ tal que $U(w) = z$, y al ser $T$ suprayectiva entonces existe $v \in V$ tal que $T(v) = w$, entonces $UT(v) = z$ por lo tanto $UT$ es suprayectiva.
+        \end{enumerate}
+
+        \item Sea $V$ un espacio vectorial de dimensión finita y $T: V \rightarrow V$ una transformación lineal.
+        
+        \begin{enumerate}
+            \item Como $T: V \rightarrow V$ entonces $T(R(T)) \subset R(T)$. Sea $U: R(T) \rightarrow R(T)$ dada por $U(x) = T(x)$, entonces
+            
+            \[\dim(R(T)) = \dim(R(T^2)) = \dim(R(T(R(T)))) = \dim(R(U)).\]
+
+            Entonces $U$ es suprayectiva, y al ser $V$ es de dimensión finita entonces $R(T)$ también lo es, por lo que $U$ también es inyectiva. Al ser $T(0) = 0$, entonces $N(T) = \{0\}$, luego por definición tenemos que $N(U) = R(T) \cap N(T)$, por lo tanto concluimos que
+
+            \[R(T) \cap N(T) = \{0\}.\]
+
+            Ahora como $N(T), R(T) \subset V$, entonces $N(T) + R(T) subset V$. Por lo obtenido anteriormente y por el teorema de la dimensión tenemos que
+
+            \[\dim(N(T) + RT)) = \dim(N(T)) + \dim(R(T)) - \dim(N(T) \cap R(T)) = \dim(V),\]
+
+            por lo tanto concluimos
+
+            \[V = N(T) \oplus R(T).\]
+
+            \newpage
+
+            \item Como $T^{l+1}(V) = T^l(T(R)) \subset T^l(V)$, entonces
+            
+            \[\dim(R(T^{l+1})) \leq \dim(R(T^l)).\]
+
+            Al ser $V$ de dimensión finita y que $0 \leq \dim(R(T^l)) \leq \dim(V)$ entonces existe un $k$ tal que
+
+            \[\dim(R(T^{k+1})) = \dim(R(T^k)).\]
+
+            Por lo que $T^{k+1} = T^k$, esto por el ejercicio anterior e inducción; también por inducción podemos ver que $\forall l \geq k$ se cumple que $T^s = T^k$, en particular $T^{2k} = T^k$. Por el inciso anterior concluimos que
+            
+            \[V = R(T^k) \oplus N(T^k).\]
+
+        \end{enumerate}
+
+        \item Llamemos $W = \{v | T(v) = v\}$. Sea $v \in V$ podemos expresar a este como $v = T(v) + (v - T(v))$. Debido a que $T(T(v)) = T(v)$ entonces $T(v) \in W$, y $T(v - T(v)) = T(v) - T(T(v)) = T(v) = T(v) = 0$ entonces $v - T(v) \in N(T)$; entonces $v \in W + N(T)$, por lo tanto $V \subset W + N(T)$. Es claro que $W + N(T) \subset V$, por lo tanto
+        
+        \[V = W + N(T).\]
+
+        Sea $v \in W \cap N(T)$, entonces
+
+        \[v = T(x) = 0,\]
+
+        por lo que $W \cap N(T) = \{0\}$ y por lo tanto
+
+        \[V = W \oplus N(T).\]
+
+        Concluimos que T es un proyección de $W_1$ a $W_2$, para algunos $W_1, W_2$ tales que $W_1 \oplus W_2 = V$, esto pues $T(v) = T(w_1 + w_2) = w_1$, cuando $T^2 = T$.
+
+    \end{enumerate}
+
+\end{document}

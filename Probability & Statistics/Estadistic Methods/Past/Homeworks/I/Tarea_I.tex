@@ -1,0 +1,288 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Métodos Estadísticos \\Tarea I}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesora: Dra. Eloísa Díaz Francés Murguía}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+		\item Da un ejemplo de un modelo probabilístico y de un modelo estadístico con alguna de tus distribuciones que ahora son tus hijas adoptivas.
+		
+		Ejemplo de modelo probabilístico es la distribución Gamma con parámetros $\alpha = 1$ y $\beta = 1$. 
+		
+		Un ejemplo de modelo estadístico es la fmailia de distribuciones 
+		
+		\[\Phi = \set{F(x;\theta) : F \text{ es Gamma con parametros $(1,\frac{1}{\lambda})$}},\]
+		
+		es decir la familia de distribuciones exponenciales con parametro $\lambda$.
+
+		\item Demuestra si tus tres distribuciones continuas adoptadas pertenecen a la familia Exponencial de distribuciones o no.
+		
+		\begin{itemize}
+			\item Uniforme Continua
+			
+			Su función de densidad es
+
+			\[f(x; a,b) = \frac{1}{b-a} \1_{\bracs{a,b}}(x).\]
+
+			Al depender su soporte de parámetros desconocidos entonces esta no pertenece a la familia Exponencial.
+
+			\item Gamma
+			
+			Su función de densidad es
+
+			\[f(x;\alpha,\beta) = \frac{x^{\alpha-1}}{\Gamma{\alpha}\beta^{\alpha}} exp\pars{-\frac{x}{\beta}} \1_{(0,\infty)}(x).\]
+
+			Podemos reexpresarla de la siguiente forma
+
+			\[f(x;\alpha,\beta) = \pars{\frac{1}{\Gamma{\alpha}\beta^{\alpha}}} \pars{\frac{1}{x}} exp\pars{\alpha\log(x)-\frac{x}{\beta}} \1_{(0,\infty)}(x).\]
+
+			Donde su soporte no depende de parámetros desconocidos y $A(\theta) = \frac{1}{\Gamma{\alpha}\beta^{\alpha}}$, $B(x) = \frac{1}{x}$, $C_1(\theta) = \alpha$, $D_1(x) = log(x)$, $C_2(\theta) = \frac{1}{\beta}$ y $D(x) = x$, por lo tanto la distirbución Gamma pertenece a la familia exponencial.
+
+			\item DGVE
+			
+			Su función de densidad es 
+
+			\[f(x; a,b,c) = \begin{cases}
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left(-\infty,a-\frac{b}{c}\right]}(x) & \text{si } c < 0,\\
+				b^{-1}\exp\set{-\frac{x-a}{b}-\exp\bracs{-\pars{\frac{x-a}{b}}}}\1_{\pars{-\infty,\infty}}(x) & \text{si } c < 0,\\
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left[a-\frac{b}{c},\infty\right)}(x) & \text{si } c < 0,
+			\end{cases}\]
+
+			Al depender su soporte de parámetros desconocidos entonces esta no pertenece a la familia Exponencial.
+		\end{itemize}
+
+		\item Demuestra si tus tres distribuciones continuas adoptadas pertenecen a la familia de distribuciones de Localización y Escala o no.
+		
+		\begin{itemize}
+			\item Uniforme Continua
+			
+			Su función de densidad es
+
+			\[f(x; a,b) = \frac{1}{b-a} \1_{\bracs{a,b}}(x).\]
+
+			Al depender su soporte de parámetros desconocidos entonces esta no pertenece a la familia de localización y escala.
+
+			\item Gamma
+			
+			Su función de densidad es
+
+			\[f(x;\alpha,\beta) = \frac{x^{\alpha-1}}{\Gamma{\alpha}\beta^{\alpha}} exp\pars{-\frac{x}{\beta}} \1_{(0,\infty)}(x).\]
+
+			Primero su soporte no depende de parámetros desconocidos. Ahora puesto que $\alpha$ es parámetro de forma entonces si concideramos ambos parámetros no sería de localización y escala. En cambio para cada valor $\alpha$ fijo podemos ver que
+
+			\[f(x;\alpha,\beta) = \pars{\frac{1}{\beta}}\pars{\pars{\frac{1}{\Gamma{\alpha}}}\pars{\frac{x}{\beta}}^{k-1}} \exp\pars{-\frac{x}{\beta}} \1_{(0,\infty)}(x) = \pars{\frac{1}{\beta}} f_0(\frac{x}{\beta}),\]
+
+			donde
+
+			\[f_0(x) = \pars{\pars{\frac{1}{\Gamma{\alpha}}}\pars{x}^{k-1}} \exp\pars{-x} \1_{(0,\infty)}(x)\]
+
+			Ahora si $Y = \frac{x}{\beta}$ por el Teorema de Cambio de variable con $g(x) = \frac{x}{v}$ vemos que la densidad de $Y$ es $f_0(x)$ la cual no depende de parametros desconocidos (por ello tomamos $\alpha$ fijo), por lo tanto concluimos que Gamma para un parametro dijo $\alpha$ pertenece a la familia de localización y escala.
+
+			\item DGVE
+			
+			Su función de densidad es 
+
+			\[f(x; a,b,c) = \begin{cases}
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left(-\infty,a-\frac{b}{c}\right]}(x) & \text{si } c < 0,\\
+				b^{-1}\exp\set{-\frac{x-a}{b}-\exp\bracs{-\pars{\frac{x-a}{b}}}}\1_{\pars{-\infty,\infty}}(x) & \text{si } c < 0,\\
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left[a-\frac{b}{c},\infty\right)}(x) & \text{si } c < 0,
+			\end{cases}\]
+
+			Al depender su soporte de parámetros desconocidos entonces esta no pertenece a la familia de localización y escala.
+		\end{itemize}
+
+		\item Demuestra que la distribución Binomial $(N,\theta)$ con $N$ conocido y $\theta$ la probabilidad de éxito de cada ensayo Bernoulli, sí pertenece a la familia Exponencial de distribuciones.
+	
+		\begin{proof}
+			Recordemos que la función de masa de probabilidad de un Binomial $(N,\theta)$ es
+
+			\[f(x; N,\theta) = \binom{N}{x} \theta^x \pars{1-\theta}^{N-x} \1_{\set{1,\cdots,N}}(x).\]
+
+			Ahora reexpresandola de la siguiente forma
+
+			\[f(x; N,\theta) = \pars{(1-\theta)^N}\binom{N}{x}\exp\pars{x\log\pars{\frac{\theta}{1-\theta}}}\1_{\set{1,\cdots,N}}(x).\]
+
+			Podemos ver que su soporte no depende de parámetros desconocidos, y con $A(\theta) = \pars{1-\theta}^N$, $B = \binom{N}{x}$, $C(\theta) = \log\pars{\frac{\theta}{1-\theta}}$ y $D(x) = x$, por lo tanto la distribución Binomial $\pars{N,\theta}$ con $N$ conocido pertence a la familia Exponencial.
+			
+		\end{proof}
+
+		\item Para cada una de tus tres distirbuciones continuas, da la expresión de la función de densidad conjunta, factorizandola pra identificar las estadísticas suficientes $T(x_1,\cdots,x_n)$:
+		
+		\[f\pars{x_1,\cdots,x_n;\theta} = h\pars{x_1,\cdots,x_n}g\pars{T\pars{x_1,\cdots,x_n};\theta}.\]
+
+		Simplifica tus expreciones para que puedas encontrar el vector $T$ que tenga la menor dimensión posible. Recuerda que la muestra obsevada siempre es un vector de estadísticas suficientes y su dimensión es $n$.
+
+		\begin{sol}
+			\item Uniforme Continua
+			
+			Su función de densidad es
+
+			\[f(x; a,b) = \frac{1}{b-a} \1_{\bracs{a,b}}(x).\]
+
+			Entonces la densidad conjunta de $X_1,\cdots,X_n$ variables aleatorias Uniformes Continuas $(a,b)$ es
+
+			\[f(\vec{x}; a,b) = \prod_{i=1}^n f(x_i;a,b) = \pars{\frac{1}{b-a}}^n \prod_{i=1}^n \1_{\bracs{a,b}}(x).\]
+
+			Veamos que $x_i \leq b, \forall i=1,\cdots,n$ si y sólo $\max(\vec{x}) \leq b$ y también $x_i \geq a, \forall i=1,\cdots,n$ si y sólo $\min(\vec{x}) \geq a$, por lo que
+
+			\[f(\vec{x}; a,b) = \prod_{i=1}^n f(x_i;a,b) = \pars{\frac{1}{b-a}}^n \1_{\bracs{a,b}}(\max(\vec{x}))\1_{\bracs{a,b}}(\min(\vec{x})).\]
+
+			Por el Teorema de la factorización de Fisher concluimos que $\max(\vec{x}),\min(\vec{x})$ son estadísticas suficientes de $\pars{a,b}$.
+
+			\item Gamma
+			
+			Su función de densidad es
+
+			\[f(x;\alpha,\beta) = \frac{x^{\alpha-1}}{\Gamma{\alpha}\beta^{\alpha}} exp\pars{-\frac{x}{\beta}} \1_{(0,\infty)}(x).\]
+
+			Entonces la densidad conjunta de $X_1,\cdots,X_n$ variables aleatorias Gamma $(\alpha,\beta)$ es
+
+			\[f(\vec{x}; a,b) = \prod_{i=1}^n f(x_i;a,b) = \pars{\prod{i=1}^{n}\1_{(0,\infty)}(x_i)} \pars{\frac{1}{\Gamma{\alpha}\beta^{\alpha}}}^n \pars{\prod_{i=1}^n x_i}^{\alpha-1} \exp{-\frac{\sum_{i=1}^n x_i}{\theta}}.\]
+
+			Por el Teorema de la factorización de Fisher concluimos que $(\prod_{i=1}^n x_i, \sum_{i=1}^n x_i)$ son estadísticas suficientes de $\pars{\alpha,\beta}$.
+
+			\item DGVE
+			
+			Su función de densidad es 
+
+			\[f(x; a,b,c) = \begin{cases}
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left(-\infty,a-\frac{b}{c}\right]}(x) & \text{si } c < 0,\\
+				b^{-1}\exp\set{-\frac{x-a}{b}-\exp\bracs{-\pars{\frac{x-a}{b}}}}\1_{\pars{-\infty,\infty}}(x) & \text{si } c < 0,\\
+				b^{-1}\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left[a-\frac{b}{c},\infty\right)}(x) & \text{si } c < 0,
+			\end{cases}\]
+
+			Entonces la densidad conjunta de $X_1,\cdots,X_n$ variables aleatorias DGVE $(a,b,c)$ es
+
+			\[f(\vec{x}; a,b) = \prod_{i=1}^n f(x_i;a,b)\]\[= \begin{cases}
+				b^{-n}\prod_{i=1}^n\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left(-\infty,a-\frac{b}{c}\right]}(x) & \text{si } c < 0,\\
+				b^{-n}\prod_{i=1}^n\exp\set{-\frac{x-a}{b}-\exp\bracs{-\pars{\frac{x-a}{b}}}}\1_{\pars{-\infty,\infty}}(x) & \text{si } c < 0,\\
+				b^{-n}\prod_{i=1}^n\bracs{1+c\pars{\frac{x-a}{b}}}^{-1-\frac{1}{c}}\exp\set{-\bracs{1+c\pars{\frac{x-a}{b}}}^{-\frac{1}{c}}}\1_{\left[a-\frac{b}{c},\infty\right)}(x) & \text{si } c < 0,
+			\end{cases}\]
+
+			Prodriamos simplificar el producto de las indicadoras con las funciones $min$ y $max$ de la muestra pero no hay forma de encontrar funciones que simplifiquen el producto del resto ya que los terminos $\bracs{1+c\pars{\frac{x-a}{b}}}$ están en terminos del resto de los parametros en funciones exponenciales y de potencias. Por lo que las estadisticas suficientes de $(a,b,c)$ es toda la muestra.
+		\end{sol}
+    \end{enumerate}
+
+	\end{document}
+			

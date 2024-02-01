@@ -1,0 +1,225 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Tarea II}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{20 de Septiembre 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $\set{X_n}$ una sucesión de variables aleatorías con varianza finita $\sigma^2$. Sea 
+		
+		\[S_n^2 = \frac{1}{n-1}\sum_{j=1}^n \pars{X_j - \overline{X}_n}^2.\]
+
+		$S_n^2$ se le conoce como la \textbf{varianza muestral} construida con la muestra aleatroia \linebreak $X_1,\cdots,X_n$. Demuestre que $S_n^2\rightarrow\sigma$ cuando $n \rightarrow \infty$ en $L_2$ y $c.s$.
+
+		\item Cauchy
+		
+		\begin{enumerate}
+			\item Una sucesión de variables aleatorías $\set{X_n}$ es (una sucesión de) Cauchy en probabilidad si
+			
+			\[X_n-X_m\xrightarrow{P} 0 \text{ cuando n,m}\rightarrow\infty.\]
+
+			Demuestre que $\set{X_n}$ es Cauchy en probabilidad si y sólo si $\set{X_n}$ converge en probabilidad.
+
+			Esto suena muy parecido al resultado de que una sucesión de números reales es de Cauchy si y sólo si converge, además de que una variable aleatoria $X$ esta definida como $X:\Omega\rightarrow\R$ por lo que $X(\omega)\in\R$. 
+			
+			
+			Para la ida, lo que sería perfecto es que nuestra sucesión fuese puntualmente convergente a alguna $X$, puesto que esto se seguiría directo de convergencia de sucesiones reales, pero lamentablemente esto no es el caso, pero si fuese casi segura también estaría muy bien. Si recordamos si tenemos una sucesión $\set{Y_n}$ de variables aleatorias que convergen en probabilidad a $Y$ entonces existe una subsucesión $Y_{n_k}$ que converge casi seguramente a $Y$, por lo que demostraremos algo anólogo para Cauchy.
+
+			Entonces por definición de Cauchy tenemos que existe un $n_k$ tal que
+			para $\varepsilon = 2^{-l}$ se cumple
+
+			\[P\pars{\abs{X_n - X_m} > 2^{-k}} < 2^{-k}, \forall n,m \geq n_k.\]
+
+
+			Para evitar confusiones nos refiremos a la subsucesión $X_{n_k}$ como $Y_k$. Ahora fijemonos en la variable aleatoría que cuenta en cuantos conjuntos 
+
+			\[A_k := \set{\omega \in \Omega : \abs{Y_{k}(w) - Y_{k+1}(w)} > 2^{-k}},\]
+
+			pertenece $\omega$, es decir sea
+
+			\[Z = \sum_{k=1}^\infty \mathbbm{1}_{A_k}.\]
+
+			Veamos que por linealidad de la esperanza y por $P(A_k) \leq 2^{-k}$ tenemos que
+
+			\begin{align*}
+				E[Z] &= E\bracs{\sum_{k=1}^\infty \mathbbm{1}_{A_k}}\\
+				&= \sum_{k=1}^\infty E\bracs{\mathbbm{1}_{A_k}}\\
+				&= \sum_{k=1}^\infty P\pars{A_k}\\
+				&\leq \sum_{k=1}^\infty 2^{-k}\\
+				&\leq 1
+			\end{align*}
+
+			por lo tanto
+
+			\[P(Z < \infty) = 1.\]
+
+			Esto quiere decir que $\omega$ pertenece a un número finito de $A_k$ con probabilidad 1, por lo que nuestro conjunto nulo sera $\set{\omega\in\Omega: Z(\omega) \text{ no es acotado}}$. Si $Z(\omega) \leq \infty$ entonces existe un $K(\omega)-1$ tal que $A_{K-1}$ es el último $A_k$ al que pertenece $\omega$, por lo que $\forall k \geq K(\omega)$ se cumple que
+
+			\[\abs{Y_k(w) - Y_{k+1}(w)} \leq 2^{-k}.\]
+
+			Luego veamos que $\forall k,l \geq K(\omega)$ spg $k>l$ se cumple que
+
+			\begin{align*}
+				\abs{Y_k(\omega)-Y_l(\omega)} &\leq \abs{\sum_{i=k}^{l-1} Y_i(\omega)-Y_{i+1}}\\
+				&\leq \sum_{i=k}^{l-1} \abs{Y_i(\omega)-Y_{i+1}}\\
+				&\leq \sum_{i=k}^{l-1} 2^{-i}\\
+				&= 2^{-k} + \sum_{i=k+1}^{l-1} 2^{-i}\\
+				&\leq 2^{-k} + 2^{-k}\\
+				&= 2^{-k+1}	
+			\end{align*}
+
+			Por propiedad arquimediana de los números reales concluimos que $Y_n(\omega)$ es una suceción de Cauchy c.s. en los números reales, por lo tanto existe un $X$ tal que $Y_n \xrightarrow{c.s} X$ cuando $n \rightarrow \infty$, y hemos encontrado la subsucesión $X_{n_k}$ que converge c.s. a $X$. Ahora solo falta concluir pues por desigualdad del triangulo tenemos que
+
+			\[P\pars{\abs{X_n-X}\geq\epsilon} \leq P\pars{\abs{X_n-X_{n_k}}\geq\frac{\epsilon}{2}} + P\pars{\abs{X_{n_k}-X}\geq\frac{\epsilon}{2}}\]
+
+			por ser $X_n$ Cauchy en probabilidad y por ser $X_{n_k}$ convergente casi seguramente concluimos que
+
+			\[P\pars{\abs{X_n-X}\geq\epsilon} \rightarrow 0, \text{cuando }n\rightarrow\infty\]
+
+			Para el regreso solo basta ver que si $X_n$ converge en probabilidad a $X$ entonces
+
+			\[P\pars{\abs{X_n-X}>\epsilon}\rightarrow 0, \text{cuando } n\rightarrow\infty,\]
+
+			luego por desigualdad del triangulo vemos que
+
+			\[P\pars{\abs{X_n-X_m}>\epsilon}\leq P\pars{\abs{X_n-X}>\frac{\epsilon}{2}} + P\pars{\abs{X_m-X}>\frac{\epsilon}{2}},\]
+
+			por lo tanto concluimos que
+
+			\[P\pars{\abs{X_n-X_m}\geq\epsilon} \rightarrow 0, \text{cuando }n,m\rightarrow\infty\]
+
+			\item Sean $\set{X_n}$ variables aleatorías sobre el mismo espacio de probabilidad. Demuestre que $\set{X_n}$ converge en probabilidad si y sólo si
+			
+			\[\sup_{k\geq n}|X_k-X|\xrightarrow{P}0, \text{cuando } n\rightarrow\infty\]
+
+			Si $\set{X_n}$ converge en probabilidad esto es si y sólo si por definición
+
+			\[\limninf P\pars{\abs{X_n-X}>\epsilon} = 0,\]
+
+			por continuidad de $P$ tenemos
+
+			\[P\pars{\limninf\abs{X_n-X}>\epsilon} = 0,\]
+
+			esto es si y sólo si
+
+			\[P\pars{\limninf \sup_{k\geq n}\abs{X_n-X}>\epsilon} = 0,\]
+
+			por continuidad de $P$ esto es si y sólo si
+
+			\[\limninf P\pars{\sup_{k\geq n}\abs{X_n-X}>\epsilon} = 0,\]
+
+			esto es si y sólo si por definición
+
+			\[\sup_{k\geq n}|X_k-X|\xrightarrow{P}0, \text{cuando } n\rightarrow\infty\]
+			
+
+		\end{enumerate}
+
+    \end{enumerate}
+
+	\end{document}
+			

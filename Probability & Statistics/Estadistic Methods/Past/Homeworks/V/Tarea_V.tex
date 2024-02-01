@@ -1,0 +1,313 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Métodos Estadísticos \\Tarea II}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesora: Dra. Eloísa Díaz Francés Murguía}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+		\item Considera una muestra de $n$ variables aleatorias independientes $X_1,\cdots,X_n$ idénticamente distribuidas como exponencial con valor esperado $\theta$. Da las expresiones de una estadística suficientes $t$ unidimensional para $\theta$. Usala para expresar la logverosimilitud $l\pars{\theta;t}$, la función Score $Sc(\theta;t)$ el emv de $\theta$, denotado como $\hat{\theta}$, la información observada de Fisher $I_{\hat{\theta}}$ y finlmente la verosimilitud relativa de $\theta$, denotada como $R(\theta;t)$.
+		
+		Recordemos que la función de densidad de una $Exp(\theta)$ es
+
+		\[f(x;\theta) = \frac{1}{\theta}\exp\pars{-\frac{x}{\theta}}\1_{\left[0,\infty\right)}(x),\]
+
+		por lo que función de distribución conjunto es
+
+		\[f(\vec{x};\theta) = \prod_{i=1}^n f(x_i;\theta) = \prod_{i=1}^n \frac{1}{\theta}\exp\pars{-\frac{x_i}{\theta}}\1_{\left[0,\infty\right)}(x_i) = \pars{\prod_{i=1}^n\1_{\left[0,\infty\right)}(x_i)} \frac{1}{\theta^n} \exp\pars{-\frac{\sum_{i=1}^n x_i}{\theta}},\]
+
+		por el Teorema de la factorización de Fisher tenemos que $t = \sum_{i=1}^n x_i$ es una estadística suficiente de $\theta$.
+
+		Luego
+
+		\[L_U(\theta;t) = \frac{1}{\theta^n}\exp\pars{-\frac{t}{\theta}},\]
+
+		por lo que
+
+		\[l(\theta;t) = \log\pars{\frac{1}{\theta^n}}-\frac{t}{\theta},\]
+
+		entonces
+
+		\[Sc(\theta;t) = -\frac{n}{\theta}+\frac{t}{\theta^2},\]
+
+		igualando a cero la función Score obtenemos
+
+		\[0 = -\frac{n}{\hat{\theta}}+\frac{t}{\hat{\theta}^2},\]
+
+		por lo que
+
+		\[\hat{\theta} = \frac{t}{n} = \overline{X}.\]
+
+		La información de Fisher es
+
+		\[I_{\hat{\theta}} = \pars{\frac{n}{\theta^2}-\frac{2t}{\theta^3}}\bigg\rvert_{\theta=\hat{\theta}} = \frac{n^3}{t^2}.\]
+
+		Por último la verosimilitud relativa es
+
+		\[R(\theta;t) = \frac{\frac{1}{\theta^n}\exp\pars{-\frac{t}{n}}}{\frac{1}{\hat{\theta}^n}\exp\pars{-\frac{t}{\hat{\theta}}}} = \pars{\frac{t}{n\theta}}^n\exp\pars{\frac{1}{n}-\frac{t}{\theta}}.\]
+
+		\item Da un ejemplo de una distribución que pertenezca a la familia de distribuciones de valores extremos y también a la de localización y escala.
+		
+		Es la distribución Gumbel. Sabemos que esta pertence a la familia de distribuciones de valores extremos, ahora demostraremos que pertenece a la de localización y escala.
+
+		\begin{proof}
+			Recordemos que la función de densidad de un Gumbel $(a,b)$ es
+
+			\[f(x; a,b) = \frac{1}{b}\exp\set{-\frac{x-a}{b}-\exp\bracs{-\pars{\frac{x-a}{b}}}}\1_{\pars{-\infty,\infty}}(x).\]
+
+			Ahora podemos reexpresar esta como
+
+			\[f(x; a,b) = \frac{1}{b}f_0\pars{\frac{x-a}{b}},\]
+
+			donde
+
+			\[f_0(x) = \exp\bracs{-x-\exp\pars{-x}}\1_{\pars{-\infty,\infty}}(x).\]
+
+			Podemos ver que su soporte no depende de ningún parametro desconocido. Además si $Y = \frac{x-a}{b}$ entonces por el Teorema de Cambio de Variable su función de densidad es $f_0(x)$ la cual no depende de ningún parametro desconocido, por lo tanto concluimos que la Gumbel pertenece a la familia de localización y escala.
+		\end{proof}
+
+		\item La Densidad Gamma con parámetros de forma $\alpha$ y escala $\beta$ está dada como
+		
+		\[f(x;\alpha,\beta) = \frac{x^{\alpha-1}}{\Gamma\pars{\alpha}\beta^{\alpha}}\exp\pars{-\frac{x}{\beta}}\1_{\pars{0,\infty}}(x).\]
+
+		\begin{enumerate}
+			\item Demuestra que la distirbución Gamma pertence a la familia exponencial de distribuciones.
+			
+			\begin{proof}
+				Podemos reexpresarla a la densidad de la distribución Gamma de la siguiente forma
+
+				\[f(x;\alpha,\beta) = \pars{\frac{1}{\Gamma{\alpha}\beta^{\alpha}}} \pars{\frac{1}{x}} exp\pars{\alpha\log(x)-\frac{x}{\beta}} \1_{(0,\infty)}(x).\]
+
+				Donde su soporte no depende de parámetros desconocidos y $A(\theta) = \frac{1}{\Gamma{\alpha}\beta^{\alpha}}$, $B(x) = \frac{1}{x}$, $C_1(\theta) = \alpha$, $D_1(x) = log(x)$, $C_2(\theta) = \frac{1}{\beta}$ y $D(x) = x$, por lo tanto la distirbución Gamma pertenece a la familia exponencial.
+			\end{proof}
+
+			\item Considera una muestra de $n$ variables $X_1,\cdots,X_n$ independientes e idénticamente distirbuidas como Gamma $(a,b)$. Demuestra que las medias arimética y geométrica,
+			
+			\[t_1 = \frac{1}{n}\sum_{i=1}^n x_i,\txty t_2=\pars{\prod_{i=1}^n x_i}^{\frac{1}{n}}.\]
+
+			constituyen un vector de estadísticas suficientes para $\alpha$ y $\beta$. También demuestra que son suficientes para $\pars{\alpha, \beta}$.
+
+			\begin{proof}
+				Veamos que la densidad conjunta de la muestra es
+
+				\[f(\vec{x};\vec{\theta}) = \prod_{i=1}^n f(x_i;\vec{\theta}) = \pars{\prod_{i=1}^n \1_{(0,\infty)}(x)} \pars{\frac{1}{\Gamma\pars{\alpha}\beta}}^n\pars{t_2}^{-n}\exp\pars{\alpha\log\pars{t_2^n}-\frac{nt}{\beta}}.\]
+
+				Por el Teorema de la factorización de Fisher concluimos que el vector $\vec{t} = \pars{t_1,t_2}$ es un vector de estadísticas suficientes de $\pars{\alpha,\beta}$.
+			\end{proof}
+
+			\item Reparametriza en términos de $\pars{\mu, \alpha}$ donde la media es $\mu = \alpha\beta$ y da la espresión de la logverosimilitud de $\mu, \alpha$.
+			
+			\begin{sol}
+				La reparametrización de la densidad es
+
+				\[f(x;\alpha,\beta) = \pars{\frac{\alpha^\alpha}{\Gamma{\alpha}\mu^{\alpha}}} \pars{\frac{1}{x}} exp\pars{\alpha\pars{\log(x)-\frac{x}{\mu}}} \1_{(0,\infty)}(x),\]
+
+				por lo que
+
+				\[f(\vec{x};\vec{\theta}) = \prod_{i=1}^n f(x_i;\vec{\theta}) = \pars{\prod_{i=1}^n \1_{(0,\infty)}(x)} \pars{\frac{\alpha^\alpha}{\Gamma\pars{\alpha}\mu}}^n\pars{t_2}^{-n}\exp\pars{\alpha\pars{\log\pars{t_2^n}-\frac{nt}{\mu}}},\]
+
+				por el Teorema de la factorización de Fisher concluimos que el vector $\vec{t} = \pars{t_1,t_2}$ es un vector de estadísticas suficientes de $\pars{\mu,\alpha}$. Entonces
+
+				\[L_u(\vec{\theta};\vec{t}) = \pars{\frac{\alpha^\alpha}{\Gamma\pars{\alpha}\mu}}^n\exp\pars{\alpha\pars{\log\pars{t_2^n}-\frac{nt}{\mu}}},\]
+
+				por lo tanto
+
+				\[l(\vec{\theta,\vec{t}}) = n\alpha\pars{\log\pars{\frac{\sigma}{\mu}}+\pars{\log(t_2)}-\frac{t_1}{\mu}}-n\log\pars{\Gamma{\alpha}}.\]
+
+				\item Demuestra que el estimador de momentos de $\mu$ denotado como $\tilde{\mu}$ es igual al estimador de máxima verosimilitud de $\mu$, denotado por $\hat{\mu}$. Demuestra que el estimador de máxima verosimilitud restringido de $\mu$ dado $\alpha$ el cual es denotado por $\hat{\mu}\pars{\alpha}$, es igual al emv de $\mu$.
+				
+				\begin{proof}
+					Empezaremos por calcular cada uno de los estimadores. El de momentos esta dado por
+
+					\[\tilde{\mu} = E[X] = t_1.\]
+
+					Puesto que
+
+					\[\diffp{l}{\mu} = n\alpha\pars{t_1-\mu},\]
+
+					por lo tanto el emv de $\mu$ es
+
+					\[\hat{\mu} = t_1.\]
+
+					Por último como $\hat{\mu}$ es independiente de $\alpha$ entonces
+
+					\[\hat{\mu} = \mu\]
+				\end{proof}
+
+				\item Da la logverosimilitud perfil del parámetro de forma $\alpha$
+				
+				\[l(\alpha,\hat{\mu}(\alpha);\vec{t}) = n\alpha\pars{\log\pars{\frac{\alpha}{t_1}}+\log(t_2)-1}-n\log\pars{\Gamma\pars{\alpha}}.\]
+
+				\item Da la expresión de la matriz de información de Fisher para $\pars{\mu,\alpha}$. Calcula las inormaciones individuales de $\mu$ y $\alpha$.
+				
+				\[I_{\hat{\mu}\hat{\alpha}} = \begin{pmatrix}
+					\frac{n\hat{\alpha}}{t_1^2} & 0\\
+					0 & n\pars{\pars{\frac{\Gamma(\hat{\alpha})\Gamma^{(2)}\pars{\hat{\alpha}}-\pars{\Gamma'\pars{\hat{\alpha}}}^2}{\pars{\Gamma\pars{\hat{\alpha}}}^2}}-\frac{1}{\alpha}}
+				\end{pmatrix},\]
+
+				al ser una matriz diagonal la matriz inversa $I_{\hat{\mu}\hat{\alpha}}^{-1}$ solo tendra como entrada $(i,i)$ el inverso de la entrada $(i,i)$ de la matriz $I_{\hat{\mu}\hat{\alpha}}$, luego como las informaciones individuales están dadas por el inverso de la entrada $(i,i)$ de la matriz $I_{\hat{\mu}\hat{\alpha}}^{-1}$ entonces concluimos que las informaciones individuales están dadas por las entradas $(i,i)$ de la matriz $I_{\hat{\mu}\hat{\alpha}}$, es decir
+
+				\[I_{\hat{\mu}} = \frac{n\hat{\alpha}}{t_1^2},\]
+				\[I_{\hat{\mu}} = n\pars{\pars{\frac{\Gamma(\hat{\alpha})\Gamma^{(2)}\pars{\hat{\alpha}}-\pars{\Gamma'\pars{\hat{\alpha}}}^2}{\pars{\Gamma\pars{\hat{\alpha}}}^2}}-\frac{1}{\alpha}}.\]
+
+			\end{sol}
+
+		\end{enumerate}
+
+		\item Considera una muestra de $n$ variables aleatorias continuas $X_1,\cdots,X_n$ que son independientes e idénticamente distribuidas como Uniformes en $(0,\theta)$ con $\theta > 0$ desconocido. Da un estimador de momentos, el emv y la verosimilitud relativa de $\theta$, el intervalo de nivel $0\leq c\leq 1$. Di si existe o no la información de fisher.
+		
+		El estimador de momentos esta dado por
+
+		\[\tilde{\theta} = E\bracs{X} = \frac{\theta}{2}.\]
+
+		Puesto que la densidad conjunta de las $X_i$ esta dada por (demostrado tarea 1)
+
+		\[f(\vec{x};\theta) = \pars{\frac{1}{\theta}}^n \1_{\pars{0,\theta}}(\max(\vec{x})),\]
+
+		entonces con $t = \max(\vec{x})$
+
+		\[L_U(\theta;T) = \pars{\frac{1}{\theta}}^n \1_{\pars{0,\theta}}(t),\]
+
+		puesto que esto es una función decreciente para $\theta$ enotnces esta se maximizara en el menor valor que $\theta$ pueda tomar. Ahora hay que recordar que $\hat{\theta}$ es solo una aproximación al emv que alguna veces resulta serlo pero no es cierto que esto se cumple, ya que por definición
+
+		\[\hat{\theta} = \max_{\theta} L_u(\theta;t),\]
+
+		entonces $\hat{\theta}$ no tiene que vivir en el espacio parametral. Como $\hat{\theta} = \sup{\set{\theta: \theta > t}}$ concluimos que $\hat{\theta} = t$.
+
+		Ahora (no se si este bien porque la indicadora del denominador es cero, pero...)
+
+		\[R(\theta;t) = \frac{\pars{\frac{1}{\theta}}^n \1_{\pars{0,\theta}}(t)}{\pars{\frac{1}{t}}^n \1_{\pars{0,t}}(t)} = \pars{\frac{1}{\theta t}}^n \1_{\pars{0,\theta}}(t),\]
+
+		luego $\pars{\frac{1}{\theta t}}^n \1_{\pars{0,\theta}}(t) \geq c$ si y sólo si $\theta > t$ y $\theta = \frac{1}{\sqrt[n]{c}t}$ por lo tanto
+
+		\[IV(c) = \set{\theta : \theta = \frac{1}{\sqrt[n]{c}t} \txty \theta > t}.\]
+
+		Por úlimto la Información de Fisher es (no se si este bien porque la indicadora es cero)
+
+		\[I_{\hat{\theta}} = \frac{n}{\theta^2}\bigg\rvert_{\theta=\hat{\theta}} = \frac{n}{t^2}.\]
+
+
+    \end{enumerate}
+
+	\end{document}
+			

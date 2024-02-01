@@ -1,0 +1,119 @@
+\documentclass[10pt]{extarticle}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb,times}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{multicol}
+\usepackage{appendix}
+%\usepackage{dsfont}
+\usepackage{mathrsfs}
+%\spanishdecimal{.}
+\usepackage[sort&compress]{natbib}
+\bibliographystyle{plainnat}
+%\usepackage{suthesis-2e}
+%\usepackage{verbatim}
+%\spanishdecimal{.}
+\def\theequation{\thesection.\arabic{equation}}
+
+\textwidth=6.5in
+%\lineskip .25cm
+%\lineskiplimit .25cm
+\textheight=9.5in
+\topmargin=-.75in
+\topskip=-4pt
+\evensidemargin=-2pt
+\oddsidemargin=-1pt
+%%%%%%%%%%%%%%%%%%%%
+%\oddsidemargin 0in \textwidth 6.75in \topmargin 0in \textheight
+%8.5in
+\parindent 0em
+\parskip 1ex
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{propo}{Proposition}
+\newtheorem{teo}{Theorem}
+\newtheorem{coro}{Corollary}
+\newtheorem{ejer}{Ejercicio}
+\newtheorem{defi}{Definition}
+\newtheorem{notac}{Notation}
+\newtheorem{hypo}{Hypothesis}
+%\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\def\CC{\mathbb{C}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\pai}{\left(}
+\newcommand{\pad}{\right)}
+\newcommand{\ci}{\left[}
+\newcommand{\cd}{\right]}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\lphi}{\widehat{\phi}}
+\newcommand{\D}{\mathfrak{D}}
+%\renewcommand{\qedsymbol}{\rule{1ex}{1ex}}
+
+\begin{document}
+ \begin{flushright}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  \ \ $E_1$\ \ &\ \ $E_2$\ \ &\ \ $E_3$\ \ &\ \ $E_4$\ \ &\ \ $E_5$\ \ &Calif.\\
+  \hline
+  & &  & & & \\
+    & &  & & &\\
+   \hline
+ \end{tabular}\\
+ \end{flushright}
+\begin{center}
+\large
+Probabilidad
+\normalsize
+
+Rubén Pérez Palacios
+Lic. Computación Matemática
+NUA 424730
+
+Agosto - Diciembre de 2020\\
+
+Parcial 1 (25 de septiembre)
+\end{center}
+
+Resuelva \textbf{formal y detalladamente} los siguientes ejercicios, de manera totalmente individual.
+
+Está estrictamente prohibido consultar las notas o cualquier otro tipo de bibliografía. Ante cualquier sospecha de esto, el examen se anulará (se calificará automáticamente con cero) sin derecho a réplica.
+
+Puede utilizar únicamente la teoría vista en clase o en cursos de los dos semestres previos. Cualquier otro tipo de resultado, no podrá utilizarse (ni siquiera incluyendo su demostración).
+
+Todos los ejercicios valen 100 puntos y cada inciso en cada ejercicio tiene el mismo valor.
+
+La nota final de este examen será el promedio de las puntuaciones obtenidas en cada ejercicio.
+
+\begin{enumerate}
+\item \begin{enumerate}
+\item Explique clara y concisamente los conceptos de convergencia casi segura, en probabilidad y en $L_p$, resaltando las relaciones entre ellos y qué tan restrictivo es cada tipo de convergencia.
+
+\item Demuestre que existe una sucesión $\{X_n\}$ tal que ella converge casi seguramente, en probabilidad y en $L_p$ al mismo límite, donde $\{X_n\}$ es tal que para toda $n$, $X_n$ \textbf{no} es degenerada.
+
+\item Escriba la definición de $X_n\to\infty$ en probabilidad.
+\end{enumerate}
+
+\item Sea $\{X_n\}$ una sucesión de variables aleatorias tales que $X_n\overset{L_p}{\to} X$ para algún $p\geq 1$ y sea $g:A\to B$ medible y \textbf{no constante}, donde $A,B\subseteq \rr$. Mencione al menos dos casos en los cuales la convergencia en $L_p$ de la sucesión $\{X_n\}$, implique $g(X_n)\overset{L_p}{\to} g(X)$.
+
+\item Sean $\{X_n\},\{Y_n\}$ sucesiones de variables aleatorias tales que $X_n\overset{P}{\to} X$, $Y_n\overset{L_q}{\to} Y$ y $|X_n|\leq |Y_n|$ casi seguramente. 
+
+\begin{enumerate}
+\item Utilice el Teorema 7.3 de las notas para probar que $\big\{\frac{|X_n|}{1+|Y_n|}\big\}$ converge en probabilidad y determine la variable límite. \textbf{Nota}: cualquier solución que no use dicho teorema, será calificada automáticamente con cero puntos, independientemente de si es correcta o no.
+
+\item Determine si $\big\{\frac{|X_n|}{1+|Y_n|}\big\}$ converge en $L_p$ para algún $p\geq 1$. Justifique formalmente su respuesta.
+\end{enumerate}
+
+\item Sea $\{\vec{X}_n\}$ una sucesión de vectores aleatorios $d$-dimensionales, tales que $\vec{X}_n=(X_{n,1},\dots,X_{n,d})$ y $X_{n,j}\overset{L_p}{\to}X_j$ para algún $p\geq 1$ ($p$ \textbf{no necesariamente es el mismo} para todos los vectores y tampoco para todas las entradas de cada vector). Demuestre que $\vec{X}_n\overset{P}{\to} \vec{X}$, donde $\vec{X}=(X_1,\dots,X_d)$.
+
+\item Sea $m_n$ el mínimo de $n$ variables aleatorias iid con distribución común $exp(\theta)$, todas sobre el mismo espacio de probabilidad. Demuestre que $m_n\overset{L_p}{\to}0$ para todo $p>0$.
+\end{enumerate}
+
+\end{document}

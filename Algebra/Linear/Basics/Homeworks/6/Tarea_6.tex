@@ -1,0 +1,258 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{geometry}[margin = 2.4 inch]
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem*{definicion}{Definición}
+\usepackage{amssymb}
+
+\usepackage{amsthm}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Álgebra Lineal I\\Tarea 05}
+\author{Rubén Pérez Palacios\\Profesor: Rafael Herrera Guzmán}
+\date{02 Marzo 2020}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problemas}
+
+\begin{enumerate}
+    \item Sean $\beta$ y $\gamma$ las bases ordenadas estándar para $\R^n$ y $\R^m$, respectivamente. Para las siguientes transformaciones $T : \R^n \rightarrow \R^m$, calcular $[T]^\gamma_\beta$.
+    
+    \begin{enumerate}
+        \item $T: \R^2 \rightarrow \R^3$ definida mediante $T((x,y)) = (2x-y,3x+4y,x)$.
+        
+        Calculemos las transformaciones lineales de $\beta$.
+
+        \begin{align*}
+            T((1,0)) &= (2,3,1)\\
+            T((0,1)) &= (-1,4,0).
+        \end{align*}
+        
+        Por lo que
+
+        \begin{align*}
+            [T]^\gamma_\beta = \begin{pmatrix}
+                2 & -1\\
+                3 & 4\\
+                1 & 0
+            \end{pmatrix}
+        \end{align*}
+
+        \item $T: \R^3 \rightarrow \R^2$ definida mediante $T((x,y,z)) = (2x+3y-z,x+z)$.
+        
+        Calculemos las transformaciones lineales de $\beta$.
+
+        \begin{align*}
+            T((1,0,0)) &= (2,1)\\
+            T((0,1,0)) &= (3,0)\\
+            T((0,0,1)) &= (-1,1).
+        \end{align*}
+        
+        Por lo que
+
+        \begin{align*}
+            [T]^\gamma_\beta = \begin{pmatrix}
+                2 & 3 & -1\\
+                1 & 0 & 1
+            \end{pmatrix}
+        \end{align*}
+ 
+    \end{enumerate}
+
+    \item Sea $T : \R^2 \rightarrow \R^3$ definida como $T(x, y) = (x - y, x, 2x + y)$. Sea $\beta$ la base ordenada estándar para $\R^2$ y $\gamma = \{(1, 1, 0),(0, 1, 1),(2, 2, 3)\}$. Calcular $[T]^\gamma_\beta$. Si $\alpha = \{(1, 2),(2, 3)\}$, calcular $[T]^\gamma_\alpha$.
+    
+    Calculemos las transformaciones lineales de $\beta$.
+
+    \begin{align*}
+        T((1,0)) &= (1,1,2)\\
+        T((0,1)) &= (-1,0,1).
+    \end{align*}
+    
+    Luego veamos cuales son los coeficientes de la combinaciones lineales de $\gamma$ que nos dan estas transformaciones linelaes.
+
+    \begin{align*}
+        (1,1,2) &= a(1,1,0) + b(0,1,1) + c(2,2,3)\\
+        (-1,0,1) &= r(1,1,0) + s(0,1,1) + t(2,2,3)
+    \end{align*}
+
+    De los cuales obtenemos el siguiente sistema de ecuaciones
+
+    \begin{align*}
+        a + 2c &= 1\\
+        a + b + 2c &= 1\\
+        b + 3c &= 2\\
+        r + 2t &= -1\\
+        r + s + 2t &= 0\\
+        s + 3t &= 1\\
+    \end{align*}
+
+    cuyas soluciones son
+
+    \begin{align*}
+        a &= -\frac{1}{3} & b &= 0 & c &= \frac{2}{3}\\
+        r &= -1 & s &= 1 & t &= 0
+    \end{align*}
+
+    \begin{align*}
+        [T]^\gamma_\beta = \begin{pmatrix}
+            -\frac{1}{3} & -1\\
+            0 & 1\\
+            \frac{2}{3} & 0
+        \end{pmatrix}
+    \end{align*}
+
+    Calculemos las transformaciones lineales de $\alpha$.
+
+    \begin{align*}
+        T((1,2)) &= (-1,1,4)\\
+        T((2,3)) &= (-1,2,7).
+    \end{align*}
+    
+    Luego veamos cuales son los coeficientes de la combinaciones lineales de $\gamma$ que nos dan estas transformaciones linelaes.
+
+    \begin{align*}
+        (-1,1,4) &= a(1,1,0) + b(0,1,1) + c(2,2,3)\\
+        (-1,2,7) &= r(1,1,0) + s(0,1,1) + t(2,2,3)
+    \end{align*}
+
+    De los cuales obtenemos el siguiente sistema de ecuaciones
+
+    \begin{align*}
+        a + 2c &= -1\\
+        a + b + 2c &= 1\\
+        b + 3c &= 4\\
+        r + 2t &= -1\\
+        r + s + 2t &= 2\\
+        s + 3t &= 7\\
+    \end{align*}
+
+    cuyas soluciones son
+
+    \begin{align*}
+        a &= -\frac{7}{3} & b &= 2 & c &= \frac{2}{3}\\
+        r &= -\frac{11}{3} & s &= 3 & t &= \frac{4}{3}
+    \end{align*}
+
+    \begin{align*}
+        [T]^\gamma_\beta = \begin{pmatrix}
+            -\frac{7}{3} & -\frac{11}{3}\\
+            2 & 3\\
+            \frac{2}{3} & \frac{4}{3}
+        \end{pmatrix}
+    \end{align*}
+
+    \item Para los siguientes incisos, sean
+    
+    \[\alpha = \left\{\alpha_1 = \begin{pmatrix}
+        1 & 0\\
+        0 & 0
+    \end{pmatrix}, \alpha_2 = \begin{pmatrix}
+        0 & 1\\
+        0 & 0
+    \end{pmatrix}, \alpha_3 = \begin{pmatrix}
+        0 & 0\\
+        1 & 0
+    \end{pmatrix}, \alpha_4 = \begin{pmatrix}
+        0 & 0\\
+        0 & 1
+    \end{pmatrix}\right\}\]
+
+    \[\beta = \{1,x,x^2\}\]
+
+    y
+
+    \[\gamma = \{1\}.\]
+
+    \begin{enumerate}
+        \item Defina $T: M_{2\times 2}(\R) \rightarrow M_{2\times 2}(\R)$ mediante $T(A) = A^t$, calcular $[T]_\alpha$.
+        
+        Calculemos las transformaciones lineales de $\beta$.
+
+        \begin{align*}
+            T(\alpha_1) &= \alpha_1\\
+            T(\alpha_2) &= \alpha_3\\
+            T(\alpha_3) &= \alpha_2\\
+            T(\alpha_4) &= \alpha_4
+        \end{align*}
+        
+        Por lo que
+
+        \begin{align*}
+            [T]^\gamma_\beta = \begin{pmatrix}
+                1 & 0 & 0 & 0\\
+                0 & 1 & 0 & 0\\
+                0 & 0 & 1 & 0\\
+                0 & 0 & 0 & 1
+            \end{pmatrix}
+        \end{align*}
+
+        \item Defina $T: M_{2\times 2}(\R) \rightarrow \R$ mediante $T(A) = tr(A)$, calcular $[T]^\gamma_\alpha$.
+        
+        Calculemos las transformaciones lineales de $\beta$.
+
+        \begin{align*}
+            T(\alpha_1) &= 1\\
+            T(\alpha_2) &= 0\\
+            T(\alpha_3) &= 0\\
+            T(\alpha_4) &= 1
+        \end{align*}
+        
+        Por lo que
+
+        \begin{align*}
+            [T]^\gamma_\beta = \begin{pmatrix}
+                1 & 0 & 0 & 1
+            \end{pmatrix}
+        \end{align*}
+
+        \item Si $p(x) = 3 - 6x + x^2$, calcular $[p]_\beta$.
+        
+        Por lo que
+
+        \begin{align*}
+            [T]^\gamma_\beta = \begin{pmatrix}
+                3 \\ -6 \\ 1
+            \end{pmatrix}
+        \end{align*}
+
+    \end{enumerate}
+
+    \item Sea $V$ un espacio vectorial de dimensión $n$ con base ordenada $\beta$. Definiendo a $T : V \rightarrow \R^n$ mediante %% $T(x) = [x]_\beta$, demostrar que $T$ es lineal.
+    
+    Para demostrar que $T$ es lineal entonces falta con demostrar que $cT(x) + T(y) = T(ax + y)$, veamos lo siguiente
+
+    \[cx = c\sum_{i=1}^{n}a_i\beta_i, \quad y = \sum_{i=0}^{n}b_i\beta_i,\]
+
+    por lo que
+
+    \[cx + y = \sum_{i=1}^{n}(ca_i + b_i)\beta_i,\]
+
+    por lo tanto
+
+    %%\[c[x]_{\beta} + [y]_{\beta} = [cx+y]_{\beta}.\]
+
+    Concluimos que
+
+    \[T(cx + y) = cT(x) + T(y),\]
+
+    por lo tanto $T$ es lineal.
+    
+\end{enumerate}
+
+\end{document}

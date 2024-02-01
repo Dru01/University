@@ -1,0 +1,141 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Estructuras de dator y álgoritmos II \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Carlos Segura González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+	Para implementar los métodos requeridos, se implemento un $template class$ para poder hacer uso de polimorfismo y se acepten cualquier tipo de clase para la clave, que implemente un orden lexicográfico con el operador $<$; y cualquier clase para la prioridad que implemente un orden con los operadores $<$ e $=$. La forma de implementar la clase del heap avanzado además de la implementación usual del heap haremos uso de:
+
+	\begin{itemize}
+		\item Un map para poder almacenar la posición en que se encuentra cada clave y así poder actualizar estas.
+		\item Función heapify down: Asegura que al cambiar el valor de la prioridad del nodo $act$ el subárbol del nodo $act$ sea un heap. Para ello verifica si la prioridad de $act$ es mayor a las de sus hijos, de ser así entonces el subárbol de $act$ puesto que por construcción ese subárbol ya es un heap, en caso contrario intercambiamos $act$ por el hijo con mayor prioridad, ya que nos asegura que la raíz de este subárbol es mayor a la de sus dos hijos y por construcción al resto del subárbol, hacemos de nuevo lo mismo recursivamente para el hijo mayor. Esto eventualmente va decidir que el subárbol de $act$ ya fue un heap o es un hoja pero por definición una hoja es un treap.
+		\item Función heapify up: Asegura que al cambiar el valor de la prioridad del nodo $act$ el conjunto de nodos del camino de $act$ hacía la raíz cumplan la propiedad del heap. Checa si la prioridad del padre de $act$ es mayor a la de este, en caso de ser así por construcción se cumple que el conjunto de nodos del camino de $act$ hacía la raíz cumplan la propiedad del heap; de no ser así entonces intercambíamos el padre de $act$ por el, por construcción el padre de $act$ cumple con la propiedad del heap puesto que $p(act) > p(padre(act))$ entonces el padre de $act$ con el valor de $act$ también lo cumpliria, hacemos esto recursivamente con el padre de $act$. Esto eventualmente va decidir que el subárbol del padre de $act$ ya fue un heap o es la raíz pero para poder ser así entonces por construcción $act$ es el de mayor prioridad y por definición es un heap.
+	\end{itemize}
+
+	Cuando nosotros actulizamos la prioridad del nodo $act$ entonces los únicos nodos comprometidos a no cumplir la prioridad del heap son todos los nodos del subárbol de $act$ y el conjunto de nodos en el camino de $act$ a la raíz, puesto que $heapify up$ y $heapify down$ nos aseguran que todos estos nodos se reordenan de manera en que todos cumplan con la propiedad del heap, concluimos que todos nuestro árbol después de actualizar $act$ es un heap.
+
+	El resto de las funciones son implementadas como en un heap normal.
+\end{document}
+

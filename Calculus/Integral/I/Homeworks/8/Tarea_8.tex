@@ -1,0 +1,388 @@
+% PREÁMBULO
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Membrete
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{14pt}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+	\cfoot{\thepage}
+
+% Datos
+    \title{Cálculo II\\Tarea 08}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Fernando Nuñez Medina}
+    \date{30 Abril 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+	
+	\section*{Teoremas}
+
+	\begin{enumerate}
+		\item Sea ${a_n}$ una suceción con $a_n \in \R$ convergente, entonces la suceción $a_{n+k}$ también es convergente.
+		
+		
+	\end{enumerate}
+
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Comprueba cada una de los siguientes límites
+		
+		\begin{enumerate}
+			\item $\lim_{n\to\infty} \frac{n}{n+1} = 1$.
+			
+			Veamos lo siguiente
+
+			\[\frac{n}{n+1} = 1 - \frac{1}{n + 1}.\]
+
+			Al ser $lim_{n\to\infty}\frac{1}{n + 1} = 0$ y $lim_{n\to\infty} 1 = 1$, entonces concluimos que
+
+			\[\lim_{n\to\infty}\frac{n}{n+1} = 1.\]
+
+			\item $\lim_{n\to\infty} \frac{n+3}{n^3+1} = 1|$.
+			
+			Veamos lo siguiente
+
+			\[\frac{n+3}{n^3+1} = \frac{\frac{1}{n^2}+\frac{3}{n^3}}{1 + \frac{1}{n^3}}.\]
+
+			Donde
+
+			\[0 = \lim_{n\to\infty} \frac{0}{1} = \lim_{n\to\infty} \frac{\frac{1}{n^2}+\frac{3}{n^3}}{1 + \frac{1}{n^3}}.\]
+
+			Por lo tanto conlcuimos que
+
+			\[\lim_{n\to\infty}\frac{n}{n+1} = 1.\]
+
+			\item $\lim_{n\to\infty} \sqrt[8]{n^2+1} - \sqrt[4]{n + 1} = 0$.
+			
+			Veamos primero que
+
+			\[\lim_{n\to\infty} \sqrt[4]{n + 1} - \sqrt[4]{n} = 0.\]
+
+			x|
+
+			Ahora veamos que
+
+			\[\lim_{n\to\infty} \sqrt[8]{n^2 + 1} = \lim_{n\to\infty} \sqrt[8]{n^2},\]
+
+			esto pues 
+
+		\end{enumerate}
+
+		\item Halla los siguientes límites.
+		
+		\begin{enumerate}
+			\item $\lim_{n\to\infty} \frac{n}{n+1} - \frac{n+1}{n}$.
+
+			\[0 = \lim_{n\to\infty} 1 - 1 = \lim_{n\to\infty} \frac{1}{1 + \frac{1}{n}} - \lim_{n\to\infty} \frac{1 + \frac{1}{n}}{1} = \lim_{n\to\infty} \frac{n}{n+1} - \frac{n+1}{n}.\]
+
+			\item $\lim_{n\to\infty} n - \sqrt{n+a}\sqrt{n+b}$.
+			
+			\begin{align*}
+				-\frac{a+b}{2} &= \lim_{n\to\infty} -\frac{(a+b)}{1 + \sqrt{1+\frac{a}{n}} \sqrt{1+\frac{b}{n}}}\\
+				&= \lim_{n\to\infty} -\frac{(a+b)}{1 + \frac{\sqrt{n+a}}{\sqrt{n}}\frac{\sqrt{n+b}}{\sqrt{n}}}\\
+				&= \lim_{n\to\infty} \frac{ab}{n + \sqrt{n+a}\sqrt{n+b}} - \frac{n(a+b)}{n + \sqrt{n+a}\sqrt{n+b}}\\
+				&= \lim_{n\to\infty} \frac{n^2 - (n+a)(n+b)}{n + \sqrt{n+a}\sqrt{n+b}}\\
+				&= \lim_{n\to\infty} n - \sqrt{n+a}\sqrt{n+b}	
+			\end{align*}
+
+			\item $\lim_{n\to\infty} \frac{2^n+(-1)^n}{2^{n+1}+(-1)^{n+1}}$.
+			
+			\begin{align*}
+				\frac{1}{2} &= \lim_{n\to\infty} \frac{1+\frac{(-1)^n}{2^n}}{2+\frac{(-1)^{n+1}}{2^n}}\\
+				&= \lim_{n\to\infty} \frac{2^n+(-1)^n}{2^{n+1}+(-1)^{n+1}}
+			\end{align*}
+
+		\end{enumerate}
+
+		\item Realiza lo siguiente.
+		
+		\begin{enumerate}
+			\item Demuestra que si $0 < a < 2$, entonces $a < \sqrt{2a} < 2$.
+			
+			\begin{proof}
+				Veamos la primera desigualdad,
+
+				\begin{align*}
+					& a < 2\\
+					\Rightarrow & \text{al ser $a > 0$.}\\
+					& a^2 < 2a
+					\Rightarrow & \text{al ser $a > 0$.}\\
+					& a < \sqrt{2a}.
+				\end{align*}
+
+
+				Ahora la segunda
+
+				\begin{align*}
+					& a < 2\\
+					\Rightarrow\\
+					& 2a < 4
+					\Rightarrow & \text{al ser $a > 0$.}\\
+					& \sqrt{2a} < 2.
+				\end{align*}
+
+			\end{proof}
+
+			\item Demuestra que la suceción
+			
+			\[\sqrt{2},\sqrt{\sqrt{2}},\sqrt{\sqrt{\sqrt{2}}},\cdots\]
+
+			converge.
+
+			\begin{proof}
+				Sea $b_1 = \sqrt{2}, b_{n+1}  =  \sqrt{2\cdot b_n}$ la cual es la descrita anteriormente.
+    
+				Primero veamos que la sucesión esta acotada por $2$. Procederemos por inducción
+				
+				\begin{itemize}
+					\item \textbf{Caso base: n = 1}
+					\[b_1 = \sqrt{2}\]
+					Por orden de los naturales sabemos
+					\[2 < 4\]
+					Después por $b > a > 0 \implies b^q > a^q > 0, q \in \mathbb{Q}$ entonces tenemos
+					\[\sqrt{2} < 2\]
+					\item \textbf{Hipótesis de inducción}
+					\[b_n < 2\]
+					\item \textbf{Paso Inductivo}
+					Por hipótesis de inducción sabemos
+					\[b_n < 2\]
+					Luego multiplicando por $2$ obtenemos
+					\[2b_n < 4\]
+					Después por $b > a > 0 \implies b^q > a^q > 0, q \in \mathbb{Q}$ entonces tenemos
+					\[\sqrt{2b_n} < 2\]
+					Por definición de la sucesión ${b_n}$ esto es
+					\[b_{n+1} < 2\]
+				\end{itemize}
+				
+				Con lo que concluimos
+				\[b_n < 2, \forall n \in \mathbb{N}\]
+				
+				Luego veamos que la suseción es creciente
+				
+				Por lo demostrado anterior sabemos
+				\[b_n < 2\]
+				Luego si multiplicamos por $b_n$ obtenemos
+				\[b_n^2 < 2b_n\]
+				Después por $b > a > 1 \implies b^r > a^r > 1, r \in \R$ entonces tenemos
+				\[b_n < \sqrt{2b_n}\]
+				Por definición de la sucesión ${b_n}$ concluimos
+				\[b_n < b_{n+1}\]
+				
+				Luego como la sucesión ${b_n}$ es monótona y acotada entonces
+				\[\exists \lim_{n\to\infty} b_n\]
+
+			\end{proof}
+
+			\item Calcule el límite. 
+				
+				Ahora por definición de la sucesión ${b_n}$
+				\[\lim_{n\to\infty} b_n = \lim_{n\to\infty} \sqrt{2b_{n-1}}\]
+				
+				Después por $\lim a_n = \lim a_{n-1}$ entonces tenemos
+				\[\lim_{n\to\infty} b_n = \lim_{n\to\infty} \sqrt{2b_n}\]
+				
+				Elevando al cuadrado obtenemos
+				\[(\lim_{n\to\infty} b_n)^2 = \lim_{n\to\infty} 2b_n\]
+				
+				Como $\lim_{n\to\infty} c(a_n) = c \lim_{n\to\infty} a_n$ esto es
+				\[(\lim_{n\to\infty} b_n)^2 = 2 \lim_{n\to\infty} b_n\]
+				
+				Dividiendo por $\lim_{n\to\infty} b_n$ (ya que $b_n > 0$, esto por que es creciente y $b_1 = \sqrt{2} > 0$) concluimos
+				\[\lim_{n\to\infty} b_n = 2\].
+
+		\end{enumerate}
+
+		\item Integración por sustitución.
+        
+        \begin{enumerate}
+            \item $\int \frac{dx}{\sqrt{1+e^x}}$
+			
+			Sea $u = e^x$ entonces $du = e^xdx$, sustituyendo obtenemos
+
+			\[\int \frac{dx}{\sqrt{1+e^x}} = \int \frac{du}{u\sqrt{1+u}}.\]
+
+			Sea $v = \sqrt{1+u}$ entonces $dv = \frac{du}{2\sqrt{1+u}}$, sustituyendo obtenemos
+
+			\[\int \frac{dx}{\sqrt{1+e^x}} = \int \frac{2vdv}{(v^2-1)v} = \int \int \frac{2dv}{v^2-1} = \int \frac{2dv}{(v+1)(v-1)}.\]
+
+			Por el metodo de fracciones parciales obtenemos
+
+			\[\int \frac{dx}{\sqrt{1+e^x}} = \int \left(\frac{1}{(v-1)} - \frac{1}{(v+1)}\right)dv = \log(v-1) - \log(v+1).\]
+
+			Por lo tanto concluimos
+
+			\[\int \frac{dx}{\sqrt{1+e^x}} = \log(\sqrt{1+e^x}-1) - \log(\sqrt{1+e^x}+1).\]
+
+            \item $\int \frac{dx}{2+\tan(x)}$
+			
+			Sea $u = \tan(x)$ entonces $x = \tan^{-1}(u)$ y $dx = \frac{du}{1+u^2}$, por lo que sustituyendo obtenemos
+
+			\[\int \frac{dx}{2+\tan(x)} = \int \frac{du}{(1+u^2)(2+u)}\]
+
+			Luego por fracciones parciales vemos que
+
+			\[\int \frac{dx}{1+e^x} = \frac{1}{5}\int \left(\frac{1}{2+u} - \frac{u-2}{1+u^2}\right)du = \frac{log(2+u)}{5} - \frac{log(u^2+1)}{10} + \frac{2\tan^{-1}(u)}{5}.\]
+
+			Por lo tanto concluimos
+
+			\[\int \frac{dx}{1+e^x} = \frac{log(2+\tan(x))}{5} - \frac{log(\sec(u)^2)}{10} + \frac{2x}{5}.\]
+
+            \item $\int \frac{dx}{\sqrt{\sqrt{x+1}}}$
+
+			Sea $u = \sqrt{\sqrt{x}+1}$ entonces $x = (u^2 - 1)^2$ y por regla de la cadena $dx = 4u(u^2-1)du$, sustituyendo en la integral original obtenemos
+
+			\[\int \frac{dx}{\sqrt{\sqrt{x}}+1} = \int \frac{4u(u^2-1)du}{u} = \int 4u^2du - \int 4du = \frac{4u^3}{3} - 4u.\]
+
+			Por lo tanto concluimos que
+
+			\[\int \frac{dx}{\sqrt{\sqrt{x}}+1} = \frac{4\left(\sqrt{\sqrt{x}+1}\right)^3}{3} - 4\left(\sqrt{\sqrt{x}+1}\right).\]
+
+        \end{enumerate}
+		
+		\item Una sustancia radiactiva disminuye a un ritmo proporcional a la cantidad que de ella queda (puesto que todos los átomos tienen la misma probabilidad de desintegrarse, la desintegración total es proporcional al número de átomos remanentes). Si $A(t)$ es la cantidad en el tiempo t, esto significa que $A'(t) = cA(t)$ para algún c (el cual representa la probabilidad de que se desintegre	un átomo).
+		
+		\begin{enumerate}
+			\item Halla $A(t)$ en términos de la cantidad $A_0 = A(0)$ presente
+			en el tiempo 0.
+
+			Por la tare pasada sabemos que existe un $k$ tal que
+
+			\[A(t) = ke^{ct},\]
+
+			evualando en $0$ obtenemos
+
+			\[A(0) = ke^{c0} = k,\]
+
+			por lo tanto
+
+			\[A_0 = k\]
+
+			y
+
+			\[A(t) = A_0e^{ct}.\]
+
+			\item  Demuestra que existe un número $\tau$ (la "vida media" del
+			elemento radiactivo) con la propiedad de que $A(t + \tau) = A(t)/2$.
+
+			\begin{proof}
+
+				Sea $\tau = \frac{\log(\frac{1}{2})}{c}$, entonces
+
+				\[e^{c\tau} = \frac{1}{2},\]
+
+				por lo que
+
+				\[A_0e^{c(t + \tau)} = \frac{A_0e^{ct}}{2},\]
+
+				por lo tanto
+
+				\[A(t + \tau) = \frac{A(t)}{2}.\]
+
+			\end{proof}
+
+		\end{enumerate}
+
+	\end{enumerate}
+	
+\end{document}

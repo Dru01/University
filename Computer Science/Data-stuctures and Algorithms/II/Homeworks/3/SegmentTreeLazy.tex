@@ -1,0 +1,140 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage{setspace}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+	\onehalfspacing
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Estructuras de dator y álgoritmos II \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Carlos Segura González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\section{Segment Tree (Modificación)}
+	
+	Puesto que la estructura de datos que implemente la tarea pasada de un Segment Tree partía de la suposición que para obtener el valor de un segmentree se calcula apartir del valor de sus hijos, el cual no es el caso, entonces se modifico la estructura completa.
+
+	Para la solución del problema primero tomemos en cuenta que nos preguntan sobre todo nuestro arreglo $a$ y consideremos un bucket $b$ de los elementos de este (nótese que esto es posible puesto que los valores van de $0$ a $1000000$), donde en la posición $b[i]$ almacenamos todas las posiciones en las que en nuestro arreglo $a$ hay un elemento $i$. Luego construimos un segmentree sobre este bucket $b$. Para preguntar el valor del $k$ elemento del arreglo ordenado de $a$ entonces podriamos contestarlo con el Segment Tree, preguntando desde la raíz de este a su hijo izquierdo cuantos inidces $i$ que tiene almacenado, si $i$ es menor a $k$ (estricto puesto que $k$ está indexado en $0$) entonces nos dirigimos al hijo izquierdo puesto esto sígnifica que hay al menos $k$ elementos con valor entre el rango que representa el hijo izquierdo por lo tanto el $k$ elemento esta en ese rango, en caso contrario nos dirigimos al hijo derecho pero ahora buscando el valor $k-i$ puesto ya habí $i$ elementos antes en el rango del hijo izquierdo, así recursivamente hasta que llegemos a una hoja y el valor buscado será el valor $k$. Algo importante es necesitamos una estructura de datos que permita almacenar las posiciones y que nos permita insertar, eliminar y saber cuantos elementos tiene menores a un valor en $O(\log(N))$ lo cual es posible con un arbol binario de busqueda autobalanceado, prodiamos implementarlo con un treap, o un redblack tree el cual fue el usado en esta implementación, el cual ya esta implementado en la librería GNU.
+
+	Ahora si tuviesemos para cada subrango un segmentree de buckets podriamos contestar todas las querys en $O(\log(N)\log(M))$, el problema es que necesitariamos $O(M^2(N\log(M)))$ espacio y tomaría actualizar $O(M\log(M)\log(N))$ de las cuales ninguna son viables. Pero notemos que en nuestro forma de ir contestando la query lo que necesitamos saber en cada momento cuantos elementos hay en el rango del hijo izquierdo hay para decidir a donde movernos, pero puede ser que algunos de los índices que contiene el hijo izquierdo no esten dentro del rango que podriamos preguntar pero podemos saber cuantos indices de estos están dentro del rango que estamos preguntando (puesto que le podemos preguntar al rbt cuantos elemenos son menores que algún valor), entonces con este nuevo valor $i$ podemos ir bajando hasta una hoja y encontrariamos la respuesta. De esta forma solo necesitariamos un solo segmentree, por lo que nuestra memoria sería $O(N\log(M))$ y el tiempo de actualización $O(\log(N)\log(M))$, por lo tanto este algoritmo si resuelve en tiempo el problema.
+\end{document}
+

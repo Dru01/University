@@ -1,0 +1,236 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+    \usepackage{amssymb}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+    
+% Datos
+    \title{Probabilidad y Estadística\\Tarea 05}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{24 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $X_n$ una variable aleatoria uniforme en $\{1, \cdots, n\}$ y $X \sim U(0,1)$. Muestre que $X_n / n \rightarrow X$ en distribución.
+		
+		\begin{proof}[Demostración]	
+			
+			Por definición de distribución y de variable aleatoria uniforme, se tiene que
+			
+			\begin{align*}
+				F_{X_n / n}(x) &= P(\frac{X_n}{n} \leq x)\\
+				&= P(X_n \leq nx)\\
+				&= \left\{ \begin{array}{cc}
+					0 & \floor*{nx} \leq 0\\
+					\frac{\floor*{nx}}{n} & 0 \leq \floor*{nx} \leq n\\
+					1 & \floor*{nx} \geq n
+				\end{array} \right.\\
+			\end{align*}
+			
+			Ahora acotaremos la diferencia entre esta y la distribución de $X$.
+			
+			\begin{align*}
+				|F_{X_n}(x) - F_X(x)| &= |\frac{\floor*{nx}}{n} - x|\\
+				&= |\frac{\floor*{nx} - xn}{n}|\\
+				&\leq \frac{1}{n}
+			\end{align*}
+		
+			Por propiedad arquimediana de los números Reales concluimos que
+			
+			\[lim_{n\to\infty} F_{X_n} = F_X,\]
+			
+			es decir
+			
+			\[X_n / n \rightarrow X, \quad \text{en distribución}.\]
+		\end{proof}
+		
+		\item Sea $X$ una vairable aleatoria uniforme en $[0,1]$.
+		
+		\begin{enumerate}
+			\item $Y = X^\alpha$, $\alpha > 0$.
+			
+			\[F_Y(t) = F_X(\sqrt[\alpha]{t}) = \left\{\begin{array}{cc}
+			
+				0 & \sqrt[\alpha]{t} \leq 0\\
+				\sqrt[\alpha]{t} & 0 \leq \sqrt[\alpha]{t} \leq 1\\
+				1 & \sqrt[\alpha]{t} \geq 1 
+			
+			\end{array}\right.\]
+
+			\[f_Y(t) = \diff{F_Y(t)}{t} = \frac{f_X(\sqrt[\alpha]{t}) x^{1/\alpha - 1}}{\alpha} = \left\{\begin{array}{cc}
+				\frac{x^{1/\alpha - 1}}{\alpha} & 0 \leq \sqrt[\alpha]{x} \leq 1\\
+				0 & \text{si no}
+			\end{array}\right.\]
+
+			\item $Y = exp(X)$.
+			
+			\[F_Y(t) = F_X(\log{t}) = \left\{\begin{array}{cc}
+			
+				0 & \log{t} \leq 0\\
+				\log{t} & 0 \leq \log{t} \leq 1\\
+				1 & \log{t} \geq 1 
+			
+			\end{array}\right.\]
+
+			\[f_Y(t) = \diff{F_Y(t)}{t} = \frac{f_X(\log{t})}{x} = \left\{\begin{array}{cc}
+				\frac{1}{x} & 0 \leq \log{x} \leq 1\\
+				0 & \text{si no}
+			\end{array}\right.\]
+
+			\item $Y = log(X)$.
+			
+			\[F_Y(t) = F_X(e^{t}) = \left\{\begin{array}{cc}
+			
+				0 & e^{t} \leq 0\\
+				e^{t} & 0 \leq e^{t} \leq 1\\
+				1 & e^{t} \geq 1 
+			
+			\end{array}\right.\]
+
+			\[f_Y(t) = \diff{F_Y(t)}{t} = f_X(e^t)e^t = \left\{\begin{array}{cc}
+				e^t & 0 \leq e^{x} \leq 1\\
+				0 & \text{si no}
+			\end{array}\right.\]
+
+		\end{enumerate}
+		
+		\item 
+		
+		\begin{proof}[Demostración]
+			
+			Sea $X$ una variable aleatoria discreta con valores en el conjunto $\{0,1,2,\cdots\}$. Por definición de esperanza tenemos lo siguiente
+
+			\begin{align*}
+				E(X) &= \sum_{i=0}^\infty iP(X=i)\\
+				&= \sum_{i=1}^\infty \left(\sum_{k=1}^i P(X=i)\right)\\
+				&= \sum_{k=1}^\infty \left(\sum_{i=k}^\infty P(X=i)\right)\\
+				&= \sum_{k=1}^\infty P(X \geq k)\\
+			\end{align*}
+		
+		\end{proof}
+		
+		\item
+		
+		\begin{proof}[Demostración]
+			
+			Sea $X$ una variable aleatoria con distribución $F$.
+
+			Al ser $P(X \leq x)$ continua por la derecha entonces $P(X \geq x)$ es continua por la izquierda.
+			
+			Sea $l = \inf\{x | P(X \leq x) \geq \frac{1}{2}\}$ y $r = \sup\{x | P(X \geq x) \geq \frac{1}{2}\}$. Por sus respectivas continuidades tenemos que
+			
+			\[P(X \leq l) \geq \frac{1}{2} \quad P(X \geq r) \geq \frac{1}{2},\]
+			
+			Si $r < l$ entonces sea $x \in (r,l)$, por definición de supremo e infimo tenemos $P(X \leq x) < \frac{1}{2}$ y $P(X \geq x) < \frac{1}{2}$, lo cual es una contradicción ya que $P(X \leq x) + P(X \geq x) \geq 1$. Por lo tanto $l \leq r$.
+			
+			Por construcción de $l$ y $r$ tenemos que $\forall m \in (l,r)$ se cumple que
+			
+			\[P(X \leq m) \geq \frac{1}{2} \quad P(X \geq x) \geq \frac{1}{2}.\]
+		
+		\end{proof}
+		
+    \end{enumerate}
+
+	\end{document}

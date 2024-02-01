@@ -1,0 +1,385 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+    \usepackage{amssymb}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+    
+% Datos
+    \title{Gráficas y Combinatoria\\Tarea I}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{3 de Septiembre 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sea $\{X_i\}_{i\geq1}$ una suceción de v.a.i.i.d con $E(X_i) = 0$ y $E(X_i^2) < \infty$. Sea $\alpha > \frac{1}{2}$ y definamos a $S_n$ como
+		
+		\[Sn = X_1 + \cdots + X_n\]
+
+		Encuentre
+
+		\[\limninf \frac{S_n}{n^\alpha} \text{en distribución}.\]
+
+		Demostraremos que
+
+		\[\limninf \frac{S_n}{n^\alpha}\]
+
+		converge a la distribución degenerada en 0.
+
+		\begin{proof}
+			Sea 
+
+			\[Y_{\alpha,n} = \frac{S_n}{n^\alpha} = \frac{|S_n|}{n^\alpha},\]
+			
+			entonces
+
+			\[Var(Y_{\alpha,n}) = \frac{nVar(X_i)}{n^{2\alpha}} = \frac{Var(X_i)}{n^{2\alpha - 1}}\]
+
+			y por lo tanto
+
+			\[\limninf Var(Y_{\alpha,n}) = 0.\]
+
+			Recordemos que si una variable aleatoria $X$ cumple que $Var(X) = 0$ entonces $X = E(X)$ esto pues $Var(X) = E((X - E(X))^2) = 0$ y que $E(|X|) = 0$ implica que $X=0$. Por lo anterior concluimos que $Y_{\alpha,n}$ converge a la distribución degenerada en 0.			
+		\end{proof}
+
+		\item Sean $X, Y$ v.a normales estandar independientes entre sí.
+		
+		\begin{enumerate}
+			\item Muestre que $Z = \frac{X + Y}{2}$ y $W = \frac{X - Y}{2}$ son independientes y normales.
+			
+			\begin{proof}
+				Primero encontraremos la densidad de la suma de $X+Y$,
+
+				\begin{align*}
+					f_{X+Y}(z) &= \int_{-\infty}^{\infty} f_X(x)f_Y(z-x)dx\\
+					&= \int_{-\infty}^{\infty} f_X(x)f_Y(z-x)dx\\
+					&= \int_{-\infty}^{\infty} \frac{e^{-\frac{x^2}{2}}}{\sqrt{2\pi}} \frac{e^{-\frac{(z-x)^2}{2}}}{\sqrt{2\pi}} dx\\
+					&= \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-\frac{(z-x)^2 + x^2}{2}} dx\\
+					&= \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-\frac{(z-y)^2 + y^2}{2}} dy\\
+					&= \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-(y-\frac{z}{2})^2 - \frac{z^2}{4}} dy\\
+					&= \frac{e^{-\frac{z^2}{4}}}{2\pi} \int_{-\infty}^{\infty} e^{-(y-\frac{z}{2})^2} dy\\
+					&= \frac{e^{-\frac{z^2}{4}}}{2\pi} \int_{-\infty}^{\infty} e^{-t^2} dt\\
+				\end{align*}
+
+				Ahora veamos lo siguiente. Sea $P = \int_{0}^{\infty} e^{-t^2} dt$ entonces
+
+				\begin{align*}
+					P^2 &= \int_{0}^{\infty} e^{-t^2} dt \int_{0}^{\infty} e^{-s^2} ds\\
+					&= \int_{0}^{\infty} \int_{0}^{\infty} e^{-(t^2+s^2)} dt ds\\
+					&= \int_{0}^{\infty} \int_{0}^{\infty} e^{-((rs)^2+s^2)} s dr ds\\
+					&= \int_{0}^{\infty} \int_{0}^{\infty} s e^{-s^2(r^2+1)}  ds dr\\
+					&= \int_{0}^{\infty} -\frac{1}{2(r^2+1)} \int_{0}^{\infty} -2as e^{-s^2(r^2+1)}  ds dr\\
+					&= \int_{0}^{\infty} \frac{1}{2(r^2+1)} dr\\
+					&= \lim_{r \rightarrow \infty} \frac{\arctan(r)}{2} dr\\
+					&= \frac{\pi}{4} dr\\
+				\end{align*}
+
+				por lo que
+
+				\[\int_{0}^{\infty} e^{-t^2} dt = \frac{\sqrt{\pi}}{2},\]
+
+				analogamente
+
+				\[\int_{-\infty}^{0} e^{-t^2} dt = \frac{\sqrt{\pi}}{2},\]
+
+				por lo tanto
+
+				\[\int_{-\infty}^{\infty} e^{-t^2} dt = \sqrt{\pi}\]
+
+				y concluimos que
+
+				\[f_{X+Y}(z) = \frac{e^{-\frac{z^2}{4}}}{2\sqrt{\pi}}\]
+
+				tiene distribución normal con varianza $2$ y media $0$.
+
+				Ahora veamos que una variable aleatoria normal por una constante sigue siendo normal. Esto es pues recordemos que
+
+				\[f_{A(B)} (t) = f_B(A^{-1}(t)) (A^{-1}(t))',\]
+
+				entonces
+
+				\[f_{cX}(z) = \frac{f_X\left(\frac{z}{c}\right)}{c} = \frac{e^{-\frac{x^2}{2c^2}}}{c\sqrt{2\pi}}\]
+
+				la cual tiene distribución normal con varianza $c^2$ y media $0$.
+				Por lo tanto concluimos que las combinaciones lineales de dos variables aleatorias normales estandar $aX + bY$ son normales con media $0$ y varianza $a^2 + b^2$. En específico $Z$ y $W$, con media $0$ y a varianza $s$ y $s$ respectivamente. Veamos lo siguiente
+
+				\[Cov(Z,W) = \frac{Cov(X+Y,X-Y)}{4}=\]\[ \frac{Cov(X,X) - Cov(X,Y) + Cov(Y,X) - Cov(Y,Y)}{4} = \frac{V(X) - V(Y)}{4} = 0.\]
+
+				Por lo que concluimos que $W$ y $Z$ son independientes.
+
+			\end{proof}
+
+			\newpage
+			
+			\item Calcula la densidad de $WZ$.
+				
+			Por lo demostrado anteriormente obtenemos que $Z$ y $W$ son normales con media $0$, y varianza $\frac{1}{2}$. Haciendo uso de convolución obtenemos
+
+			\[f_{WZ}(r) = \int_{0}^{\infty} f_w(w)f_Z(r/w)dw + f_{WZ}(r) - \int_{-\infty}^{0} f_w(w)f_Z(r/w)dw.\]
+			
+			Entonces
+
+			\begin{align*}
+				\int_{0}^{\infty} f_w(w)f_Z(r/w)\frac{1}{w}dw &= \int_{0}^{\infty} \frac{e^{-w^2}}{\sqrt{\pi}} \frac{e^{-(r-w)^2}}{\sqrt{\pi}}\frac{1}{w}dw\\
+				&= \int_{0}^{\infty} \frac{e^{-w^2-(r-w)^2}}{\pi w}dw\\
+				&= \int_{0}^{\infty} \frac{e^{-z^2-(r-z)^2}}{\pi (r-z)}dz\\
+				&= \int_{0}^{\infty} \frac{e^{-(z\sqrt{2}-\frac{r}{\sqrt{2}})^2-\frac{r^2}{2}}}{\pi(r-z)}dz\\
+				&= \frac{e^{-\frac{r^2}{2}}}{\pi} \int_{0}^{\infty} \frac{e^{-(z\sqrt{2}-\frac{r}{\sqrt{2}})^2}}{r-z}dz\\
+				&= \frac{e^{-\frac{r^2}{2}}}{\pi\sqrt{2}} \int_{0}^{\infty} \frac{e^{-t^2}}{z-t\sqrt{2}}dt
+			\end{align*}
+
+			analogamente
+
+			\[\int_{-\infty}^0 f_W(w)f_Z(r/w)\frac{1}{w}dw = \frac{e^{-\frac{r^2}{2}}}{\pi\sqrt{2}} \int_{-\infty}^0 \frac{e^{-t^2}}{z-t\sqrt{2}}dt,\]
+
+			por lo tanto
+
+			\[f_{WZ}(r) = \frac{e^{-\frac{r^2}{2}}}{\pi\sqrt{2}} \left( \int_{0}^{\infty} \frac{e^{-t^2}}{z-t\sqrt{2}}dt - \int_{-\infty}^0 \frac{e^{-t^2}}{z-t\sqrt{2}}dt \right)\]
+		\end{enumerate}
+
+		\item Sea $U \sim U(-1,1)$, $\alpha \in \R$ y $X_\alpha = sign(U)|U|^\alpha$
+		
+		\begin{enumerate}
+			\item Calcule la densidad de $X^\alpha$.
+			
+			Primero veamos que $X_\alpha^{-1} = sign(U)|U|^{\frac{1}{\alpha}}$ entonces tenemos que
+
+			\begin{align*}
+				F_{X_\alpha}(x) &= F_U(sign(x)|x|^{\frac{1}{\alpha}}) \\
+			\end{align*}
+
+			Si $X \geq 0$ entonces
+			
+			\[F_{X_\alpha}(x) = F_U(x^{\frac{1}{\alpha}}) = \left\{\begin{array}{cc}
+		
+				\frac{x^{\frac{1}{\alpha}} + 1}{2} & 0 \leq x \leq 1\\
+				1 & x \geq 1 
+			
+			\end{array}\right.\]
+
+			y (sin contar el 0)
+
+			\[f_{X_\alpha}(x) = \frac{f_U(x^{\frac{1}{\alpha}})x^{\frac{1}{\alpha}-1}}{\alpha} = \left\{\begin{array}{cc}
+	
+				\frac{x^{\frac{1}{\alpha}-1}}{2\alpha} & 0 \leq x \leq 1\\
+				1 & x \geq 1 
+			
+			\end{array}\right.\]
+			
+			Si $X < 0$ entonces
+
+			\[F_{X_\alpha}(x) = F_U(-(-x)^{\frac{1}{\alpha}}) = \left\{\begin{array}{cc}
+				
+				0 & (-x) \geq 1\\
+				\frac{-(-x)^{\frac{1}{\alpha}} + 1}{2} & 1 \geq (-x) \geq 0
+			
+			\end{array}\right.\]
+			
+			y
+
+			\[f_{X_\alpha}(x) = \frac{f_U(-(-x)^{\frac{1}{\alpha}})-(-x)^{\frac{1}{\alpha}-1}}{\alpha} = \left\{\begin{array}{cc}
+
+				0 & (-x) \geq 1\\
+				\frac{-(-x)^{\frac{1}{\alpha}-1}}{2\alpha} & 1 \geq (-x) \geq 0
+			
+			\end{array}\right.\]
+
+			\item Haye los siguientes limites
+			
+			\begin{enumerate}
+				\item $\alpha \rightarrow \infty$
+				
+				Si $X \geq 0$
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+		
+					1 & 0 \leq x \leq 1\\
+					1 & x \geq 1 
+				
+				\end{array}\right.\]
+
+				Si $X < 0$
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+				
+					0 & (-x) \geq 1\\
+					0 & 1 \geq (-x) \geq 0
+				
+				\end{array}\right.\]
+
+				Es decir
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+		
+					1 & 0 \leq x
+				
+				\end{array}\right.\]
+
+				\item $\alpha \rightarrow 0$
+				
+				Entonces $lim_{\alpha \rightarrow 0} X_{\alpha} = sign(U)$, por lo que
+
+				\[lim_{\alpha \rightarrow 0} F_{X_\alpha}(x) = F_sign(U)(x) = P(sign(u) \leq 1)  = \left\{\begin{array}{cc}
+				
+					0 & x < -1\\
+					\frac{1}{2} & -1 \leq x \leq 1\\
+					1 & 1 \leq x
+				
+				\end{array}\right.\]
+
+				\item $\alpha \rightarrow -\infty$
+				
+				Si $X \geq 0$
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+		
+					1 & 0 \leq x \leq 1\\
+					1 & x \geq 1 
+				
+				\end{array}\right.\]
+
+				Si $X < 0$
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+				
+					0 & (-x) \geq 1\\
+					0 & 1 \geq (-x) \geq 0
+				
+				\end{array}\right.\]
+
+				Es decir
+
+				\[lim_{\alpha \rightarrow \infty} F_{X_\alpha}(x) = \left\{\begin{array}{cc}
+		
+					1 & 0 \leq x
+				
+				\end{array}\right.\]
+
+			\end{enumerate}
+
+			\item 
+
+		\end{enumerate}
+
+		\item Sean $U \sim U[0,1]$ y $Q \sim Poisson(\lambda)$. Calcula la densidad de $U + P$.
+		
+		Proseguiremos a resolver por probabilidad total.
+
+		\[F_{U+Q}(x) = P(U + Q \leq x) = \sum_{k=0}^{\infty} P(U \leq x - Q | Q = k)P(Q = k) = \sum_{k=0}^{\infty} F_U(x-p)P(Q = k).\]
+
+		por lo que
+
+		\[f_{U+Q}(x) = \sum_{k=0}^{\infty} f_u(x-k)P(Q=k).\]
+
+		Por lo tanto si $x$ es entero entonces
+
+		\[f_{U+Q}(x) = P(Q=x) + P(Q=x-1) = \frac{e^{-\lambda} \lambda^{x}}{(x)!} + \frac{e^{-\lambda} \lambda^{x-1}}{(x-1)!},\]
+
+		si no
+
+		\[f_{U+Q}(x) = P(Q=[x]) = \frac{e^{-\lambda} \lambda^{[x]}}{([x])!}\]
+
+    \end{enumerate}
+
+	\end{document}

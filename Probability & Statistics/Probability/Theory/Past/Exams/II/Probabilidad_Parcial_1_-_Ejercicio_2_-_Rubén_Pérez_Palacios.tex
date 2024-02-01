@@ -1,0 +1,161 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II - Ejercicio 2}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item (100 pts.) Sean $X\sim\Gamma( \nu/2,1/2)$ y $Y\sim\Gamma( \mu/2,1/2)$ con $\nu,\mu>0$ no precisamente enteros. Utilizando Probabilidad Total halle la distribución de $F=\frac{\mu X}{\nu Y}$, bajo la hipótesis $X\perp Y$.
+		
+		Encontraremos la distribución de $F$
+
+		\begin{align*}
+			F_f(t) &= P\bracs{F \leq t}\\
+			&= \int_{0}^{\infty} P\bracs{F\leq t | Y = y} f_Y(y) dy\\
+			& \text{Por Probabilidad Total sobre Y}\\
+			&= \int_{0}^{\infty} P\bracs{\frac{\mu X}{\nu y} \leq t} f_Y(y) dy\\
+			&\text{Por independencia de X y Y}\\
+			&= \int_{0}^{\infty} P\bracs{X \leq t\pars{\frac{\nu y}{\mu}}} f_Y(y) dy\\
+			& \text{Ya que $P\bracs{g(X) \leq t} = P\bracs{X \leq g^{-1}(t)}$}\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^t \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} dx} f_Y(y) dy\\
+			& \text{Por el Teorema de Cambio de Variable}\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^t \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} dx} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dy\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^t \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dx} dy\\
+			&= \int_{0}^t \pars{\int_{0}^{\infty} \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dy} dx\\
+			& \text{Por Fubini}\\
+			&= \int_{0}^t \frac{1}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{\int_{0}^{\infty} \pars{\frac{1}{2}}^{\frac{\nu}{2} + \frac{\mu}{2}} \pars{y}^{\frac{\nu}{2} + \frac{\mu}{2} -1} e^{-\pars{\frac{x\pars{\frac{\nu}{\mu}}}{2} + \frac{1}{2}}y} dy} dx\\
+			&= \int_{0}^t \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}}\\ &\pars{\int_{0}^{\infty} \pars{\pars{1 + x\frac{\nu}{\mu}}\pars{\frac{1}{2}}}^{\frac{\nu}{2} + \frac{\mu}{2}} \pars{y}^{\frac{\nu}{2} + \frac{\mu}{2} -1} e^{-\pars{\frac{x\pars{\frac{\nu}{\mu}}}{2} + \frac{1}{2}}y} dy} dx\\
+			&= \int_{0}^t \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}} dx\\
+			& \text{Al ser la integral de una Gama con parametros $\pars{\frac{\nu}{2} + \frac{\mu}{2},\pars{1 + x\frac{\nu}{\mu}}\pars{\frac{1}{2}}}$}
+		\end{align*}
+
+		Por lo tanto
+
+		\[f_F(x) = \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}},\]
+
+		con lo que concluimos que
+
+		\[F \sim F(\nu,\mu).\]
+
+    \end{enumerate}
+
+	\end{document}
+			

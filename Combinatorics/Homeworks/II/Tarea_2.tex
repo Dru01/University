@@ -1,0 +1,312 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Gráficas y Combinatoria\\Tarea II}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{24 de Septiembre 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+		
+		\item Pruebe que si $n$ es negativo 
+
+		\[\binom{n}{k}=(-1)^k\binom{-n+k-1}{k}.\]
+
+		\begin{proof}[Demostración]
+        
+			Por definición de coeficiente binomial
+			
+			\[\binom{a}{n} = \frac{a(a-1)...(a-n+1)}{n!},\]
+			
+			factorizando $-1$ de cada uno de los factores del denominador obtenemos
+			
+			\[\binom{a}{n} = (-1)^n\frac{-a(-a+1)...(-a+n-1)}{n!},\]
+			
+			por conmutatividad esto es
+			
+			\[\binom{a}{n} = (-1)^n\frac{(-a+n-1)...(-a+1)-a}{n!},\]
+			
+			por definición de coeficiente binomial concluimos
+			
+			\[\binom{a}{n} = (-1)^n\binom{-a+n-1}{n}.\]
+			
+		\end{proof}
+
+        \item Pruebe que el n\'umero de caminos en $\mathbb{N}^3$, de $(0,0,0)$ a $(n,m,k)$ es
+		\[\frac{(m+n+k)!}{m! \ n! \ k!}.\]
+
+		\begin{proof}
+			Podemos ver que hay una biyección para todos los caminos de este estilo con las palabras que tienen $(n+m+k)$ letras donde tienes $n$ n´s, $m$ m´s y $k$ k´s, y la cantidad de palabras son
+
+			\[\frac{(m+n+k)!}{m! \ n! \ k!}\]
+
+		\end{proof}
+
+		\item Muestra que para $\alpha, \beta\in \mathbb{R}$,
+		$$(1+y)^\alpha(1+y)^\beta=(1+y)^{\alpha+\beta}$$
+		como series formales.
+
+		\begin{proof}
+			Recordemos que
+
+			\[(1+x)^{\alpha} = \sum_{i=0}^{\infty} \binom{\alpha}{i} x^i.\]
+
+			Ahora por un lado tenemos que
+
+			\[(1+x)^{\alpha}(1+x)^{\beta} = \pars{\sum_{i=0}^{\infty} \binom{\alpha}{i} x^i}\pars{\sum_{i=0}^{\infty} \binom{\beta}{i} x^i} = \sum_{i=0}^{\infty} \pars{\sum_{j=0}^{i} \binom{\alpha}{i}\binom{\beta}{i-j}} x^i,\]
+
+			y por el otro
+
+			\[(1+x)^{\alpha + \beta} = \sum_{i=0}^{\infty} \binom{\alpha + \beta}{i} x^i.\]
+
+			Por Chu Vandermonde tenemos que los coeficiente de estas series formales son iguales y por lo tanto
+
+			\[(1+y)^\alpha(1+y)^\beta=(1+y)^{\alpha+\beta}.\]
+		\end{proof}
+
+		\item Prueba la identidad
+		
+		\[\sum^n_{k=0}C_{2k}C_{2(n- k)} = 4^nC_n.\]
+
+		\begin{proof}
+			Empecemos por encontrar la fórmula cerrada para la serie formal $C(x)$ tal que sus coeficientes estan en ${C_n}$ los números de catalan. Entonces veamos que
+
+			\[C(x) = \sum_{i=0}^\infty C_ix^i,\]
+
+			entonces
+
+			\[C(x)^2 = \sum_{i=0}^\infty \pars{\sum_{j=0}^i C_jC_{i-j}}x^i,\]
+
+			por recurrencia de los números de Catalan tenemos que
+
+			\[C(x)^2 = \sum_{i=0}^\infty C_{i+1}x^i,\]
+
+			por lo que
+
+			\[C(x)^2 = \frac{C(x)-1}{x},\]
+
+			es decir
+
+			\[C(x) = \frac{1-\sqrt{1-4x}}{2x}.\]
+
+			Ahora veamos lo siguiente
+
+			\[\frac{C(x)+C(-x)}{2} = \sum_{i=0}^\infty C_{2i}x^{2i},\]
+
+			por lo que
+
+			\[\pars{\frac{C(x)+C(-x)}{2}}^2 = \sum_{i=0}^\infty \pars{\sum{j=0}^{i}C_{2j}C_{2(i-j)}}x^{2i}.\]
+
+			También
+
+			\[C(4x^2) = \sum_{i=0}^\infty 4^{i}C_ix^{2i}.\]
+
+			Por fórmula cerrada tenemos que si
+
+			\[\pars{\frac{C(x)+C(-x)}{2}}^2 = C(4x^2)\]
+
+			es si y sólo si
+
+			\[\pars{\frac{\pars{\frac{1-\sqrt{1-4x}}{2x}}+\pars{\frac{1-\sqrt{1-4x}}{2x}}}{2}}^2 = \frac{1-\sqrt{1-16x^2}}{8x^2},\]
+
+			esto es si y sólo si
+
+			\[\pars{\frac{\sqrt{1+4x}-\sqrt{1-4x}}{4x}}^2 = \frac{1-\sqrt{1-16x^2}}{8x^2},\]
+
+			esto es si y sólo si
+
+			\[\frac{2\pars{1-\sqrt{1-16x^2}}}{16x^2} = \frac{1-\sqrt{1-16x^2}}{8x^2},\]
+
+			lo cuál es cierto.
+
+			Ahora por que una serie formal es igual a otro si y sólo si sus coeficientes son iguales entonces conocluimos que
+
+			\[\sum^n_{k=0}C_{2k}C_{2(n- k)} = 4^nC_n\]
+
+		\end{proof}
+
+		\item Prueba que los siguientes conjuntos estan contados por los n\'umeros de Catalan. Una prueba biyectiva es deseable.
+
+		\begin{enumerate}
+			\item Triangulaciones de un polígono convexo de $n+2$ lados en $n$ triangulos.
+			
+			No me salió la biyección.
+			
+			\item Formas de acomodar monedas en el plano, con la fila de hasta abajo conteniendo $n$ monedas consecutivas.
+			
+			\begin{proof}
+				Primero veamos que en un acomodo de monedad una moneda que no esta en la base solo puede estar si tiene una moneda abajo a la izquiera y una moneda abajo a la derecha. Luego si nos fijamos en las monedas en el borde de un acomodo, es decir aquellas monedas que no tienen dos monedas inmediatamente arriba de ellas entonces hay una biyección de este borde a un camino de Dyck, esto puesto que si las recorres de izquierda a derecha la monedas del borde si estas en una moneda la siguiente moneda solo puede estar la siguiente moneda del borde arriba a la izquierda o abajo a la derecha, en caso de no ser así sería contradicción de una moneda borde, justo estos pasos son los pasos en los caminos de Dyck y sabemos que estos son contados por los números de Catalan, por lo tanto, los acomodos de la monedas también son contados por los números de Catlan.
+			\end{proof}
+		\end{enumerate}
+
+		\item En este problema las $x, y$, $t$, $x_i$ son variables formales.
+
+		\begin{enumerate}
+			\item  Pruebe, comparando los coeficientes de $t^n/n!$ en ambos lados de las ecuaciones $e^{t(x+y)} = e^{tx}e^{ty}$, que 
+			
+			\[(x+y)^n =\sum^n_{k=0} \binom{n}{k}x^ky^{n-k}.\]
+			
+			\begin{proof}
+				Como
+
+				\[e^t = \sum_{i=0}^\infty \frac{t^i}{i!},\]
+
+				entonces
+
+				\[e^{t(x+y)} = \sum_{i=0}^\infty \frac{\pars{t(x+y)}^i}{i!} = \sum_{i=0}^\infty \pars{x+y}^i\frac{t^i}{i!},\]
+
+				también
+
+				\[e^{tx}e^{ty} = \pars{\sum_{i=0}^\infty \frac{\pars{tx}^i}{i!}} \pars{\sum_{i=0}^\infty \frac{\pars{ty}^i}{i!}} = \pars{\sum_{i=0}^\infty x^i\frac{t^i}{i!}} \pars{\sum_{i=0}^\infty y^i\frac{t^i}{i!}}\]\[ = \pars{\sum_{i=0}^\infty \pars{\sum_{j=0}^i \binom{i}{j}x^jy^{i-j}}\frac{t^i}{i!}},\]
+
+				por lo tanto concluimos que
+
+				\[(x+y)^n =\sum^n_{k=0} \binom{n}{k}x^ky^{n-k}.\]
+
+			\end{proof}
+
+			\item Pruebe el teorema multinomial
+			\[(x_1 + \cdots + x_k)^n=\sum_{r_1+\cdots +r_k=n} \frac{n!}	{r_1! \cdots r_k!} x_1^{r_1}\cdots x_k^{r_k}.\]
+
+			Primero veamos que si nos fijamos en la expansión de esto
+
+			\[(x_1 + \cdots + x_k)^n\]
+
+			la cantidad de términos $x_1^{r_1}\cdots x_k^{r_k}$ es la cantidad de formas en en que en la expansión se puede multiplicar $x_i$, $r_i$ veces, es decir dado un $x_1^{r_1}\cdots x_k^{r_k}$ se puede obtener escogiendo de cada uno de los $(x_1 + \cdots + x_k)$ un factor de este, y justo esto nos da una biyección con la cantidad de palabras con letras $x_i$ y donde la cantidad de letras$x_i$ son $r_i$, esto sabemos que es
+
+			\[\frac{n!}	{r_1! \cdots r_k!} x_1^{r_1},\]
+
+			por lo tanto
+
+			\[(x_1 + \cdots + x_k)^n=\sum_{r_1+\cdots +r_k=n} \frac{n!}	{r_1! \cdots r_k!} x_1^{r_1}\cdots x_k^{r_k}.\]
+
+			También se puede demostrar por inducción utilizando que
+
+			\[\binom{n}{k_1,\cdots,k_{m-1},(k_m+k_{m+1})}\binom{k_m+k_{m+1}}{k_m,k_{m+1}} = \binom{n}{k_1,\cdots,k_{m+1}}\]
+			
+			\item Pruebe, usando la identidad $1/(1-x) = 1 + x + x^2+ \cdots$, que
+			
+			\[\sum_{\substack{\sum r_i=m \\ \sum ir_i=n}}\frac{m!}{r_1!\cdots r_k!}=\binom{n-1}{m-1}.\]
+		\end{enumerate}
+
+		\item Sea $B_n$ el n\'umero de caminos de $(0,0)$ a $(2n,0)$ con pasos de la forma $(i,j)\to(i+1,j+1)$ \'o  $(i,j)\to(i+1,j-1)$. Muestra que 
+		
+		\[B_{n+1}=2\sum^n_{i=0} B_iC_{n-i}.\]
+		
+		Sugerencia, fijate en el primer momento en que se regresa a 0.
+
+		\begin{proof}
+			Si nos fijamos en el primer momento que regresa a $0$ un camino de Dyck digamos en el punto $2k$(esto por paridad ya que bajas tantas veces como subes) nos va a dar un camino de Dyck de tamaño $2(k-1)$ (para evitar que regrese antes a 0) a la izquierda (esto puesto que o es un camino de Dyck o uno reflejado por el eje x) y otro camino de Dyck de tamaño $2(n-k)$ a la derecha, entonces la cantidad de caminos que su primer momento que regresa a 0 es
+
+			\[2C_{k-1}B_{n-k},\]
+
+			por lo que
+
+			\[B_{n} = \sum_{i=1}^n2C_{i-1}B_{n-i} = 2\sum_{i=0}^{n-1} C_{i}B_{n-1-i} = 2\sum_{i=0}^nB_iC_{n+1-i}.\]
+			
+		\end{proof}
+
+    \end{enumerate}
+
+	\end{document}

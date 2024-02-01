@@ -1,0 +1,196 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II - Ejercicio 4}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item (100 pts.) Sean $\{X_n\}$ variables aleatorias iid con media $\mu$ y varianza finita $\sigma^2$. Demuestre que 
+		
+		\[\sqrt{n} e^{\overline{X}_n}-e^\mu \overset{d}{\to} \sigma e^\mu Z,\quad Z\sim N(0,1).\]
+
+		\begin{theo}
+			
+			(Metodo Delta) Sean $\{X_n\}$ variables aleatorias iid con media $\mu$ y varianza finita $\sigma^2$, y $g$ una función derivable cuya derivado no se anula, entonces
+			
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \xrightarrow{d} Z, Z \sim N(0,1).\]
+		
+		\end{theo}
+		
+		\begin{proof}
+			Por el teorema de limite central tenemos que
+
+			\[\sqrt{n} \pars{\frac{\overline{X}_n - \mu}{\sigma}} \xrightarrow{d} Z, Z \sim N(0,1).\]
+
+			Por el teorema del Bebe de Skorohod tenemos que existen $Y_n'$ y $Z'$ tales que
+
+			\[Y_n' \sim \sqrt{n} \pars{\frac{\overline{X}_n - \mu}{\sigma}}, \quad Z' \sim Z,\]
+
+			y que
+
+			\[\limninf Y_n' = Z'.\]
+			
+			Entonces
+
+			\[\overline{X}_n \sim \mu + \frac{\sigma Y_n'}{\sqrt{n}},\]
+
+			por lo que
+
+			\[g\pars{\overline{X}_n} \sim g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}}\]
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \sim \sqrt{n} \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\sigma g'(\mu)}},\]
+
+			multiplicando por $1 = \frac{Y_n'}{Y_n'}$ obtenemos
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \sim \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\frac{\sigma Y_n'}{\sqrt{n}}}} \pars{\frac{Y_n'}{g'(\mu)}}.\]
+
+			Por definición de $g'(\mu)$ y que $\frac{\sigma Y_n'}{\sqrt{n}} \xrightarrow{c.s.} 0$ tenemos que
+
+			\[g'(\mu) = \limninf \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\frac{\sigma Y_n'}{\sqrt{n}}}},\]
+
+			además como
+
+			\[\limninf Y_n' = Z',\]
+
+			concluimos que
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \xrightarrow{d} g'(\mu)\frac{Z'}{g'(\mu)} = Z' \sim Z \sim N(0,1).\]
+
+		\end{proof}
+
+		Ahora seguiremos por demostrar el ejercicio
+
+		\begin{proof}
+			Un corolario del teorema anterior es que
+
+			\[\sqrt{n} \pars{g\pars{\overline{X}_n} - g\pars{\mu}} \xrightarrow{d} \sigma g'(\mu) Z, Z \sim N(0,1),\]
+
+			esto por Slutsky.
+
+			Tomando $g(x) = e^x$ obtenemos
+
+			\[\sqrt{n} \pars{e^{\overline{X}_n} - e^{\mu}} \xrightarrow{d} \sigma e^\mu Z, Z \sim N(0,1)\]
+		\end{proof}
+
+    \end{enumerate}
+
+	\end{document}
+			

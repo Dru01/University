@@ -1,0 +1,185 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{geometry}[margin = 2.4 inch]
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem*{definicion}{Definición}
+\usepackage{amssymb}
+
+\usepackage{amsthm}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Álgebra Lineal I\\Tarea 05}
+\author{Rubén Pérez Palacios\\Profesor: Rafael Herrera Guzmán}
+\date{02 Marzo 2020}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problemas}
+
+\begin{enumerate}
+    \item Sea $P_n(R)$ el espacio vectorial de los polinomios de grado a lo más n. Defínase
+    
+    \[T : P_2(\R) + P_3(\R)\]
+    
+    como $T(p(x)) = xp(x) + p'(x)$. Demuestra que es transformación lineal, calcula $N(T)$, $R(T)$ y las dimensiones de dichos subespacios.
+    
+    \begin{proof}[Demostración]
+        Sean $p(x), q(x)$ polinimios en $P_2(\R)$, y $c$ un número real. Al ser la derivada lineal se cumple lo siguiente
+        
+        \begin{align*}
+            T(cp(x) + q(x)) &= x(cp(x) + q(x)) + (cp(x) + q(x))'\\
+            &= c(xp(x)) + xq(x) + cp'(x) + q'(x)\\
+            &= c(xp(x) + p'(x)) + xq(x) + q'(x)\\
+            &= cT(p(x)) + T(q(x))
+        \end{align*}
+        
+        Por lo tanto concluimos que $T$ es una función lineal.
+    \end{proof}
+
+    Sea $p(x)$ en $P_2(\R)$, por lo que $p(x)$ es de la forma
+
+    \[p(x) = ax^2 + bx + c, \quad a,b,c \in \R,\]
+
+    por lo tanto
+
+    \[T(p(x)) = (ax^3 + bx^2 + cx) + (2ax + b) = ax^3 + bx^2 + (2a + c)x + b.\]
+
+    Veamos como es $N(T)$, por definición
+
+    \[N(T) = \{p(x) \in P_2(x) : T(p(x)) = 0\},\]
+
+    susitituyendo $T(p(x))$ obtenemos
+
+    \[N(T) = \{p(x) \in P_2(x) : ax^3 + bx^2 + (2a+c)x + b = 0\},\]
+
+    esto es si y sólo
+
+    \[N(T) = \{p(x) \in P_2(x) : a = b = c = 0\},\]
+
+    por lo tanto
+
+    \[N(T) = \{0\}.\]
+
+    Por definición la dimensión de $N(T)$ es 0.
+
+    Es turno de fijarnos en $R(T)$, para ello veamos que si $q(x)$ en $P_3(x)$ entonces
+
+    \[q(x) = rx^3 + sx^2 + tx + u, \quad r,s,t,u \in \R,\]
+    
+    por definición tenemos que
+
+    \[R(T) = \{T(p(x)) : p(x) \in P_2(x)\}.\]
+
+    Como $T(p(x))$ esta en $P_3(x)$ entonces
+
+    \[T(p(x)) = rx^3 + sx^2 + tx + u,\]
+
+    pero por lo visto anteriormente tenemos que
+
+    \[ax^3 + bx^2 + (2a+c)x + b = rx^3 + sx^2 + tx + u,\]
+
+    por lo tanto
+
+    \[R(T) = \{T(p(x)) : s = u.\]
+
+    Podemos ver que $\{ax^3,bx^2+b,cx\}$ es base de $R(T)$, por lo tanto su dimension es 3.
+
+    \item Defínase
+    
+    \[tr : M_{n\times n}(\R) \longrightarrow \R\]
+
+    como tomar la traza. Demuestra que es una transformación lineal, calcula $N(T)$, $R(T)$ y las dimensiones de dichos subespacios. Da una base de $N(T)$.
+
+    \begin{proof}[Demostración]
+        Sean $A, B$ polinimios en $M_{n,n}(\R)$, y $c$ un número real. Definamos $a_{i,j}$ a la entrada de la matriz $A$ en el renglón $i$ columna $j$, entonces la $tr(A) = \sum_{i=1}^{n} a_{i,i}$. Notemos que la entrada $d_{i,j}$ de la matriz $D = cA + B$ es igual a $ca_{i,j} + b_{i,j}$ por definición de suma y producto escalar de matrices.
+
+        \newpage
+
+        Ahora veamos lo siguiente
+        
+        \begin{align*}
+            tr(cA + B) &= \sum_{i=1}^{n} ca_{i,i} + b_{i,i}\\
+            &= \sum_{i=1}^{n} ca_{i,i} + \sum_{i=1}^{n} b_{i,i}\\
+            &= c\sum_{i=1}^{n} a_{i,i} + \sum_{i=1}^{n} b_{i,i}\\
+            &= c(tr(A)) + tr(B)
+        \end{align*}
+        
+        Por lo tanto concluimos que $tr$ es una función lineal.
+    \end{proof}
+
+    Sea $A_{i,j}$ en $M_{n,n}(\R)$ tal que $a_{i,j} = 1$ y $a_{ii,jj} = 0$ para todo $ii \neq i$, $jj \neq j$.
+
+    Por definición $N(tr) = \{A \in M_{n,n}(\R) : tr(A) = 0\}$, por la tarea anterior sabemos que una base de $N(tr)$ es $\{A_{i,j} : i \neq j\} \cup \{B_{i,i} = A_{i,i} - A_{i+1,i+1}: \forall i < n\}$, por tanto su dimensión es $N^2-1$.
+    
+    Podemos ver que $R(tr) = \R$, por lo que la dimensión de este es $1$.
+
+    \item Defínase
+    
+    \begin{align*}
+        T : \R^3 &\longrightarrow \R^2\\
+        (x,y,z) &\longmapsto (x-2y+z,2x-3y+z) 
+    \end{align*}
+
+    Demuestra que $T$ es una transformación lineal, calcula $N(T)$, $R(T)$ y las dimensiones de dichos subespacios. Da una base de $N(T)$.
+
+    \begin{proof}[Demostración]
+        Sean $v_1 = (x_1,y_1,z_1),v_2 = (x_2,y_2,z_2)$ en $\R^3$, y $c$ un número real. Ahora veamos lo siguiente
+        
+        \begin{align*}
+            T(cv_1 + v_2) &= T((cx_1+x_2,cy_1 + y_2,cz_1 + z_2))\\
+            &= ((cx_1+x_2)-2(cy_1 + y_2)+(cz_1 + z_2),\\
+            &2(cx_1+x_2)-3(cy_1 + y_2) + (cz_1 + z_2))\\
+            &= c(x_1-2y_1+z_1,2x_2-3y_2+z_2)\\
+            &= cT(A) + T(B)
+        \end{align*}
+        
+        Por lo tanto concluimos que $tr$ es una función lineal.
+    \end{proof}
+
+    Por definición $N(T) = \{v \in \R^3 : T(v) = (x-2y+z,2x-3y+z) = 0\}$, por la tarea anterior sabemos que una base de $N(T)$ es $\{(1,1,1)\}$, por tanto su dimensión es $1$.
+    
+    \vspace{\baselineskip}
+    
+    Podemos ver que $R(T) = \R^2$, por lo que la dimensión de este es $2$.
+
+    \item Sea $T : \R^n \longmapsto \R^m$ una transformación lineal. Demuestra que
+    
+    \begin{enumerate}
+        \item Si $n < m$, entonces $T$ no puede ser sobreyectiva.
+        
+        Como $Nity(T) + rank(T) = n$ entonces
+
+        \[rank(T) \leq n < m,\]
+
+        al ser $R(T) \subset \R^m$ concluimos que $T$ no es sobreyectiva.
+
+        \item Si $n > m$, entonces $T$ no puede ser inyectiva.
+        
+        \[Nity(T) = n - rank(T) \geq n - m > 0,\]
+
+        por lo que concluimos que $T$ no es inyectiva.
+
+    \end{enumerate}
+
+    \item Sea $T : \R^3 \longmapsto \R$ una transformación lineal. Demostrar que existen escalares $a, b$ y $c$ tales que $T (x, y, z) = ax + by + cz$ para toda $(x, y, z) \in R^3$. ¿Se puede generalizar este resultado para $T : \R^n \longmapsto \R$? Enunciar y demostrar un resultado semejante para $T : \R^n \longmapsto \R^m$.
+    
+    
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,220 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+    \usepackage{amssymb}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+    
+% Datos
+    \title{Probabilidad y Estadística\\Tarea 06}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{24 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+	\section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Sean $X_1, \cdots, X_n$ variables aleatorias exponenciales independientes con parametros \linebreak $\lambda_1, \cdots, \lambda_n$, respectivamente.
+		
+		\begin{enumerate}
+			\item Sea $Y_n = \min(X_1,\cdots,X_n)$, luego
+			
+			\begin{align*}
+				F_Y(y) &= P(Y \leq y)\\
+				&= 1 - P(Y > y)\\
+				&= 1 - P(X_1 > y, \cdots, X_n > y) & \text{por definición de mínimo}\\
+				&= 1 - \prod_{i=1}^n P(X_i > y) & \text{al ser independientes}\\
+				&= 1 - \prod_{i=1}^n e^{-\lambda_i y} & \text{por ser exponenciales}\\
+				&= 1 - e^{-\left(\sum_{i=1}^n \lambda_i\right) y}
+			\end{align*}
+
+			La cual es una distirbución exponencial con parámtero $\sum_{i=1}^n \lambda_i$.
+
+			\item Veamos como es $P(X_1 < X_2)$
+			
+			\begin{align*}
+				P(X_1 < X_2) &= \int_0^\infty P(X < Y | Y = y) f_Y(y) dy\\
+				&= \int_0^\infty F_X(y) f_Y(y) dy\\
+				&= \int_0^\infty (1 - e^{-\lambda_1 y}) \lambda_2 e^{-\lambda_2 y} dy\\
+				&= \int_0^\infty \lambda_2 e^{-\lambda_2 y} dy - \int_0^\infty \lambda_2 e^{-(\lambda_1 + \lambda_2) y} dy\\
+				&= 1 - \frac{\lambda_2}{\lambda_1 + \lambda_2}\\
+				&= \frac{\lambda_1}{\lambda_1 + \lambda_2}
+			\end{align*}
+
+			\item Veamos $X_1 = Y$, quiere decir que $X_1$ es el minimo de $X_1,\cdots,X_n$, lo cual es cierto si y sólo si $X_1 \leq X_2,\cdots, X_1 \leq X_n$, por lo que
+			
+			\[P(X_1 = Y) = P(X_1 \leq X_2,\cdots, X)\]
+			
+			Al ser independientes entonces
+			
+			\[P(X_1 = Y) = \prod_{i=2}^{n}P(X_1 \leq X_i)\]
+
+			Como las $X_i$ son continuas entonces $X_i - X_j$ también lo es, por lo tanto \linebreak $P(X_i = X_j) = 0$. Por lo que 
+
+			\[P(X_1 = Y) = \prod_{i=2}^{n}P(X_1 < X_i),\]
+			
+			por el inciso anterior
+
+			\[P(X_1 = Y) = \prod_{i=2}^{n}\frac{\lambda_1}{\lambda_1 + \lambda_i},\]
+
+			por lo que concluimos que
+
+			\[P(X_1 = Y) = \frac{\lambda_1^{n-1}}{\prod_{i=2}^{n}\lambda_1 + \lambda_i}\]
+
+		\end{enumerate}
+
+		\item Sea $(X,Y)$ un vector con función de densidad $f(x,y) = \frac{x+y}{8}$ para $0 \leq x, y \leq 2$.
+		
+		Empezaremos por calcular la funciones de densidad marginales de $X$ y $Y$, ya que podrian sernos utiles mas adelante.
+
+		\begin{align*}
+			f_X(x) &= \int_{-\infty}^\infty f(x,y) dy\\
+			&= \int_{0}^2 f(x,y) dy\\
+			&= \int_{0}^2 \frac{x+y}{8} dy\\
+			&= \frac{x+1}{4}.\\
+		\end{align*}
+
+		Analogamente obtenemos que
+
+		\[f_Y(y) = \frac{y+1}{4}.\]
+
+		\begin{enumerate}
+			\item Como $0 \leq x, y$ entonces $f(x,y) \geq 0$. Ahora veamos que estas acumulan $1$,
+			
+			\begin{align*}
+				\int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y) dx dy &= \int_{0}^2 \int_{0}^2 f(x,y) dx dy\\
+				&= \int_{0}^2 \int_{0}^2 \frac{x+y}{8} dx dy\\
+				&= \int_{0}^2 \frac{y+1}{4}dy\\
+				&= 1\\
+			\end{align*}
+
+			Por lo que concluimos que es una función de distribución.
+
+			\item La función de densidad marginal de $Y$ es $f_Y(y) = \frac{y+1}{4}$ y la de $X$ es $f_X(x) = \frac{x+1}{4}$, por lo que
+			
+			\begin{align*}
+				f_{X|Y}(x|y) &= \frac{f(x,y)}{f_Y(y)}		&f_{Y|X}(y|x) &= \frac{f(x,y)}{f_X(x)}\\
+				&= \frac{\frac{x + y}{8}}{\frac{y + 1}{4}}	& &= \frac{\frac{x + y}{8}}{\frac{x + 1}{4}}\\
+				&= \frac{x + y}{2y + 2}						& &= \frac{x + y}{2x + 2}
+			\end{align*}
+
+			\item La probabilidad de $P(X > Y)$ es $\frac{1}{2}$ al ser indenticamente distribuidas. Aquí dejo el calculo de no ser lo suficientemente convincente. Primero calcularemos la función de distribución marginal de $X$.
+			
+			\begin{align*}
+				F_X(x) &= \int_{-\infty}^{x} f_X(u) du\\
+				&= \int_{0}^{x} \frac{u+1}{4} du\\
+				&= \frac{x(x+2)}{8}.
+			\end{align*}
+
+			Usando ley total obtenemos
+
+			\begin{align*}
+				P(X < Y) &= \int_{0}^2 F_X(x) f_Y(x) dx\\
+				&= \int_{0}^2 \frac{x(x+2)}{8} \frac{x + 1}{4} dx\\
+				&= \frac{1}{2}
+			\end{align*}
+
+		\end{enumerate}
+
+    \end{enumerate}
+
+	\end{document}

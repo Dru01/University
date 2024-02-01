@@ -1,0 +1,183 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad Aplicada y Optimización \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Daniel Hernández Hernández}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item La $\sigma$-álgebra de Borel de los reales $\pars{\mathcal{B}}$ contiene a las uniones numerables de intervalos (de cualquier tipo).
+		
+		\begin{proof}
+			Veamos que si $a,c,b \in R$ cumplen que $a\leq c \leq b$ entonces
+			
+			\begin{enumerate}
+				\item Por definición todo intervalo abierto esta contenido en $\pars{\mathcal{B}}$.
+				\item Puesto que $(-\infty,a),(b,\infty) \in \pars{\mathcal{B}}$ por definición y es cerrado bajo unión finita y complemento entonces $[a,b] \in \pars{\mathcal{B}}$.
+				\item Por último puesto que $(a,c),[c,b] \in \pars{\mathcal{B}}$ y es cerrado bajo unión entonces $(a,b] \in \pars{\mathcal{B}}$. Analogamente podemos ver que $[a,b) \in \pars{\mathcal{B}}$.
+			\end{enumerate}
+
+			Debido a que $\pars{\mathcal{B}}$ es cerrado bajo uniones numerables y demostramos que todo tipo de intervalo esta contenido en $\pars{\mathcal{B}}$ concluimos que contiene a las uniones numerables de intervalos (de cualquier tipo).
+		\end{proof}
+
+		\item Prueba que la función
+		
+		\[
+			f(x) = \begin{cases}
+				\lambda e^{-\lambda x}, & x\geq 0,\\
+				\hfil 0, & x < 0.
+			\end{cases}
+		\]
+
+		es, en efecto una función de densidas. Esto es, que $f$ no sea negativa y que $\int_{-\infty}{\infty} f(x)dx = 1$.
+
+		\begin{proof}
+			Veamos que
+
+			\[
+				\int_{-\infty}^{\infty} f(x) = \int_{0}^{\infty} f(x) = \int_{0}^{\infty} \lambda e^{-\lambda x} = -e^{-\lambda x} \Big|_0^\infty = -(0-1) = 1.
+			\]
+
+			Puesto que $e > 0$ entonces $e^{-\lambda x} > 0$. Por lo tanto concluimos que $f$ es una función de densidad.
+		\end{proof}
+		\item Si $\PP\bracs{A\cap B} = \PP\bracs{A}\PP\bracs{B}$, entonces $\PP\bracs{A^c \cap B} = \PP\bracs{A^c}\PP\bracs{B}$.
+		
+		\begin{proof}
+			\begin{align*}
+				\PP\bracs{A^c \cap B} &= 1 - \PP\bracs{\pars{A^c \cap B}^c} &\text{Debido a que } \PP\bracs{X} = 1 - \PP\bracs{X^c}\\
+				&= 1 - \pars{\PP\bracs{\pars{B^c \cup A}}} &\text{Ya que } \PP\bracs{\pars{A\cap B}^c} = \PP\bracs{A^c \cup B^c}\\
+				&= 1 - \pars{\PP\bracs{\pars{B^c \cup A} \cap \pars{B^c \cup B}}} &\text{Puesto que } \PP\bracs{A\cup A^c} = \PP\bracs{\Omega}\\
+				&= 1 - \pars{\PP\bracs{B^c \cup \pars{A\cap B}}} &\text{Por distribución}.\\
+				&= 1 - \pars{\PP\bracs{B^c} + \PP\bracs{A\cap B}} &\text{Por sigmatividad de } \PP\\
+				&= \PP\bracs{B} - \PP\bracs{A\cap B} &\text{Debido a que } \PP\bracs{X} = 1 - \PP\bracs{X^c}\\
+				&= \PP\bracs{B} - \PP\bracs{A}\PP\bracs{B} &\text{Por hipotesis}\\
+				&= \pars{1 - \PP\bracs{A}}\PP\bracs{B}\\
+				&= \PP\bracs{A^c}\PP\bracs{B} &\text{Debido a que } \PP\bracs{X} = 1 - \PP\bracs{X^c}.
+			\end{align*}
+		\end{proof}
+
+		\item Dada una función de distribución $F$, simular una variable aleatoria con función de distribución $F$ a partir de un generador de observaciones de una variable aleatoria uniforme en $[0,1]$.
+	\end{enumerate}
+\end{document}
+

@@ -1,0 +1,227 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Cálculo III \\ Tarea 3}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Fabián Augusto Pascual Domínguez}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		
+		\item Probar usando la definición de conjunto compacto que
+		
+		\begin{itemize}
+			\item $\bracs{0,1}$ es compacto en $\RR$.
+			
+			Sea $U = \cup_{\alpha \in \Lambda} U_{\alpha}$ una cubierta abierta de $\bracs{0,1}$, y $P$ el conjunto de puntos $p\in \bracs{0,1}$ tales que $\bracs{0,x}$ puede ser cubierto por una cantidad finita de elementos de $U$, puesto que ${0}$ es un conjunto finito entonces $0\in P$, además como $P$ es acotado entonces tiene un supremo $s$. 
+			
+			Sea $U_s\in {U_{\alpha}, \alpha\in\Lambda}$ un conjunto que contiene a $s$ (el cual existe ya que $U$ es una cubierta de $\bracs{0,1}$), al ser $U_s$ abierto existe $s > \epsilon > 0$ tal que $(s-\epsilon,s]\subset U_s$, al ser $s$ el supremo entonces $s-\epsilon \in P$ y existe una subcubierta finita de $U$ que cubre a $\bracs{0,s-\epsilon}$ agregando $U_s$ a esa subcubierta obtenemos que $\bracs{0,s}$ puede ser cubierto por una subcubierta finita de $U$ y por lo que $s\in P$. 
+			
+			Si $x < 1$, y sea $U_s\in {U_{\alpha}, \alpha\in\Lambda}$ un conjunto que contiene a $s$ (el cual existe ya que $U$ es una cubierta de $\bracs{0,1}$) al ser $U_s$ abierto existe $\epsilon > 0$ tal que $[s, s+\epsilon)\subset U_s$, luego como $s\in P$ existe una subcubierta finita de $U$ que cubre a $\bracs{0,s}$ agregando $U_s$ a ella obtenemos una subcubierta finita de $U$ que cubre a $[0,s+\frac{\epsilon}{2}]$ y $s+\frac{\epsilon}{2}\in P$, lo cual es una contradicción ya que $s$ es el supremos de $P$. Por lo que $s = 1$.
+
+			Por lo tanto $\bracs{0,1}$ es compacto.
+
+			\item $\set{0}\times\bracs{0,1}$ no es compacto en $\RR$.
+		\end{itemize}
+
+		\item Sea $A$ un conjunto compacto en $\RR^p$. Definimos
+		
+		\[co(A) = \set{\vec{z} = t\vec{x} + (1-t)\vec{y} \in \RR^p | \vec{x},\vec{y}\in A, t\in\bracs{0,1}},\]
+
+		el cual se llama cubierta abierta convexa de $A$. Probar que $co(A)$ es compacto en $\RR^p$.
+
+		\begin{proof}
+			Sea $\set{z_n}_{n=1}^{\infty}\subset A$. Para todo $z_n$ existen $x_n,y_n \in A, t \in \bracs{0,1}$ tales que 
+			
+			\[z_n =  t\vec{x_n} + (1-t)\vec{y_n}.\]
+			
+			Al ser $A$ compacto entonces es secuencialmente compacto, por lo tanto existe
+			
+			\[\set{x_{n_m}}_{m=1}^{\infty}\xrightarrow{m \to \infty} x \in A\]
+			
+			y además 
+			
+			\[\set{y_{n_{m_l}}}\xrightarrow{l \to \infty} y \in A \text{(también $x_{n_{m_{l}}} \xrightarrow{m \to \infty} x$)},\]
+			
+			por lo que 
+			
+			\[z_{n_{m_l}} = t\vec{x_{n_{m_l}}} + (1-t)\vec{y_{n_{m_l}}} \xrightarrow{m \to \infty} t\vec{x} + (1-t)\vec{y}\in co(A)\]
+			
+			por definición de $co(A)$. Por lo que $co(A)$ es secuencialmente compacto y por lo tanto concluimos que $co(A)$ es compacto.
+		\end{proof}
+
+		\item Conjuntos disconexos
+		
+		\begin{enumerate}
+			\item Sean $A,B \subset \RR^p$ cerrados tales que $A\cap B = 0$ y $B$ acotado. Probar que existe un $\epsilon > 0$ tal que $\norm{\vec{x}-\vec{y}} \geq \epsilon, \forall \vec{x}\in A, \vec{y}\in B$.
+			
+			\begin{proof}
+				Procederemos a demostrar por contradicción. Si $\forall \epsilon > 0$ existen $\vec{x}\in A, \vec{y} \in B$ tales que $\norm{\vec{x}-\vec{y}} < \epsilon$ sean $\vec{x_n},\vec{y_n}$ tales que $\norm{\vec{x}-\vec{y}} < \frac{1}{n}$, notese que $\limtoinf{n}d\pars{\vec{x_n},\vec{y_n}} = 0$. Al ser $B$ cerrado y acotado entonces es compacto, por lo que también secuencialmente compacto, entonces existe una subsucesión $\set{\vec{y_{n_m}}}_{m=1}^{\infty}$ tal que $\limtoinf{m} \vec{y_{n_m}} = \vec{y} \in B$ luego como $\vec{x_n} \in A$ y $d(\vec{y_n},A) = \inf_{a\in A} \norm{\vec{y_n}-a}$ entonces $d(y_n,A) = 0$, por el ejercicio 5 de la tarea pasada tenemos que $d(y, A) = 0$, lo cual es una contradicción ya que $A$ es cerrado.
+			\end{proof}
+
+			\item Dar un ejemplo en $\RR$ donde $B$ no es acotado pero no se cumple la conclusión anterior.
+			
+			Sea $A = \NN$ y $B = \set{n + \frac{1}{n}| n\in\NN}$, luego $\forall \epsilon > 0$ tenemos que por propiedad ariquimediana de los números reales existe $n$ talque $\frac{1}{n} < \epsilon$ por lo que $\abs{n - \pars{n + \frac{1}{n}}} = \frac{1}{n} < \epsilon$, por lo que $A$ y $B$ no cumplen la concluisión de $A$.
+		\end{enumerate}
+
+		\item Sea $A$ un conjunto conexo de $\RR^n$ con más de un punto. Demostrar que $A\subset A'$.
+		
+		\begin{proof}
+			Sea $a\in A$ y $b\in A\setminus\set{a}$ (ya que $A$ tiene mas de un punto), al ser $A$ conexo tenemos que 
+			
+			\[{c = bt + (1-t)a, t\in\bracs{0,1}} \subset A.\]
+			
+			Si $\epsilon \geq \norm{b-a}$ entonces 
+			
+			\[b \in \bracs{B\pars{a,\epsilon}\cap A} \setminus \set{a}.\]
+			
+			Si $0<\epsilon < \norm{b-a}$ entonces $0<\frac{\epsilon}{2\norm{b-a}} < 1$ por lo que 
+			
+			\[b\frac{\epsilon}{2\norm{b-a}} + \pars{1-\frac{\epsilon}{2\norm{b-a}}}a \in A\] 
+			
+			luego 
+
+			\[\norm{b\frac{\epsilon}{2\norm{b-a}} + \pars{1-\frac{\epsilon}{2\norm{b-a}}}a - a} = \norm{\pars{b-a}\frac{\epsilon}{2\norm{b-a}}} = \frac{\epsilon}{2} < \epsilon,\]
+
+			por lo que
+
+			\[b\frac{\epsilon}{2\norm{b-a}} + \pars{1-\frac{\epsilon}{2\norm{b-a}}}a \in \bracs{B\pars{a,\epsilon}\cap A} \setminus \set{a}.\]
+
+			Por lo que $a\in A'$, por lo tanto concluimos que $A\subset A'$.
+		\end{proof}
+
+		\item Sea $\set{F_n}_{n=1}^{\infty}$ una sucesión decreciente de conjuntos compactos, conexos y que no son vacios de $\RR^p$. Sea $F = \limtoinf{n} F_n$. Demostrar que $F$ es un conjunto compacto, conexo y que no es vacío.
+		
+		\begin{proof}
+			Puesto que $F = \bigcap_{n=1}^{\infty} F_n$ (ya que el límite de una sucesión creciente de conjuntos es la intersección de ellos), entonces $F \subset F_1$, por lo que $F$ es acotado, ahora como $F$ es la intersección arbitraria de conjuntos cerrados entonces $F$ es cerrado. Además como $F$ es no vació ya que de lo contario existiría un $F_n$ talque es vacío lo cual es una contradicción. 
+			
+			Procederemos a demostrar por contradicción que $F$ es conexo. si $F$ es disconexo entonces existen $U,V\subset \RR^p$ abiertos tales que $U\cap V = \emptyset, F\cap U \neq \emptyset \neq F\cap V$ y $F \subset U\cup V$. Sea $G_n = F_n\setminus\pars{U\cup V}$, como $F_n$ es decreciente también $G_n$ lo es, además como $F$ es compacto entonces para todo subcubierta de $F_n$ existe una subcubierta finita que lo cubre y como $G_n \subset F_n$ entonces también subre a $G_n$ por lo tanto $G_n$ es compacto, además
+
+			\[\limtoinf{n} G_n = \bigcap_{n=1}^{\infty} G_n = \bigcap_{n=1}^{\infty} F_n\setminus\pars{U\cup V} = \emptyset.\]
+
+			por lo tanto existe un $G_n = \emptyset$ por lo que $F_n \subset U\cup V$, lo cual es una contradicción ya que $F_n$ es conexo. Por lo tanto $\limtoinf{n} F$ es conexo.
+		\end{proof}
+
+	\end{enumerate}
+\end{document}
+

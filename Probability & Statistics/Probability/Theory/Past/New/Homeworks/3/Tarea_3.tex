@@ -1,0 +1,226 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Antonio Murillo Salas}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\textbf{Nota:} Justifique con claridad cada una de las respuestas.
+
+	\begin{enumerate}
+		\item Sea $\pars{X,Y}$ un vector aleatoria con función de densidad conjunta dada por
+		
+		\[f_{X,Y}\pars{x,y} = \begin{cases}
+			\frac{6\pars{y-x}}{N\pars{N^2-1}}, &\text{si $x < y$ y $x,y\in\set{1,\cdots,N}$},\\
+			0, &\text{en otro caso},
+		\end{cases}\]
+
+		Encuentre la función de probabilidades condicional de:
+
+		\begin{enumerate}
+			\item $X$ dado $Y$.
+			\item $Y$ dado $X$.
+		\end{enumerate}
+
+		\item Suponga una moneda se lanza $N$ veces, donde los lanzamientos son independientes y $N$ tiene distribución Poisson de parametro $\lambda > 0$. Sea $X$ y $Y$ el número de águilas y soles en los $N$ lanzamientos, respectivamente.
+		
+		\begin{enumerate}
+			\item Encuentre la función de probabilidades conjunta de $X$ y $Y$.
+			
+			Recordemos que si $N$ es conocido entonces nuestro experimento será una distribucción bernoulli con parametros $\pars{N,\frac{1}{2}}$. Ahora puesto que en todo lanzamiento siempre el resultado será águilo o sol entonces $X+Y = N$, por lo que
+
+			\[f_{N|X,Y}\pars{n,x,y} = \begin{cases}
+				1 &\text{si $n = x+y$},\\
+				0 &\text{en otro caso}
+			\end{cases}.\]
+
+			Si $x + y = n$ por bayes obtenemos
+
+			\begin{align*}
+				f_{X,Y}\pars{x,y} &= f_{X,Y|N}\pars{x,y,n}f_{N}\pars{N}\\
+				&= \frac{\lambda^ne^{-\lambda}}{n!} \binom{n}{x}\pars{\frac{1}{2}}^n\\
+				&= \frac{\lambda^{x+y}e^{-\lambda}}{\pars{x+y}!} \binom{x+y}{x}\pars{\frac{1}{2}}^n\\
+				&= \frac{\lambda^{x+y}e^{-\lambda}}{x!y!} \pars{\frac{1}{2}}^{x+y}\\
+				&= \bracs{\pars{\frac{1}{2}}^{x} \pars{\frac{\lambda^xe^{-\frac{\lambda}{2}}}{x!}}}\bracs{\pars{\frac{1}{2}}^{y} \pars{\frac{\lambda^ye^{-\frac{\lambda}{2}}}{y!}}}
+			\end{align*}
+
+			en otro caso $f_{X,Y}\pars{x,y} = 0$.
+
+			\item ¿Son independientes $X$ y $Y$?
+			
+			\begin{align*}
+				f_X\pars{x} &= \sum_{y=0}^{\infty} f_{X,Y}\pars{x,y}\\
+				&= \sum_{y=0}^{\infty} \frac{\lambda^{x+y}e^{-\lambda}}{x!y!} \pars{\frac{1}{2}}^{x+y}\\
+				&= \pars{\frac{1}{2}}^{x} \pars{\frac{\lambda^xe^{-\frac{\lambda}{2}}}{x!}} \sum_{y=0}^{\infty} \frac{\pars{\frac{\lambda}{2}}^{y}e^{-\frac{\lambda}{2}}}{y!}\\
+				&= \pars{\frac{1}{2}}^{x} \pars{\frac{\lambda^xe^{-\frac{\lambda}{2}}}{x!}},
+			\end{align*}
+
+			analogamente
+
+			\[f_Y\pars{y} = \pars{\frac{1}{2}}^{y} \pars{\frac{\lambda^ye^{-\frac{\lambda}{2}}}{y!}},\]
+
+			por lo que
+
+			\[f_{X,Y}\pars{x,y} = f_X\pars{x}f_Y\pars{y},\]
+
+			por lo tanto $X$ y $Y$ son independientes.
+		\end{enumerate}
+
+		\item Se elijen al azar y sin reemplazo, dos tarjetas de una urna que contiene $N$ tarjetas numeradas del $1$ al $N$, con $N\geq 1$. Sean $X$ y $Y$ el menor y mayor respectivamente, de los números de las tarjertas seleccionadas. Encuentre $\EE\pars{X|Y} \txty \EE\pars{Y|X}$.
+		
+		\item Sean $X$ y $Y$ variables aleatorias tales que $Var\pars{X}$ es finita. La varianza condicional de $X$ dado $Y$ se define por
+		
+		\[Var\pars{X|Y} = \EE\pars{\pars{X-\EE\pars{X|Y}}^2|Y}.\]
+
+		Demuestre que
+
+		\[Var\pars{X} = \EE\pars{Var\pars{X|Y}} + Var\pars{\EE\pars{X|Y}}.\]
+
+		\begin{proof}
+			Primero notemos que
+
+			\begin{align*}
+				Var\pars{X|Y} &= \EE\pars{\pars{X-\EE\pars{X|Y}}^2|Y}\\
+				&= \EE\pars{X^2|Y-2X\EE\pars{X|Y}|Y + \EE\pars{X|Y}^2|Y}\\
+			\end{align*}
+			
+			Observemos lo siguiente
+
+			\begin{align*}
+				\EE\pars{Var\pars{X|Y}} &= \EE\pars{\EE\pars{\pars{X-\EE\pars{X|Y}}^2|Y}} &\text{Por definición de varianza condicional}\\
+				&= \EE\pars{\pars{X-\EE\pars{X|Y}}^2} &\text{Por esperanza total}\\
+				&= \EE\pars{X^2} - 2\EE\pars{X|Y}\EE\pars{X} +  &\text{Por linealidad de la esperanza}\\
+			\end{align*}
+
+		\end{proof}
+
+		\item Sea $Y$ una variable aleatoria con distribución gamma de parámetros $\pars{s,\alpha}$, es decir, $Y$ tiene densidad
+		
+		\[f_y\pars{y} = \frac{\alpha^s}{\Gamma\pars{s}} e^{-\alpha y} y^{s-1}, y > 0.\]
+
+		Supongo que $X$ es una variable aleatoria cuya distribución condicional dado $Y = y$ es Poisson con media $y$. Pruebe que la distribución $Y$ dado $X = i$ es gamma de parámetros $\pars{s+i,\alpha + i}$.
+	\end{enumerate}
+\end{document}
+

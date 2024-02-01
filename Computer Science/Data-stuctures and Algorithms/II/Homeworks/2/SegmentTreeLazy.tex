@@ -1,0 +1,225 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Estructuras de dator y álgoritmos II \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Carlos Segura González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\section{Segment Tree}
+	
+	El $ST$ se implemento con una clase y en forma de arreglo. 
+
+	\subsection*{Diferencias}
+	
+	Puesto que entre dos $STs$ las únicas diferencias son el $tipo\ de\ dato$ que almacenan los nodos y como se calcula el $valor$ de un nodo a partir de sus hijos, estas dos deberían ser la únicas modificadas, lo primero se implemento con un $template$ el cual representa el $tipo\ de\ dato$ que almacenan los nodos, el segundo se explicará mas adelante. Ahora cuando los $STs$ tiene propagación vaga la única diferencia entre sus propagaciones vagas son el $tipo\ de\ dato$ de la actualización por propagar, como se actualiza el $valor$ de un nodo según el $valor$ de la actualización por propagar en ese nodo y como se propaga el valor de la actualización de un nodo a sus hijos, el primero de nuevo se implemento con un $template$ el cual representa el $tipo\ de\ dato$ de la propagación vaga, lo últimos se explicarán mas adelante.
+
+	\subsection*{Implementación}
+
+	\subsubsection*{Campos}
+	
+	Se implemento una clase abstracta de un $ST$ que define la base de uno, la cual es un $template class$ que recibe dos clases que representan $tipo\ de\ dato$ que almacenan los nodos y las actualizaciones respectivamente, además contiene los siguientes datos:
+	
+	\begin{itemize}
+		\item Un $vector\ node:$ El conjunto de nodos.
+		\item Un $vector\ lazy:$ El conjunto de actualizaciones por propagar.
+		\item Un $vector\ vec:$ Los valores iniciales de los nodos(Los cuales se pueden ir actulizando si y sólo si las actualizaciones son puntuales).
+		\item Un $vector\ pend:$ El conjunto de indicadores de las actualizaciones pendientes de los nodos.
+		\item $dflt\_node:$ El valor $predeterminado$ de un nodo, que además se usara como valor neutro al obtener el valor de un $nodo$ a partir de sus hijos.
+		\item $dflt\_lazy:$ El valor $predeterminado$ del lazy, que además se usara como valor neutro al actualizar el valor de un nodo y al propagar una actualización.
+		\item $tval:$ El valor por actualizar.
+		\item $tl, tr:$ Extremo izquierdo y derecho respectivamente de un rango, el cual se usa cuando se actualiza un rango, o se hace una consulta de un rango.
+		\item $N:$ El tamaño del arreglo que representa el $ST$.
+		\item $init:$ Indica si se proporciono valores iniciales para el arreglo que representa el $ST$, en caso de no ser así entonces se incializa con el valor $dflt\_node$.
+	\end{itemize}
+
+	\subsubsection*{Funciones}
+
+	Funciones principales de la clase:
+
+	\begin{itemize}
+		\item $\_build:$ Se encarga de construir e inicializar recursivamente el $ST$.
+		\item $\_update:$ Se encarga de actualizar el rango $tl,tr$ recursivamente del $ST$.
+		\item $\_query:$ Se encarga de hacer una consulta del rango $tl,tr$ recursivamente del $ST$. 
+	\end{itemize}
+
+	Ahora si es momento de explicar como se implementaran las diferencias que quedaron pendientes. Para implementar como se calcula el $valor$ de un nodo a partir de sus hijos es con una función que reciba como argumentos el valor de sus hijos y devuelva el valor resultado del nodo. Para implementar como se actualiza el $valor$ de un nodo según el $valor$ de la actualización por propagar en ese nodo es con una función que reciba como argumentos un nodo, el rango que representa y el $valor$ de la actualización por propagar y devuelva el $valor$ final del nodo. Por último para implementar como se propaga el valor de la actualización de un nodo a sus hijos es con una función que reciba como argumentos el $valor$ de la actualización por propagar y el valor de la actualización pendiente del hijo, y devuelva el $valor$ de la actualización por propagar del hijo. Todas las anteriores funciones son implementadas puramente virtuales (lo cual hace a la clase abstracta), por lo que el usuario debera heredar una clase de esta y proporcionar la implementación de estas, recuerde que no se puede hacer una instancia de una clase abstracta. Para poder usarla deberá hacer lo anterior.
+
+	Funciones de apoyo:
+
+	\begin{itemize}
+		\item $merge:$ calcula el $valor$ de un nodo a partir de sus hijos.
+		\item $merge\_range:$ actualiza el $valor$ de un nodo según el $valor$ de la actualización por propagar en ese nodo.
+		\item $merge\_lazy:$ propaga el valor de la actualización de un nodo a sus hijos.
+		\item $out\_range:$ verifica si un rango $l,r$ esta fuera del rango $tl,tr$.
+		\item $in\_range:$ verifica si un rango $l,r$ esta dentro del rango $tl,tr$.
+	\end{itemize}
+
+	Funciones de interface entre la clase y el usuario, las cuales son virtuales por si el usuario quisiera sobreescribirlas, de ser así es altamente recomendable que se llame a las funciones originales dentro de las nuevas:
+
+	\begin{itemize}
+		\item $build:$ Recibe como parametros el tamaño $N$ del arreglo que representa el $ST$, el, $dflt\_node$, $dflt\_lazy$, y opcionalmente el valor inicial del arreglo que representa el $ST$. Construye e inicializa el $ST$ y los campos de este.
+		\item $update:$ Recibe como parametros el rango $l,r$ por actualizar y $val$ el $valor$ de la actualización. Actualiza el rango $l,r$ con el valor $val$.
+		\item $query:$ Recibe como parametros el rango $l,r$ de la consulta. Devuelve el valor del rango $l,r$ del $ST$.
+	\end{itemize}
+
+	\subsection*{Problemas}
+
+	\subsubsection*{Editor-Codeforces}
+
+	La solución de este problema es con un $ST$ que almacena la suma de un rango, la mínima y máxima suma de los prefijos, donde $($ vale $1$, $)$ vale $-1$ y el resto vale $0$ con propagación vaga. Ahora notemos que si todos las sumas de los prefijos son no negativas entonces significa que siempre huba más parentesis abiertos que cerrados y si la suma de todo es $0$ entonces la cantidad de parentesis abiertos y cerrados es la misma por lo que es un $texto\ correcto$, por último notemos que la máxima suma de los prefijos es la mayor cantidad de parentesis abiertos anidados sin tener un parentesis cerrado correspondiente, por lo que la cantidad de colores el la máxima suma de los prefijos. Por lo tanto nuestro $ST$ resuelve el problema.
+
+	\subsection*{SegmentTreeLazy-Hacerrank}
+	
+	La solución de este problema es con un $ST$ que almacena la suma de un rango con propagación vaga. Para actualizar un rango $l,r$ tenemos $4$ casos:
+
+	\begin{enumerate}
+		\item $F(1)(E(0)):$ el $valor$ final del nodo es $r-l+1(0)$, puesto que es la suma de $r-l+1, 1's(0's)$.
+		\item $I(-1):$ el $valor$ final del nodo es $r - l + 1 - node$(node es el valor del nodo), puesto que si la suma actual es $node$ entonces al invertir todos los valores sería el complemento de esa suma.
+		\item $(-2):$ No se actualiza.
+	\end{enumerate}
+
+	Los valores de las actualizaciones por propagar son:
+
+	\begin{itemize}
+		\item $1:$ Fijar todos con $1$.
+		\item $0:$ Fijar todos con $0$.
+		\item $-1:$ Intercambiar valores.
+		\item $-2:$ No hacer nada(predeterminado).
+	\end{itemize}
+	
+	Para la propagación de las actualizaciones tenemos $-2$ casos según el valor de la actualización:
+
+	\begin{enumerate}
+		\item $1(0):$ puesto que todos los valores serán reemplazados por $1's(0's)$ no importa que valor tenía antes la actualización pendiente del hijo, por lo que la actualización final del hijo es $1(0)$.
+		\item $-1:$ tenemos $4$ casos según el valor de la actualización pendiente del hijo.
+		\begin{enumerate}
+			\item $1(0)$: se intercambia por $0(1)$, por lo que la actualización final del hijo es $0(1)$.
+			\item $-1$: como doble invertir es no hacer nada entonces la actualización final del hijo es $-2$.
+			\item $-1$: como no hacía nada entonces la actualización final del hijo es $-1$.
+		\end{enumerate}
+	\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,203 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage{setspace}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+	\onehalfspacing
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Métodos Estadísticos \\ Tarea 3}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Rogelio Ramos Quiroga}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+	
+	De acuerdo a la Ley Hardy-Weinberg, los genotipos $AA$, $Aa$ y $aa$, deben aparecer en la pobalción con frecuenccis relativas $\theta^2$, $2\theta\pars{1-\theta}$ y $\pars{1-\theta}^2$, respectivamente.
+	
+	\begin{enumerate}
+		\item En un experimento, para estimar la frecuencia, $\theta$, del gen, se van a elegir al azar, $n$ individuos de la población y se registrarán las frecuencias $Y_1$, $Y_2$ y $Y_3$ de los tres genotipos. Encuentra la función de información esperada de $\theta$.
+		
+		\begin{sol}
+			Notemos que nuestro problema se distribuye multinomial con parámetros $n$,\linebreak $\pars{\theta^2,2\theta\pars{1-\theta},\pars{1-\theta}^2}$. Ahora tenemos que $Y_1,Y_2,Y_3\sim Multnom(n,\vec{p})$ por lo que la función de verosimilitud de $\theta$ es
+
+			\[L\pars{\theta} = C\pars{\theta^2}^{y_1}\pars{2\theta\pars{1-\theta}}^{Y_2}\pars{\pars{1-\theta}^2}^{Y_3},\]
+
+			así que la función de logverosimilitud es
+
+			\[l\pars{\theta} = C + \pars{2y_1 + y_2}\log\pars{\theta} + \pars{y_2 + 2y_3}\log{1-\theta},\]
+
+			la función score es
+
+			\[S\pars{\theta} = \frac{2y_1+y_2}{\theta} + \frac{y_2+2y_3}{1-\theta},\]
+
+			y la función de información observada de fisher
+
+			\[I\pars{\theta} = \frac{2y_1+y_2}{\theta^2} + \frac{y_2+2y_3}{\pars{1-\theta}^2}.\]
+
+			P,or último obtenemos la función de información de fisher
+
+			\[\mathcal{I}\pars{\theta} = \frac{2n\theta^2+2n\theta\pars{1-\theta}}{\theta^2} + \frac{2n\theta\pars{1-\theta}+2n\pars{1-\theta}^2}{\pars{1-\theta}^2} = \frac{2n}{\theta\pars{1-\theta}}.\]
+
+
+		\end{sol}
+
+		\item Suponga que es muy difícil y caro, distinguir entre los genotipos $Aa$ y $aa$. Ademáas, suponga que se pueden examinar hasta el triple de individuos si sólo se pide identificar a los genotipos $AA$. Encuentre la función de información esperada de $\theta$ si $3n$ individuos van a ser clasificados como $AA$ o $no-AA$.
+		
+		\begin{sol}
+
+			Notemos que nuestro problema $X$ se distribuye binomial con parametros $3n$, $\theta^2$. Ahora, tenemos que $X\sim Multnom(n,\vec{p})$, por lo que la función de verosimilitud de $\theta$ es
+
+			\[L\pars{\theta} = C\pars{\theta^2}^{x}\pars{1-\theta^2}^{3n-x},\]
+
+			la función de logverosimilitud es
+
+			\[l\pars{\theta} = C + 2x\log\pars{\theta} + \pars{3n- x}\log{1-\theta^2},\]
+
+			la  función score es
+
+			\[S\pars{\theta} = \frac{2x}{\theta} + \frac{2\theta\pars{3n-x}}{1-\theta^2},\]
+
+			y la función de información observada de fisher es
+
+			\[I\pars{\theta} = \frac{2x}{\theta^2} + \frac{2\pars{3n-x}\pars{1+\theta^2}}{\pars{\pars{1-\theta}^2}^2}.\]
+
+			Por último, obtenemos la función de información de fisher
+
+			\[\mathcal{I}\pars{\theta} = \frac{6n\theta^2}{\theta^2} + \frac{2\pars{3n-2n\theta^2}\pars{1+\theta^2}}{\pars{1-\theta}^2} = \frac{12n}{\pars{1-\theta^2}}.\]
+
+		\end{sol}
+
+		\item ¿Bajo que circunstancias recomendaría hacer el experimento como en $(2.)$, en vez de como en $(1.)$.
+		
+		\begin{sol}
+			La eficiencia relariva esperada del experimento $2$ contra el $1$ es
+
+			\[e\pars{\theta} = \frac{\frac{12n}{\pars{1-\theta^2}}}{\frac{2n}{\theta\pars{1-\theta}}} = \frac{6\theta}{\pars{1+\theta}}.\]
+
+			Por lo que
+
+			\[e\pars{\theta} \geq 1 \Leftrightarrow \theta \geq \frac{1}{5},\]
+
+			por lo tanto concluimos que usar el experimento $2$ cuando $\theta\geq\frac{1}{5}$ y el $1$ cuando no.
+		\end{sol}
+	\end{enumerate}
+\end{document}
+

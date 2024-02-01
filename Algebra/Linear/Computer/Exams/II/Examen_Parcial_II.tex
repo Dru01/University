@@ -1,0 +1,521 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Álgebra para Ciencias de la Computación\\Examen Parcial II}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Rafael Herrera Guzmán}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+
+		\item Calcula los determinantes, las adjuntas clásicas y, en caso de que exitan, la inversas de las siguientes matrices:
+		
+		\[A = \begin{pmatrix}
+			-1 & 2 & 5\\[1ex]
+			8 & 0 & -3\\[1ex]
+			4 & 6 & 1
+		\end{pmatrix}.\]
+
+		Las matriz adjunta clásica es
+
+		\[\text{adj}(A) = C^T = \begin{pmatrix}
+			-18 & -20 & 48\\[1ex]
+			28 & -21 & 14\\[1ex]
+			-6 & 37 & -16
+		\end{pmatrix}^T = \begin{pmatrix}
+			-18 & 28 & -6\\[1ex]
+			-20 & -21 & 37\\[1ex]
+			48 & 14 & -16
+		\end{pmatrix}.\]
+
+		\item Resolver el sistema
+		
+		\begin{align*}
+			x-y+4z &= -2,\\
+			-8x+3y+z &= 0,\\
+			2x-y+z &= 6,\\
+		\end{align*}
+
+		usando la regla de Cramer.
+
+		La matriz extendida asociada al sistema de ecuaciones es
+
+		\[E = \pars{\begin{array}{ccc|c}
+			1 & -1 & 4 & 2\\[1ex]
+			-8 & 3 & 1 & 0\\[1ex]
+			2 & -1 & 1 & 6\\
+		\end{array}},\]
+
+		la matriz asociada al sitema de ecuaciones es
+
+		\[A = \pars{\begin{array}{ccc}
+			1 & -1 & 4\\[1ex]
+			-8 & 3 & 1\\[1ex]
+			2 & -1 & 1\\
+		\end{array}},\]
+
+		cuyo determinante es
+
+		\[\abs{\begin{matrix}
+			1 & -1 & 4 \\[1ex]
+			-8 & 3 & 1 \\[1ex]
+			2 & -1 & 1
+		\end{matrix}} = 2.\]
+
+		Las matrices $A_i$ que son las matrices formadas por remplazar la $i-esima$ columna de $A$ por la última columna de $E$, cuyos determinantes son
+
+		\[det(A_1) = \abs{\begin{matrix}
+			-2 & -1 & 4 \\[1ex]
+			0 & 3 & 1 \\[1ex]
+			6 & -1 & 1
+		\end{matrix}} = -86,\]
+
+		\[det(A_2) = \abs{\begin{matrix}
+			1 & -2 & 4 \\[1ex]
+			-8 & 0 & 1 \\[1ex]
+			2 & 6 & 1
+		\end{matrix}} = -218,\]
+
+		\[det(A_3) = \abs{\begin{matrix}
+			1 & -1 & -2 \\[1ex]
+			-8 & 3 & 0 \\[1ex]
+			2 & -1 & 6
+		\end{matrix}} = -34.\]
+
+		Por la regla de Cramer concluimos que las soluciones al sistema de ecuaciones son
+
+		\[x = \frac{-86}{2} = -43, \quad y = \frac{-218}{2} = -109, \quad z = \frac{-34}{2} = -17.\]
+
+		\item Encuentra la forma canónica de Jordan real de
+		
+		\[\pars{\begin{array}{cccccccc} \frac{3}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 3 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 1 & 2 & -\frac{1}{2} & 0 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & \frac{3}{2} & -1 & 1 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{1}{2} & 2 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 2 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & \frac{5}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & -\frac{1}{2} & \frac{5}{2} \end{array}}.\]
+
+		El polinomio característico de la matriz anterior es
+
+		\[(x-3)(x-2)^2\pars{x-\pars{2+i}}^2\pars{x-\pars{2-i}}^2,\]
+
+		por lo tanto los valores propios de esta matriz son
+
+		\[2,3,2+i,2-i.\]
+
+		Ahora encontremoos los vectores propios de estos valores propios. Sea $v \in \RR^8$ de la forma
+
+		\[v = \pars{\begin{array}{c}
+			v_1\\[1ex]
+			v_2\\[1ex]
+			v_3\\[1ex]
+			v_4\\[1ex]
+			v_5\\[1ex]
+			v_6\\[1ex]
+			v_7\\[1ex]
+			v_8\\
+		\end{array}}.\]
+
+		\begin{itemize}
+			\item $\lambda = 2$
+			
+			Resolviendo el siguiente sistema de ecuaciones
+			
+			\[\pars{\begin{array}{cccccccc} \frac{3}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 3 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 1 & 2 & -\frac{1}{2} & 0 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & \frac{3}{2} & -1 & 1 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{1}{2} & 2 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 2 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & \frac{5}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & -\frac{1}{2} & \frac{5}{2} \end{array}} v = 2 v,\]
+
+			obtenemos que $v$ es de la forma
+
+			\[v = \pars{\begin{array}{c}
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				b\\[1ex]
+				b\\
+			\end{array}}, \quad a,b\in\RR,\]
+
+			por lo que obtenemos los siguientes 2 vectores propios
+
+			\[p_1 = \pars{\begin{array}{c}
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				0\\[1ex]
+				0\\
+			\end{array}}, \quad p_2 = \pars{\begin{array}{c}
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}}.\]
+
+			Nos falta un vector para llegar a la multiplicidad del valor propio $2$ por lo que calcularemos el generalizado de $p_1$ resolviendo el siguiente sistema de ecuaciones
+
+			\[\pars{\begin{array}{cccccccc}
+				\frac{-1}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 1 & 0 & \frac{-1}{2} & 0 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 0 & 1 & \frac{-1}{2} & -1 & 1 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 0 & 1 & \frac{-1}{2} & 0 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+				\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & 0 & \frac{1}{2} & \frac{-1}{2} \\
+				\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & 0 & \frac{-1}{2} & \frac{1}{2}
+			 \end{array}} v = 2 p_1,\]
+
+			obtenemos que $v$ es de la forma
+
+			\[v = \pars{\begin{array}{c}
+				-2+a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				b\\[1ex]
+				b\\
+			\end{array}}, \quad a,b\in\RR,\]
+
+			por lo que obtenemos elos siguiente vector generalizado
+
+			\[g_1 = \pars{\begin{array}{c}
+				-2\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}}.\]
+
+			\item $\lambda = 3$
+			
+			Resolviendo el siguiente sistema de ecuaciones
+			
+			\[\pars{\begin{array}{cccccccc} \frac{3}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 3 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 1 & 2 & -\frac{1}{2} & 0 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & \frac{3}{2} & -1 & 1 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{1}{2} & 2 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 2 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & \frac{5}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & -\frac{1}{2} & \frac{5}{2} \end{array}} v = 3 v,\]
+
+			obtenemos que $v$ es de la forma
+
+			\[v = \pars{\begin{array}{c}
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				-a\\
+			\end{array}}, \quad a\in\RR,\]
+
+			por lo que obtenemos el siguiente vector propio
+
+			\[p_3 = \pars{\begin{array}{c}
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				-1\\
+			\end{array}}.\]
+
+			\item $\lambda = 2+i$
+			
+			Resolviendo el siguiente sistema de ecuaciones
+			
+			\[\pars{\begin{array}{cccccccc} \frac{3}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 3 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 1 & 2 & -\frac{1}{2} & 0 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & \frac{3}{2} & -1 & 1 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{1}{2} & 2 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 2 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & \frac{5}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & -\frac{1}{2} & \frac{5}{2} \end{array}} v = (2+i) v,\]
+
+			obtenemos que $v$ es de la forma
+
+			\[v = \pars{\begin{array}{c}
+				-a\\[1ex]
+				-a\\[1ex]
+				-ia\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\
+			\end{array}}, \quad a\in\RR,\]
+
+			por lo que obtenemos el siguiente vector propio
+
+			\[p_4 = \pars{\begin{array}{c}
+				-1\\[1ex]
+				-1\\[1ex]
+				-i\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}} = \pars{\begin{array}{c}
+				-1\\[1ex]
+				-1\\[1ex]
+				0\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}} + i\pars{\begin{array}{c}
+				0\\[1ex]
+				0\\[1ex]
+				-1\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\
+			\end{array}}.\]
+
+			\item $\lambda = 2-i$
+			
+			Resolviendo el siguiente sistema de ecuaciones
+			
+			\[\pars{\begin{array}{cccccccc} \frac{3}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 3 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 1 & 2 & -\frac{1}{2} & 0 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & \frac{3}{2} & -1 & 1 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{1}{2} & 2 & 0 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 2 & \frac{1}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & \frac{5}{2} & -\frac{1}{2} \\[1ex] -\frac{1}{2} & 0 & 1 & -\frac{3}{2} & 1 & 0 & -\frac{1}{2} & \frac{5}{2} \end{array}} v = (2+i) v,\]
+
+			obtenemos que $v$ es de la forma
+
+			\[v = \pars{\begin{array}{c}
+				-a\\[1ex]
+				-a\\[1ex]
+				ia\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\[1ex]
+				a\\
+			\end{array}}, \quad a\in\RR,\]
+
+			por lo que obtenemos el siguiente vector propio
+
+			\[p_5 = \pars{\begin{array}{c}
+				-1\\[1ex]
+				-1\\[1ex]
+				i\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}} = \pars{\begin{array}{c}
+				-1\\[1ex]
+				-1\\[1ex]
+				0\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\[1ex]
+				1\\
+			\end{array}} + i\pars{\begin{array}{c}
+				0\\[1ex]
+				0\\[1ex]
+				1\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\[1ex]
+				0\\
+			\end{array}}.\]
+
+		\end{itemize}
+
+		Ahora de lo anterior podemos ver que la descomposición de los vectores complejos $p_4$ y $p_5$ nos dan 4 vectores de los cuales solo 2 son independientes por lo que calcularemos un vector generalizado para uno de estos vectores propios. Tomando $p_4$ y resolviendo el siguiente sistema de ecuaciones
+
+		\[\pars{\begin{array}{cccccccc}
+			\frac{-1-2*i}{2} & 1 & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 1-i & -1 & \frac{3}{2} & -1 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 1 & -i & \frac{-1}{2} & 0 & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 0 & 1 & \frac{-1-2*i}{2} & -1 & 1 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 0 & 1 & \frac{-1}{2} & -i & 0 & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & -i & \frac{1}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & 0 & \frac{1-2*i}{2} & \frac{-1}{2} \\[1ex]
+			\frac{-1}{2} & 0 & 1 & \frac{-3}{2} & 1 & 0 & \frac{-1}{2} & \frac{1-2*i}{2}\\
+		\end{array}}v = p_4,\]
+
+		obtenemos que $v$ es de la forma
+
+		\[v = \pars{\begin{array}{c}
+			-a\\[1ex]
+			-a\\[1ex]
+			-1 + i(1-a)\\[1ex]
+			-2 + a\\[1ex]
+			-1 + a - i\\[1ex]
+			a\\[1ex]
+			a\\[1ex]
+			a\\
+		\end{array}}, \quad a\in\RR,\]
+
+		por lo que obtenemos el siguiente vector generalizado
+
+		\[g_2 = \pars{\begin{array}{c}
+			-1\\[1ex]
+			-1\\[1ex]
+			-1\\[1ex]
+			-1\\[1ex]
+			-i\\[1ex]
+			1\\[1ex]
+			1\\[1ex]
+			1\\
+		\end{array}}.\]
+
+		Ahora tomandonos como base $\beta = \set{p_1,p_2,g_1,p_3,p_4,p_{5_r},p_{5_c},g_2}$ obtenemos la siguiente matriz de cambio de coordenadas
+
+		\[Q = \pars{\begin{array}{cccccccc}
+				1 & -2 & 0 & -1 & -1 &  0 & -1 &  0\\[1ex]
+				1 &  0 & 0 & -1 & -1 &  0 & -1 &  0\\[1ex]
+				1 &  0 & 0 & -1 &  0 & -1 & -1 &  0\\[1ex]
+				1 &  0 & 0 & -1 &  1 &  0 & -1 &  0\\[1ex]
+				1 &  0 & 0 & -1 &  1 &  0 &  0 & -1\\[1ex]
+				1 &  0 & 0 & -1 &  1 &  0 &  1 &  0\\[1ex]
+				1 &  1 & 1 & -1 &  1 &  0 &  1 &  0\\[1ex]
+				1 &  1 & 1 &  1 &  1 &  0 &  1 &  0\\
+		\end{array}},\]
+
+		cuya inversa es
+
+		\[Q^{-1} = \pars{\begin{array}{cccccccc}
+			0 & \frac{1}{2} & 0 & 0 & 0 & \frac{1}{2} & \frac{-1}{2} & \frac{1}{2} \\[1ex]
+			\frac{-1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \\[1ex]
+			\frac{1}{2} & \frac{-1}{2} & 0 & 0 & 0 & -1 & 1 & 0 \\[1ex]
+			0 & 0 & 0 & 0 & 0 & 0 & \frac{-1}{2} & \frac{1}{2} \\[1ex]
+			0 & \frac{-1}{2} & 0 & \frac{1}{2} & 0 & 0 & 0 & 0 \\[1ex]
+			0 & \frac{1}{2} & -1 & \frac{1}{2} & 0 & 0 & 0 & 0 \\[1ex]
+			0 & 0 & 0 & \frac{-1}{2} & 0 & \frac{1}{2} & 0 & 0 \\[1ex]
+			0 & 0 & 0 & \frac{1}{2} & -1 & \frac{1}{2} & 0 & 0
+		\end{array}}.\]
+
+		Por lo tanto concluimos que la forma canónica real de la matriz A es
+
+		\[\pars{\begin{array}{cccccccc}
+			2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\[1ex]
+			0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 \\[1ex]
+			0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 \\[1ex]
+			0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 \\[1ex]
+			0 & 0 & 0 & 0 & 2 & -1 & 1 & 0 \\[1ex]
+			0 & 0 & 0 & 0 & 1 & 2 & 0 & 1 \\[1ex]
+			0 & 0 & 0 & 0 & 0 & 0 & 2 & -1 \\[1ex]
+			0 & 0 & 0 & 0 & 0 & 0 & 1 & 2
+		\end{array}}.\]
+
+	\end{enumerate}
+
+	
+\end{document}

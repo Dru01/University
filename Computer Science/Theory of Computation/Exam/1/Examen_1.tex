@@ -1,0 +1,340 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Inteligencia Artificial y Teoría de la Computación \\ Tarea 5}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Jesús Rodríguez Viorato}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+			\item Sea $ALL_{AFD} = \set{\inprod{A} | A \text{ es un AFD y } L\pars{A} = \Sigma^*}$. Demuestre que $ALL_{AFD}$ es decidible.
+			\begin{proof}
+				Empecemos por ver que puesto los lenguajes regulares son cerradas bajo complemento, entonces para un $AFD A$ existe un $AFD B$ que reconoce $\overline{L\pars{A}}$.
+
+				Luego la siguiente $MT \ L$ decide a $ALL_{AFD}$.
+
+				L = "Sobre la entrada $\inprod{A}$ donde $A$ es un $AFD$:
+				\begin{enumerate}
+					\item Sea $AFD B$ que reconozca a $\overline{L\pars{A}}$.
+					\item Sea $MT \ T$ que decida al lenguaje $E_{AFD}$. Ejecuta $T$ con la entrada $\inprod{B}$.
+					\item Si $T$ acepta, acepta, Si $T$ rechaza, rechaza.
+				\end{enumerate}
+
+				Si $\inprod{A} \in ALL_{AFD}$ si y sólo si $L\pars{A} = \Sigma^*$, como todo lenguaje es subconjunto de $\Sigma^*$, esto es si y sólo si $\overline{L\pars{A}} = \emptyset$, como $T$ reconoce a $E_{AFD}$ concluimos que $L$ reconoce a $ALL_{AFD}$.
+			\end{proof}
+
+			\item Sea $A = \set{\inprod{R,S} | R \txty S \text{ son expresiones regulares y }L\pars{R}\subset L\pars{S}}$. Demuestre que $A$ es decidible.
+			\begin{proof}
+				Empecemos por ver lo siguiente. Sean $R$ y $S$ expresiones regulares tales que $L\pars{R}\subset L\pars{S}$, lo cual es si y sólo si $\forall \omega\in L\pars{R}, \omega \in L\pars{S}$, esto es si y sólo si $\forall \omega\in L\pars{R}, \omega \not\in \overline{L\pars{S}}$, por último esto es si y sólo si $L\pars{R}\cap \overline{L\pars{S}} = \emptyset$. Ahora como las expresiones regulares son cerradas bajo la intersección y el complemento, y estas son equivalentes a los $AFD$ entonces para todas expresiones regulares $R$ y $S$ existe un $AFD B$ que reconoce a $L\pars{R}\cap \overline{L\pars{S}}$.
+
+				Luego la siguiente $MT \ L$ decide a $A_{AFD}$.
+
+				L = "Sobre la entrada $\inprod{A}$ donde $A$ es un $AFD$:
+				\begin{enumerate}
+					\item Sea $AFD B$ que reconozca a $L\pars{R}\cap \overline{L\pars{S}}$.
+					\item Sea $MT \ T$ que decida al lenguaje $E_{AFD}$. Ejecuta $T$ con la entrada $\inprod{B}$.
+					\item Si $T$ acepta, acepta, Si $T$ rechaza, rechaza.
+				\end{enumerate}
+
+				Si $\inprod{A} \in A$ si y sólo si $L\pars{R}\cap \overline{L\pars{S}} = \emptyset$, como $T$ reconoce a $E_{AFD}$ concluimos que $L$ reconoce a $A$.
+			\end{proof}
+
+			\item Demuestre que $EQ_{AFD}$ es decidible, comparando dos $AFD$ en todas las cadenas hasta cierto tamaño. Calcule el tamaño que funciona.
+			
+			\begin{proof}
+				Veamos que para cualesquiera $A,B AFD$ se tiene que $L\pars{A} = L\pars{B}$ si y sólo si $A$ y $B$ aceptan las mismas cadenas de tamaño a lo mas $nm$ donde $n$ y $m$ son la cantidad de estados de $A$ y $B$ respectivamente. Si $L\pars{A} = L\pars{B}$ entonces si $A$ reconoce a $\omega$ entonces también $B$ por lo que $A$ y $B$ reconocen las mismas cadenas entre ellas las de tamaño a lo mas $mn$. Si $L\pars{A} \neq L\pars{B}$ entonces $\overline{L\pars{A} \cap L\pars{B}} \neq \emptyset$, sea $\omega \in \overline{L\pars{A} \cap L\pars{B}}$ tal que el tamaño de la cadena $\omega$ es menor o igual a el tamaño de cualquier otra cadena en $\overline{L\pars{A} \cap L\pars{B}} \neq \emptyset$; ahora consideremos el automata $A\times B$ (el producto cruz de los automatas) el cual reconoce el lenguaje $L\pars{A}\cap L\pars{B}$ y sea $q_1,\cdots,q_t$ la sucesión de estados que recorre la cadena $\omega$ en $A\times B$ donde $t$ es el tamaño de $\omega$; sabemos que la cantidad de estados de $A \times B$ son $nm$ si $t \geq mn$ entonces por principio de casillas existen $i,j \in \set{1,\cdots, t}, i\neq j$ tales que $q_i \neq q_j$ entonces la cadena $\omega' = \omega_1\omega_2\cdots\omega_i\omega_{j+1}\cdots\omega_{t}$ (donde $\omega = \omega_1\cdots\omega_n$) también será rechazada pero el tamaño de $\omega'$ es menor al de $\omega$ lo cual es una contradicción por lo que $t \leq mn$; en resumen si $L\pars{A} \neq L\pars{B}$ entonces existe $\omega \in \overline{L\pars{A} \cap L\pars{B}}$ talque su tamaño es menor a igual $mn$, por contrapositiva concluimos que si $A$ y $B$ aceptan las mismas cadenas de tamaño a lo mas $nm$ donde $n$ y $m$ son la cantidad de estados de $A$ y $B$ respectivamente entonces $L\pars{A} = L\pars{B}$.
+				
+				Por lo tanto el siguiente $MT \ L$ decide a $EQ_{AFD}$.
+
+				L = "Sobre la entrada $\inprod{A,B}$ donde $A,B$ son $AFD$:
+				\begin{enumerate}
+					\item Repite lo siguiente para cada $t = 1,2,3,\cdots,nm$.
+					\begin{enumerate}
+						\item Repite lo siguiente para cada cadena $\omega \in L\pars{A}\cup L\pars{B}$ tal que el tamaño de $\omega$ es $t$.
+						\begin{enumerate}
+							\item Ejecuta el $AFD A\times B$ con la entrada $\omega$
+						\end{enumerate}
+					\end{enumerate}
+					\item Si alguna de las anteriores ejecuciones fue rechazada entonces rechaza, si no acepta.
+				\end{enumerate}
+
+				Notemos que la cantidad de $\omega \in L\pars{A}\cup L\pars{B}$ con $\omega = t$ es a lo más $\pars{|\Sigma_A| + |\Sigma_B|}^t < \infty$ por lo que la cantidad de pasos es finito y $L$ no se cicla. Concluimos que $EQ_{AFD}$ es decidible.
+
+			\end{proof}
+
+			\item Demuestra que la clase de lenguajes decidibles no es cerrada bajo homomorfismo.
+			
+			\begin{proof}
+				Sea $B_{TM} = \set{\inprod{M,\omega,n} | M \text{ es una $MT$ y $M$ acepta $\omega$ en menos de $n$ pasos}}$. Veamos que
+
+				$T$ = "Sobre la entrada $\inprod{M,\omega,n}$:
+				\begin{enumerate}
+					\item Ejecuta maquina $M$ en $\omega$ en a lo más $n$, si lo acepto, acepta, si no rechaza.
+				\end{enumerate}
+
+				Es claro que $T$ reconoce a $B_{TM}$ y además esta no se cicla por que a lo más una cantidad finita de pasos por lo tanto lo decide. Ahora sabemos que toda maquina de turing tiene una codificación sobre el lenguaje $\set{0,1}^*$ por lo que también tiene una codificación sobre el lenguaje $\set{a,b}^*$ donde solo cambias $0's$ por $a's$ y $1's$ por $b's$ luego veamos que
+
+				\[B_{TM} = \set{\omega\omega' | \omega\in\set{a,b}^*, \omega' \in \set{0,1,\cdots,9}^+, \omega' \text{es un entero}, \omega = \inprod{M,\omega}, cond},\]
+
+				donde $cond = M \text{ es una $MT$ y $M$ acepta $\omega$ en menos de $n$ pasos}$ (no lo pude formatear para que saltara de linea). Consideremos al homomorfismo dado por $h(a) = a, h(b) = b, h(i) = \epsilon, \forall i = 0,1,\cdots 9$. entonces la imagen $h\pars{B_{TM}} = A_{TM}$ el cual es una lenguaje indecidible por lo tanto la clase de lenguajes decidibles no es cerrada bajo homomorfismo.
+			\end{proof}
+
+			\item Un estado inutilizado en una Maquina de Turing es aquel que nunca es visitado por ninguna cadena. Considera el problema de determinar si una Maquina de Turing tiene algún estado inutilizado. Formula este problema como un lenguaje y demuestra que es indecidible.
+			
+			\begin{proof}
+				El lenguaje que representa el problema de determinar si una Maquina de Turing tiene algún estado inutilizado es
+
+				\[IN_{TM} = \set{\inprod{M} | M \text{es una $MT$ tal que tiene 1 o mas estados inutilizados}}.\]
+
+				Procedermos a demostrar por reducción al lenguaje $A_{MT}$.
+			\end{proof}
+
+			\item Encuentra un apareamiento de la siguiente colección de fichas del problema de correspondencia de post.
+			
+			\[\set{\bracs{\frac{ab}{abab}},\bracs{\frac{b}{a}},\bracs{\frac{aba}{b}},\frac{aa}{a}}.\]
+
+			\begin{sol}
+				El siguiente es un aparamiento de la anterior clase
+
+				\[\bracs{\frac{ab}{abab}}\bracs{\frac{ab}{abab}}\bracs{\frac{aba}{b}}\bracs{\frac{b}{a}}\bracs{\frac{b}{a}}\bracs{\frac{aa}{a}}\bracs{\frac{aa}{a}} = \bracs{\frac{ababababbaaaa}{ababababbaaaa}}.\]
+			\end{sol}
+
+			\item Sea $T = \set{\inprod{M} | M \text{ es una $MT$ tal que acepta $\omega^R$ siempre que acepta $\omega$}}$. Demuestra que $T$ es indecidible.
+			
+			\begin{proof}
+				Procederemos a demostrar por contradicción. Construiremos una $MT \ S$ tal que una $MT \ M$ acepta $w$ si y sólo si $\inprod{S} \in T$, lo cual sería una contradicción puesto que $A_{MT}$ es indecidible.
+
+				Si $T$ es decidible entonces existe $MT \ M$ talque $M$ decide a $T$. Veamos lo siguiente
+
+				$S =$ "Sobre la entrada $\inprod{M,\omega}$:
+				\begin{enumerate}
+					\item Sea $TM \ R =$ "Sobre la entrada $\omega'$
+					\begin{enumerate}
+						\item Si $x = 01$ acepta.
+						\item Si $x = 10$ y $M$ acepta $\omega$ entonces acepta.
+						\item Si no rechaza.
+					\end{enumerate}
+					\item 
+					\item Ejecuta $T_2$ con la cadena $\omega$ si acepta entonces acepta, si no rechaza.
+				\end{enumerate}
+
+				Notemos que si $\inprod{M,\omega} \in A_{MT}$ entonces $M$ acepta $\omega$ por lo que $L\pars{S\inprod{M,\omega}} = \pars{01,10}$, por lo que $\inprod{S}\in T$; ahora si $\inprod{M,\omega} \in A_{MT}$ entonces $M$ no acepta $\omega$ por lo que $L\pars{S\inprod{M,\omega}} = \pars{01}$, por lo que $\inprod{S}\not\in T$, por contrapositiva concluimos que $\inprod{M,\omega} \in A_{MT}$ si y sólo si $\inprod{S}\in T$, lo cual como habiamos dicho es una contradicción puesto que $A_{TM}$ es indecidible.
+
+			\end{proof}
+
+			\item ¿Cuáles de los siguientes pares de numeros son primos relativos? Muestra los cálculos que hiciste para responder la pregunta.
+			
+			Para ambos casos haremos uso del algoritmo de euclides para calcular si máximo común divisor.
+
+			\begin{enumerate}
+				\item $1274$ y $10505$.
+				
+				\begin{sol}
+					Veamos que
+
+					\begin{align*}
+						mcd\pars{1274,10505} &= mcd\pars{10505, 1274 \text{ mod } 10505} &= mcd\pars{10505, 1274}\\
+						&= mcd\pars{1274, 10505 \text{ mod } 1274} &= mcd\pars{1274, 313}\\
+						&= mcd\pars{313, 1274 \text{ mod } 313} &= mcd\pars{313, 22}\\
+						&= mcd\pars{22, 313 \text{ mod } 22} &= mcd\pars{22, 5}\\
+						&= mcd\pars{5, 22 \text{ mod } 5} &= mcd\pars{5, 2}\\
+						&= mcd\pars{2, 5 \text{ mod } 2} &= mcd\pars{2, 1}\\
+						&= mcd\pars{1, 2 \text{ mod } 1} &= mcd\pars{1, 0}\\
+						&= 1
+					\end{align*}
+
+					Por lo tanto $1274$ y $10505$ son primos relativos.
+
+				\end{sol}
+				\item $7289$ y $8029$.
+				
+				\begin{sol}
+					Veamos que
+
+					\begin{align*}
+						mcd\pars{7289,8029} &= mcd\pars{8029, 7289 \text{ mod } 8029} &= mcd\pars{8029, 7289}\\
+						&= mcd\pars{7289, 8029 \text{ mod } 7289} &= mcd\pars{7289, 740}\\
+						&= mcd\pars{740, 7289 \text{ mod } 740} &= mcd\pars{740, 629}\\
+						&= mcd\pars{629, 740 \text{ mod } 629} &= mcd\pars{629, 111}\\
+						&= mcd\pars{111, 629 \text{ mod } 111} &= mcd\pars{111, 74}\\
+						&= mcd\pars{74, 111 \text{ mod } 74} &= mcd\pars{74, 37}\\
+						&= mcd\pars{37, 74 \text{ mod } 37} &= mcd\pars{37, 0}\\
+						&= 37
+					\end{align*}
+
+					Por lo tanto $1274$ y $10505$ no son primos relativos.
+
+				\end{sol}
+
+			\end{enumerate}
+
+			\item Demuestra que $P$ es cerrado bajo la unión, concatenación y complemento.
+			
+			\begin{proof}
+
+				Veamos lo siguiente
+
+				\begin{itemize}
+
+					\item P.D. $P$ es cerrado bajo la unión. Sean $L_1,L_2\in P$ y sean $T_1,T_2 \ MT$ tales que reconocen a $L_1,L_2$ en tiempo polinomial, respectivamente. Ahora vemos la siguiente $MT \ T$
+					
+					T = "Sobre la entrada $\inprod{\omega}$:
+					\begin{enumerate}
+						\item Ejecuta $T_1$ con la cadena $\omega$ si acepta entonces acepta
+						\item Ejecuta $T_2$ con la cadena $\omega$ si acepta entonces acepta, si no rechaza.
+					\end{enumerate}
+
+					Notemos que por construcción $T$ acepta $\omega$ si y sólo si $\omega \in L_1 \txto \omega\in L_2$ lo cual es si y sólo si $\omega\in L_1\cup L_2$, por lo tanto $T$ decide $L_1\cup L_2$. Como $T_1,T_2$ tardan tiempo polinomial entonces $T$ tarda tiempo polinomial.
+					\item P.D. $P$ es cerrado bajo la concatenación. Sean $L_1,L_2\in P$ y sean $T_1,T_2 \ MT$ tales que reconocen a $L_1,L_2$ en tiempo polinomial, respectivamente. Ahora vemos la siguiente $MT \ T$
+					T = "Sobre la entrada $\inprod{\omega}$, donde $\omega = \omega_1\cdots\omega_n$:
+					\begin{enumerate}
+						\item Repite lo siguiente para cada $i = 1,2,3,\cdots,n$.
+						\begin{enumerate}
+							\item Ejecuta $T_1$ con la cadena $\omega' = \omega_1\cdots\omega_i$.
+							\item Ejecuta $T_2$ con la cadena $\omega'' = \omega_{i+1}\cdots\omega_n$.
+							\item Si ambas $MT$ aceptaron entonces acepta.
+						\end{enumerate}
+						\item Si ninguna de las anteriores ejecuciones fue aceptada entonces rechaza.
+					\end{enumerate}
+					Notemos por construcción que $T$ acepta cadenas $\omega$ si y sólo si $\omega = \omega'\omega''$ y $\omega'\in L_1, \omega''\in L_2$, por lo tanto $T$ reconoce $L_1L_2$. Como los pasos $a),b)$ toman tiempo polinomial y estas se repiten a lo mas $O\pars{n}$ entonces $T$ toma tiempo polinomial.
+					\item P.D. $P$ es cerrado bajo complemento. Sean $L_1\in P$ y sea $T_1 \ MT$ tales que reconocen a $L_1$ en tiempo polinomial. Ahora vemos la siguiente $MT \ T$
+					
+					T = "Sobre la entrada $\inprod{\omega}$:
+					\begin{enumerate}
+						\item Ejecuta $T_1$ con la cadena $\omega$ si acepta entonces acepta, si no rechaza.
+					\end{enumerate}
+
+					Notemos que por construcción $T$ acepta $\omega$ si y sólo si $\omega \not\in L_1$ lo cual es si y sólo si $\omega\in \overline{L_1}$, por lo tanto $T$ decide $\overline{L_1}$. Como $T_1$ tarda tiempo polinomial entonces $T$ tarda tiempo polinomial.
+				\end{itemize}
+			\end{proof}
+
+			\item Demuestra que si $P = NP$ entonces para todo $A\in P$ tal que $A\neq 0,A\neq \Sigma^*$, se cumple que $A$ es $NP-$completo.
+			
+			\begin{proof}
+				Sea $A\in P$ tal que $A\neq 0,A\neq \Sigma^*$, entonces existen $\omega\in A$ y $\omega'\in\overline{A}$ y como $P = NP$ entonces $A\in NP$. Sea $B \in NP$ como $P = NP$ entonces $B\in P$ por lo que existe $MT \ M$ talque $M$ reconoce a $B$ en tiempo polinomial. Simulando $M$ para determinar si $\omega \in B$, de ser aceptado entonces devuelve $\omega$ de no ser así devuelve $\omega'$ por lo que esto es una una función computable en tiempo polinomial de $B$ a $A$ por lo que $B$ es en tiempo polinomial reducible al lenguaje $A$. Por lo tanto $A\in NP-$completo.
+			\end{proof}
+
+	\end{enumerate}
+\end{document}
+

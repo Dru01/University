@@ -1,0 +1,374 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Métodos Estadísticos \\Tarea II}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesora: Dra. Eloísa Díaz Francés Murguía}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+		\item Considera la distribución normal para $X$, la variable aleatoria que representa el tiempo en segundos sin respirar de los alumnos del grupo. Los parametros son $(\mu,\sigma)$ donde la media es $E(X) = \mu$ y la varianza es $V(X) = \sigma^2$. Para la muestra observada de $n$ tiempos sin respirar del grupo, denotada por $x_1,\cdots,x_n$ da las expresiones de unos estimadores de momentos para los parametros normales $(\mu,\sigma)$. Calcula los valores párticulares que toman para la muestra observada de datos. Recuerda usar los primeros momentos que tengan expresiones más simples.
+		
+		Las expresiones de unos estimadores de momentos para los parametros normales $(\mu,\sigma)$ son
+
+		\[\tilde{\mu} = \EE\bracs{X} = \frac{\sum_{i=1}^n x_i}{n},\qquad \tilde{\sigma} = \sqrt{Var\pars{X}} = \sqrt{\frac{\sum_{i=1}^n \pars{x_i-\overline{X}}^2}{n}}.\]
+
+		De los cuales sus valores párticulares para la muestra observaada de datos es
+
+		\[\mu = 1,\qquad \sigma = 0.2\]
+
+		\item Da la expresión de la densidad normal conjunta para la muestra de $n$ variables aleatorias independientes e idénticamente distribuidas como una Normal $(\mu,\sigma)$, factorizándola como hizo Fisher,
+		
+		\[f\pars{\vec{x};\vec{\theta}} = h\pars{\vec{x}}g\pars{T\pars{\vec{x}};\theta},\]
+
+		de manera que identifiques a las dos estadísticas suficientes $t_1$ y $t_2$ para $\pars{\mu,\sigma}$. Da sus expresiones y calcúlalas para la muestra de tiempos de respiración. Los estimadores de momentos que calculaste en el problema anterior, exprésalos en terminos de las estadísticas suficientes $t_1$ y $t_2$.
+
+		Recordemos que la función de densidad de una Normal $\pars{\mu,\sigma^2}$ es (se omite la indicadora puesto que esta es sobre todos los números reales)
+		
+		\[f\pars{x;\mu,\sigma} = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{\pars{\frac{x-\mu}{\sigma}}^2}{2}}.\]
+
+		Por lo que la densidaad conjunta de $n$ variables aleatorias independientes e idénticamente distribuidas como una Normal $(\mu,\sigma)$ es
+
+		\[f\pars{\vec{x};\vec{\theta}} = \prod_{i=1}^n f\pars{x_i;\mu,\sigma^2} = \pars{\frac{1}{\sigma\sqrt{2\pi}}}^n e^{-\frac{\sum_{i=1}^n x_i^2 - 2\mu\sum_{i=1}^n x_i + n\mu^2}{2}},\]
+
+		por el Teorema de la Factorización de Fisher $\vec{t} = (t_1 = \sum_{i=1}^n x_i^2, \sum_{i=1}^n x_i)$ es el vector de estadísticas suficientes para $\pars{\mu,\sigma}$, para los cuales sus valores párticulares para la muestra de tiempos de respiración son
+
+		\[t_1 = n, \qquad t_2 = 0.25.\]
+
+		Por último los estimadores de momentos en terminos de las estadísticas suficientes son
+
+		\[\mu = t_2/n,\qquad \sigma = \sqrt{t_1+\pars{\frac{1-2n}{n^2}}t_2^2}.\]
+
+		\item Considera ahora las siguientes distribuciones y da la expresión de unos estimadores de momentos. Para ello da explícitamente los valores de los tres siguientes momentos teóricos para tu distribución asignada: $\EE\bracs{X},Var\pars{X},\EE\bracs{X^2}.$ Además calcula y reporta en tu tarea los valores que toman tus estimadores de momentos con los datos observados de tiempos sin respirar.
+		
+		Para todos los ejercicios se hará uso que
+
+		\[\EE\bracs{X^2} = Var\pars{X}+\EE\bracs{X}^2,\]
+
+		esto puesto que la definición de $Var$ es
+
+		\[Var\pars{x} = \EE\pars{\pars{X-\EE{X}}^2}.\]
+
+		\begin{enumerate}
+			\item Gamma $\pars{\alpha,\beta}$ donde $\alpha$ es parámetro de forma y $\beta$ es de escala. Por ello $\EE\bracs{X} = \alpha\beta$, $Var\pars{X} = \alpha\beta^2$ y la densidad es
+			
+			\[f\pars{x;\alpha,\beta} = \frac{x^{\alpha-1}}{\Gamma\pars{\alpha}\beta^{\alpha}} \exp\pars{-\frac{x}{\beta}}\1_{\pars{-\infty,\infty}}(x).\]
+
+			Los momentos teóricos son
+
+			\begin{itemize}
+				\item $\EE\bracs{X} = \sigma\beta$.
+				\item $Var\pars{X} = \sigma\beta^2$.
+				\item $\EE\bracs{X^2} = \beta^2\pars{\sigma + \sigma^2}$.
+			\end{itemize}
+
+			Por lo tanto los estimadores de momentos son
+
+			\begin{itemize}
+				\item $\beta = \frac{Var\pars{X}}{\EE\bracs{X}} = \frac{\sum_{i=1}^n \pars{x_i-\overline{X}}^2}{\sum_{i=1}^n x_i}$
+				\item $\sigma = \frac{\EE\bracs{X}^2}{Var\pars{X}} = \frac{\pars{\sum_{i=1}^n x_i}^2}{n\sum_{i=1}^n \pars{x_i-\overline{X}}^2}$
+			\end{itemize}
+
+			\item Logística $\pars{\mu,\sigma}$ donde $\mu$ es parámetro de localización y $\sigma$ es de escala. La función de densidad es
+			
+			\[f\pars{x;\mu,\sigma} = \frac{\exp\pars{-\frac{x-\mu}{\sigma}}}{\sigma\bracs{1+\exp\pars{-\frac{x-\mu}{\sigma}}}^2}\1_{-\infty,\infty}(x).\]
+
+			La función de distribución asociada es
+
+			\[F(x;\mu,\sigma) = \frac{1}{\bracs{1+\exp\pars{-\frac{x-\mu}{\sigma}}}}.\]
+
+			Para encontrar los momentos teorícos tendremos que primero jugar un poco con las funciones de densidad y distribución acumulada de esta. Primero puesto que la logística pertence a la familia de localización y escala entonces si $X$ es Logística $\pars{\mu,\sigma}$ entonces $Y = \frac{X-\mu}{\sigma}$ se distribuye como Logística $\pars{0,1}$. Ahora veamos a la función de densidad de $Y$
+
+			\[f_Y(y;\mu,\sigma) = \frac{e^{-y}}{\pars{1+e^{-y}}^2},\]
+
+			y entonces veamos que si $g(y) = yf_Y(y;\mu,\sigma)$ entonces
+
+			\[-g(y) = -yf_Y(y;\mu,\sigma) = -\frac{ye^{-y}}{\pars{1+e^{-y}}^2} = \frac{-ye^{y}}{\pars{1+e^{y}}^2} = -yf_Y(-y;\mu,\sigma) = g(-y),\]
+
+			por lo tanto $g$ es impar analogamente podemos verificar que $yg(y)$ es par.
+
+			Ahora juguemos un poco con la función de distribución acumulada de $Y$
+
+			\[F_Y(y;\mu,\sigma) = \frac{1}{\bracs{1+e^{-y}}},\]
+
+			luego para $y > 0$ tenemos que
+
+			\[\frac{1}{\bracs{1+e^{-y}}} = \sum_{n=1}^{\infty} (-1)^n e^{-yn},\]
+
+			por lo tanto
+
+			\[\diffp{F_Y}{y} = \sum_{n=1}^{\infty} n (-1)^{n-1} e^{-yn}.\]
+
+			Ahora si estamos listos para calcular la esperanza y varianza de $Y$. La esperanza de $Y$ por definición es
+
+			\[\EE\bracs{Y} = \int_{-\infty}^{\infty} \frac{ye^{-y}}{\pars{1+e^{-y}}^2} dy,\]
+
+			pero al ser $g(y)$ una función impar entonces $\EE\bracs{Y} = 0$ y por lo tanto $\EE\bracs{X} = \mu$ (linealidad de la esperanza). Mientras que la Varianza por definición es
+
+			\[Var\pars{Y} = \int_{-\infty}^{\infty} \frac{y^2e^{-y}}{\pars{1+e^{-y}}^2} dy,\]
+
+			al ser $yg(y)$ una función par tenemos que
+
+			\[Var\pars{Y} = 2\int_{0}^{\infty} \frac{y^2e^{-y}}{\pars{1+e^{-y}}^2} dy,\]
+
+			luego nos conviene expresar la anterior integral como
+
+			\[Var\pars{Y} = 2\int_{0}^{\infty} y^2 \diffp{F}{dy},\]
+
+			por lo demostrado anteriormente tenemos que
+
+			\[Var\pars{Y} = 2\int_{0}^{\infty} y^2 \sum_{n=1}^{\infty} n (-1)^{n-1} e^{-yn} dy,\]
+
+			por convergencia dominada tenemos que
+
+			\[Var\pars{Y} = 2 \sum_{n=1}^{\infty} n (-1)^{n-1} \int_{0}^{\infty} y^2 e^{-yn} dy,\]
+
+			esto es
+
+			\[Var\pars{Y} = 2 \sum_{n=1}^{\infty} n (-1)^{n-1} \int_{0}^{\infty} y^2 e^{-yn} dy,\]
+
+			por integración por parte obtenemos
+
+			\[Var\pars{Y} = 2 \sum_{n=1}^{\infty} n (-1)^{n-1} \pars{-\frac{e^{-nx}\pars{n^2x^2+2nx+2}}{n^3}\bigg\rvert_{0}^{\infty}},\]
+
+			puesto que la función exponencial $e^{-nx}$ decrece más rapido que $\pars{n^2x^2+2nx+2}$ entonces esto es
+
+			\[Var\pars{Y} = 2 \sum_{n=1}^{\infty} n (-1)^{n-1} \frac{2}{n^3} = 4 \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n^2} = \frac{\pi^2}{3},\]
+
+			La última igualdad se sigue del problema de Basilea. Por lo tanto $Var(X) = \frac{\pi^2\sigma^2}{3}$.
+
+			En resumen tenemos
+
+			\begin{itemize}
+				\item $\EE\bracs{X} = \mu$.
+				\item $Var\pars{X} = \frac{\pi^2\sigma^2}{3}$.
+				\item $\EE\bracs{X^2} = \mu^2 + \frac{\pi^2\sigma^2}{3}$.
+			\end{itemize}
+
+			Por lo tanto los estimadores de momentos son
+
+			\begin{itemize}
+				\item $\mu = \EE\bracs{X} = \frac{\sum_{i=1}^n x_i}{n}$
+				\item $\sigma = \sqrt{\frac{3Var\pars{X}}{\pi^2}} = \sqrt{\frac{3\sum_{i=1}^n \pars{x_i-\overline{X}}^2}{n\pi^2}}$.
+			\end{itemize}
+
+			\item Gaussiana Inversa $\pars{\mu,\lambda}$ donde la media $\EE\bracs{X} = \mu$ es positiva y $\lambda$ es un parámetro de forma positivo. La varianza es $Var\pars{X} = \frac{\mu^3}{\lambda}$. La densidad es
+			
+			\[f\pars{x;\mu,\lambda} = \sqrt{\frac{\lambda}{2\pi x^3}}\exp\pars{\frac{\lambda}{\mu}}\exp\pars{-\frac{\lambda}{2\mu^2}x - \frac{\lambda}{2x}}\1_{\pars{0,\infty}}(x).\]
+
+			Los momentos teóricos son
+
+			\begin{itemize}
+				\item $\EE\bracs{X} = \mu$.
+				\item $Var\pars{X} = \frac{\mu^3}{\lambda}$.
+				\item $\EE\bracs{X^2} = \mu^2 + \frac{\mu^3}{\lambda}$.
+			\end{itemize}
+
+			Por lo tanto los estimadores de momentos son
+
+			\begin{itemize}
+				\item $\mu = \EE\bracs{X} = \frac{\sum_{i=1}^n x_i}{n}$
+				\item $\lambda = \frac{\EE\bracs{X}^3}{Var\pars{X}} = \frac{\pars{\sum_{i=1}^n x_i}^2}{n^2\sum_{i=1}^n \pars{x_i-\overline{X}}^3}$
+			\end{itemize}
+
+			\item Gumbel $\pars{a,b}$ de máximos donde $\EE\pars{X} = a + b\gamma$, con $\gamma = 0.5772$, la varianza es $Var\pars{X} = \frac{\pi^2b^2}{6}$ y la densidad es
+			
+			\[f\pars{x; a,b} = \frac{1}{b}\exp\bracs{-\frac{x-a}{b}-\exp\pars{-\frac{x-a}{b}}}\1_{\pars{-\infty,\infty}}(x).\]
+
+			La distribución es entonces
+
+			\[F(x; a,b) = \exp\bracs{-\exp\pars{-\frac{x-a}{b}}}.\]
+
+			Los momentos teorícos son
+
+			\begin{itemize}
+				\item $\EE\bracs{X} = a + b\gamma$.
+				\item $Var\pars{X} = \frac{\pi^2b^2}{3}$.
+				\item $\EE\bracs{X^2} = \pars{a + b\gamma}^2 + \frac{\pi^2b^2}{3}$.
+			\end{itemize}
+
+			Por lo tanto los estimadores de momentos son
+
+			\begin{itemize}
+				\item $a = \EE\bracs{X} - \gamma\sqrt{\frac{3Var\pars{X}}{\pi^2}} = \frac{\sum_{i=1}^n x_i}{n} - \pars{\sqrt{\frac{3\sum_{i=1}^n \pars{x_i-\overline{X}}^2}{n\pi^2}}}\gamma$
+				\item $b = \sqrt{\frac{3Var\pars{X}}{\pi^2}} = \sqrt{\frac{3\sum_{i=1}^n \pars{x_i-\overline{X}}^2}{n\pi^2}}$.
+			\end{itemize}
+
+			\item Lognormal $\pars{\mu,\sigma}$ donde $\exp\pars{\mu}$ es la mediana y la densidad es
+			
+			\[f\pars{x;\mu,\sigma} = \frac{1}{x\sigma\sqrt{2\pi}}\exp\pars{-\frac{\ln x - \mu}{2\sigma^2}}\1_{\pars{0,\infty}}(x).\]
+
+			Empezaremos por ver como es la función generadora de momentos de una variable aleatoria $U$ normal estandar
+
+			\[M_U\pars{t} = \EE\bracs{e^{tU}} = \int_{-\infty}^{\infty} e^{tu}\pars{\frac{e^{-\frac{u^2}{2}}}{\sqrt{2\pi}}} du = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{tu}\pars{e^{-\frac{u^2}{2}}} du\]\[= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{\pars{u-t}^2}{2} + \frac{t^2}{2}} du = \frac{e^{\frac{t^2}{2}}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{\pars{u-t}^2}{2}} du = \frac{e^{\frac{t^2}{2}}}{\sqrt{\pi}} \int_{-\infty}^{\infty} e^{v^2} dv = e^{\frac{t^2}{2}}.\]
+
+			Ahora veamos que si $X$ es Lognormal $\pars{\mu,\sigma}$ entonces $X = e^{\mu+\sigma U}$ por lo que
+
+			\[\EE\bracs{X^{\alpha}} = \EE\bracs{e^{\alpha\mu+\alpha\sigma U}} = e^{\alpha\mu}\EE\bracs{e^{\alpha\sigma U}} = e^{\alpha\mu} M_U\pars{\alpha\sigma} = e^{\alpha\mu + \frac{\alpha^2\sigma^2}{2}}.\]
+
+			Poe lo tanto los momentos teóricos son
+
+			\begin{itemize}
+				\item $\EE\bracs{X} = e^{\mu + \frac{\sigma^2}{2}}$.
+				\item $Var\pars{X} = e^{2\pars{\mu + \sigma^2}} - e^{2\mu + \sigma^2}$.
+				\item $\EE\bracs{X^2} = e^{2\pars{\mu + \sigma^2}}$.
+			\end{itemize}
+
+			y concluimos que los estimadores de momentos son
+
+			\begin{itemize}
+				\item $\mu = \frac{\log\pars{\frac{\EE\bracs{X^2}}{\EE\bracs{X}^4}}}{2} = \frac{\log\pars{n\frac{\sum_{i=1}^n x_i^2}{\pars{\sum_{i=1}^n x_i}^4}}}{2}$
+				\item $\sigma = \sqrt{\log\pars{\frac{\EE\bracs{X^2}}{\EE\bracs{X}^2}}} = \sqrt{\log\pars{n\frac{\sum_{i=1}^n x_i^2}{\pars{\sum_{i=1}^n x_i}^2}}}$
+			\end{itemize}
+
+		\end{enumerate}
+
+		\item Para la distirbución normal estimada y para tu dsitribución asignada estimada presenta las siguientes figuras.
+		
+		\begin{itemize}
+			\item Grafica la función de distribución empírica de los datos observados y encima en la misma gráfica la distribución normal estimada y tu distribución estimada.
+			
+
+
+			\item Grafica la densidad normal estimada y la densidad estimada de tu distirbución asignada en la misma figura. En el eje horizontal a una altura de cero gráfica con asteriscos los datos observados.
+			
+			
+			
+			\item Gráfica $PP$ para el modelo normal usando los datos observador.
+			
+			
+			
+			\item Gráfica $PP$ para tu distribución asignada para los datos observados.
+		
+		
+		
+		\end{itemize}
+
+		\item Con base a todos tus resultados anteriores, comenta si el modelo normal es razonable para los datos de nuestro grupo o si tu modelo asignado sería una mejor opción? Grafica la densidad estimada con el que decidas es mejor modelo contra la densidad normla eestimada para los datos anteriores de alumnos del pasado de $CIMAT$ y $DEMAT$. Compara y comenta.
+		
+
+
+    \end{enumerate}
+
+	\end{document}
+			

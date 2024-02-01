@@ -1,0 +1,160 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II - Ejercicio 3}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item Una sucesión de vectores aleatorios $\{\vec{X}_n\}$ converge en distribución a otro vector aleatorio $\vec{X}$ ssi $F_{\vec{X}_n}(\vec{x})$ converge a $F_{\vec{X}}(\vec{x})$ para todo $\vec{x}$ en el que $F_{\vec{X}}$ es continua (según la distancia euclidiana).
+		
+		\begin{enumerate}
+		
+			\item (70 pts.) Demuestre que si $\{\vec{X}_n\}$ es una sucesión de vectores aleatorios tales que convergen en distribución a $\vec{X}$, entonces cada entrada de $\{\vec{X}_n\}$ converge a la correspondiente entrada de $\vec{X}$. ¿Se cumple el recíproco?
+			
+			Por el Teorema 8.1 tenemos que para todo función $g$ acotada y continua se cumple que $\vec{X}_n \xrightarrow{d} X$ si y sólo si
+			
+			\[E\bracs{g\pars{\vec{X}_n}} \xrightarrow E\bracs{\pars{g(X)}},\]
+
+			ahora sea $f:\R\to\R$ una función continua y acotada, y $h(\vec{X}) = \pars{\vec{X}}_i$ la proyección del vector a la $i-esima$ componente la cual es una función continua, por lo que $f\circ h$ es un función continua y acotada. Si tomamos $g=f\circ h$ entonces
+
+			\[E\bracs{f\pars{h\pars{\vec{X}_n}}} = E\bracs{f\pars{g\pars{\vec{X}}}},\]
+
+			por lo tanto concluimos
+
+			\[E\bracs{f\pars{\pars{\vec{X}_n}_i}} = E\bracs{f\pars{\pars{\vec{X}}_i}}.\]
+
+			El recíproco no es cierto ya que si tomamos $X_n = X = -Y_n = Y$ una sucesión de variables aleatorias donde $X \sim Y \sim N(\mu,\sigma)$, entonces 
+
+			$X_n + Y_n \sim Z$
+			
+			donde $Z$ es una variable degenerada en 0. Por lo tanto $(X_n,Y_n)$ no converge a $(X,Y)$.
+
+			\newpage
+
+			\item (30 pts.) Sea $\vec{X}\sim N_d(\mu \vec{1},\sigma^2 I_d)$. Halle la distribución de $\overline{X}_d$ condicionada a $\max\{X_1,\dots,X_d\}-\min\{X_1,\dots,X_d\}$.
+			
+
+		\end{enumerate}
+
+    \end{enumerate}
+
+	\end{document}
+			

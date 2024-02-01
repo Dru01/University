@@ -1,0 +1,162 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1.4in]{geometry}
+
+\usepackage{float}
+\usepackage{bbold}
+\usepackage{eufrak}
+\usepackage{calligra}
+\usepackage{aurical}
+\usepackage{frcursive}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+% Formato {
+    \usepackage{framed}
+    \usepackage{titlesec}
+    \usepackage{eufrak}
+% }
+    
+% Ambientes {
+    \usepackage{amsthm,amsmath, amssymb}
+    \usepackage{etoolbox}
+    
+    % Indentación {
+        %puse estas llaves para que puedan comprimir esto y no les estorbe
+        \makeatletter
+        \patchcmd{\@thm}
+          {\trivlist}
+          {\list{}{\leftmargin=\thm@leftmargin\rightmargin=\thm@rightmargin}}
+          {}{}
+        \patchcmd{\@endtheorem}
+          {\endtrivlist}
+          {\endlist}
+          {}{}
+        \newlength{\thm@leftmargin}
+        \newlength{\thm@rightmargin}
+        
+        \newcommand{\xnewtheorem}[3]{%
+          \newenvironment{#3}
+            {\thm@leftmargin=#1\relax\thm@rightmargin=#2\relax\begin{#3INNER}}
+            {\end{#3INNER}}%
+            
+          \theoremstyle{definition}%
+          \newtheorem{#3INNER}%
+        }
+        \makeatother
+    % }
+    
+    % Ejercicio {
+        % Uso: \ejercicio[Título opcional]{Enunciado del teorema}
+        \theoremstyle{definition}
+        \newtheorem{ejerciciothm}{Ejercicio}
+        \newcommand{\ejercicio}[2][]{
+            \begin{ejerciciothm}[#1]
+                 #2
+            \end{ejerciciothm}
+        }
+    % }
+    
+    % Inciso {
+        \makeatletter
+            \newcounter{subproblem}[ejerciciothm]
+            \newenvironment{subproblem}
+                {\hfill\refstepcounter{subproblem}\par\noindent
+                \thesubproblem\normalsize}
+                {\vspace{0.5mm}}
+            \renewcommand\thesubproblem{\alph{subproblem})}
+        \makeatother
+        \newcommand{\inciso}[1]{
+            \begin{subproblem}
+                #1
+            \end{subproblem}
+        }
+    % }
+
+    % Lema {
+        % Uso: \lema[Título opcional]
+        \theoremstyle{definition}
+        \xnewtheorem{2.5em}{2.5em}{lemathm}{Lema}
+        \newcommand{\lema}[2][]{
+            \begin{lemathm}[#1]
+                 #2
+            \end{lemathm}
+        }
+    % }
+% }
+
+%Definir comandos{
+    \newcommand{\N}{ \mathbb{N} }
+    \newcommand{\R}{ \mathbb{R} }
+    \newcommand{\Pn}{ \mathbb{P} }
+    \newcommand{\Aes}{ \mathcal{A} }
+    \newcommand{\ToInf}{ \rightarrow \infty}
+    %\QEDA para hacer cuadrito de QED.
+    \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+    \newcommand{\ci}{\left[}
+    \newcommand{\cd}{\right]}
+    \newcommand{\pareni}{\left(}
+    \newcommand{\parend}{\right)}
+    \newcommand{\comillas}{``}
+    %\newcommand{\ls}{\limsup\limits_{n\rightarrow \infty}}
+    %\newcommand{\li}{\liminf\limits_{n\rightarrow \infty}}
+	\makeatletter
+        \newcommand{\titulo}{\@title}
+    \makeatother
+	
+	% Para Santiago
+	\usepackage{etoolbox}
+
+    \newcommand\ls[1][]{%
+      \ifstrempty{#1}{%
+        \limsup_{n\to\infty}
+      }{%
+        \limsup_{#1\to\infty}
+      }%
+    }
+
+    \newcommand\li[1][]{%
+      \ifstrempty{#1}{%
+        \liminf_{n\to\infty}
+      }{%
+        \liminf_{#1\to\infty}
+      }%
+    }
+    
+    % Nuria, aquí están los comandos que pusiste. Atte. Nuria
+    \renewcommand*{\qedhere}{\tag*{$\square$}}
+    \newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+    \newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+    
+    \renewcommand*{\P}{ \mathbb{P} }
+    
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	
+% 	\newcommand{\txty}{\quad\text{y}\quad}
+% 	\newcommand{\Txty}{\qquad\text{y}\qquad}
+% }
+
+\title{Estructuras de Datos y Algoritmos II\\Tarea 06}
+\author{Rubén Pérez Palacios\\Profesor: Dr. Carlos Segura González}
+\date{15 Marzo 2020}
+
+\begin{document}
+
+\maketitle
+
+La solución del problema es con la estrategía Divide and Conquere. Dado un conjunto $P$ de puntos lo divide en dos subconjuntos $PL$ y $PR$ tal que para todos $p \in PL$, $q \in PR$ se cumple que $p \leq q$ y $|PL| - |PR|$ es a lo más uno; encuentra el número de puntos dominados de conjunto por los puntos del otro, y recursivamente resuelve lo mismo para $PL$ y $PR$.
+
+\vspace{10pt}
+
+Dado los conjuntos $PL$ y $PR$ supongamos ordenados por su coordenada $y$, podemos calcular los puntos dominados procesadon los primeros elementos de ambos conjuntos $p \in PL$ y $q \in PR$, en caso de que $p$ tenga una coordenada $y$ menor que la de $q$  entonces $p$ dominara a todos los puntos de $PR$ en ese momento - debido a como fueron creados $PL$ y $PR$ y como fueron ordenados - y descartamos el punto $p$, en caso contrario habría que checar que las coordenadas de $x$ fuesen iguales entre $p$ y $q$ de ser así entonces checamos que la coordenada $y$ de $p$ sea mayor a la de $q$ de ser así $q$ dominaría todos los puntos del conjunto $PL$, y descartamos a $q$.
+
+\vspace{10pt}
+
+El algoritmo anterior la cantidad de divisiones son $O(log(N))$ y para cada una solo se realiza un recorrido a cada arreglo $PL$ y $PR$ que tiene complejidad $O(N)$ esto asumiendo que ambos son ordenados. Podriamos ordenar ambos arreglos en cada división lo cual tiene una complejidad de $O(N log(N))$, y entonces nuestra complejidad del algoritmo sería $O(N log(N)^2)$, pero utilizando la técnica del merge-sort podemos mantener ambos conjuntos $PL$ y $PR$ ordenados en cada divisisón con un complejidad de $O(N)$, por lo tanto nuestro algoritmo tiene complejidad
+
+\[O(N log(N))\]
+
+\end{document}

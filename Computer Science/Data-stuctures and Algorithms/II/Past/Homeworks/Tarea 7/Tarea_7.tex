@@ -1,0 +1,136 @@
+% PREÁMBULO
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Membrete
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{14pt}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+	\cfoot{\thepage}
+
+% Datos
+\title{Estructuras de Datos y Algoritmos II\\Tarea 07}
+\author{Rubén Pérez Palacios\\Profesor: Dr. Carlos Segura González}
+\date{15 Marzo 2020}
+
+% DOCUMENTO
+\begin{document}
+
+  \maketitle
+
+  Mi solución al problema es una DP, la cual tiene tres estados:
+
+  \begin{itemize}
+    \item Renglón $i$
+    \item Columna $j$
+    \item Máscara de bits $mask$, donde el $j-esimo$ bit representa si esta o no ocupado la casilla $c_{i+1,j}$ si $j < c$ o la casilla $c_{i,j}$ si $j \geq c$.
+  \end{itemize}
+
+  Donde $dp(i,j,mask)$ respresenta el total de acomodos que son posibles hacer en tablero de $N \times M$, donde estan ocupadas las casillas $c_{i,j}$ tales que $0 \leq i < N, 0 \leq j < $, además de las ya mencionadas por la bitmask (si $j < c$, todas las casillas $c_{i,j}$ también se consideran ocupadas).
+
+  Para no hacer uso de una memoría excesiva debemos tener cuidado. Por como está definida nuestra mascara debe contener $M$ bits pero esto puede ser muy grande, pero tranquilos ya que nos damos cuenta que ya sea $N$ o $M$ algunó siempre será menor o igual a $10$, por lo que podemos intercambiar a $N$ y $M$ si $N < M$ de este modo aseguraremos que $M \leq 10$, y por lo tanto la complejidad de nuestra memoria es
+
+  \[O(NM2^{min(N,M)}).\]
+   
+  También debemos tener cuidado en hacer operaciones inecesaria y que están hagan que nuestra complejidad de tiempo se dispare. Debido a que el problema es multitask, no podemos inicializar la matríz por cada caso, ya que nuestra complejidad sería de $O(TNM2^)$, por lo que haremos uso de un matriz auxiliar para evitarlo, por lo que nuestra complejidad final sería
+
+  \[O(NM2^{min(N,M)}.\]
+
+\end{document}

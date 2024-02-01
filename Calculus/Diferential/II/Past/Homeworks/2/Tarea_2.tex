@@ -1,0 +1,524 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Cálculo III \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Fabián Augusto Pascual Domínguez}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		
+		\item Sea $A\subset\RR^n$, pruebe que
+		
+		\begin{itemize}
+			\item (Dualidad entre interior y adherencia) $\mathcal{C}\overline{A} = \pars{\mathcal{C}A}^{\circ} =: Ext A$ y $\mathcal{C}A^{\circ} = \overline{\mathcal{C}A}$.
+			
+			\begin{proof}
+
+				Puesto que $A^{c-c} = A^{o}$, entonces evaluando en $A^{c}$ obtenemos
+				
+				\[A^{-c} = A^{cc-c} = A^{co}\]
+				
+				y aplicando complemento de la original obtenemos
+				
+				\[A^{c-} = A^{c-cc} = A^{oc}.\]
+
+			\end{proof}
+			
+
+			\item $\overline{A} = \bigcap\set{V|A\subset V, V \text{ es cerrado en } \RR^n}$.
+			
+			\begin{proof}
+				
+				Ya que
+	
+				\[\pars{\mathcal{C}A}^{\circ} = \bigcup\set{V | V \subset \mathcal{C}A, V \text{es abierto en} \RR^n},\]
+	
+				ya que $\mathcal{C}\overline{A} = \pars{\mathcal{C}A}^{\circ}$ entonces
+	
+				\[\mathcal{C}\overline{A} = \bigcup\set{V | V \subset \mathcal{C}A, V \text{es abierto en} \RR^n},\]
+	
+				luego aplicando complemento obtenemos
+	
+				\[\overline{A} = \mathcal{C}\bigcup\set{V | V \subset \mathcal{C}A, V \text{es abierto en} \RR^n},\]
+				
+				aplicando las Leyes de De Morgan, $X\subset Y \then \mathcal{C}Y\subset \mathcal{C}X$ y $X$ abierto entonces $\mathcal{C}X$ cerrado obtenemos
+	
+				\[\overline{A} = \bigcap\set{\mathcal{C}V | A \subset \mathcal{C}V, \mathcal{C}V \text{es cerrado en} \RR^n},\]
+				
+				por lo tanto
+				
+				\[\overline{A} = \bigcap\set{V | A \subset V, V \text{es cerrado en} \RR^n}.\]
+
+			\end{proof}
+
+			\item $A^{coc} = A^{-}$.
+			
+			\begin{proof}
+			
+				Debido a que $A^{-c} = A^{co}$ entonces $A^{coc} = A^{-cc} = A^{-}$.
+
+			\end{proof}
+
+		\end{itemize}
+
+		\item Producto cartesiano de conjuntos abiertos
+		
+		\begin{itemize}
+			\item Sean $\pars{a_1,b_1}$ y $\pars{a_2,b_2}$ intervalos abiertos en $\RR$. Demostrar que el conjunto $\pars{a_1,b_1}\times\pars{a_2,b_2}$ es abierto en $\RR^2$.
+			
+			Se sigue inmediato del úlitmo inciso.
+
+			\item Pruebe que $B_{\infty}\pars{\vec{a},r} = \set{\vec{x}\in\RR^2 | \norm{\vec{x}-\vec{a}}_{\infty} < r}$ es abierto en $\RR^2$ con la norma euclideana.
+			
+			Puesto que la todas las normas en $\RR^n$ son equivalentes esto es cierto. En especial se demostro en clase que la norma infinito y la norma euclideana son equivalentes.
+
+			\item Sean $G_1$ y $G_2$ conjuntos abiertos en $\RR$. Mostrar que $G_1\times G_2$ es un conjunto abierto en $\RR^2$.
+			
+			Se sigue inmediato del último inciso.
+
+			\item Generalizar los incisos anteriores para $\RR^n$.
+			
+			\begin{proof}
+				Sea $U\in X$ y $V \in Y$ un conjuntos abiertos en sus respectivos espacios, con norma euclideana, y 
+				
+				\[x = (x_u, x_v) \in U \times V, x_u \in U, x_v\in V.\]
+				
+				Por definición 
+				
+				\[\exists \epsilon_u,\epsilon_v > 0 \text{ t.q. } B\pars{x_u,\epsilon_u}\subset U, B\pars{x_v,\epsilon_v}\subset V.\]
+				
+				Sea $\epsilon = \min\pars{\epsilon_u,\epsilon_v}$, y $y \in B\pars{x,\epsilon}$ por definición
+				
+				\[\norm{y-x} < \epsilon,\]
+				
+				por lo que 
+				
+				\[\norm{y_u-x_u}^2+\norm{y_v-x_v}^2 < \epsilon^2,\]
+				
+				como la norma es no negativa obtenemos que
+				
+				\[\norm{y_u-x_u} < \epsilon \txty \norm{y_v-x_v} < \epsilon,\] 
+				
+				entonces 
+				
+				\[y\in B\pars{x_u,\epsilon}\times B\pars{x_v,\epsilon}.\]
+				
+				Ya que 
+				
+				\[B\pars{x_u,\epsilon} \subset B\pars{x_u,\epsilon_u} \subset U \txty B\pars{x_v,\epsilon} \subset B\pars{x_v,\epsilon_v} \subset V,\]
+				
+				entonces $y\in B\pars{x_u,\epsilon}\times B\pars{x_v,\epsilon} \subset U\times V$. Por lo que todo punto en el producto cartesiano de dos abiertos es punto interior y por lo tanto concluimoso que es abierto.
+
+			\end{proof}
+
+		\end{itemize}
+
+		\item Conjuntos cerrados y cerradura
+		
+		\begin{itemize}
+			\item Sea $A = \set{\pars{x,\frac{1}{x}} | x > 0}$. Determinar si $A$ es abierto y/o cerrado en $\RR^2$.
+			
+			\begin{sol}
+
+				Primero notemos que $(1,1)\in A'$, puesto que la sucesión 
+				
+				\[\vec{x}_n = \pars{1+\frac{1}{n}, \frac{n+1}{n}} \in A\]
+				
+				converge a el. 
+				
+				Sea $\vec{x} \in A'$ entonces existe una sucesión 
+				
+				\[\set{x_n}_{n=1}^{\infty}\subset A, \vec{x}_n\neq \vec{x}_0 \forall n\in\NN,\]
+				
+				tal que $\limtoinf{n} \vec{x}_n = \vec{x}$. 
+				
+				Como $\vec{x}_n\in A$ entonces 
+				
+				\[\vec{x}_n = \pars{\pars{\vec{x}_n}_1,\pars{\vec{x}_n}_2} = \pars{\pars{\vec{x}_n}_1, \frac{1}{\pars{\vec{x}_n}_1}}.\]
+				
+				Ya que $\limtoinf{n} \vec{x}_n = \vec{x} = \pars{\vec{x}_1,\vec{x}_2}$ entonces 
+				
+				\[\limtoinf{n} \pars{\vec{x}_n}_1 = \vec{x}_1 \txty \limtoinf{n} \frac{1}{\pars{\vec{x}_n}_1} = \vec{x}_2,\]
+				
+				pero este  último es (por ser $1/x$ una función continua) 
+				
+				\[\frac{1}{\vec{x}_1} = \frac{1}{\limtoinf{n}\pars{\vec{x}_n}_1} = \limtoinf{n} \frac{1}{\pars{\vec{x}_n}_1} = \vec{x}_2,\]
+				
+				por lo que $\vec{x}\in A$. Por lo tanto $A'\subset A$ y concluimos que $A$ es cerrado.
+
+			\end{sol}
+			
+			\item Si $F_1,F_2$ son dos conjuntos cerrados en $\RR$, mostrar que $F_1\times F_2$ es cerrado en $\RR^2$.
+			
+			\begin{proof}
+
+				Sean $A\subset X$ y $B\subset Y$ conjuntos cerrados en sus respectivos espacios. Luego $A^c$ y $B^c$ abiertos en sus respectivos espacios y entonces $A^c\times X$ y $X\times B^c$ abiertos en $X\times Y$. Ahora por definición
+
+				\[\pars{A\times B}^c = \set{\pars{a,b} | a\in A \txty b\in B}^c = \set{\pars{a,b}| a\not\in A \txto b\not\in B}\]
+				\[= \set{\pars{a,b}| a\not\in A \txty b\in Y} \cup \set{\pars{a,b}| a\in A \txty b\not\in B},\]
+
+				Al ser $\pars{A\times B}^c$ unión de dos abiertos entonces es abierto. Por lo tanto concluimos que $A\times B$ es cerrado.
+				
+			\end{proof}
+			
+
+			\item Sean $A,B\subset \RR$. Probar que $\overline{A\times B} = \overline{A} \times \overline{B}$.
+			
+			\begin{proof}
+				
+				Debido a que $\overline{X}$ es cerrado para todo conjunto $X$ entonces $\overline{A} \times \overline{B}$ es cerrado. Ya que $\overline{A} = \bigcap\set{V|A\subset V, V \text{ es cerrado en } \RR^n}$ entonces $\overline{A\times B} \subset \overline{A} \times \overline{B}$.
+
+				Sea 
+				
+				\[\vec{x} = \pars{\vec{a},\vec{b}} \in \overline{A} \times \overline{B}, \epsilon > 0.\]
+				
+				Si $y = \pars{\vec{a'},\vec{b'}} \in B\pars{\vec{a},\frac{\epsilon}{\sqrt{2}}}\times B\pars{\vec{b},\frac{\epsilon}{\sqrt{2}}}$ entonces 
+
+				entonces 
+				
+				\[\norm{\vec{a}' - \vec{a}} < \frac{\epsilon}{\sqrt{2}} \txty \norm{\vec{b}' - \vec{b}} < \frac{\epsilon}{\sqrt{2}},\]
+				
+				por lo que
+				
+				\[\norm{\vec{y}-\vec{x}}^2 = \norm{\vec{a}' - \vec{a}}^2  + \norm{\vec{b}' - \vec{b}}^2 < \epsilon\]
+				
+				es decir $y\in B\pars{\vec{x},\epsilon}$.
+
+				Pero por definición tenemos que
+
+				\[B\pars{\vec{a},\frac{\epsilon}{\sqrt{2}}} \cap A \neq \emptyset,\]
+
+				y
+
+				\[B\pars{\vec{a},\frac{\epsilon}{\sqrt{2}}} \cap A \neq \emptyset,\]
+
+				por lo que si 
+				
+				\[\vec{a'} \in B\pars{\vec{a},\frac{\epsilon}{\sqrt{2}}} \cap A \txty \vec{b'} \in B\pars{\vec{a},\frac{\epsilon}{\sqrt{2}}} \cap A,\]
+				
+				entonces
+				
+				\[\vec{y} = \pars{\vec{a'},\vec{b'}} \in B\pars{\vec{x}, \epsilon} \txty \vec{y} \in A\times B,\]
+				
+				por lo que 
+				
+				\[B\pars{\vec{x}, \epsilon} \cap A\times B \neq \emptyset,\]
+				
+				por lo tanto
+
+				\[\overline{A\times B} \supset \overline{A} \times \overline{B},\]
+
+				concluimos que
+
+				\[\overline{A\times B} = \overline{A} \times \overline{B}.\]
+
+			\end{proof}
+
+			\item Sea $\set{A_\alpha}_{\alpha\in\Omega}$ una familia de subconjuntos en $\RR^n$. ¿Se cumple que $\bigcup_{\alpha\in\Omega}\overline{A_\alpha} = \overline{\bigcup_{\alpha\in\Omega}A_{\alpha}}$?
+			
+			\begin{sol}
+
+				No por que la unión arbitraria de cerrados no es necesariamente cerrada y el conjunto de la derecha siempre es cerrado, y justo el contra ejemplo $A_n = \bracs{0,1-\frac{1}{n}}, n\in\NN$ para ello funciona también aquí ya que $\bigcup_{n\in\NN} \overline{A_n} = [0,1)$ el cual no es cerrado pero $\overline{\bigcup_{n\in\NN}A_{n}}$ si lo es por lo que $\bigcup_{n\in\NN}\overline{A_n} = [0,1) \not\supset [0,1] = \overline{\bigcup_{n\in\NN}A_{n}}$.
+				
+				Primero veamos que si $A\subset B$ entonces si $V$ es un conjunot tal que $B \subset V$ entonces $A \subset V$ y como $\overline{B} = \bigcap\set{V|B\subset V, V \text{ es cerrado en } \RR^n}$ y $\overline{A} = \bigcap\set{V|A\subset V, V \text{ es cerrado en } \RR^n}$ entonces $\overline{A} \subset \overline{B}$. Ahora como $A_{\alpha} \subset \bigcup_{\alpha\in\Omega} A_{\alpha}$ entonces tenemos que $\overline{A_{\alpha}} \subset \overline{\bigcup_{\alpha\in\Omega} A_{\alpha}}$ para todo $\alpha \in \Omega$, por lo tanto $\bigcup_{\alpha\in\Omega}\overline{A_\alpha} \subset \overline{\bigcup_{\alpha\in\Omega}A_{\alpha}}$.
+
+			\end{sol}
+
+
+		\end{itemize}
+
+		\item Demostrar que para todo subconjunto $A\subset\RR^n$
+		
+		\begin{itemize}
+			\item $\overline{A} = A \cup A'$ y $A^{\circ}\cup\partial A = A\cup\partial A = \overline{A}$.
+			
+			\begin{proof}
+				
+				Sea $x\in\overline{A}$. Si $x\in A$ entonces $x\in A\cup A'$. Si $x\not\in A$, al ser $x$ es un punto de adherencia de $A$ se cumple que $\forall \epsilon > 0, B\pars{x,\epsilon}\cap A \neq \emptyset$, por lo que $\bracs{\forall \epsilon > 0, B\pars{x,\epsilon}\cap A}\setminus\set{x} \neq \emptyset$, por lo tanto $x$ es un punto límite de $A$ es decir $x\in A'\subset A\cup A'$. Por lo tanto $\overline{A} \subset A\cup A'$.
+	
+				Ahora recordemos que $A,A' \subset \overline{A}$ por lo tanto $A\cup A' \subset \overline{A}$.
+	
+				Por lo tanto concluimos que $\overline{A} = A\cup A'$.
+	
+				Ahora puesto que $\partial A = A^{-} \cap A^{c-}$ y por la dualidad entre interior y adherencia obtenemos
+	
+				\[A \cup \partial A = A \cup \pars{A^{-}\cap A^{c-}} = \pars{A \cup A^{-}} \cap \pars{A \cup A^{c-}} = \pars{A^{-}} \cap \pars{A \cup A^{c-}} = A^{-},\]
+	
+				analogamente
+	
+				\[A^{\circ} \cup \partial A = A^{\circ} \cup \pars{A^{-}\cap A^{c-}} = \pars{A^{\circ} \cup A^{-}} \cap \pars{A^{\circ} \cup A^{c-}} = \pars{A^{-}} \cap \pars{A^{\circ} \cup A^{c-}} = A^{-}.\]
+
+			\end{proof}
+
+
+			\item $A^{\circ} \cap \partial A=\emptyset$ y $\partial A = \overline{A}\setminus A^{\circ}$. Deducir que $\overline{A}\setminus A \subset A'$.
+			
+			\begin{proof}
+				
+				Si $x\in\partial A$ entonces $\forall \epsilon > 0, B\pars{x,\epsilon}\cap A^c \neq \emptyset$ por lo que $B\pars{x,\epsilon} \not\subset A$ y $x\not\in A^{\circ}$. Por lo tanto $A^{\circ} \cap \partial A = \emptyset$. Como $A^{\circ}\cup\partial A = \overline{A}$ entonces $\partial A = \overline{A}\setminus A^{\circ}$.
+	
+				Como $\overline{A} = A \cup A'$ entonces $\overline{A}\setminus A = \pars{A \cup A'}\setminus A =  = A'\setminus A \subset A'$.
+
+			\end{proof}
+
+
+		\end{itemize}
+
+		\item Para todo $A\subset\RR^n$ y $\vec{x}\in\RR^n$ se define la distancia entre $\vec{x}$ y $A$ como
+		
+		\[d\pars{\vec{x},A}=\inf_{\vec{a}\in A} \norm{\vec{x}-\vec{a}}.\]
+
+		Demuestre las siguientes afirmaciones:
+
+		\begin{itemize}
+			\item $\forall \vec{x},\vec{y}$ y $A\subset\RR^n$, se tiene que $\abs{d\pars{\vec{x},A} - d\pars{\vec{y},A}} \leq \norm{\vec{x}-\vec{y}}$.
+			
+			\begin{proof}
+				
+				Veamos lo siguiente
+	
+				\begin{align*}
+					\abs{d\pars{\vec{x},A} - d\pars{\vec{y},A}} &= \abs{\inf_{\vec{a}\in A} \norm{\vec{x}-\vec{a}} - \inf_{\vec{a}\in A} \norm{\vec{y}-\vec{a}}} & \text{por definición de métrica}\\
+					&= \abs{\inf_{\vec{a}\in A} \pars{\norm{\vec{x}-\vec{a}} - \norm{\vec{y}-\vec{a}}}} & \text{por propiedad del ínfimo}\\
+					&\leq \inf_{\vec{a}\in A}\abs{\pars{\norm{\vec{x}-\vec{a}} - \norm{\vec{y}-\vec{a}}}} & \text{por propiedad del ínfimo}\\
+					&\leq \inf_{\vec{a}\in A} \norm{\pars{\vec{x}-\vec{a}}-\pars{\vec{y}-\vec{a}}} & \text{por el útimo ejercicio de la tarea 1}\\
+					&= \norm{\vec{x}-\vec{y}}
+				\end{align*}
+
+			\end{proof}
+			
+
+			\item Sean $\set{x_n}_{n=1}^{\infty}$ una sucesión convergente en $\RR^k$ y $A\subset\RR^k$, deduzca que existe el límite $\lim_{n\to\infty}d\pars{\vec{x}_n,A}$.
+			
+			\begin{proof}
+				
+				Sea $\vec{x} = \limtoinf{n} \vec{x}_n$. Entonces
+	
+				\[0 \leq \abs{d\pars{\vec{x}_n,A} - d\pars{\vec{x},A}} \leq \norm{\vec{x}_n-\vec{x}},\]
+	
+				ya que el límite conserva el orden, por linealidad del límite y por continuidad del valor aboluto y la norma obtenemos
+	
+				\[0 \leq \abs{\limtoinf{n}d\pars{\vec{x}_n,A} - d\pars{\vec{x},A}} \leq \norm{\limtoinf{n}\vec{x}_n-\vec{x}},\]
+	
+				por definición de $\vec{x}$ y por el toerema del emperadedo concluimos que
+	
+				\[\limtoinf{n}d\pars{\vec{x}_n,A} = d\pars{\vec{x},A}.\]
+
+			\end{proof}
+			
+
+			\item $\forall\vec{x}\in\RR^n$ y $A\subset\RR^n$, $d\pars{x,A} = d\pars{x,\overline{A}}$.
+			
+			\begin{proof}
+				
+				Puesta que $A\subset \overline{A}$ entonces por definición de distancia y por monotonía del ínfimo tenemos que
+	
+				\[d\pars{x,\overline{A}} \leq d\pars{x,A}.\]
+	
+				Sea $\vec{a} \in \overline{A}$ entonces existe $\set{\vec{a}_n}_{n=1}^{\infty} \subset A$ tal que $\limtoinf{n} \vec{a}_n = \vec{a}$ por lo que $\forall \epsilon > 0$ existe $\vec{a'}\in A$ talque $d\pars{\vec{a},\vec{a'}} < \epsilon$ (es decir $d\pars{\vec{a},\vec{a'}} = 0$), entonces
+	
+				\[d\pars{\vec{x},A} \leq d\pars{\vec{x},\vec{a'}} \leq d\pars{\vec{x}, \vec{a}} + d\pars{\vec{a'}, \vec{a}} < d\pars{\vec{x}, \vec{a}} + \epsilon,\]
+	
+				puesto que esto es cierto para todo $\epsilon > 0$ entonces
+	
+				\[d\pars{\vec{x},A} \leq d\pars{\vec{x}, \vec{a}}.\]
+	
+				Ahora como lo anterior es cierto $\forall \vec{a} \in \overline{A}$ enotnces por definición de distancia (y de ínfimo) tenemos que
+	
+				\[d\pars{\vec{x},A} \leq d\pars{\vec{x}, \overline{A}}.\]
+	
+				Por lo tanto concluimos que
+	
+				\[d\pars{\vec{x},A} = d\pars{\vec{x},\overline{A}}.\]
+
+			\end{proof}
+
+		\end{itemize}
+
+		\item Sucesiones
+		
+		Puesto que una sucesión $\set{\vec{x}}_{n=1}^{\infty} \subset \RR^k$ converge si y sólo si las sucesiones de sus componentes convergen entonces todas las propiedades de límites en $\RR$ se heredan, entre ellas que si esta converge el límite es único y que toda subsucesión de ella converge al mismo límite. 
+
+		\begin{itemize}
+			\item Sea $\set{\vec{x}}_{n=1}^{\infty}$ una sucesión convergente en $\RR^k$. Encontrar $\overline{A}$ donde $A = \set{\vec{x}_n|n\in\NN}$.
+			
+			\begin{sol}
+
+				 Si $\vec{a}\in \overline{A}$ entonces existe una $\set{\vec{a}_n}_{n=1}^{\infty} \subset A$ tal que $\limtoinf{n} \vec{a}_n = \vec{a}$, por definición $\limtoinf{n}\vec{x}_n \in \overline{A}$, además es su único elemento ya que el límite es único y toda sucesión $\set{\vec{a}_n}_{n=1}^{\infty} \subset A$ será subsucesión de $\set{x_n}_{n=1}^{\infty}$.
+
+			\end{sol}
+
+			\item Demuestra el Teorema de Bolzano-Weiestrass para sucesiones en $\RR^k$.
+			
+			\begin{proof}
+				
+				Procesderemos a demostralos por inducción, para evitar confusión y no caer en un argumento ciclico llamaremos al Teorema de Bolzano-Weiestrass como Teorema Base. 
+	
+				\begin{itemize}
+					\item \textbf{Caso base: n = 1} Es cierto por el Teorema Base.
+					\item \textbf{Hipótesis de Inducción:} Para toda sucesión $\set{\vec{x}_n}_{n=1}^{\infty} \in \RR^k$ acotada, existe una subsucesión $\set{x_{n_{l}}}_{l=1}^{\infty}$ de $\set{\vec{x}_n}$ que es convergente.
+					\item \textbf{Paso de Inducción:} Sea 
+					
+					\[\set{\vec{x}_n}_{n=1}^{\infty} \in \RR^{k+1}\]
+					
+					acotada, definimos a la sucesión 
+					
+					\[\set{\vec{y}_n}_{n=1}^{\infty}\subset\RR^k\]
+					
+					como 
+					
+					\[\vec{y}_n = \pars{\vec{x}_n^1,\cdots,\vec{x}_n^{k}}\]
+					
+					por hipotesis de inducción existe una subsucesión 
+					
+					\[\set{\vec{y}_{n_{l}}}_{l=1}^{\infty}\]
+					
+					tal que esta converge a $\vec{y}\in\RR^k$. Consideremos la sucesión 
+					
+					\[\set{\vec{x}^{k+1}_{n_{l}}}_{l=1}^{\infty}\subset\RR\]
+					
+					por el Teorema Base tenemoso que existe una subsucesión
+					
+					\[\set{x^{k+1}_{n_{l_{m}}}}_{m=1}^{\infty}\]
+					
+					que converge a $\vec{x}^{k+1}\in\RR$. Ya que si una sucesión converge entonces toda subsucesión converge al mismo límite, entonces
+					
+					\[\set{\vec{y}_{n_{l_{m}}}}_{m=1}^{\infty} \to \vec{y}.\]
+					
+					Finalmente como una sucesión en $\RR^{t}$ converge si y sólo si convergen la sucesiones de cada componente entonces la subsucesión
+					
+					\[\set{\vec{x}_{n_{l_{m}}}}_{m=1}^{\infty} \to \pars{\vec{y}^1,\cdots,\vec{y}^k,\vec{x}^{k+1}}.\]
+					
+					Por lo tanto concluimos que para toda sucesión $\set{\vec{x}_n}_{n=1}^{\infty} \in \RR^{k+1}$ acotada, existe una subsucesión $\set{x_{n_{l}}}_{l=1}^{\infty}$ de $\set{\vec{x}_n}$ que es convergente.
+				\end{itemize}
+	
+				Por Inducción Matemática concluimos que el Teorema de Bolzano-Weiestrass en $\RR^k$ es cierto.
+
+			\end{proof}
+
+		\end{itemize}
+
+	\end{enumerate}
+\end{document}
+

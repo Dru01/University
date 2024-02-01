@@ -1,0 +1,206 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Examen Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Juan Carlos Pardo Millán}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item Vamos a suponer que lanzamos $n$ monedas, sin que el resultado de alguna interfiera con la otra, y cada una muestra sol con probabilidad $p$. Cada una de las monedas que muestra sol es lanzada nuevamente. Encuentre la probabilidad de obtener $k$ soles en la segunda ronda de lanzamientos.
+		\begin{sol}
+			Definamos a $X_i$ una variable aleatoria tal que toma el valor $1$ si la $i-$ésima moneda se obtuvieron dos soles y $0$ si no, y también 
+			
+			\[X = \sum_{i=1}^n X_i,\]
+
+			por lo que el problema nos pide calcular
+
+			\[\PP\bracs{X = k}.\]
+
+			Para ello fijemonos en un lanzamiento en específico y notemos que nuestro espacio muestral es
+
+			\[\set{SS, SA, A}.\]
+
+			donde por hipotesis del problema tenemos que
+
+			\[\PP\bracs{SS} = p^2, \PP\bracs{SA} = p(1-p), \PP\bracs{A} = 1-p,\]
+
+			por lo tanto
+
+			\[\PP\bracs{X_i=1} = p^2, \quad \PP\bracs{X_i=0}=p(1-p) + (1-p) = 1-p^2.\]
+
+			Con lo que obtenemos que $X_i\sim Bernoulli(p^2)$, luego al ser $X$ la suma de $n$ variables aleatorias independientes Bernoulli's con mismo parámetro $p^2$ entonces
+			
+			\[X\sim Binom\pars{n,p^2}.\]
+
+			Por lo tanto concluimos que
+
+			\[\PP\bracs{X=k}=\binom{n}{k}p^{2k}(1-p^2)^{n-x}.\]
+
+
+		\end{sol}
+		\item Consideremos un exámen de opción múltiple en donde cada pregunta tiene $m$ respuestas posibles. Sea $p$ la probabilidad de que un estudiante conoce la respuesta correcta a una pregunta dada. Si el ignora la respuesta, escogerá al azar una de las $m$ respuestas posibles. ¿Cuál es la probabilidad de que un estudiante conozca realmente la respuesta correcta una vez que la ha dado?
+		\begin{sol}
+			Para resolver la pregunta notemos que tenemos dos eventos
+
+			\begin{align*}
+				A &: \text{``El estudiante conoce la respuesta'' },\\
+				B &: \text{``El estudiante acierta'' }.
+			\end{align*}
+
+			Luego por definición tenemos que
+
+			\begin{align*}
+				A^c &: \text{``El estudiante no conoce la respuesta'' },\\
+				B^c &: \text{``El estudiante no acierta'' }.
+			\end{align*}
+
+			Ahora por hipotesis del problema y por $\PP\bracs{X^c} = 1 - \PP\bracs{X}, \PP\bracs{X^c|Y} = 1 - \PP\bracs{X|Y}$ tenemos que
+
+			\[\PP\bracs{A} = p, \quad \PP\bracs{A^c} = 1-p, \quad \PP\bracs{B|A^c} = \frac{1}{m}.\]
+
+			Además si el alumno conoce la respuesta entonces acertara por lo tanto
+
+			\[\PP\bracs{B|A} = 1.\]
+
+			El problema nos pide calcular la probabilidad que un alumno dio la respuesta correcta a una pregunta, pero desconocemos si la sabía o no, es decir
+
+			\[\PP\bracs{B\cap\pars{A\cup A^c}} = \PP\bracs{B},\]
+
+			usando probabilidad total podemos concluir que
+
+			\[\PP\bracs{B} = \PP\bracs{B|A}\PP\bracs{A}+\PP\bracs{B|A^c}\PP\bracs{A^c} = p+\frac{1-p}{m}.\]
+			
+			Si quisieramos calcular la probabilidad en el que el alumno no corrio con suerte, es decir que este sabia la respuesta cuando la acerto a la pregunta tendríamos que calcular
+
+			\[\PP\bracs{A|B},\]
+
+			usando bayes y lo anterrior cálculado podemos concluir que
+
+			\[\PP\bracs{A|B} = \frac{\PP\bracs{B|A}\PP\bracs{A}}{\PP\bracs{B}} = \frac{p}{p+\frac{1-p}{m}} = \frac{mp}{1+\pars{m-1}p}.\]
+
+			
+		\end{sol}
+	\end{enumerate}
+\end{document}
+

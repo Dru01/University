@@ -1,0 +1,327 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item (100 pts.) Sea $Z\sim N(0,1)$ y $X\sim\Gamma( \nu/2,1/2)$ con $\nu>0$ no precisamente entero. Utilice el Teorema de Cambio de Variable Multivariado para demostrar que $T=\frac{Z}{\sqrt{X/\nu}}$ tiene distribución $t_\nu$, bajo la hipótesis $Z\perp X$.
+		
+		Comenzaremos por ver la distribución de la densidad conjunta de $T$ y $X$. 
+		
+		Sea $g: \R^2\to\R^2$ $g(x,y) = \pars{\frac{x}{\sqrt{\frac{y}{\nu}}}, y}$, de la cual su función inversa es $g^{-1}(x,y) = \pars{x\sqrt{\frac{y}{\nu}}, y}$ cuyo determinante Jacobiano es
+		
+		\[J = \abs{\begin{array}{cc}
+			\sqrt{\frac{y}{v}} & \frac{x\sqrt{\frac{y}{\nu}}}{2x}\\
+			0 & 1
+		\end{array}} = \sqrt{\frac{y}{\nu}}.\]
+
+		entonces
+
+		\begin{align*}
+			f_{T,X}((z,x)) &= f_{Z,X}(g^{-1}(z,x)) * J &\text{Por el Teorema de Cambio de Variable Multivariado}\\
+			&= f_{Z,X}\pars{\pars{z\sqrt{\frac{x}{\nu}},x}} \sqrt{\frac{x}{\nu}}\\
+			&= f_{Z}\pars{z\sqrt{\frac{x}{\nu}}}f_{X}(x) \sqrt{\frac{x}{\nu}} & \text{Por la Independencia de Z y X}\\
+			&= \pars{\frac{e^{-\frac{z^2\frac{x}{\nu}}{2}}}{\sqrt{2\pi}}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} e^{-\frac{1}{2}x}}{\Gamma\pars{\frac{\nu}{2}}}} \sqrt{\frac{x}{\nu}}\\
+		\end{align*}
+
+		Ahora por definición de densidad marginal tenemos que
+
+		\[f_T(z) = \int_{0}^{\infty} f_{T,X}((z,x)) dx,\]
+
+		\newpage
+
+		por lo tanto
+
+		\begin{align*}
+			f_T(z) &= \int_{0}^{\infty} \pars{\frac{e^{-\frac{z^2\frac{x}{\nu}}{2}}}{\sqrt{2\pi}}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} e^{-\frac{1}{2}x}}{\Gamma\pars{\frac{\nu}{2}}}} \sqrt{\frac{x}{\nu}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}} \int_{0}^{\infty} \pars{e^{-\pars{\frac{z^2}{2\nu} + \frac{1}{2}}x}} \pars{x^{\frac{\nu}{2} + \frac{1}{2}}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}} \int_{0}^{\infty} \frac{\pars{e^{-\pars{\frac{z^2}{2\nu} + \frac{1}{2}}x}} \pars{x^{\frac{\nu}{2} + \frac{1}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}}{\Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}} \text{\quad Al ser la integral una Gamma con parametros $\pars{\frac{\nu}{2} + \frac{1}{2},\frac{z^2}{2\nu} + \frac{1}{2}}$}\\
+			&= \frac{\Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{\pi v}}{\Gamma\pars{\frac{\nu}{2}}}} \pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{-\pars{\frac{\nu}{2} + \frac{1}{2}}}.
+		\end{align*}
+
+		Al ser la función de densidad de $T$ de una $t_v$ concluimos que
+
+		\[T \sim t_v.\]
+
+		\newpage
+
+		\item (100 pts.) Sean $X\sim\Gamma( \nu/2,1/2)$ y $Y\sim\Gamma( \mu/2,1/2)$ con $\nu,\mu>0$ no precisamente enteros. Utilizando Probabilidad Total halle la distribución de $F=\frac{\mu X}{\nu Y}$, bajo la hipótesis $X\perp Y$.
+		
+		Encontraremos la distribución de $F$
+
+		\begin{align*}
+			F_f(x) &= P\bracs{F \leq x}\\
+			&= \int_{0}^{\infty} P\bracs{F\leq x | Y = y} f_Y(y) dy\\
+			& \text{Por Probabilidad Total sobre Y}\\
+			&= \int_{0}^{\infty} P\bracs{\frac{\mu X}{\nu y} \leq x} f_Y(y) dy\\
+			&\text{Por independencia de X y Y}\\
+			&= \int_{0}^{\infty} P\bracs{X \leq x\pars{\frac{\nu y}{\mu}}} f_Y(y) dy\\
+			& \text{Ya que $P\bracs{g(X) \leq t} = P\bracs{X \leq g^{-1}(t)}$}\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^x \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} dx} f_Y(y) dy\\
+			& \text{Por el Teorema de Cambio de Variable}\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^x \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} dx} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dy\\
+			&= \int_{0}^{\infty} \pars{\int_{0}^x \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dx} dy\\
+			&= \int_{0}^{x} \pars{\int_{0}^{\infty} \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \pars{x\pars{\frac{\nu y}{\mu}}}^{\frac{\nu}{2}-1} e^{-\frac{x\pars{\frac{\nu y}{\mu}}}{2}}}{\Gamma\pars{\frac{\nu}{2}}} \pars{\frac{\nu y}{\mu}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\mu}{2}} y^{\frac{\mu}{2}-1}e^{-\frac{y}{2}}}{\Gamma\pars{\frac{\mu}{2}}}} dy} dx\\
+			& \text{Por Fubini}\\
+			&= \int_{0}^{x} \frac{1}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{\int_{0}^{\infty} \pars{\frac{1}{2}}^{\frac{\nu}{2} + \frac{\mu}{2}} \pars{y}^{\frac{\nu}{2} + \frac{\mu}{2} -1} e^{-\pars{\frac{x\pars{\frac{\nu}{\mu}}}{2} + \frac{1}{2}}y} dy} dx\\
+			&= \int_{0}^{x} \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}}\\ &\pars{\int_{0}^{\infty} \pars{\pars{1 + x\frac{\nu}{\mu}}\pars{\frac{1}{2}}}^{\frac{\nu}{2} + \frac{\mu}{2}} \pars{y}^{\frac{\nu}{2} + \frac{\mu}{2} -1} e^{-\pars{\frac{x\pars{\frac{\nu}{\mu}}}{2} + \frac{1}{2}}y} dy} dx\\
+			&= \int_{0}^{x} \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}} dx\\
+			& \text{Al ser la integral de una Gama con parametros $\pars{\frac{\nu}{2} + \frac{\mu}{2},\pars{1 + x\frac{\nu}{\mu}}\pars{\frac{1}{2}}}$}
+		\end{align*}
+
+		Por lo tanto
+
+		\[f_F(x) = \frac{\Gamma\pars{\frac{\nu}{2}+\frac{\mu}{2}}}{\Gamma\pars{\frac{\nu}{2}}\Gamma\pars{\frac{\mu}{2}}} \pars{\frac{\nu}{\mu}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} \pars{1 + x\frac{\nu}{\mu}}^{-\pars{\frac{\nu}{2} + \frac{\mu}{2}}},\]
+
+		con lo que concluimos que
+
+		\[F \sim F(\nu,\mu).\]
+
+		\newpage
+
+		\item Una sucesión de vectores aleatorios $\{\vec{X}_n\}$ converge en distribución a otro vector aleatorio $\vec{X}$ ssi $F_{\vec{X}_n}(\vec{x})$ converge a $F_{\vec{X}}(\vec{x})$ para todo $\vec{x}$ en el que $F_{\vec{X}}$ es continua (según la distancia euclidiana).
+		
+		\begin{enumerate}
+		
+			\item (70 pts.) Demuestre que si $\{\vec{X}_n\}$ es una sucesión de vectores aleatorios tales que convergen en distribución a $\vec{X}$, entonces cada entrada de $\{\vec{X}_n\}$ converge a la correspondiente entrada de $\vec{X}$. ¿Se cumple el recíproco?
+			
+			Por el Teorema 8.1 tenemos que para todo función $g$ acotada y continua se cumple que $\vec{X}_n \xrightarrow{d} X$ si y sólo si
+			
+			\[E\bracs{g\pars{\vec{X}_n}} \xrightarrow E\bracs{\pars{g(X)}},\]
+
+			ahora sea $f:\R\to\R$ una función continua y acotada, y $h(\vec{X}) = \pars{\vec{X}}_i$ la proyección del vector a la $i-esima$ componente la cual es una función continua, por lo que $f\circ h$ es un función continua y acotada. Si tomamos $g=f\circ h$ entonces
+
+			\[E\bracs{f\pars{h\pars{\vec{X}_n}}} = E\bracs{f\pars{g\pars{\vec{X}}}},\]
+
+			por lo tanto concluimos
+
+			\[E\bracs{f\pars{\pars{\vec{X}_n}_i}} = E\bracs{f\pars{\pars{\vec{X}}_i}}.\]
+
+			El recíproco no es cierto ya que si tomamos $X_n = X = -Y_n = Y$ una sucesión de variables aleatorias donde $X \sim Y \sim N(\mu,\sigma)$, entonces 
+
+			$X_n + Y_n \sim Z$
+			
+			donde $Z$ es una variable degenerada en 0. Por lo tanto $(X_n,Y_n)$ no converge a $(X,Y)$.
+
+			\newpage
+
+			\item (30 pts.) Sea $\vec{X}\sim N_d(\mu \vec{1},\sigma^2 I_d)$. Halle la distribución de $\overline{X}_d$ condicionada a $\max\{X_1,\dots,X_d\}-\min\{X_1,\dots,X_d\}$.
+			
+
+		\end{enumerate}
+
+		\newpage
+
+		\item (100 pts.) Sean $\{X_n\}$ variables aleatorias iid con media $\mu$ y varianza finita $\sigma^2$. Demuestre que 
+		
+		\[\sqrt{n} e^{\overline{X}_n}-e^\mu \overset{d}{\to} \sigma e^\mu Z,\quad Z\sim N(0,1).\]
+
+		\begin{theo}
+			
+			(Metodo Delta) Sean $\{X_n\}$ variables aleatorias iid con media $\mu$ y varianza finita $\sigma^2$, y $g$ una función derivable cuya derivado no se anula, entonces
+			
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \xrightarrow{d} Z, Z \sim N(0,1).\]
+		
+		\end{theo}
+		
+		\begin{proof}
+			Por el teorema de limite central tenemos que
+
+			\[\sqrt{n} \pars{\frac{\overline{X}_n - \mu}{\sigma}} \xrightarrow{d} Z, Z \sim N(0,1).\]
+
+			Por el teorema del Bebe de Skorohod tenemos que existen $Y_n'$ y $Z'$ tales que
+
+			\[Y_n' \sim \sqrt{n} \pars{\frac{\overline{X}_n - \mu}{\sigma}}, \quad Z' \sim Z,\]
+
+			y que
+
+			\[\limninf Y_n' = Z'.\]
+			
+			Entonces
+
+			\[\overline{X}_n \sim \mu + \frac{\sigma Y_n'}{\sqrt{n}},\]
+
+			por lo que
+
+			\[g\pars{\overline{X}_n} \sim g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}}\]
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \sim \sqrt{n} \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\sigma g'(\mu)}},\]
+
+			multiplicando por $1 = \frac{Y_n'}{Y_n'}$ obtenemos
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \sim \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\frac{\sigma Y_n'}{\sqrt{n}}}} \pars{\frac{Y_n'}{g'(\mu)}}.\]
+
+			Por definición de $g'(\mu)$ y que $\frac{\sigma Y_n'}{\sqrt{n}} \xrightarrow{c.s.} 0$ tenemos que
+
+			\[g'(\mu) = \limninf \pars{\frac{g\pars{\mu + \frac{\sigma Y_n'}{\sqrt{n}}} - g\pars{\mu}}{\frac{\sigma Y_n'}{\sqrt{n}}}},\]
+
+			además como
+
+			\[\limninf Y_n' = Z',\]
+
+			concluimos que
+
+			\[\sqrt{n} \pars{\frac{g\pars{\overline{X}_n} - g\pars{\mu}}{\sigma g'(\mu)}} \xrightarrow{d} g'(\mu)\frac{Z'}{g'(\mu)} = Z' \sim Z \sim N(0,1).\]
+
+		\end{proof}
+
+		Ahora seguiremos por demostrar el ejercicio
+
+		\begin{proof}
+			Un corolario del teorema anterior es que
+
+			\[\sqrt{n} \pars{g\pars{\overline{X}_n} - g\pars{\mu}} \xrightarrow{d} \sigma g'(\mu) Z, Z \sim N(0,1),\]
+
+			esto por Slutsky.
+
+			Tomando $g(x) = e^x$ obtenemos
+
+			\[\sqrt{n} \pars{e^{\overline{X}_n} - e^{\mu}} \xrightarrow{d} \sigma e^\mu Z, Z \sim N(0,1)\]
+		\end{proof}
+
+		\newpage
+
+		\item (100 pts.) Sea $\{X_n\}$ una sucesión de variables aleatorias iid cuya función de distribución tiene extremo derecho infinito. Para $x>0$ fijo, sea
+
+		\[T(x):=\inf\{n\in\N :X_n>x\}.\]
+
+		$T(x)$ es el índice de la primera variable de la sucesión que toma un valor mayor a $x$. Sea $X$ otra variable aleatoria con la misma distribución que las $X_n$ e independiente de todas las $X_n$ y sea $\{Y_n\}$ v.a. iid con distribución $Bernoulli(\PP\bracs{X>x})$. Sea $m\in\N$ arbitrario, demuestre que 
+		
+		\[ \frac{1}{mx}T(x)\sum_{j=1}^{\ceil{mx}}Y_j\overset{d}{\to} E,x\to\infty,\quad E\sim exp(1).\]
+
+		\newpage
+
+		\item (10 pts. extra en la nota final del examen). Sea $A\in\mathcal{B}(\R)$ y definamos
+		
+		\[\partial A:=\{x:\exists \{y_n\}\subseteq A, y_n\to x\wedge \exists \{z_n\}\subseteq A^c, z_n\to x\}.\]
+
+		$\partial A$ se conoce como la \textbf{frontera de $A$}. Sea $\{X_n\}$ una sucesión de v.a. con funciones de distribución $\{F_n\}$ y sea $X$ otra v.a. con función de distribución $F$. Demuestre que $X_n\overset{d}{\to}X$ssi 
+
+		\[\int_A F_n(dx)\to \int_A F(dx), n\to\infty,\]
+		
+		para todo $A$ tal que $F(\partial A)=0$. ($F(A):=\PP\bracs{X\in A})$.
+
+    \end{enumerate}
+
+	\end{document}
+			

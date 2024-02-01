@@ -1,0 +1,457 @@
+% PREÁMBULO
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Membrete
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{14pt}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+	\cfoot{\thepage}
+
+% Datos
+    \title{Cálculo II\\Examen II}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Fernando Nuñez Medina}
+    \date{30 Abril 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\section*{Teoremas}
+
+	\begin{enumerate}
+		\item Sea $\{a_n\}$ una sucesión con $a_n \in \R$ y $f: \R \rightarrow \R$ tal que $f(n) = a_n$, luego sí  existe el $\limxinf f(x)$ entonces
+		
+		\[\limxinf f(x) = \limninf a_n.\]
+
+		\begin{proof}
+			Al existir el límite de $f$ entonces $\limxinf f(x) = L$ y por definición de limite tenemos que
+
+			\[\forall \varepsilon > 0 \exists c \in \R : \forall x > c \text{ se cumple que } |f(x) - L| < \varepsilon.\]
+
+			Luego como $f(n) = a_n$ y por propiedad arquimediana $\exists N \in N$ tal que $N > c$ entonces
+
+			\[\forall \varepsilon > 0 \exists N \in \N : \forall n > N \text{ se cumple que } |f(n) - L| < \varepsilon.\]
+
+			por definición de límite concluimos que existe el límite de $\{a_n\}$ y que
+
+			\[\limxinf f(x) = \limninf a_n.\]
+
+		\end{proof}
+
+		\newpage
+
+		\item El polinomio de taylor en $a$ de grado $n$ de $f$ es el polinomio en $(x-a)$ de $f$.
+		
+		\begin{proof}
+			
+			Por deifnición sabemos que
+			
+			\[f(x) = P_{n,a}(x) + R_{n,a}(x).\]
+			
+			Luego si $f$ es una función polinomial de grado $n$ entonces $f^{(n+1)} = 0$, esto lo demostraremos con inducción
+			
+			\begin{itemize}
+				\item \textbf{Caso base: n = 0}
+				Entonces $f$ es de la forma $f(x) = c$ y por lo tanto $f'(x) = 0$.
+				\item \textbf{Hipótesis:}
+				Si $f$ es una función polinomial de grado $n$ entonces $f^{(n+1)} = 0$	
+				\item \textbf{Paso inductivo}
+				Sea $f$ una función polinomial de grado $n+1$ entonces $f$ es de la forma 
+				
+				\[f(x) = \sum_{i=0}^{n+1} a_ix^i\]
+				
+				entonces 
+				
+				\[f(x) = \sum_{i=0}^{n+1} a_ix^i + a_{n+1}x^{n+1},\]
+
+				por lo que 
+				
+				\[f(x) = g(x) + a_{n+1}x^{n+1}\]
+				
+				donde $g(x)$ es una función polinomial de grado $n$.
+				
+				Ahora por linealidad de la derivada y por hipotesis de inducción
+				
+				\[f^{(n+1)} = \frac{a_{n+1}}{n+1}.\]
+				
+				por lo tanto
+				
+				\[f^{(n+2)} = 0.\]
+				
+			\end{itemize}
+
+			Por inducción matemática concluimos que si $f$ es una función polinomial de grado $n$ entonces $f^{(n+1)} = 0$.
+				
+			Por el teorema de Taylor concluimos que si $f$ es un función polinomial de grado $n$ entonces (ya que $R_{n,a}(x) = 0$)
+
+			\[f(x) = P_{n,a}(x).\]
+			
+			Es decir el polinomio de taylor en $a$ de grado $n$ de $f$ es el polinomio en $(x-a)$ de $f$.
+
+		\end{proof}
+
+	\end{enumerate}
+
+	\newpage
+
+    \section*{Problemas}
+
+	\begin{enumerate}
+		
+		\item Realiza lo siguiente
+		
+		\begin{enumerate}
+			\item Calcula $\int \frac{x}{1+x^2}dx$.
+
+			Sea $u = x^2 + 1$ entonces $du = 2xdx$, sustituyendo en la integral obtenemos
+
+			\[\int \frac{x}{1+x^2}dx = \int \frac{du}{2u}.\]
+
+			Al ser $\int \frac{du}{u} = \log(u)$ entonces
+
+			\[\int \frac{x}{1+x^2}dx = \frac{\log(u)}{2},\]
+
+			por lo tanto concluimos que
+
+			\[\int \frac{x}{1+x^2}dx = \frac{\log(x^2+1)}{2}.\]
+
+			\item Calcula $\int \tan^{-1}(x)dx$.
+			
+			Integraremos por partes, entonces sea $u = \tan{-1}(x)$ y $dv = dx$ entonces $du = \frac{1}{x^2+1}dx$ y $v = x$; por lo tanto
+
+			\[\int \tan^{-1}(x)dx = \tan^{-1}(x)x - \int \frac{x}{x^2+1} dx\]
+
+			por el inciso anterior concluimos
+
+			\[\int \tan^{-1}(x)dx = \tan^{-1}(x)x - \frac{\log(x^2+1)}{2}\]
+
+		\end{enumerate}
+
+		\item Escribe el polinomio $f(x) = x^5$ como polinomio en $(x-3)$.
+		
+		Por el teorema 2 es suficiente calcular el polinomio de Taylor en 3 de grado 5.Empezaremos calculando las derivadas necesarias para el polinomio de Taylor:
+
+		\begin{align*}
+			f^{(0)}(x) &= x^5\\
+			f^{(1)}(x) &= 5x^4\\
+			f^{(2)}(x) &= 20x^3\\
+			f^{(3)}(x) &= 60x^2\\
+			f^{(4)}(x) &= 120x\\
+			f^{(5)}(x) &= 120\\
+		\end{align*}
+
+		Las evaluamos en $3$ y obtenemos
+		
+		\begin{align*}
+			f^{(0)}(3) &= 243\\
+			f^{(1)}(3) &= 405\\
+			f^{(2)}(3) &= 540\\
+			f^{(3)}(3) &= 540\\
+			f^{(4)}(3) &= 360\\
+			f^{(5)}(3) &= 120\\
+		\end{align*}
+
+		Por lo tanto
+
+		\[f(x) = P_{5,3}(x) = \frac{243}{0!} + \frac{405}{1!}(x-3) + \frac{540}{2!}(x-3)^2 + \frac{540}{3!}(x-3)^3 + \frac{360}{4!}(x-3)^4 + \frac{120}{5!}(x-3)!\]
+		\[= 243 + 405(x-3) + 270(x-3)^2 + 90(x-3)^3 + 15(x-3)^4 + (x-3)^5.\]
+
+		\item Comprueba que $\limninf \sqrt[n]{n^2+n} = 1$.
+		
+		\begin{proof}
+			Primero veamos que por definición
+
+			\[\sqrt[n]{n^2+n} = \exp(\log(\sqrt[n]{n^2+n})),\]
+			
+			entonces
+
+			\[\sqrt[n]{n^2+n} = \exp\left(\frac{\log(n^2+n)}{n}\right),\]
+
+			y como $n^2 + n = n (n+1)$ obtenemos
+
+			\[\sqrt[n]{n^2+n} = \exp\left(\frac{\log(n+1) + \log(n)}{n}\right).\]
+
+			Ahora veamos el siguiente límite
+
+			\[\limxinf \frac{log(x)}{x}\]
+
+			por L'Hopital tenemos que
+
+			\[\limxinf \frac{log(x)}{x} = \limxinf \frac{\frac{1}{x}}{1} = \limxinf \frac{1}{x} = 0,\]
+
+			por el teorema 1 se cumple que
+
+			\[\limninf \frac{\log(n)}{n} = 0,\]
+
+			analogamente obtenemos que
+			
+			\[\limninf \frac{\log(n+1)}{n} = 0.\]
+
+			Por último veamos lo siguiente
+
+			\begin{align*}
+				1 &= \exp(0)\\
+				&= \exp\left(\limninf \frac{\log(n+1) + \log(n)}{n}\right) & \text{ por lo demostrado anteriormente.}\\
+				&= \limninf \exp\left(\frac{\log(n^2+n)}{n}\right) & \text{ al ser exp continua}\\
+				&= \limninf \exp(\log(\sqrt[n]{n^2+n}))\\
+				&= \limninf \sqrt[n]{n^2+n}
+			\end{align*}
+
+		\end{proof}
+
+		\item Demuestra que cualquier subseción de una sucesión convergente es convergente.
+		
+		\begin{proof}
+			Sea $\{a_n\}$ una sucesión convergente con $a_n \in \R$ y $\limninf a_n = l$. Sea $\{a_{n_k}\}$ una subseción de $s_n$. Primero veamos que $n_k \geq k$, proseguiremos por inducción
+
+			\begin{itemize}
+				\item \textbf{Caso base: k = 1}
+				
+				$n_1 \geq 1$, esto pues $n_k \in \N, \forall k$.
+
+				\item \textbf{Hipótesis:}
+				
+				\[n_k \geq k\]
+
+				\item \textbf{Paso Inductivo:}
+				
+				Ya que $n_{k+1} > n_k$ y por hipótesis tenemos que
+
+				\[n_{k+1} > k,\]
+
+				por lo tanto
+
+				\[n_{k+1} \geq k + 1.\]
+
+			\end{itemize}
+
+			Por inducción matemática obtenemos que $n_k \geq k$.
+
+			Ahora por definición de convergencia en $\{a_n\}$ tenemos que
+
+			\[\forall \varepsilon > 0, \exists N \in \N : \forall k \in \N, k \geq N \text{ se cumple que } |a_k - l| \leq \varepsilon,\]
+
+			como $n_k \geq k$ entonces
+
+			\[\forall \varepsilon > 0, \exists N \in \N : \forall n_k \in \N, n_k \geq N \text{ se cumple que } |a_{n_k} - l| \leq \varepsilon,\]
+
+			por definición de convergencia concluimos que $a_{n_k}$ converge y que
+
+			\[\limninf a_{n_k} = l.\]
+
+		\end{proof}
+
+		\item Decir si son convergentes o divergentes cada una de las siguien-
+		tes series innitas. Sugerencia: Aplica la prueba de la integral para c).
+
+		\begin{enumerate}
+			\item $\sum_{n=2}^{\infty} \frac{1}{\log(n)^n}$
+			
+			Primero veamos que $e < 3$ entonces $e^2 < 9$ y por lo tanto $2 < \log(9)$ al ser una función creciente y además para todo $n > 8$ se cumple que $2 < \log(n)$. Ahora entonces tenemos que para $n > 8$
+
+			\[\frac{1}{\log(n)} < \frac{1}{2},\]
+
+			al ser ambos positivos obtenemos que
+
+			\[\frac{1}{\log(n)^n} < \frac{1}{2^n},\]
+
+			al ser $\limninf \sum_{n=0}^{\infty} \frac{1}{2^n}$ convergente es más igual a $1$ entonces por el test de comparación concluimos que
+
+			\[\sum_{n=2}^{\infty} \frac{1}{\log(n)^n}\]
+
+			converge.
+
+			\item $\sum_{n=1}^{\infty} \frac{n^2}{n^3+1}$
+			
+			Primero veamos que $n^3 \geq 1, n \in \N$ por lo que
+
+			\[2n^3 \geq n^3 + 1,\]
+
+			al ser $n > 0$ entonces
+
+			\[\frac{n^3}{n^3+1} \geq \frac{1}{2},\]
+			
+			por lo tanto
+
+			\[\frac{n^2}{n^3+1} \geq \frac{1}{2n}.\]
+
+			Luego como $\limninf \frac{1}{2n}$ diverge por lo que por la condición de la desaparición ("vanish condition") concluimos que
+
+			\[\sum_{n=1}^{\infty} \frac{n^2}{n^3+1}\]
+
+			diverge.
+
+			\newpage
+
+			\item $\sum_{n=2}^{\infty} \frac{1}{n\log(n)}$
+			
+			Veamos lo siguiente, sea $u = \log(x)$ entonces $du = \frac{dx}{x}$ por lo que
+
+			\[\int \frac{1}{x\log(x)}dx = \int \frac{du}{u} = \log(u) = \log(\log(x)).\]
+
+			Por lo tanto
+
+			\[\limninf \int_{2}^{n} \frac{1}{x\log(x)}dx = \log(\log(N)) - \log(\log(2)).\]
+
+			Podemos ver que $\forall a \in \R$ se cumple que
+
+			\[a = \log(e^a) = \log(\log(e^{e^a}))\]
+
+			Por propiedad arquimediana $\exists n \in \N$ tal que $n > e^{e^a}$ y como $\log$ es creciente entonces $a < \log(\log(n))$. Es decir, $\forall a \in \R$ existe $n\in\N$ tal que
+
+			\[a < \log(\log(n))\]
+
+			y por lo tanto $\log(\log(N))$ diverge y también $\log(\log(N)) - \log(\log(2))$.
+
+			Por criterio de la integral
+
+			\[\sum_{n=2}^{\infty} \frac{1}{n\log(n)}\]
+
+			diverge.
+
+		\end{enumerate}
+
+		\item Demuestra que si $\sum_{n=1}^\infty a_n$ converge absolutamente, entonces
+		
+		\[\left|\sum_{n=1}^{\infty} a_n\right| \leq \sum_{n=1}^{\infty} |a_n|\]
+
+		Por inducción demostraremos que esto se cumple hasta $N \in \N$ es decir $\left|\sum_{n=1}^{N} a_n\right| \leq \sum_{n=1}^{N} |a_n|$. Procederemos a demostrar por indducción
+
+		\begin{itemize}
+			\item \textbf{Caso base: N = 1}
+			
+			$|a_n| = |a_n|$ lo cual es cierto
+
+			\item \textbf{Hipótesis:}
+			
+			\[\left|\sum_{n=1}^{N} a_n\right| \leq \sum_{n=1}^{N} |a_n|.\]
+
+			\item \textbf{Paso Inductivo:}
+			
+			Por la desigualdad del triángulo tenemos que
+
+			\[\left|\sum_{n=1}^{N+1} a_n\right| \leq \left|\sum_{n=1}^{N} a_n\right| + |a_{N+1}|\]
+
+			Por hipótesis de inducción obtenemos
+
+			\[\left|\sum_{n=1}^{N+1} a_n\right| \leq \sum_{n=1}^{N+1} |a_n|.\]
+
+		\end{itemize}
+
+		Por inducción matemática obtenemos que
+
+		\[\left|\sum_{n=1}^{N} a_n\right| \leq \sum_{n=1}^{N} |a_n|,\]
+
+		además por definición $|a_n| \geq 0$ por lo que
+
+		\[\left|\sum_{n=1}^{N} a_n\right| \leq \sum_{n=1}^{\infty} |a_n|.\]
+
+		Ahora como $\sum_{0}^{\infty} a_n$ es absolutamente convergente, $\sum_{0}^{\infty} a_n$ y por la desigualdad concluimos
+
+		\[\left|\sum_{n=1}^{\infty} a_n\right| \leq \sum_{n=1}^{\infty} |a_n|.\]
+
+	\end{enumerate}
+	
+\end{document}

@@ -1,0 +1,231 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Métodos Estadísticos \\ Tarea 2}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Rogelio Ramos Quiroga}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+	Suponga que la probabilidad de encontrar $j$ especies diferentes de plantas en un lote aleatorio (pero de área fija) en cierta región, está dada por
+	\[p_j = \frac{\pars{1-e^{-\lambda}}^{j+1}}{\pars{j+1}\lambda}, \quad \lambda \geq 0, j = 0,1,2,cdots\]
+	Se observan 200 lotes y se obtiene la siguiente tabla de datos
+	\begin{center}
+		\begin{tabular}{|c|ccccc|}
+			\hline
+			No. de especies & $0$ & $1$ & $2$ & $3$ & $\geq 4$\\
+			\hline
+			Frecuencia & $147$ & $36$ & $13$ & $4$ & $0$\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\begin{enumerate}
+		\item Las $p_j$'s ¿forman una distribución de probabilidad? ¿Porqué?
+		Demostraremos que la las $p_j$'s forman una distribución de probabilidad.
+		\begin{proof}
+			Por definición $p_j\geq 0$.
+
+			Notemos que
+
+			\[0 \leq 1-e^{-\lambda} \leq 1,\]
+
+			y recordemos que la serie geométrica
+
+			\[\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \abs{x}\leq 1,\]
+
+			entonces
+
+			\[\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\log\pars{\abs{1-x}}, \abs{x}\leq 1,\]
+
+			por lo que 
+
+			\[\sum_{n=0}^\infty \frac{\pars{1-e^{-\lambda}}^{n+1}}{n+1} = \lambda,\]
+
+			por lo tanto
+
+			\[\sum_{n=0}^\infty \frac{\pars{1-e^{-\lambda}}^{n+1}}{\pars{n+1}\lambda} = 1,\]
+
+			por definición concluimos que las $p_j$'s forman una distribución de probabilidad.
+		\end{proof}
+
+		\item Obtenga expresiones para las funciones de $\lambda$: Logverosimilitud, score e información.
+		\begin{sol}
+			Por definición la función de verosimilitud es
+
+			\[L\pars{\lambda} = \prod_{j=0}^{\infty}p_j^{f_j} = \prod_{j=0}^{\infty}\pars{\frac{\pars{1-e^{-\lambda}}^{j+1}}{\pars{j+1}\lambda}}^{f_j} = c\prod_{j=0}^{\infty}\frac{\pars{1-e^{-\lambda}}^{\pars{j+1}f_j}}{\lambda^{f_j}} = c\frac{\prod_{j=0}^{\infty}\pars{1-e^{-\lambda}}^{\pars{j+1}f_j}}{\lambda^{\sum_{j=0}^{\infty}f_j}},\]
+
+			por lo que la función de logverosimilitud es
+
+			\[l\pars{\lambda} = \log{c} + \pars{\sum_{j=0}^{\infty}\pars{j+1}f_j}\log\pars{1-e^{-\lambda}} - \pars{\sum_{j=0}^{\infty}f_j}\log\pars{\lambda},\]
+
+			entonces la función score es
+
+			\[Sc\pars{\lambda} = \frac{\sum_{j=0}^{\infty}\pars{j+1}f_j}{e^{\lambda}-1} - \frac{\sum_{j=0}^{\infty}f_j}{\lambda},\]
+
+			por lo tanto la función de información es
+
+			\[I\pars{\lambda} = \frac{\pars{\sum_{j=0}^{\infty}\pars{j+1}f_j}e^{\lambda}}{\pars{e^{\lambda}-1}^2} - \frac{\pars{\sum_{j=0}^{\infty}f_j}}{\lambda^2},\]
+		\end{sol}
+
+		\item Use el método de Newton-Raphson para encontrar el estimador máximo verosímil, $\hat{\lambda}$.
+		
+		\begin{sol}
+			El estimador de máxima verosimilitud 
+			
+			\[\hat{\lambda} = 0.5997.\]
+			
+			Es máximo puesto que 
+			
+			\[I\pars{\hat{\lambda}} = -183.3073.\]
+
+		\end{sol}
+
+		\item Estime las frecuencias esperadas. ¿Da el modelo un ajuste razonable a los datos observados?
+		
+		\begin{sol}
+			Las frecuencias esperadas son:
+			\begin{center}
+				\begin{tabular}{|c|ccccc|}
+					\hline
+					No. de especies & $0$ & $1$ & $2$ & $3$ & $\geq 4$\\
+					\hline
+					Frec. obs. & $147$ & $36$ & $13$ & $4$ & $0$\\
+					\hline
+					Frec. esp. & $15.4$ & $33.9$ & $10.2$ & $3.5$ & $2$\\
+					\hline
+				\end{tabular}
+			\end{center}
+			El modelo da un ajuste razonable a los datos puesto que estan muy cerca los resultados.
+		\end{sol}
+		\item Use el método de Newton para obtener un intervalo de verosimilitud del $10\%$ para $\lambda$.
+		
+		\begin{sol}
+			El intervalo de verosimilitud del $10\%$ para $\lambda$ es: 
+			
+			\[IV\pars{\lambda} = \set{ \lambda : R\pars{\lambda; x} \geq 0.10} = [0.4561,0.7746].\]
+		\end{sol}
+	\end{enumerate}
+
+	Para los incisos 3,4, y 5 se anexa un notebook de python con el cual se encontrar dichas respuestas.
+\end{document}
+

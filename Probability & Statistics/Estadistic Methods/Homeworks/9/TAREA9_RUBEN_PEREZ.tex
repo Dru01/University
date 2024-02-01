@@ -1,0 +1,207 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage{setspace}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+	\onehalfspacing
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Métodos Estadísticos \\ Tarea 9}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Rogelio Ramos Quiroga}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	Considere un generador de dígitos aleatorios. Suponga que, en una secuencia dada, se producen 51 ceros, de modo que hay 50 pares de ceros concecutivos. La siguiente tabla da el número de espacios entre cada par de ceros.
+
+	\begin{table*}[h!]
+		\centering
+		\begin{tabular}{|cccccccccc|}
+			\hline
+			1 & 1 & 6 & 8 & 10 & 22 & 12 & 15 & 0 & 0\\
+			2 & 26 & 1 & 20 & 4 & 2 & 0 & 10 & 4 & 19\\
+			2 & 3 & 0 & 5 & 2 & 8 & 1 & 6 & 14 & 2\\
+			2 & 2 & 21 & 4 & 3 & 0 & 0 & 7 & 2 & 4\\
+			4 & 7 & 16 & 18 & 2 & 13 & 22 & 7 & 3 & 5\\
+			\hline
+		\end{tabular}
+	\end{table*}
+
+	\begin{enumerate}
+		\item Describa un modelo probabilístico apropiado para estos datos, bajo el supuesto de que realmente los dígitos son generados aleatoriamente.
+  		
+		\begin{sol}
+
+		Como los datos son generados aleatoriamente entonces la probablidad de generar un digíto entre los $10$ posibles sería igual además de ser independiente uno de otro. Ahora puesto que los datos recabados solo nos dicen cuantos dígitos distintos de $0$ hay entre cada par concecutivos de estos, entonces proponemos $X$ la variable aleatoria que representa la distancia entre dos ceros concecutivos. La probabilidad de que haya $x$ dígitos distintos de cero entre dos ceros concecutivos es de $\pars{\frac{9}{10}^x}\pars{\frac{1}{10}}$ donde el primero es la probablidad de los primeros $x$ dígitos distintos de cero y el segundo de el $x+1$ dígito sea cero. Es decir nuestro modelo propuesto es $X \sim Geo(1/10)$.
+		\end{sol}
+
+		\newpage
+
+		\item Construya una tabla de frecuencias y pruebe la bondad de ajuste del modelo
+		
+		La tabla de frecuencias agrupadas de nuestros datos es
+
+		\begin{table*}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				I & Frecuencia\\
+				\hline
+				0 & 6\\
+				1 a 2 & 13\\
+				3 a 4 & 8\\
+				5 a 7 & 7\\
+				8 a 12 & 5\\
+				13 a 18 & 5\\
+				19 o mas & 6\\
+				\hline
+			\end{tabular}
+		\end{table*}
+
+		Por el modelo propuesto nuestra hipotesis nula es
+
+		\[H_0: p_i = \pars{\frac{9}{10}^i}\pars{\frac{1}{10}}, i \in I.\]
+
+		Si $f_i$ es la cantidad de veces que la distancia entre dos ceros fue $i$, y $p_i$ la probabilidad de que la distancia entre dos ceros sea $i$, entonces la logverosmilitud de los datos es
+
+		\[l(\vec{p}) = \sum_{i=1}^k f_i\log(p_i).\]
+
+		Ahora recordemos que los resultados de un experimento tienen una distirbución multinomial con probabilidades $\vec{p}$ y que su emv es $\hat{\vec{p}} = \pars{\frac{f_1}{n},\cdots,\frac{f_n}{n}}$. En concreto para nuestros datos tenemos que
+
+		\[l(\hat{\vec{p}}) = -94.4044\]
+
+		En cambio para el modelo propuesto tenemos que
+
+		\[l(\hat{\vec{p}}) = -96.7446.\]
+
+		Por lo que el cociente de verosimilitus observado es
+
+		\[D_{obs} = 4.680509\]
+
+		Ahora como tenemos 7 clases el modelo multinomial tiene 6 parámetros libres, además el modelo geométrico no tiene ninguno. Entonces $D$ se distribuye asintóticamente como Ji cuadrada con 6 grados de libertad. Por lo tanto
+
+		\[p = \PP\bracs{D \geq D_{obs}} = 0.5853.\]
+
+		Puesto que $p > 0.05$ concluimos que no hay evidencia suficiente para rechazar la hipotesis nula.
+
+	\end{enumerate}
+\end{document}
+

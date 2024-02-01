@@ -1,0 +1,345 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Antonio Murillo Salas}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\textbf{Nota:} Justifique con claridad cada una de las respuestas.
+
+	\begin{enumerate}
+		\item Suponga se lanzan dos dados de manera consecutiva. Considere el vector aleatorio $\pars{X,Y}$, donde $X$ es el mayor valor observado y $Y$ es la suma de los valores observados.
+		
+		Veamos que si $A$ y $B$ son las variables aleatorias de los lanzamientos del dado, entonces
+
+		\[f_{X}\pars{x} = \PP\bracs{\max\pars{A,B} = x} = \PP\bracs{A = x, B < x} + \PP\bracs{A < x, B = x} + \PP{A = x, B = x} = \frac{2x-1}{36},\]
+
+		y
+
+		\[f_{Y}(y) = \PP\bracs{A+B = y} = \frac{6-\abs{7-y}}{36}.\]
+		
+		\begin{enumerate}
+			\item Encuentre la covarianza entre $X$ y $Y$.
+			
+			Veamos que la densidad conjunta esta dada por la siguiente tabla
+			
+			\[\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+
+				$\pars{x,y}$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+
+				\hline
+				\hline
+
+				1 & 0 & $\frac{1}{36}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+
+				\hline
+
+				2 & 0 & 0 & $\frac{2}{36}$ & $\frac{1}{36}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+
+				\hline
+
+				3 & 0 & 0 & 0 & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ & 0 & 0 & 0 & 0 & 0 & 0\\
+
+				\hline
+
+				4 & 0 & 0 & 0 & 0 & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ & 0 & 0 & 0 & 0\\
+
+				\hline
+
+				5 & 0 & 0 & 0 & 0 & 0 & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ & 0 & 0\\
+				
+				\hline
+
+				6 & 0 & 0 & 0 & 0 & 0 & 0 & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$\\
+
+				\hline
+			\end{tabular},\]
+
+			por lo que
+
+			\[\EE\bracs{X} = \frac{161}{36},\]
+
+			\[\EE\bracs{Y} = \frac{252}{36},\]
+
+			\[\EE\bracs{XY} = \frac{1190}{36}\]
+
+			por lo tanto
+
+			\[Cov\pars{X,Y} = \EE\bracs{XY} - \EE\bracs{X}\EE\bracs{Y} = \frac{1190}{36} - \frac{161}{36}\frac{252}{36} = \frac{2268}{1296} = \frac{7}{4}.\]
+
+			\item Determine el coeficiente de correlación entre $X$ y $Y$.
+			
+			Para ello calcularemos
+
+			\[Var\pars{X} = \EE\bracs{X^2} - \EE\bracs{X}^2 = \frac{28476 - 25921}{1296} = \frac{2555}{1296},\]
+
+			y
+
+			\[Var\pars{Y} = \EE\bracs{Y^2} - \EE\bracs{Y}^2 = \frac{71064 - 63504}{1296} = \frac{7560}{1296},\]
+
+			por lo tanto
+
+			\[\rho_{X,Y} = \frac{Cov\pars{X,Y}}{\sqrt{Var\pars{X}Var\pars{Y}}} = \frac{\frac{7}{4}}{\sqrt{\frac{2555}{1296}\frac{7560}{1296}}} = \frac{\frac{7}{4}}{\frac{\sqrt{19315800}}{1296}} = \frac{9072}{4\sqrt{19315800}} = \frac{9\sqrt{438}}{365}\]
+			\[\sim 0.516043961172896294779277.\]
+		\end{enumerate}
+		\item Sean $\pars{X,Y}$ un vector aleatorio con función de densidad conjunta
+		
+		\[f_{X,Y}\pars{x,y} = \begin{cases}
+			ce^{-\lambda y}, 0<x\leq y<\infty,\\
+			0, en otro caso.
+		\end{cases}\]
+
+		donde $c$ y $\lambda$ son constantes positivas.
+
+		\begin{enumerate}
+			\item Determine el valor de $c$ para que, efectivamente, $f_{X,Y}$ sea una función de densidad conjunta.
+			
+			\begin{sol}
+				Para que $f_{X,Y}$ sea una función de densidad conjunta se debe cumplir que
+
+				\begin{align*}
+					1 &= \int_{0}^{\infty}\int_{0}^{y}f_{X,Y}\pars{x,y}dxdy\\
+					&= \int_{0}^{\infty}\int_{0}^{y}ce^{-\lambda y}dxdy\\
+					&= c\int_{0}^{\infty}e^{-\lambda y}\int_{0}^{y}dxdy\\
+					&= c\int_{0}^{\infty}e^{-\lambda y}ydy\\
+					&= \frac{c}{\lambda^2}\int_{0}^{\infty}\frac{\lambda^2}{\Gamma\pars{2}} y e^{-\lambda y}dy\\
+					&= \frac{c}{\lambda^2},
+				\end{align*}
+
+				por lo tanto
+
+				\[c = \lambda^2.\]
+			\end{sol}
+
+			\item Encuentre las densidades marginales.
+			
+			\begin{sol}
+				Tenemos que
+
+				\begin{align*}
+					f_X\pars{x} &= \int_{x}^{\infty}f_{X,Y}\pars{x,y}dy\\
+					&= \lambda \int_{0}^{\infty}\lambda e^{-\lambda y}dy\\
+					&= \lambda e^{-\lambda y}\biggr\rvert_{0}^{\infty}\\
+					&= -\lambda\\
+				\end{align*}
+
+				y
+
+				\begin{align*}
+					f_Y\pars{y} &= \int_{0}^{y}f_{X,Y}\pars{x,y}dx\\
+					&= \lambda^2 e^{-\lambda y} \int_{0}^{y} dx\\
+					&= \lambda^2y e^{-\lambda y}\\
+				\end{align*}
+			\end{sol}
+
+			\item ¿Son $X$ y $Y$ independientes?
+			
+			\begin{sol}
+				Puesto que
+
+				\[f_{X,Y}\pars{x,y} = \lambda^2 e^{-\lambda y} \neq -\lambda^3 y e^{-\lambda y} = f_{X}\pars{x}f_{Y}\pars{y},\]
+
+				concluimos que $X$ y $Y$ no son independientes.
+			\end{sol}
+		\end{enumerate}
+	
+		\item Considere la ecuación
+		
+		\[x^2+Ax+B=0,\]
+
+		donde $A$ y $B$ se seleccionan al azar de manera independiente en el intervalo $\pars{0,1}$.
+
+		\begin{enumerate}
+			\item Determine la probabilidad de que ambas raíces sean reales.
+			
+			\begin{sol}
+				Recordemos que las soluciones a la ecuación $x^2+Ax+B=0$ están dadas por $x = \frac{-A \pm \sqrt{A^2-4B}}{2}$ por lo que las soluciones son reales si y sólo si
+
+				\[A^2-4B \geq 0,\]
+
+				es decir
+
+				\[A^2 \geq 4B.\]
+
+				Si $X$ es el evento donde la ecuación $x^2+Ax+B=0$ tiene soluciones reales entonces
+
+				\[\PP\bracs{X} = \PP\bracs{A^2 \geq B} = \int_{0}^{1}\int_{0}^{\frac{x^2}{4}} f_A\pars{x}f_B\pars{y} dydx = \int_{0}^{1}\int_{0}^{\frac{x^2}{4}} dydx = \int_{0}^{1}\frac{x^2}{4} dx = \frac{1}{12}.\]
+			\end{sol}
+
+			\item ¿Cual es la probabilidad que las raíces sean iguales?
+			
+			\begin{sol}
+				Recordemos que las soluciones a la ecuación $x^2+Ax+B=0$ están dadas por $x = \frac{-A \pm \sqrt{A^2-4B}}{2}$ por lo que las soluciones son reales si y sólo si
+
+				\[A^2-4B = 0,\]
+
+				es decir
+
+				\[A^2 = 4B.\]
+
+				Al ser continuas $A$ y $B$ concluimos que la probabilidad de que las raices sean iguales es $0$.
+			\end{sol}
+
+		\end{enumerate}
+
+		\item Sean $X_1,X_2$ variables aleatorias independientes con distribución uniforme en el intervalo $(0,1)$. Dado $\lambda >0$ defina
+		
+		\[Y:=-\frac{1}{\lambda}\ln(X_1X_2).\]
+
+		Determine la función de densidad de $Y$.
+
+		\begin{sol}
+
+			Por el puente fundamental y por la Ley de Adam obtenemos la ley de probabilidad total en el caso continuo
+
+			\begin{align*}
+				\PP\bracs{A} &= \EE\pars{\1_{A}}\\
+				&= \EE\pars{\EE\pars{\1_{A}|X=x}}\\
+				&= \int_{-\infty}^{\infty} \EE\pars{\1_{A}|X=x} f_X\pars{x}dx\\
+				&= \int_{-\infty}^{\infty} \PP\pars{A|X=x} f_X\pars{x}dx
+			\end{align*}
+
+			Por probabilidad total tenemos que
+
+			\[F_{X_1X_2}\pars{z} = \int_{0}^{1} \PP\bracs{X_1X_2 \leq z | X_1 = x} f_{X_1}\pars{x}dx = \int_{0}^{1} F_{X_2}\pars{\frac{z}{x}} f_{X_1}\pars{x}dx,\]
+
+			por el teorema fundamental del cáculo y regla de la cadena, al derivar por $z$ obtenemos
+
+			\begin{align*}
+				f_{X_1X_2}\pars{z} &= \int_{0}^{1} f_{X_2}\pars{\frac{z}{x}} f_{X_1}\pars{x} \frac{1}{x} dx\\
+				&= \int_{0}^{z} f_{X_2}\pars{\frac{z}{x}} f_{X_1}\pars{x} \frac{1}{x} dx + \int_{z}^{1} f_{X_2}\pars{\frac{z}{x}} f_{X_1}\pars{x} \frac{1}{x} dx\\
+				&= \int_{z}^{1} \frac{1}{x} dx\\
+				&= -\log\pars{z}.
+			\end{align*}
+
+			Luego por cambio de variable y puesto que $\log$ es monótona obtenemos que
+
+			\[f_Y\pars{y} = f_{X_1X_2}\pars{e^{-\lambda y}}\pars{-\lambda e^{-\lambda y}} = -\lambda^2 ye^{-\lambda y}\]
+			
+		\end{sol}
+	\end{enumerate}
+\end{document}
+

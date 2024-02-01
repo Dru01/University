@@ -1,0 +1,217 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Métodos Estadísticos \\ Tarea 2}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Rogelio Ramos Quiroga}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+	En el \'area de microbiolog\'ia cuantitativa es de inter\'es determinar la densidad de microorganismos presentes en un determinado medio. Sea $\theta$ el n\'umero medio de microorganismos por unidad de volumen en cierto medio l\'iquido. Queremos estimar $\theta$.
+		
+	Pensemos en una unidad de volumen (digamos 1 cm$^3$), y supongamos que el n\'umero de microorganismos, $Y$, por unidad de volumen sigue una ley Poisson, 
+	
+	\[P(Y=y) = \frac{e^{-\theta}\theta^y}{y!}, \qquad y=0,1,2,\cdots,\]
+	
+	donde $\theta$ es el n\'umero medio por unidad de volumen. La forma obvia es tomar una muestra, digamos 10 cm$^3$, del l\'iquido original y contar el n\'umero de microorganismos, $N$, que hay en la muestra y entonces $\widehat{\theta} = N/10$ y listo $\cdots$ un peque\~no problema  es que, en general, esto \underline{no} se puede hacer en forma directa (en algunos casos, la tecnolog\'ia todav\'ia no puede hacer ese conteo), entonces hay que  recurrir a m\'etodos indirectos.
+
+	Entonces la idea es contar el n\'umero de platos, de los $n$, en los que no hay actividad biol\'ogica (platos inertes), sea $X$ el n\'umero de platos inertes, entonces $X$ sigue una distribuci\'on Binomial 
+	
+	\[P(X=x) = \left( \begin{array}{c} n \\ x \end{array} \right) p^x (1-p)^{n-x}, \qquad x = 0,1,2,\cdots,n,\]
+	
+	de aqu\'i que el problema se reduce a estimar $p$ (f\'acil: $\widehat{p} = X/n$), pues si tenemos $\widehat{p}$ entonces como $p = e^{-\theta}$, tendremos que $\widehat{\theta} = -\text{log}(\widehat{p})$ y listo $\cdots$ 
+
+	En principio la idea es buena pero hay un pero. Si, por ejemplo, tenemos 6 platos de Petri, probablemente vamos a observar:
+
+	\begin{align*}
+		\text{actividad en plato 1 = si,} & \qquad \qquad \text{actividad en plato 2 = si,}\\
+		\text{actividad en plato 3 = si,} & \qquad \qquad \text{actividad en plato 4 = si,}\\
+		\text{actividad en plato 5 = si,} & \qquad \qquad \text{actividad en plato 6 = si}
+	\end{align*}
+	
+	pues es muy probable que en cada unidad de volumen se vaya al menos un bicho, lo cual es suficiente para que, al ponerlo con nutientes, observemos actividad biol\'ogica.
+
+	En general, es dif\'icil estimar la probabilidad de \'exito (plato inerte) si s\'olo observamos fracasos!. En fin, para sacarle la vuelta a este problema tenemos dos caminos: Aumentar $n$ o tomar muestras dilu\'idas.
+
+	Consideremos la segunda opci\'on. Aqu\'i aumentamos la probabilidad de tener una muestra inerte simplmente diluyendo la muestra original, por ejemplo, tomamos 1 cm$^3$ del l\'iquido original y lo mezclamos con 1 cm$^3$ de un l\'iquido limpio y ponemos en un plato la mitad de esa mezcla la cual tendr\'a una densidad media igual a $\theta/2$.
+	Podemos continuar de esta forma tomando muestras m\'as y m\'as dilu\'idas, en realidad no se tienen que dilu\'ir las muestras a la mitad, sea $a$ el factor de disoluci\'on ($a=2$ en el caso anterior); tendremos entonces (despu\'es de $k$ disoluciones) muestras con densidades (n\'umero de microorganismos por unidad de volumen):
+	
+	\[\frac{\theta}{a^0}, \quad \frac{\theta}{a^1}, \quad \frac{\theta}{a^2}, \quad \cdots \quad \frac{\theta}{a^k}.\]
+
+	Supongamos que al nivel 0 de disoluci\'on observamos $x_0$ platos inertes (de un total de $n_0$ platos); al nivel 1 de disoluci\'on tenemos $x_1$ platos inertes (de un total de $n_1$) y as\'i sucesivamente. En cada paso, el n\'umero de platos inertes tendr\'a una distribuci\'on Binomial con par\'ametros $n_i$ y $p_i = \text{exp}(-\theta /a^i)$.
+
+	Entonces, la verosimilitud para nuestros datos es
+
+	\[L(\theta) = \prod_{i=0}^k f(x_i | \theta) = \prod_{i=0}^k \left( \begin{array}{c} n_i \\ x_i \end{array} \right) p_i^x (1-p_i)^{n_i-x_i}, \; \text{donde} \; p_i = \text{exp}\left( \frac{-\theta}{a^i} \right).\]
+
+	En un experimento de este tipo se us\'o $a=2$, $k=9$ y, a cada nivel de disoluci\'on se us\'o $n_i=5$. Los datos (n\'umero de platos inertes) observados son:
+
+	\[\left\{ x_i \right\} = \left\{ 0,0,0,0,1,2,3,3,5,5 \right\}\]
+
+	\begin{enumerate}
+		\item Encuentre el estimador de m\'axima verosimilitud para $\theta$ usando el m\'etodo Newton-Raphson.
+		
+		El estimador de m\'axima verosimilitud para $\theta$ es:
+		
+		\[\hat{\theta} = 30.64979,\]
+		
+		y es máximo puesto que 
+		
+		\[-I_{O} = -0.0122.\]
+
+		\item Encontrar el intervalo de verosimilitud del 25\% para $\theta$.
+		
+		El intervalo del 25\% para $\theta$ es:
+
+		\[IV_{0.25}\pars{\theta} = \set{\theta : R\pars{\theta;x} \geq 0.10} = \bracs{12.940345430114384,48.35923539576445}.\]
+		
+		\item La varianza del estimador de m\'axima verosimilitud (resultado asint\'otico) est\'a dada por $I^{-1}(\theta)/k$ (equivalentemente $[kI(\theta)]^{-1}$, donde 
+		
+		\[I(\theta) = E\left( -\frac{\partial^2 \text{log} f(x|\theta)}{\partial \theta^2} \right),\]
+		
+		note que esta expresi\'on supone observaciones independientes e id\'enticamente distribuidas (el cual no es nuestro caso: tenemos $k$ diferentes binomiales en la verosimilitud). Una forma de aproximar la varianza del estimador m\'aximo veros\'imil es tomando el inverso de la ``matriz de informaci\'on observada'':
+
+		\[I_o = -\frac{\partial^2 \text{log} L(\widehat{\theta)}}{\partial \theta^2} = -\sum_{i=1}^k \frac{\partial^2}{\partial \theta^2} \left. \text{log} f(x_i|\theta) \right |_{\theta=\widehat{\theta}}.\]
+
+		As\'i, la varianza se puede aproximar como $V(\widehat{\theta}) = I_o^{-1}$. Calcule esta varianza.
+
+		La varianza es
+
+		\[V\pars{\theta} = 81.6390154101694.\]
+
+		\item Usando el resultado obtenido en el inciso anterior, obtenga un intervalo del 95\% de confianza para $\theta$: 
+		
+		\[\widehat{\theta} \pm z_{\alpha/2} \sqrt{I_o^{-1}}.\]
+		
+		Compare y comente este intervalo con el del inciso 2.
+
+		Un intervalo del 95\% de confianza para $\theta$ es:
+
+		\[\bracs{12.940345430114384,48.35923539576445}.\]
+
+		\item El experimento completo us\'o 9 disoluciones (10 contando la primera en donde no hay disoluci\'on), en cada etapa de usaron 5 platos de Petri, dando un total de 50 platos en total. Una pregunta natural es: ?`Vali\'o la pena el trabajo de hacer las disoluciones?, ?`no hubiera sido mejor simplemente preparar 50 platos de Petri con muestras sin dilu\'ir y en base a ellos estimar $p$? ... Explique c\'omo  responder\'ia a esta pregunta usando simulaci\'on (no hay que hacer la simulaci\'on, simplemente explicar como le podr\'ia hacer).
+		
+		Dada una simulación calcularía el máximo estimador de verosimilitud de $theta$ cuando las muestras no se disimulan, llamemoslo $\hat{\theta}_1$ y $\hat{\theta}$ de la misma simulación, después calcularía sus respectivos intervalos de confianza. Además generaría varias simulaciones como la obtenida en el problema $(n=5,k=9,\cdots)$ y varias con solo una disolución y aquel intervalo de confianza que tenga un valor mayor o más cercano a 95\% sería el criterio de desempate sería el tenga un longitud menor.
+	\end{enumerate}
+\end{document}
+

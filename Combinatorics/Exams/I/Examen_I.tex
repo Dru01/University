@@ -1,0 +1,233 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Gráficas y Combinatoria\\Tarea V}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+		
+		\item Encuentra el número de particiones por pares con exactamente un cruce.
+		
+		Haremos una recurrencia fijandos en el par de parejas que generan el cruce. Entonces sean $p_1,p_2,p_3,p_4$ tales que $p_1\sim p_3$ y $p_2\sim p_4$ entonces estos cuatro puntos nos dividen nuestro conjunto en 4 intervalos ahora eston no deben contener ningún cruce, digamos que la cantidad de puntos entre $p_1$ y $p_2$ son $2r_1$, ..., la cantidad de puntos entre $p_4$ y $p_1$ son $2r_4$, ahora entonces la cantidad de particiones tales que solo hay un cruce que es el de las parejas $(p_1,p_3)$ y $(p_2,p_4)$ son
+
+		\[C_{r_1}C_{r_2}C_{r_3}C_{r_4}.\]
+
+		Ahora si recorremos sobre el tamaño de los bloques es decir sobr las $r_i$ entonces obtenemos que la cantidad de particiones con un solo cruce de $2n$ puntos es
+
+		\[\sum_{2(r_1+r_2+r_3+r_4) = 2n-4} \frac{n}{4} C_{r_1}C_{r_2}C_{r_3}C_{r_4}.\]
+
+		Ahora veamos las siguientes cuentas
+
+		\begin{align*}
+			\sum_{r_1+r_2+r_3+r_4 = n-2} C_{r_1}C_{r_2}C_{r_3}C_{r_4} &= \sum_{k=0}^{n-2}\pars{\sum_{r_1+r_2 = k}\pars{ \sum_{r_3+r_4 = n-2-k} C_{r_1}C_{r_2}C_{r_3}C_{r_4}}}\\
+			&= \sum_{k=0}^{n-2}\pars{\sum_{r_1+r_2 = k} C_{r_1}C_{r_2}C_{n-1-k}}\\
+			&= \sum_{k=0}^{n-2} C_{n-1-k}\pars{\sum_{r_1+r_2 = k} C_{r_1}C_{r_2}}\\
+			&= \sum_{k=0}^{n-2} C_{n-1-k}C_{k+1}\\
+			&= C_{n+1} - 2C_0C_n\\
+			&= C_{n+1} - 2C_n\\
+		\end{align*}
+
+		por lo tanto concluimos que la cantidad de particiones por pares con exactamente un curce son
+
+		\[\frac{n\pars{C_{n+1} - 2C_{n}}}{4}.\]
+
+		\item Función $\varphi(n)$ de Euler.
+		\begin{enumerate}
+			\item Pruebe que si $n$ es multiplicativa entonces también lo es la función
+			\[g(n) = \sum_{d|n} f(d).\]
+
+			\begin{proof}
+				Sean $n,m\in\N$ tales que $(n,m)=1$ luego si $d|nm$ entonces existen $d=d_1d_2$ tales que $d_1|n$ y $d_2|m$ y por lo tanto $(d_1,d_2) = 1$. Por lo tanto
+
+				\begin{align*}
+					g(nm) &= \sum_{d|nm} f(d)\\
+					&= \sum_{d_1|n,d_2|m} f(d_1d_2)\\
+					&= \sum_{d_1|n,d_2|m} f(d_1)f(d_2)\\
+					&= \pars{\sum_{d_1|n} f(d_1)}\pars{\sum_{d_2|m} f(d_2)}\\
+					&= g(n)g(m).
+				\end{align*}
+			\end{proof}
+
+			\item Muestre que
+			\[\sum_{d|n} \varphi(d) = n.\]
+
+			\begin{proof}
+
+				Definamos el conjunto 
+				
+				\[S_d := \{m \in \Z : 1 \leq m \leq n, (m,n) = d\}\]
+				
+				Notese que si $d_1 \neq d_2$ entonces $S_{d_1} y S_{d_2}$ son disjuntos, ya que el máximo común divisor es único.
+				
+				Luego si $m\in\Z$ por definición $\frac{m}{d}\leq\frac{n}{d}$, y por definición de máximo común divisor $\frac{m}{d}$ y $\frac{n}{d}$ son primos relativos ya que de no ser lo entonces $d$ no sería el máximo común divisor. Luego por definición de $\varphi$ tenemos
+				
+				\[|S_d| = \varphi\left(\frac{n}{d}\right)\]
+				
+				Por definición de $S_d$, para todo $1 \leq m \leq n$ se cumple que
+				
+				\[\exists d : m \in S_d\]
+				
+				Entonces
+				
+				\[{1,...,n} = \bigcup_{d\mid n} S_d\]
+				
+				Por lo tanto
+				
+				\[n = |\bigcup_{d\mid n} S_d| = \sum_{d\mid n} \varphi\left(\frac{n}{d}\right)\]
+				
+				Ahora como $d\mid n$, entonces $\frac{n}{d}\mid n$, es decir el conjunto  $\{\frac{n}{d} : n\mid n\}$ son todos los divisores de $n$. Por lo que concluimos que
+				
+				\[n = \sum_{d\mid n} \varphi(d)\]
+				
+			\end{proof}
+
+			\item Muestre que $\varphi(n)$ es multiplicativa.
+			
+			\begin{proof}
+				Por inversión de Moebius y por el inciso anterior tenemos que
+
+				\[\varphi(n) = \sum_{d|n} \mu\pars{\frac{n}{d}}d,\]
+
+				es decir $\varphi(n)$ es la combolución de Dirichlet de la funciones $\mu$ e identidad. Luego evaluando en $nm$ donde $(n,m)=1$ obtenemos
+
+				\[\varphi(nm) = \sum{d|nm} \mu\pars{\frac{nm}{d}}d,\]
+
+				ahora como $(n,m) = 1$ entonces para todo $d|nm$ se cumple que $d = d_1d_2$ donde $d_1|n$ y $d_2|m$, por lo tanto 
+
+				\begin{align*}
+					\varphi(nm) &= \sum_{d_1|n,d_2|m} \mu\pars{\frac{nm}{d_1d_2}}d_1d_2\\
+					&= \sum_{d_1|n,d_2|m} \mu\pars{\frac{n}{d_1}}d_1 \mu\pars{\frac{nm}{d_1d_2}}d_2\\
+					&= \pars{\sum_{d_1|n} \mu\pars{\frac{n}{d_1}}d_1}\pars{\sum_{d_2|m} \mu\pars{\frac{nm}{d_1d_2}}d_2}\\
+					&= \varphi(n)\varphi(m).
+				\end{align*}
+			\end{proof}
+
+			\item Encuentre la serie de Dirichlet de la función $\varphi(n)$ en término de la función zeta de Riemann $\zeta$.
+		\end{enumerate}
+		\item Encuentre la serie de Dirichlet de la siguientes funciones:
+		\begin{enumerate}
+			\item $f(n) = n$.
+			Veamos lo siguiente
+			\[\zeta\pars{s-1} = \sum_{n=1}^{\infty} \frac{1}{n^{s-1}} = \sum_{n=1}^{\infty} \frac{n}{n^{s}}.\]
+			\item $f(n) = n^{\alpha}$.
+			Veamos lo siguiente
+			\[\zeta\pars{s-\alpha} = \sum_{n=1}^{\infty} \frac{1}{n^{s-\alpha}} = \sum_{n=1}^{\infty} \frac{n^{\alpha}}{n^{s}}.\]
+			\item $f(n) = \log(n)$.
+			Veamos lo siguiente
+			\[-\zeta'\pars{s} = -\sum_{n=1}^{\infty} \frac{d}{ds}\frac{1}{n^{s}} = \sum_{n=1}^{\infty} \frac{\log(n)}{n^{s}}.\]
+			\item $f(n) = \sum_{d|n} d^q$.
+			Fijemonos en la combolución de Dirichlet de las series de Dirichlet de $g(n) = n^q$ y $h(n) = 1$, entonces tenemos que
+
+			$f(n) = (g*h)(n),$
+
+			por lo que concluimos que
+
+			\[\zeta\pars{s}\zeta\pars{s-q} = \sum_{n=1}^{\infty} \frac{\sum_{d|n} d^q}{n^{s}}.\]
+		\end{enumerate}
+
+    \end{enumerate}
+
+	\end{document}

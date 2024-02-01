@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <omp.h>
+#include <math.h>
+#include <time.h>
+
+#define ll long long
+
+int main()
+{
+    omp_set_num_threads(8);
+
+    ll N = (ll)1e7;
+
+    long double* v = (long double* )malloc(N*sizeof(long double));
+    long double* v_1 = (long double* )malloc((N-1)*sizeof(long double));
+
+    for (int i = 0; i < N; i++)
+        v[i] = (long double)i / exp(1);
+
+    clock_t t;
+    t = clock();
+
+    #pragma omp parallel for default(shared)
+    for (int i = 0; i < N - 1; i++)
+        v_1[i] = v[i] + v[i + 1];
+
+    t = clock() - t;
+
+    free(v);
+    free(v_1);
+
+    printf("%f", ((double)t)/CLOCKS_PER_SEC);
+
+    return 0;
+}

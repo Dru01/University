@@ -1,0 +1,535 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial I}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item Definiciones
+		
+		\begin{enumerate}
+			\item Explique clara y concisamente los conceptos de convergencia casi segura, en probabilidad y en $L_p$, resaltando las relaciones entre ellos y qué tan restrictivo es cada tipo de convergencia.
+			
+			Sea $\set{X_n}$ y $X$ definidas sobre $(\Omega, \mathcal{F}, \mathbb{P})$. Ahora veamos las definiciones de los siguientes tipo de convergencia
+
+			\begin{enumerate}
+				\item \textbf{Convergencia casi segura:} $X_n$ converge $\mathbb{P}$-casi seguramente a $X$ si y sólo si existe un conjunto nulo medible $N$, tal que $X_n$ converge sobre $N^c$ de manera puntual a $X$, es decir para todo $\omega\in N^c$ se tiene que $X_n(\omega) \rightarrow X(\omega)$. Esto es denotado por
+				
+				\[X_n \xrightarrow{c.s} X.\]
+
+				Esto lo que quiere decir es que en todo los eventos que son importantes es decir que su probabilidad no es $0$ entonces el valor de las variables aleatorias de la susceción $X_n$ si convergen a $X$ en estos eventos.
+
+				\item \textbf{Convergencia en probabilidad:} $X_n$ converge en probabilidad a $X$ si y sólo si para todo $\epsilon > 0$
+				
+				\[\limninf \mathbb{P}\bracs{\abs{X_n-X} > \epsilon} = 0.\]
+
+				Esto es denotado por
+				
+				\[X_n \xrightarrow{P} X.\]
+
+				Esto lo que quiere decir es que los eventos $w$ tales que la diferencia del valor de la variable aleatoria $X_n$ en ese evento $X_n(w)$ es muy cercana (a distancia menor a $\epsilon$) al valor de la variable aleatoria $X$ en ese evento $X(w)$, cada vez son mas eventos mientras $n$ crece hasta que son todos los eventos con medida distinta de $0$. Esto no es tan fuerte como c.s. puesto que no solo te asegura que estan muy cerca estos valores pero no son realmente esos valores.
+
+				\item \textbf{Convergencia en $L_p$:} $X_n$ para $p\geq 1$ converge en $L_p$ a $X$ si y sólo si
+				
+				\[\limninf \mathbb{E}\bracs{\abs{X_n-X}^p} = 0.\]
+
+				Esto es denotado por
+				
+				\[X_n \xrightarrow{L_p} X.\]
+
+
+
+			\end{enumerate}
+
+			Luego tenemos que
+
+			\[X_n \xrightarrow{c.s} X \Rightarrow X_n \xrightarrow{P} X.\]
+			\[X_n \xrightarrow{L_p} X \Rightarrow X_n \xrightarrow{P} X.\]
+
+			por lo que convergencia c.s y en $L_p$ son mas restrictivos que convergencia en probabilidad.
+
+			\newpage
+
+
+			\item Demuestre que existe una sucesión $\{X_n\}$ tal que ella converge casi seguramente, en probabilidad y en $L_p$ al mismo límite, donde $\{X_n\}$ es tal que para toda $n$, $X_n$ \textbf{no} es degenerada.
+			
+			\begin{proof}
+				Sea $\set{X_n}$ y $X$ definidas sobre $(\Omega, \mathcal{F}, \mathbb{P})$, tales que $X_n$ converge puntualmente a $X$, y $g \in L_p$ para algún $p\geq 1$ tal que $\abs{X_i(\omega)} \leq g(\omega)$.
+
+				Como $X_n$ converge puntualmente a $X$ entonces converge casi seguramente a $X$ y por lo tanto converge en probabilidad a $X$. Ahora por el Teorema de convegrencia dominada tenemos que $X_n$ converge en $L_p$ a $X$.
+
+				Tomemos $X_n$ tal que $X_N$ converge c.s, luego la sucesión
+
+				\[\set{-sup_{k\geq n}\set{X_k - X}}_{n \in \N}\]
+
+				es monótona y acotada por lo que esta suceción de variables aletorias es un ejemplo tal que converge c.s, en probabilidad y en $L_p$.
+
+				Sea $\set{X_n}$ tal que $X_i = Y$ para todo $i\in\N$, donde $Y \in L_1$, entonces podemos ver $X_n\rightarrow Y$ puntualmente por lo que converge c.s y por lo tanto en probabilidad, puesto que $X_n \leq Y$ entonces por convergencia dominada se tiene
+
+				\[\limninf E[|X_n-Y|^p] = E[|\limninf X_n-Y|^p],\]
+				
+				por continuidad del valor absoluto y de $x^p$ tenemos que
+
+				\[\limninf E[|X_n-Y|^p] = E[|Y-Y|^p] = 0,\]
+		
+				por lo tanto converge también en $L_p$.
+			\end{proof}
+
+			\newpage
+			
+			\item Escriba la definición de $X_n\to\infty$ en probabilidad.
+			
+			Sea $\set{X_n}$ y $X$ definidas sobre $(\Omega, \mathcal{F}, \mathbb{P})$.$X_n$ diverge en probabilidad si y sólo si para todo $\epsilon > 0$
+				
+			\[\limninf \mathbb{P}\bracs{X_n > \epsilon} = 1.\]
+
+			Esto es denotado por
+			
+			\[X_n \xrightarrow{P} \infty.\]
+
+		\end{enumerate}
+
+		\newpage
+		
+		\item Sea $\{X_n\}$ una sucesión de variables aleatorias tales que $X_n\overset{L_p}{\to} X$ para algún $p\geq 1$ y sea $g:A\to B$ medible y \textbf{no constante}, donde $A,B\subseteq \R$. Mencione al menos dos casos en los cuales la convergencia en $L_p$ de la sucesión $\{X_n\}$, implique $g(X_n)\overset{L_p}{\to} g(X)$.
+
+		\begin{lema}
+
+			Si $g: \R \rightarrow \R$ es una función acotada y $Y \in L_P$ entonces
+
+			\[g(Y) \in L_p.\]
+			
+		\end{lema}
+		
+		\begin{proof}
+			Sea $Y \in L_p$ entonces $g(Y) \in L_p$ si y sólo si
+
+			\[E[\abs{g(Y)}^p] < \infty.\]
+
+			Tenemos que por ser $g$ acotada digamos por $M$ entonces
+
+			\[E[\abs{g}^p] \leq E[M^p] = M^p,\]
+
+			por lo tanto
+
+			\[g(Y) \in L_p.\]
+
+		\end{proof}
+
+		\begin{itemize}
+
+			\item \textbf{Continua y acotada:} Si $g$ es conitnua y acotada por algun $h \in L_p$, es decir $|g(x)| \leq h(x)$ entonces se cumple que
+			
+			\[g(X_n) \xrightarrow{L_p}g(X).\]
+
+			\begin{proof}
+
+				Al ser $g$ acotada entonces por el Lema 1 tenemos que para todo $X \in L_P$ se cumple
+
+				\[g(X) \in L_p,\]
+				
+				por convergencia dominada se cumple
+
+				\[\limninf \mathbb{E}\bracs{\abs{g(X_n)-g(X)}^p} = \mathbb{E}\bracs{\limninf\abs{g(X_n)-g(X)}^p},\]
+
+				por continuidad del valor absoluto y de $x^p$ tenemos
+
+				\[\limninf \mathbb{E}\bracs{\abs{g(X_n)-g(X)}^p} = \mathbb{E}\bracs{\abs{\limninf g(X_n)- g(X)}^p}\]
+				
+				como $g(X_n) \in L_p$ y $X_n \xrightarrow{L_p} X$ concluimos
+
+				\[\limninf \mathbb{E}\bracs{\abs{g(X_n)-g(X)}^p} = \mathbb{E}\bracs{\abs{g(X)-g(X)}^p} = 0,\]
+
+				es decir
+
+				\[g(X_n) \xrightarrow{L_p} g(X)\]
+
+			\end{proof}
+
+			\newpage
+
+			\item \textbf{Lipchitz:} Si $g$ es Lipschitz y acotada  entonces se cumple que
+			
+			\[g(X_n) \xrightarrow{L_p} g(X).\]
+
+			\begin{proof}
+
+				Al ser $g$ acotada entonces por el Lema 1 tenemos que para todo $X \in L_P$ se cumple que
+
+				\[g(X) \in L_p.\]
+
+				Por ser $g$ Lipchitz tenemos que existe $K \geq 0$ tal que 
+
+				\[|g(X_n)-g(X)| \leq K|X_n-X|,\]
+
+				por monotonía de $x_p$ se cumple que
+
+				\[|g(X_n)-g(X)|^p \leq K^p|X_n-X|^p.\]
+
+				Por ser la esperanza monótina se tiene
+
+				\[\mathbb{E}\bracs{|g(X_n)-g(X)|^p} \leq \mathbb{E}\bracs{K^p|X_n-X|^p},\]
+
+				luego por linealidad de la esperanza se cumple
+
+				\[\mathbb{E}\bracs{|g(X_n)-g(X)|^p} \leq K^p\mathbb{E}\bracs{|X_n-X|^p}.\]
+
+				Ahora por linealidad del operador límite tenemos
+
+				\[\limninf K^p\mathbb{E}\bracs{|X_n-X|^p} = K^p \limninf \mathbb{E}\bracs{|X_n-X|^p},\]
+
+				por hipotesis sabemos que $\limninf \mathbb{E}\bracs{|X_n-X|^p} = 0$ por Teorema del emparedado concluimos
+
+				\[\limninf \mathbb{E}\bracs{|g(X_n)-g(X)|^p} = 0,\]
+
+				es decir
+
+				\[g(X_n) \xrightarrow{L_p} g(X)\]
+
+			\end{proof}
+
+			Puesto que toda función es Lipschitz y derivable si y sólo si es derivable y cuya derivada es acotada, entonces si $g$ es derivable y cuya derivada es acotada entonces se cumple que
+
+			\[g(X_n) \xrightarrow{L_p} g(X).\]
+
+			% \newpage
+
+			% \item \textbf{Derivable y acotada:} Si $g$ es derivable y cuya derivada es acotada entonces se cumple que
+			
+			% \[g(X_n) \xrightarrow{L_p} g(X).\]
+
+			% \begin{proof}
+
+			% 	Al ser $g$ acotada entonces por el Lema 1 tenemos que para todo $X \in L_P$ se cumple que
+
+			% 	\[g(X) \in L_p.\]
+
+			% 	Por ser $g$ derivada tenemos que existe $c\in A$ tal que 
+
+			% 	\[|g(X_n)-g(X)| \leq g'(c)|X_n-X|,\]
+
+			% 	por monotonia de $x_p$ se cumple que
+
+			% 	\[|g(X_n)-g(X)|^p \leq g'(c)^p|X_n-X|^p.\]
+
+			% 	Por ser la esperanza monótona se tiene
+
+			% 	\[\mathbb{E}\bracs{|g(X_n)-g(X)|^p} \leq \mathbb{E}\bracs{g'(c)^p|X_n-X|^p},\]
+
+			% 	luego por linealidad de la esperanza se cumple
+
+			% 	\[\mathbb{E}\bracs{|g(X_n)-g(X)|^p} \leq g'(c)^p\mathbb{E}\bracs{|X_n-X|^p}.\]
+
+			% 	Ahora por linealidad del operador límite tenemos
+
+			% 	\[\limninf g'(c)^p\mathbb{E}\bracs{|X_n-X|^p} = g'(c)^p \limninf \mathbb{E}\bracs{|X_n-X|^p},\]
+
+			% 	por hipotesis sabemos que $\limninf \mathbb{E}\bracs{|X_n-X|^p} = 0$ por Teorema del emparedado concluimos
+
+			% 	\[\limninf \mathbb{E}\bracs{|g(X_n)-g(X)|^p} = 0,\]
+
+			% 	es decir
+
+			% 	\[g(X_n) \xrightarrow{L_p} g(X)\]
+
+			% \end{proof}
+
+		\end{itemize}
+
+		\newpage
+
+		\item Sean $\{X_n\},\{Y_n\}$ sucesiones de variables aleatorias tales que $X_n\overset{P}{\to} X$, $Y_n\overset{L_q}{\to} Y$ y $|X_n|\leq |Y_n|$ casi seguramente. 
+		
+		\begin{enumerate}
+			\item Utilice el Teorema 7.3 de las notas para probar que $\big\{\frac{|X_n|}{1+|Y_n|}\big\}$ converge en probabilidad y determine la variable límite. \textbf{Nota}: cualquier solución que no use dicho Teorema, será calificada automáticamente con cero puntos, independientemente de si es correcta o no.
+			
+			\begin{proof}
+				Sea $W_N, V_n$ sucesiones de variables aleatorias tales que $W_n\xrightarrow{P} X$, $V_n\xrightarrow{P} Y$. Tomemos un subsucesión arbitrario de $X_nY_n$ digamos $X_{n_k}Y_{n_k}$. 
+				
+				Ahora como $X_n \xrightarrow{P} X$ entonces $X_{n_k} \xrightarrow{P} X$, por el Teorema 7.3 existe una subsucesión digamos $X_{n_{k_m}}$ tal que $X_{n_{k_m}} \xrightarrow{c.s.} X$.
+				
+				Analogamente como $Y_n \xrightarrow{P} Y$ entonces $Y_{n_{k_m}} \xrightarrow{P} Y$, por el Teorema 7.3 existe una subsucesión digamos $Y_{n_{k_{m_l}}}$ tal que $Y_{n_{k_{m_l}}} \xrightarrow{c.s.} Y$.
+
+				Ahora tenemos
+
+				\[X_{n_{k_{m_l}}} \xrightarrow{c.s.} X \text{ y } Y_{n_{k_{m_l}}} \xrightarrow{c.s.} Y,\]
+
+				luego puesto que
+
+				\[||a|-|b|| \leq |a - b|,\]
+
+				también sus valores absolutos cumplen
+
+				\[|X_{n_{k_{m_l}}}| \xrightarrow{c.s.} |X| \text{ y } |Y_{n_{k_{m_l}}}| \xrightarrow{c.s.} |Y|,\]
+
+				Las siguientes operaciones se siguen de las propiedades del limite en los números reales. Por linealidad del operador límite tenemos
+
+				\[1 + |Y_{n_{k_{m_l}}}| \xrightarrow{c.s.} 1 + |Y|,\]
+
+				además al ser $0 < 1 + |Y_{n_{k_{m_l}}}|$ entonces su inverso cumple que
+
+				\[\frac{1}{1 + |Y_{n_{k_{m_l}}}|} \xrightarrow{c.s.} \frac{1}{1 + |Y|},\]
+
+				por último el el producto de ellos también converge c.s. es decir
+
+				\[\frac{|X_{n_{k_{m_l}}}|}{1 + |Y_{n_{k_{m_l}}}|} \xrightarrow{c.s.} \frac{|X|}{1 + |Y|},\]
+
+				por el Teorema 7.3 concluimos que
+				
+				\[\frac{|X_n|}{1+|Y_n|} \xrightarrow{P} \frac{|X|}{1+|Y|}\]
+
+			\end{proof}
+
+			\newpage
+			
+			\item Determine si $\big\{\frac{|X_n|}{1+|Y_n|}\big\}$ converge en $L_p$ para algún $p\geq 1$. Justifique formalmente su respuesta.
+			
+			\begin{proof}
+				Primero al ser $|X_n| \leq |Y_n|$ c.s. entonces
+
+				\[\frac{|X_n|}{1+|Y_n|} \leq \frac{|Y_n|}{1+|Y_n|} \leq 1,\]
+
+				Ahora recordemos que el límite de sucesiones en $\R$ conservan el orden, por lo que
+
+				\[|X| \leq |Y| \text{ c.s,}\]
+
+				por lo tanto
+
+				\[\frac{|X|}{1+|Y|} \leq \frac{|Y|}{1+|Y|} \leq 1.\]
+
+				De las dos desigualdades anteriores obtenemos
+
+				\[\abs{\frac{|X_n|}{1+|Y|} - \frac{|Y|}{1+|Y|}} \leq 2,\]
+
+				por convergencia dominada tenemos que
+
+				\[\limninf \mathbb{E}\bracs{\abs{\frac{|X_n|}{1+|Y_n|} - \frac{|X|}{1+|Y|}}^p} = \mathbb{E}\bracs{\limninf\abs{\frac{|X_n|}{1+|Y_n|} - \frac{|X|}{1+|Y|}}^p}\]
+
+				por continuidad de valor absoluto y $x^p$ tenemos que
+
+				\[\limninf \mathbb{E}\bracs{\abs{\frac{|X_n|}{1+|Y_n|} - \frac{|X|}{1+|Y|}}^p} = \mathbb{E}\bracs{\abs{\limninf\frac{|X_n|}{1+|Y_n|} - \frac{|X|}{1+|Y|}}^p}\]
+
+				luego por el inciso anterior concluimos
+
+				\[\limninf \mathbb{E}\bracs{\abs{\frac{|X_n|}{1+|Y_n|} - \frac{|X|}{1+|Y|}}^p} = \mathbb{E}\bracs{\abs{\frac{|X|}{1+|Y|} - \frac{|X|}{1+|Y|}}^p} = 0,\]
+
+				por lo tanto concluimos quiere
+
+				\[\frac{|X_n|}{1+|Y_n|} \xrightarrow{L_p} \frac{|X|}{1+|Y|}\]
+
+			\end{proof}
+		\end{enumerate}
+
+		\newpage
+		
+		\item Sea $\{\vec{X}_n\}$ una sucesión de vectores aleatorios $d$-dimensionales, tales que $\vec{X}_n=(X_{n,1},\dots,X_{n,d})$ y $X_{n,j}\overset{L_p}{\to}X_j$ para algún $p\geq 1$ ($p$ \textbf{no necesariamente es el mismo} para todos los vectores y tampoco para todas las entradas de cada vector). Demuestre que $\vec{X}_n\overset{P}{\to} \vec{X}$, donde $\vec{X}=(X_1,\dots,X_d)$.
+		
+		\begin{lema}
+			La suma de $d$ suceciones convergentes en probabilidad convergen a la suma de sus límites
+		\end{lema}
+
+		\begin{proof}
+			Demostraremos por Inducción Matemática.
+			
+			Para el caso base $d = 2$ sabemos que si dos suceciones de variables aleatorias convergen en probabilidad entonces la suma de estas suceciones converge a la suma de sus límites. Para el paso inductivo tomemos $d+1$ suceciones de variables aleatorias convergentes en probailidad, es decir sean $\set{X_{i_n}}, i\in\set{1,\cdots,d+1}$ sucesiones de variables aleatorias tales que 
+
+			\[X_{i_n} \xrightarrow{P} X_i,\]
+
+			ahora sabemos que por hípotesis de inducción 
+
+			\[\sum_{i=1}^d X_{i_n} \xrightarrow{P} \sum_{i=1}^d X_i,\]
+
+			luego como la suma de dos suceciones de variables aleatorias convergen en probabilidad entonces la suma de estas suceciones converge a la suma de sus límites, tenemos
+
+			\[\sum_{i=1}^d X_{i_n} + X_{{d+1}_{n}} \xrightarrow{P} \sum_{i=1}^d X_i + X_{d+1},\]
+
+			es decir 
+
+			\[\sum_{i=1}^{d+1} X_{i_n} \xrightarrow{P} \sum_{i=1}^{d+1} X_i.\]
+
+			Por Inducción Matemática conluimos que la suma de $d$ suceciones convergentes en probabilidad convergen a la suma de sus límites.
+		\end{proof}
+		
+		Recordemos que si $W_n \xrightarrow{L_p} W$ para algún $p\geq1$, entonces para todo $q < p$ se cumple que 
+		
+		\[W_n \xrightarrow{L_q} W.\]
+
+		Ahora entonces que
+
+		\[X_{n,j} \xrightarrow{L_{p_{n,j}}} X_j, p_{n,j} \geq 1,\]
+
+		luego entonces
+
+		\[X_{n,j} \xrightarrow{P} X_j.\]
+
+		Ahora sean las proyecciones de cada componente $g_i(Y) = (0,\cdots,X_i,0,\cdots,0)$. Al ser $g_i$ continua por el Teorema del mapeo continuo tenemos que
+
+		\[g_i(X_{n,i}) \xrightarrow{P} g_i(X_i).\]
+
+		Por el Lema 2 tenemos
+
+		\[\sum_{i=1}^d g_i(X_{n,i}) \xrightarrow{P} \sum_{i=1}^d g_i(X_i),\]
+
+		por definición concluimos que
+
+		\[\vec{X}_n\overset{P}{\to} \vec{X}\]
+
+		\newpage
+
+		\item Sea $m_n$ el mínimo de $n$ variables aleatorias iid con distribución común $exp(\theta)$, todas sobre el mismo espacio de probabilidad. Demuestre que $m_n\overset{L_p}{\to}0$ para todo $p>0$.
+		
+		\begin{proof}
+			Empecemos por ver cual es la función de distirbución de $m_n$, para ello digamos que nuestras $n$ variables aleatorias son $X_1,\cdots,X_n$, ahora
+
+			\begin{align*}
+				F_{m_n}(x) &= \mathbb{P}\bracs{m_n \leq x} & \text{ por definición de fda}\\
+				&= 1 - \mathbb{P}\bracs{m_n > x} & \text{ por definición de P}\\
+				&= 1 - \mathbb{P}\bracs{X_1 > x, \cdots, X_n > x}& \text{ por definición de mínimo}\\
+				&= 1 - \prod_{i=1}^n \mathbb{P}\bracs{X_i > x} & \text{ por independencia}\\
+				&= 1 - \prod_{i=1}^n \mathbb{P}\bracs{X_1 > x} & \text{ por ser iid}\\
+				&= 1 - \mathbb{P}\bracs{X_1 > x}^n\\
+				&= 1 - \pars{e^{-\theta x}}^n & \text{ por tener distirbución $\exp(\theta)$}\\
+				&= 1 - e^{-\theta n x}\\
+			\end{align*}
+
+			por lo que
+
+			\[f_{m_n}(x) = \theta n e^{-\theta n x},\]
+
+			Ahora veamos que
+
+			\begin{align*}
+				\mathbb{E}\bracs{|m_n|^p} &= \mathbb{E}\bracs{m_n^p} & \text{ ya que minimo es no negativo}\\
+				&= \int_{0}^{\infty} x^p f_{m_n}(x) dx & \text{ por definición de esperanza}\\
+				&= \int_{0}^{\infty} x^p \theta n e^{-\theta n x} dx  & \text{ sutituyendo la funsión de densidad}\\
+				&= \theta n \int_{0}^{\infty} x^p e^{-\theta n x} dx\\
+				&= \frac{\Gamma\pars{p+1}}{\pars{\theta n}^p} \int_{0}^{\infty} \frac{\pars{\theta n}^{p+1}}{\Gamma(p+1)}x^p e^{-\theta n x} dx\\
+			\end{align*}
+
+			Sabemos que $\frac{\pars{\theta n}^{p+1}}{\Gamma(p+1)}x^p e^{-\theta n x}$ es la función de distribución de una variable aleatoria con distribución Gamma con para metros $\alpha = p+1, \beta = \theta n$, por lo que
+
+			\[\mathbb{E}\bracs{|m_n|^p} = \frac{\Gamma\pars{p+1}}{\pars{\theta n}^p}.\]
+
+			Como $\limninf \frac{\Gamma\pars{p+1}}{\pars{\theta n}^p} = 0$ conluimos que
+
+			\[\limninf \mathbb{E}\bracs{|m_n|^p} = 0\]
+		\end{proof}
+
+    \end{enumerate}
+
+	\end{document}
+			

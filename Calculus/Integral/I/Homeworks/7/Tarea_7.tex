@@ -1,0 +1,481 @@
+% PREÁMBULO
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Membrete
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{14pt}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+	\cfoot{\thepage}
+
+% Datos
+    \title{Cálculo II\\Tarea 07}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Fernando Nuñez Medina}
+    \date{30 Abril 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+        \item Polinomio de Taylor
+        
+        \begin{enumerate}
+            \item Sea $P(X)$ el polinomio de Taylor de grado $2n+1$ de $\sin$ en 0, y $R(X)$ su residuo. Luego por definción tenemos que
+			
+			\[\lim_{x \to 0} \frac{R(x)}{x^{2n+1}} = 0,\]
+
+			por cambio de variable de $y^2 = x$ y que $\lim_{x^2\to0}$ implica que $\lim_{x\to0}$ obtenemos
+
+			\[\lim_{x \to 0} \frac{R(x^2)}{x^{4n+2}} = 0.\]
+
+			Luego como 
+
+			\[sin(x) = P(x) + R(x),\]
+
+			entonces evaluando en $x^2$ obtenemos
+
+			\[sin(x^2) = P(x^2) + R(x^2)\]
+
+			por lo anterior tenemos que
+
+			\[\lim_{x\to0} \frac{sin(x^2) - P(x^2)}{x^{4n+2}} = 0,\]
+
+			y por el corolario del teorema 3 concluimos que $P(x^2)$ es el Polinomio de taylor de grado $4n+2$ en $0$ de $sin^2(x)$.
+
+            \item Veamos lo siguiente
+			
+			Todos los terminos de $P(x^2)$ tienen grado de la forma $4n+2$, por lo que las $f^{(k)}(0)$ con $k \neq 4n+2$ para algún $n$ serán $0$, por definición del polinomio de taylor. Luego como el $n-ésimo$ termino es 
+
+			\[(-1)^n\frac{x^{4n+2}}{(2n+1)!},\]
+
+			el cual su $4n+2-ésima$ derivada es
+
+			\[(-1)^n\frac{(4n+2)!}{(2n+1)!},\]
+
+			por lo tanto por definición de polinomio de taylor
+
+			\[f^{(4n+2)} = (-1)^n\frac{(4n+2)!}{(2n+1)!}.\]
+
+			\item Sea $P(X)$ el polinomio de Taylor de grado $m$ de $g$ en 0, y $R(X)$ su residuo. Luego por definción tenemos que
+			
+			\[\lim_{x \to 0} \frac{R(x)}{x^m} = 0,\]
+
+			por cambio de variable de $y^n = x$ y que $\lim_{x^n\to0}$ implica que $\lim_{x\to0}$ obtenemos
+
+			\[\lim_{x \to 0} \frac{R(x^n)}{x^{mn}} = 0.\]
+
+			Luego como 
+
+			\[g(x) = P(x) + R(x),\]
+
+			entonces evaluando en $x^n$ obtenemos
+
+			\[f(x) = P(x^n) + R(x^n)\]
+
+			por lo anterior tenemos que
+
+			\[\lim_{x\to0} \frac{f(x) - P(x^n)}{x^{nm}} = 0,\]
+
+			y por el corolario del teorema 3 concluimos que $P(x^n)$ es el Polinomio de taylor de grado $nm$ en $0$ de $f(x)$.
+			
+			Ahora veamos que al evaluar el polinomio de taylor de $f$ en $x^n$ obtendremos un polinomio cuyos terminos serán de la forma $cx^{nl}$ para algún $l$ por lo que toda $f^{(k)}(0)$ con $k \neq nl$ para algún $l$ entonces $f^{(k)}(0) = 0$. Luego como el $l-ésimo$ termino será de la forma
+			
+			\[\frac{g^{(l)}(0)}{l!}x^{nl},\]
+
+			el cual su $nl-ésima$ derivada es
+
+			\[\frac{g^{(l)}(0)(nl)!}{l!}\]
+
+			por lo tanto por definición de polinomio de taylor
+
+			\[f^{(nl)} = \frac{g^{(l)}(0)(nl)!}{l!}.\]
+
+        \end{enumerate}
+        
+        \item Sucesiones
+        
+        \begin{enumerate}
+            \item Al ser $a_n$ convergente, entonces es una sucesión de Cauchy, por lo tanto
+
+            \[\forall \epsilon > 0, \exists N \in \mathbb{N} : \forall n > N, k \in \mathbb{N}, |a_{n+k} - a_{n}| < \epsilon\]
+            
+            Sea $\epsilon = 1$, entonces
+            \[\exists N \in \mathbb{N} : \forall n > N, k \in \mathbb{N}, |a_{n+k} - a_{n}| < 1\]
+            
+            Luego sean $i,j \in \mathbb{N} : i,j > N$, sabemos que se cumple
+            \[|a_i - a_j| < 1\]
+            Como $a_i, a_j$ son enteros, entonces
+            \[a_i - a_j = 0.\]
+            
+            Con lo cual concluimos que toda suseción convergente de números enteros convergente si todos los elementos de su cola son iguales, es decir
+            \[\exists N : \forall i,j > N, a_i = a_j = l\]
+            
+            \item Sea $b_n$ una subsucesión convergente, por el inciso $a)$ sabemos que los elementos de la cola de la sucesión $b_n$ todos serán iguales a $1$ o $-1$, es decir
+
+            \[\exists N : \forall i,j > N, a_i = a_j = {-1,1}.\]
+
+            \item Sea $b_n$ una subsucesión convergente por el problema a) sabemos que todos los elementos de la cola de la sucesión $b_n$ serán iguales a algún número natural, es decir
+            
+            \[\exists N : \forall i,j > N b_i = b_j = l \in \mathbb{N}\].
+            
+        \end{enumerate}
+    
+        \item Integración por sustitución geométrica.
+        
+        \begin{enumerate}
+            \item $\int \frac{dx}{x\sqrt{x^2-1}}$
+			
+			Sea $u$ tal que $\sec u = x$, entonces $\sec u \tan u du = dx$. Susituyendo en la integral obtenemos
+
+			\[\int \frac{dx}{x\sqrt{x^2-1}} = \int \frac{\sec u \tan u du}{\sec u\sqrt{\sec(u)^2-1}} = \int \frac{\sec u \tan u du}{\sec u\tan(u)} = \int du = u = sec^-1(x).\]
+
+			Aquí termino la demostración sin embargo esta mal pero no encuentro como corregirla por que según yo el problema esta en $\sqrt{\sec(u)^2-1} \neq \tan(u)$, solo para algunos valores. Sin embargo el spivak hace esto multiples veces sin cuidar el signo. Según yo debería de estar muy mal el anterior resultado pero no es así, ya que solo en los $x$ negativos está mal, y justo da el resultado correcto con el signo contrario (esperaría algo peor), entonces ¿Porqué solo se cambio el signo con respecto a la solución correcta? ¿Como se hace de manera correcta esta solución? Me vendría muy bien que me lo pudiese explicar. Dejo aquí otra forma de calcularlo.
+
+			Sea $u = \sqrt{x^2-1}$, luego $du = \frac{x}{\sqrt{x^2-1}}dx$, por lo tanto
+
+			\[\int \frac{dx}{x\sqrt{x^2-1}} = \int \frac{du}{u^2+1} = tan^-1(u)\]
+
+			sustituyendo $u$ concluimos
+
+			\[\int \frac{dx}{x\sqrt{x^2-1}} = tan^-1(\sqrt{x^2-1}).\]
+
+            \item $\int \frac{dx}{x\sqrt{1-x^2}}$
+			
+			Sea $u$ talque $\sin u = x$, entonces $\cos u du = dx$. Sustituyendo en la integral obtenemos
+
+			\[\int \frac{dx}{x\sqrt{1-x^2}} = \int \frac{\cos u du}{\sin u\sqrt{1-\sin (u)^2}} = \int \frac{\cos u du}{\sin u \cos u} = \int \frac{du}{sin u}\]
+			\[ = -\log(\csc u + \cot u) = -\log(\frac{1}{x} + \frac{\sqrt{1-x^2}}{x}) = \log(x) - \log(1 + \sqrt{1-x^2}).\]
+
+			Aquí ya estoy perdido totalmente confundido porque vuelvo hacer el mismo error asumir que $\sqrt{1-\sin(u)^2} = \cos u$. Esto debería dar mal sin embargo es el resultado correcto. Eh intento hacerlo de otra forma como muestra a continuación y me da un resultado totalmente diferente. Estaría excelente si pudieran ayudarme por favor. Aquí esta el otro resultado.
+
+			Sea $u = \sqrt{1-x^2}$, luego $du = \frac{x}{\sqrt{1-x^2}}dx$, por lo tanto
+
+			\[\int \frac{dx}{x\sqrt{1-x^2}} = \int \frac{du}{u^2-1} = \int \frac{du}{(u+1)(u-1)}.\]
+
+			Continuaremos a desarrollar por fracciones parciales, es decir
+
+			\begin{align*}
+				\frac{1}{(u+1)(u-1)} &= \frac{A}{u+1} + \frac{B}{u-1}\\
+				&= \frac{A(u-1) + B(u+1)}{(u+1)(u-1)}\\
+				&= \frac{(A+B)u + (B-A)}{(u+1)(u-1)}\\
+			\end{align*}
+
+			De lo que obtenemos el siguiente sistema de ecuaciones
+
+			\begin{align*}
+				A + B &= 0\\
+				B - A &= 1
+			\end{align*}
+
+			resolviendo el sistema de ecuaciones obtenemos
+
+			\begin{align*}
+				B = \frac{1}{2} && A = -\frac{1}{2}
+			\end{align*}
+
+			Desarrollando nuestra integral anterior por estas fracciones parciales obtenemos
+
+			\begin{align*}
+				\int \frac{dx}{x\sqrt{1-x^2}} &= \int \left(\frac{1}{2(u-1)} - \frac{1}{2(u+1)}\right)du\\
+				&= \frac{1}{2} \left(\int \frac{du}{u-1} - \int \frac{du}{u+1}\right)\\
+				&= \frac{\log(u-1) - \log(u+1)}{2}
+			\end{align*}
+
+			Sustituyendo $u$ concluimos
+
+			\begin{align*}
+				\int \frac{dx}{x\sqrt{1-x^2}} &= \frac{\log(\sqrt{x^2-1}-1) - \log(\sqrt{x^2-1}+1)}{2}\\
+			\end{align*}
+
+            \item $\int \frac{dx}{x\sqrt{1+x^2}}$
+			
+			Sea $u$ tal que $\tan u = x$, entonces $sec(u)^2 du = dx$. Sustituyendo en la integral obtenemos
+
+			\[\int \frac{dx}{x\sqrt{1+x^2}} = \int \frac{sec^2 du}{\tan u\sqrt{1+\tan(u)^2}} = \int \frac{sec^2 du}{\tan u\sec(u)} = \int \frac{du}{\sen u}\]
+			\[ = -\log(\csc u + \cot u) = -\log(\frac{1}{x} + \frac{\sqrt{1-x^2}}{x}) = \log(x) - \log(1 + \sqrt{1-x^2}).\]
+
+			Bueno aquí ya me rendí vuelve a dar bien el resultado y hacerlo de la otra forma es tedioso pero vuelvo asumir que $\sqrt{1+\tan(u)^2} = \sec u$. No se que esta pasando.
+		\end{enumerate}
+
+		\item Integración por sustitución.
+        
+        \begin{enumerate}
+            \item $\int \frac{dx}{1 + \sqrt{x+1}}$
+			
+			Sea $u$ = $\sqrt{x+1}$ entonces $du = \frac{1}{2\sqrt{x+1}} dx$, sustituyendo obtenemos
+
+			\[\int \frac{dx}{1 + \sqrt{x+1}} = 2 \int \frac{u}{1 + u}du = 2\int \left(1 - \frac{1}{u + 1}\right)du = 2u - 2log(u + 1)\]
+
+			Por lo tanto concluimos
+
+			\[\int \frac{dx}{1 + \sqrt{x+1}} = 2\sqrt{x+1} - 2log(\sqrt{x+1}+1)\]
+
+            \item $\int \frac{dx}{1+e^x}$
+			
+			Sea $u = e^x$ entonces $du = e^xdx$, por lo que sustituyendo obtenemos
+
+			\[\int \frac{dx}{1+e^x} = \int \frac{du}{u(1+u)}\]
+
+			Luego por fracciones parciales vemos que
+
+			\[\int \frac{dx}{1+e^x} = \int \left(\frac{1}{u} - \frac{1}{u+1}\right)du = log(u) - log(u+1).\]
+
+			Por lo tanto concluimos
+
+			\[\int \frac{dx}{1+e^x} = x - log(e^x+1).\]
+
+            \item $\int \frac{dx}{\sqrt{x} + \sqrt[3]{x}}$
+			
+			Sea $u = \sqrt[6]{x}$ entonces $du = \frac{dx}{6\sqrt[6]{x^5}}$, sustituyendo en la integral original obtenemos
+
+			\[\int \frac{dx}{\sqrt{x} + \sqrt[3]{x}} = \int \frac{6u^5du}{u^3 + u^2} = 6\int \frac{u^3}{u + 1} du\]
+
+			Haciendo la división obtenemos
+
+			\[\int \frac{dx}{\sqrt{x} + \sqrt[3]{x}} = 6\int \left(u^2 - u + 1 - \frac{1}{u + 1}\right) du = 2u^3 - 3u^2 + 6u - 6log(u+1).\]
+
+			Por lo tanto concluimos que
+
+			\[\int \frac{dx}{\sqrt{x} + \sqrt[3]{x}} = 2\sqrt{x} - 3\sqrt[3]{x} + 6\sqrt[6]{x} - 6log(\sqrt[6]{x}+1).\]
+
+        \end{enumerate}
+
+        \item Integración por cambio de variable
+        
+        \begin{enumerate}
+            \item $\int \frac{2x^2+x+1}{(x+3)(x-1)^2} dx$
+			
+			Expresaremos la enterior fracción como fracciones parciales
+
+			\begin{align*}
+				\frac{2x^2+x+1}{(x+3)(x-1)^2} &= \frac{A}{(x-1)^2}+\frac{B}{(x-1)}+\frac{C}{(x+3)}\\
+				&= \frac{A(x+3) + B(x+1)(x+3) + C(x+1)^2}{(x+3)(x+1)^2}\\
+				&= \frac{(B + C)x^2 + (A + 4B + 2C)x + (3A + 3B + C)}{(x+3)(x+1)^2}
+			\end{align*}
+
+			De lo que obtenemos el siguiente sistema de ecuaciones
+
+			\begin{align*}
+				B + C &= 2\\
+				A + 4B + 2C &= 1\\
+				3A + 3B + C &= 1
+			\end{align*}
+
+			resolviendo el sistema de ecuaciones obtenemos
+
+			\begin{align*}
+				A = 1 && B = -2 && C = 4
+			\end{align*}
+
+			Sustituyendo en la integral obtenemos
+
+			\begin{align*}
+				\int \frac{2x^2+x+1}{(x+3)(x-1)^2} dx &= \int \left(\frac{1}{(x-1)^2} - \frac{2}{x+1} + \frac{4}{x+3}\right)dx\\
+				&= \int \frac{dx}{(x-1)^2} - 2\int\frac{dx}{x+1} + 4\int\frac{dx}{x+3}\\
+				&= \frac{1}{1-x} - 2log(x+1) + 4log(x+3)\\
+			\end{align*}
+
+            \item $\int \frac{x+4}{x^2+1} dx$
+			
+			\begin{align*}
+				\int \frac{x+4}{x^2+1} dx &= \frac{1}{2} \int \frac{2x+8}{x^2+1}dx\\
+				&= \frac{\int \frac{2xdx}{x^2+1} + \int \frac{8dx}{x^2+1}}{2}\\
+				&= \frac{\log(x^2+1) + 8\tan^{-1}(x)}{2}
+			\end{align*}
+
+            \item $\int \frac{x^3+x+2}{x^4+2x^2+1}dx$
+			
+			Expresaremos la enterior fracción como fracciones parciales
+
+			\begin{align*}
+				\frac{x^3+x+2}{(x^2+1)^2} &= \frac{Ax+B}{(x^2+1)^2}+\frac{Cx+D}{(x^2+1)}\\
+				&= \frac{Ax+B + (Cx + D)(x^2+1)}{(x^2+1)^2}\\
+				&= \frac{Cx^3 + Dx^2 + (A+C)x + (B + D)}{(x^2+1)^2}
+			\end{align*}
+
+			De lo que obtenemos el siguiente sistema de ecuaciones
+
+			\begin{align*}
+				C &= 1\\
+				D &= 0\\
+				A + C &= 1\\
+				B + D &= 2
+			\end{align*}
+
+			resolviendo el sistema de ecuaciones obtenemos
+
+			\begin{align*}
+				A = 0 && B = 2 && C = 1 && D = 0
+			\end{align*}
+
+			Sustituyendo en la integral obtenemos
+
+			\begin{align*}
+				\int \frac{x^3+x+2}{(x^2+1)^2} dx &= \int \left(\frac{2}{(x^2+1)^2} + \frac{x}{x^2+1}\right)dx\\
+				&= \int \frac{2dx}{(x^2+1)^2} + \int\frac{xdx}{x^2+1}\\
+			\end{align*}
+
+			Ahora calculemos la primera integral. Sea $u$ tal que $\tan(u) = x$ entonces $\sec^2(u)du = dx$, sustituyendo obtenemos
+
+			\begin{align*}
+				\int \frac{2dx}{(x^2+1)^2} &= 2\int \frac{\sec(u)^2du}{(\tan(u)^2 + 1)^2}\\
+				&= 2\int \frac{\sec(u)^2du}{\sec(u)^4}\\
+				&= 2\int \cos(u)^2du\\
+				&= 2\int \frac{\cos(2u)+1}{2}du\\
+				&= \int \cos(2u)du + \int du\\
+				&= \frac{\sin(2u)}{2} + u\\
+				&= \sin(u)\cos(u) + u\\
+				&= \sin(\tan^{-1}(x))\cos(\tan^{-1}(x)) + \tan^{-1}(x)\\
+				&= \frac{x}{\sqrt{x^2 + 1}}\frac{1}{\sqrt{x^2+1}} + \tan^{-1}(x)\\
+				&= \frac{x}{x^2 + 1} + tan^{-1}(x).\\
+			\end{align*}
+
+			Por lo tanto concluimos que
+
+			\[\int \frac{x^3+x+2}{x^4+2x^2+1}dx = \frac{x}{x^2 + 1} + tan^{-1}(x) + \frac{log(x^2+1)}{2}\]
+
+        \end{enumerate}
+
+        \item Integración por $\arctan$
+        
+        \begin{enumerate}
+            \item $\int \frac{dx}{1+sin(x)}$
+			
+			Sea $t = \tan\left(\frac{x}{2}\right)$, entonces sustituyendo en la integral original obtenemos
+
+			\[\int \frac{dx}{1+\sin(x)} = \int \frac{2dt}{\left(1 + \frac{2t}{t^2+1}\right)(t^2 + 1)} = \int \frac{2dt}{t^2 + 2t + 1} = 2\int \frac{dt}{(t+1)^2} = -\frac{2}{t+1}\]
+
+			Por lo tanto concluimos que
+
+			\[\int \frac{dx}{1+\sin(x)} = -\frac{2}{\tan\left(\frac{x}{2}\right)+1}\]
+			
+            \item $\int \frac{dx}{1-sin^2(x)}$
+			
+			Primero veamos que
+
+			\[\int \frac{dx}{1-sin^2(x)} = \int \frac{dx}{cos^2(x)}.\]
+
+			Sea $t = tan(x)$ entonces $dx = \frac{dt}{1+t^2}$ y $cos(\tan^{-1}(x)) = \frac{1}{\sqrt{1+x^2}}$, sustituyendo en la integral original obtenemos
+
+			\[\int \frac{dx}{1-sin^2(x)} = \int \frac{dt}{(1+t^2)\left(\frac{1}{\sqrt{1+t^2}}\right)^2} = \int dt = t.\]
+
+			Por lo tanto concluimos que
+
+			\[\int \frac{dx}{1-sin^2(x)} = \tan(x).\]
+			
+            \item $\int \sin^2(x)dx$
+		
+			Haciendo uso de $\cos(2x) = 1 - 2\sin^2(x)$ obtenemos que
+
+			\[\int \sin^2(x)dx = \int \frac{1-\cos(2x)}{2}dx = - \int \frac{\cos(2x)dx}{2} + \int \frac{dx}{2} = - \frac{\sin(2x)}{4} + \frac{x}{2}.\]
+
+			Debido a que $\sin(2x) = 2\sin(x)\cos(x)$ concluimos que
+
+			\[\int \sin^2(x)dx = \frac{x - \sin(x)\cos(x)}{2}.\]
+
+        \end{enumerate}
+
+    \end{enumerate}
+
+\end{document}

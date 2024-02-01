@@ -1,0 +1,234 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+    \usepackage{amssymb}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+    \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+    
+% Datos
+    \title{Probabilidad y Estadística\\Tarea 8}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{5 Junio 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        \item Sea $x_1,\cdots, x_n$ una muestra de variables aleatorias exponenciales.
+        \begin{enumerate}
+			\item Por definición tenemos que para toda $i$
+			
+			\[\frac{\sum_{j=1}^n x_j}{n} = E(x_i).\]
+
+			Luego la esperanza de una exponencial es $\frac{1}{\lambda}$ por lo tanto concluimos que
+
+			\[\hat{\lambda} = \frac{1}{\bar{x}}\]
+
+			\item Queremos maximizar la siguiente función de $\lambda$
+			
+			\[\lambda^{n}e^{-\lambda(\sum_{i=1}^n x_i)},\]
+
+			la cual se maximiza si se maximiza
+
+			\[\log(\lambda^{n}e^{-\lambda(\sum_{i=1}^n x_i)}) = \log(\lambda^{n}) + \log(e^{-\lambda(\sum_{i=1}^n x_i)}) = n\log(\lambda) -\lambda(\sum_{i=1}^n x_i)\]
+
+			Encontramos su maximo derivando e igualando a 0, obtenemos
+
+			\[\hat{\lambda} = \frac{1}{\bar{x}}\]
+
+			lo mismo que en el anterior inciso.
+		\end{enumerate}
+
+		\item Sean $\hat{\mu_1}$ y $\hat{\mu_2}$ tales que $E(\hat{\mu_1}) = E(\hat{\mu_2}) = \mu$, $V(\hat{\mu_1}) = \sigma_1^2$ $V(\hat{\mu_2}) = \sigma_2^2$. Considere el estimador
+		
+		\[\hat{\mu_3} = p\hat{\mu_1} + (1-p)\hat{\mu_2}, p \in [0,1].\]
+
+		\begin{enumerate}
+			\item Por definición y linealidad de la esperanza obtenemos
+			
+			\begin{align*}
+				E(\hat{\mu_3}) &= E(p\hat{\mu_1} + (1-p)\hat{\mu_2})\\
+				&= E(p\hat{\mu_1}) + E((1-p)\hat{\mu_2})\\
+				&= pE(\hat{\mu_1}) + (1-p)E(\hat{\mu_2})\\
+				&= p\mu + (1-p)\mu\\
+				&= \mu
+			\end{align*}
+
+			por lo tanto es insesgado.
+
+			\item Por definición y linealidad (bueno casi) de la varianza obtenemos
+			
+			\begin{align*}
+				Var(\hat{\mu_3}) &= Var(p\hat{\mu_1} + (1-p)\hat{\mu_2})\\
+				&= Var(p\hat{\mu_1}) + Var((1-p)\hat{\mu_2})\\
+				&= p^2V(\hat{\mu_1}) + (1-p)^2V(\hat{\mu_2})\\
+				&= p^2\sigma_1^2 + (1-p)^2\sigma_2^2\\
+			\end{align*}
+
+			En la anterior resultado podemos notar que su segunda derivada con respecto de $p$ es positiva, por lo tanto el punto critico de esta es su minimo de la varianza, es
+
+			\[p = \frac{\sigma_2^2}{\sigma_1^2+\sigma_2^2.}\]
+
+		\end{enumerate}
+
+		\item La lectura en un voltimetro conectado a un circuito de prueba esta distribuido
+		uniformemente en el intervalo $(\theta,\theta+1)$ donde $\theta$ es el valor desconocido del voltaje real del circuito, suponga que $x_1,\cdots,x_n$ denota una muestra aleatoria de estas lecturas.
+
+		\begin{enumerate}
+			\item Por linealidad de la esperanza obtenemos
+			
+			\[E(\bar{x}) = E(x_1) = \theta + \frac{1}{2},\]
+
+			lo cual no es $\theta$ y por lo tanto su sesgo es 
+
+			\[\frac{1}{2}.\]
+
+			\item Para que $g(\bar{x})$ sea un estimador insesgado de $\theta$ se tiene que cumplir
+			
+			\[E(g(\bar{x})) = \theta.\]
+
+			puesto que el sesgo de $\bar{x}$ es $\frac{1}{2}$ y la esperanza es lineal concluimos que
+
+			\[g(\bar{x}) = \bar{x} - \frac{1}{2}\]
+
+			es un estimador insesgado de $\theta$.
+
+			\item Veamos lo siguiente
+			
+			\[MSE(\bar{x}) = Var(\bar{x}) + (E(\bar{x}) - \theta)^2 = \frac{1}{12n} + \frac{1}{4}.\]
+		\end{enumerate}
+
+		\item Sea $x_1,\cdots,x_n$ una muestra de una variable aleatoria $bin(k,\theta)$. Se sabe $k$ y se quiere estimar $\theta$.
+		
+		\begin{enumerate}
+			\item Por definición y linealidad de la esperanza tenemos que
+			
+			\[E(\frac{\bar{x}}{k}) = \frac{E(\bar{x})}{k} = \theta,\]
+
+			por lo tanto es insesgado.
+
+			\item Por definición linealidad (bueno casi) de la varianza tenemos que
+			
+			\[MSE(\bar{x}) = Var(\frac{\bar{x}}{k}) = \frac{\theta(1-\theta)}{kn}.\]
+
+			\item La desigualdad de Cramer Rao es
+			
+			\[MSE(\bar{x}) \geq \frac{1}{nE((\frac{d log|f(x)|}{dx})^2)},\]
+
+			podemos ver que
+
+			\[\frac{d log|f(x)|}{dx} = \frac{x-k\theta}{\theta(1-\theta)},\]
+
+			por lo tanto
+
+			\[E((\frac{d log|f(x)|}{dx})^2) = E((\frac{x-k\theta}{\theta(1-\theta)})^2) = \frac{E((x-k\theta)^2)}{(\theta(1-\theta))^2}\]\[= \frac{E(x^2) -2k\theta E(x) + E((k\theta)^2)}{(\theta(1-\theta))^2} = \frac{E(x^2) -k\theta}{(\theta(1-\theta))^2} = \frac{k}{\theta(1-\theta)},\]
+
+			entonces
+
+			\[\frac{1}{nE((\frac{d log|f(x)|}{dx})^2)} = \frac{\theta(1-\theta)}{kn},\]
+
+			por lo que se da la igualdad.
+
+		\end{enumerate}
+		
+    \end{enumerate}
+
+	\end{document}

@@ -1,0 +1,315 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Cálculo III \\ Primer Parcial}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Fabián Augusto Pascual Domínguez}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+
+		\item Sea
+		
+		\[A = \set{x\in\RR : x = a + b\sqrt{2}, a,b\in\QQ}.\]
+
+		Determine el interior de $A$, su adherencia, frontera, exterior, conjunto derivado y puntos aislados.
+
+		\begin{sol}
+			Empezaremos por ver que $A^c$ son densos en $\RR$. Para ello sean $x,y\in \RR$ tales que $x < y$ luego por densidad de los racionales existen $x',y'\in\QQ$ tales que 
+			
+			\[x < x' < y' < y,\]
+			
+			sea 
+			
+			\[z = \pars{\sqrt{3}-1}\pars{y'-x'} + x',\]
+			
+			entonces 
+			
+			\[x < x' < z < y' < y;\]
+			
+			supongamos que $z \in A$ luego existen $a,b\in\QQ$ tales que 
+			
+			\[z = a + b\sqrt{2},\]
+			
+			por cerradura del producto y la suma en $\QQ$ esto es si y sólo si 
+			
+			\[\sqrt{3} = c + d\sqrt{2} \quad\text{(donde $c$ y $d$ se obtienen de despejar $\sqrt{3}$ de $z = a + b\sqrt{2}$)},\]
+			
+			esto es si y sólo si 
+			
+			\[3 = c^2 + 2cd\sqrt{2} + 2d^2\]
+			
+			lo cual es una contradicción ya que de nuevo $\QQ$ es cerrado bajo el producto y la suma y $\sqrt{2}\not\in\QQ$. Por lo que $\forall x,y\in\RR$ existe $z\in A^c$ tal que $x<z<y$ por lo tanto $A^c$ es denso en los reales.
+
+			\newpage
+
+			Veamos cual es la $\partial A$. Puesto que los $\QQ$ son densos en $\RR$ y $\QQ \subset A$ entonces $A$ es denso en $\RR$, por lo tanto
+			
+			\[\forall \epsilon > 0, a\in \RR, B\pars{a,\epsilon}\cap A \neq 0;\]
+			
+			análogamente tenemos que $A^c$ es  denso en $\RR$ por lo que 
+			
+			\[\forall \epsilon > 0, a\in \RR, B\pars{a,\epsilon}\cap A^c \neq 0,\]
+			
+			por lo tanto $\partial A = \RR$.
+
+			Como $A$ es denso en $R$ entonces $\forall x\in\RR, \epsilon > 0, \pars{B\pars{x,\epsilon}\cap A} \setminus\set{x} \neq 0$ es decir $A' = \RR$, y por lo que no tiene puntos aislados.
+			
+			Puesto que $A^\circ \cap \partial A = \emptyset$ entonces $A^\circ = \emptyset$. Como $A \cup \partial A = \overline{A}$ entonces $\overline{A} = \RR$. Además como $Ext A = \pars{\overline{A}}^c$ entonces $Ext A = \emptyset$.
+		\end{sol}
+
+		\item Sea $\set{\overline{B}\pars{x_n,r_n}}$ una sucesión decreciente de bolas cerradas tales que $\limtoinf{n} r_n = 0$. Usando sucesiones pruebe que
+		
+		\[\bigcap_{n=1}^{\infty} \overline{B}\pars{x_n,r_n} \neq \emptyset,\]
+
+		y que dicha intersección costa de un punto.
+
+		\begin{proof}
+			Sean $n,m\in \NN$ tales que $n \geq m$. Tenemos que 
+			
+			\[\overline{B}\pars{x_m,r_m}\subset \overline{B}\pars{x_n,r_n}\]
+			
+			por lo que 
+			
+			\[x_m \in \overline{B}\pars{x_n,r_n}\]
+			
+			y por lo tanto $\norm{x_m-x_n}\leq r_n$. Como $\limtoinf{n} r_n = 0$ entonces 
+			
+			\[\forall \epsilon > 0, \exists N\in\NN \text{ tal que } \forall n\in\NN, n > N \text{ se cumple que } r_n < \epsilon,\]
+			
+			por lo que $\forall m\in\NN, m \geq n$ tenemos que $\norm{x_m-x_n}<\epsilon$, por lo tanto $\set{x_n}$ es una sucesión de cauchy y entonces $\limtoinf{n} x_n = x$.
+
+			Ahora como 
+			
+			\[\forall n\in N, \overline{B}\pars{x_m,r_m}\subset \overline{B}\pars{x_n,r_n}, \forall m\in\NN, m\geq n\]
+			
+			entonces 
+			
+			\[\set{x_k}_{n=n}^{\infty} \subset \overline{B}\pars{x_n,r_n}\]
+			
+			y además como toda subsuseción de una sucesión convergente converge al mismo punto tenemos que $\limtoinf{k} x_k = x$ por lo tanto $x \in \overline{\overline{B}\pars{x_n,r_n}}$, como una bola cerrada es un conjunto cerrado tenemos que $\overline{\overline{B}\pars{x_n,r_n}} = \overline{B}\pars{x_n,r_n}$ y por lo tanto $x \in \overline{B}\pars{x_n,r_n}$. Es decir $x \in \overline{B}\pars{x_n,r_n}, \forall n\in\NN$ por lo tanto $x\in \bigcap_{n=1}^{\infty} \overline{B}\pars{x_n,r_n}$.
+
+			Si $y \in \bigcap_{n=1}^{\infty} \overline{B}\pars{x_n,r_n}, y\neq x$ entonces $\norm{y-x} > 0$. Como $\limtoinf{n} r_n = 0$ entonces $\exists n\in N$ tal que $\norm{x-y} > 2r_n$, luego
+
+			\[2r_n < \norm{x-y} < \norm{x-x_n} + \norm{x_n-y} < r_n + \norm{x_n-y},\]
+
+			es decir $r_n < \norm{x_n-y}$, por lo que $y\not\in\overline{B}\pars{x_n,r_n}$ lo cual es una contradicción, por lo tanto concluimos que
+
+			\[x = \bigcap_{n=1}^{\infty} \overline{B}\pars{x_n,r_n}.\]
+
+		\end{proof}
+
+		\item Se dice que un cojnuto $A$ de $\RR^n$ es semicompacto si todo subconjunto infinito de $A$ posee al menos un punto de acumulación dentro de $A$. Pruebe que todo subconjunto es semicompacto si y sólo si es compacto.
+		
+		\begin{proof}
+			Sea $A\subset \RR^n$, $\set{x_n}_{n=1}^{\infty} \subset A$.
+			
+			Si $A$ es semicompacto entonces existe $x \in \set{x_n}'\cap A$. Como $x\in \set{x_n}'$ entonces
+			
+			\[\exists \set{x_{n_m}}_{m=1}^{\infty} \subset \set{x_n}\text{ tal que }x_{n_m}\neq x, \forall m\in\NN \Txty \limtoinf{m} x_{n_m} = x.\]
+			
+			Por lo tanto $A$ es secuencialmente compacto.
+
+			Sea $B\subset A$ infinito. Al ser ínfinito entonces $\exists y_1\in B$, luego de nuevo por ser infinito $\exists y_2\in B\setminus\set{y_1}$, de nuevo por ser infinito $\exists y_2\in B\setminus\set{y_1,y_2}$, y así sucesivamente 
+			
+			\[\forall n\in\NN, \exists y_n\in B\setminus\set{y_1,\cdots,y_n}\]
+			
+			ya que de ser vació entonces $B$ sería finito lo cual es una contradicción. Por lo tanto $\set{y_n}_{n=1}^{\infty}\subset B$ es una sucesión tal que $y_i \neq y_j, \forall i \neq j$. 
+
+			Si $A$ es secuencialmente compacto entonces existe una subsuseción
+			
+			\[\set{y_{n_m}}_{m=1}^{\infty} \text{ tal que } \limtoinf{m} y_{n_m} = y \in A,\]
+			
+			considermos a 
+			
+			\[\set{y_{n_{m_l}}}_{l=1}^{\infty}\text{ tal que }y_{n_{m_l}} \neq y\]
+			
+			puesto que a lo más un elemento de $\set{y_{n_m}}_{m=1}^{\infty}$ era igual a $y$ entonces 
+			
+			\[\limtoinf{l} y_{n_{m_l}} = y \in A\] 
+			
+			por lo que $y\in B'$.  $A$ es semicompacto. 
+			
+			Por lo tanto $A$ es semicompacto si y sólo si es secuencialmente compacto. Puesto que si $A$ es semicompacto si y sólo si es compacto conlcuimos que $A$ es semicompacto si y sólo si es compacto.
+		\end{proof}
+		
+		\item Sea $A\subset\RR^n$ conexo. ¿Se cumple que $A$ es arco conexo? En caso de que no se pueda asegurar que A sea arco conexo, proporcione una condición suciente para asegurar que lo sea y pruebe que dicha condición es, en efecto, suciente.
+		
+		\begin{lema}
+			Sea $A\subset\RR^n$, $x_1,\cdots,x_n\in A$. Si existe una curva $f_i\subset A$ entre $x_{i}$ y $x_{x+i}$ para todo $i < n$ entonces existe una curva $h\subset A$ entre $x_1$  y $x_n$.
+		\end{lema}
+
+		\begin{proof}
+			Procederemos a demostrar por inducción matemática.
+
+			\begin{itemize}
+				\item \textbf{Caso base: n = 1}
+
+				Puesto que $f(x) = x$ es continua entonces existe un camino entre $x_1$ y $x_1$.
+
+				\item \textbf{Hipotesis de inducción:}
+				
+				Si existe una curva $f_i$ entre $x_{i}$ y $x_{x+i}$ para todo $i < n$ entonces existe una curva $h$ entre $x_1$  y $x_n$.
+
+				\item \textbf{Paso de inducción:}
+				
+				Por hipotesis de inducción existe un curva $f\subset A$ que conecta a $x_1$ y $x_n$, y existe otra curva $g\subset A$ que conecta a $x_n$ y $x_{n+1}$. Sea $h\subset A$ dado por
+
+				\[h(t) = \begin{cases}
+					f\pars{2t} t\in\bracs{0,\frac{1}{2}}\\
+					g\pars{2\pars{t-\frac{1}{2}}} t\in(\frac{1}{2},2]\\
+				\end{cases},\]
+
+				podemos ver que $h(0) = f(0) = x_1$, $h(1) = g(1) = x_{n+1}$, además como $h$ es composición de funciones continuas entonces $h$ es continua, en el punto $\frac{1}{2}$ es continua puesto que el límite por la izquierda es $f\pars{\frac{1}{2}} = x_n$ y el límite por la derecha es $g\pars{\frac{1}{2}} = x_n$. Por lo tanto $h$ es una curva en $A$ entre $x_1$ y $x_{n+1}$.
+
+			\end{itemize}
+
+			Por inducción matemática concluimos que el lemma es cierto.
+		\end{proof}
+
+		De ahora en adelante haremos uso de este lemma indistintamente, ya que será usado multiples veces en la demostración del ejercicio. Prosigamos a demostrar el problema
+		
+		\begin{proof}
+			Consideremos al conjunto $A = \bracs{0,1}\times \set{0} \cup \set{\frac{1}{n}, n\in\NN}\times \bracs{0,1}$. Si $x,y\in A$ entonces tenemos cuatro casos
+			
+			\begin{itemize}
+				\item Que $x\in\bracs{0,1}\times \set{0},y\in \bracs{0,1}\times \set{0}$, de ser así al ser $\bracs{0,1}\times \set{0}$ conexo existe una curva de $x$ a $y$ en $A$.
+				\item Que $x\set{\frac{1}{n}, n\in\NN}\times \bracs{0,1}, y\in\set{\frac{1}{n}, n\in\NN}\times \bracs{0,1}$, de ser así entonces existen $n,m\in\NN$ tales que $x\in \frac{1}{n}\times\bracs{0,1}$ y $y\in \frac{1}{m}\times\bracs{0,1}$ luego como $\frac{1}{p}\times\bracs{0,1}$ es conexo para todo $p\in\NN$ entonces existen curvas $f,g\subset A$ entre $x$ y $\pars{\frac{1}{n},0}$, y entre $y$ y $\pars{\frac{1}{m},0}$ respectivamente, además como $\bracs{0,1}\times \set{0}$ es conexo entonces existe un curva $h\subset A$ entre $\pars{\frac{1}{n},0}$ y $\pars{\frac{1}{m},0}$, por lo tanto existe una curva $f'\subset A$ entre $x$ y $y$.
+				\item Que $x\in\bracs{0,1}\times \set{0}, y\in\set{\frac{1}{n}, n\in\NN}\times \bracs{0,1}$, este caso es análogo al anterior.
+				\item Que $y\in\bracs{0,1}\times \set{0}, x\in\set{\frac{1}{n}, n\in\NN}\times \bracs{0,1}$, este caso es análogo al anterior.
+			\end{itemize}
+			
+			Por lo tanto $A$ es arco conexo y por lo tanto es conexo.
+			
+			Consideremos al conjunto $B = \set{\pars{0,1}} \cup A$. Veamos que $\forall \epsilon > 0$ por propiedad arquimediana de $\RR$, $\exists n\in\NN$ talque $\frac{1}{n} < \epsilon$, por lo que $\norm{\pars{0,1} - \pars{\frac{1}{n},1}} < \epsilon$, como $\pars{\frac{1}{n},1}\in A$ entonces $\pars{0,1}\in \overline{A}$, por lo tanto $B\subset \overline{A}$. Como $A \subset B \subset \overline{A}$ y $A$ conexo entonces $B$ es conexo.
+
+			Supongamos que existe una curva $f\subset A$ entre $\pars{0,1}$ y $\pars{0,0}\in A$, entonces tenemos que $\pars{0,1}$ es cerrado por lo que $C = f^{-1}\pars{\set{\pars{0,1}}}$ es cerrado en $\bracs{0,1}$. Ahora sea $D = \set{\pars{x,y}\in B: y > \frac{1}{2}} = \RR\times(\frac{1}{2},-\infty) \cap B$ la cual es una vecindad abierta de $\pars{0,1}$ en $B$, sea $x\in C$ entonces al ser $f$ continua existe una un intervalo abierto $I$ que contiene a $x$ tal que $f\pars{I} \subset D$, luego como $f\pars{0} = \pars{0,1}$ entonces no existe $y\in I$ tal que $f(y) \neq \pars{0,1}$, por lo que $f\pars{I} \subset \set{\pars{0,1}}$ es decir $I \subset f^{-1}\pars{\set{\pars{0,1}}}$, por lo tanto $C$ es abierto en $\bracs{0,1}$. Al ser $\bracs{0,1}$ un conjunto conexo y $C\neq \empty$ entonces $C = \bracs{0,1}$, lo cual es una contradicción ya que si $f(1) = \pars{0,0}$. Por lo tanto $B$ no es arco conexo.
+
+			Además haremos uso de que si un conjunto $A$ es convexo entonces es arco conexo, esto puesto que si $x,y\in A$ tenemos que $\bracs{x,y}\subset A$, por lo que $f(t) = xt + \pars{1-t}y \in A, \forall t\in\bracs{0,1},$ la cual es una función continua por lo tanto existe una curva $f$ que conecta a $x$ y $y$ para todo $x,y\in A$, por lo tanto $A$ es arco conexo.
+
+			Ahora demostraremos que si un conjunto es abierto y conexo entonces es arco conexo. Sea $A\subset \RR^n$ abierto y conexo, $a\in A$ y $B\pars{a} = \set{b \in A | \text{existe un curva de $a$ a $b$}}$, como existe un curva de $a$ a $a$ dado por $f(a) = a$ entonces $a \in B\pars{a}$ por lo que $B\pars{a}\neq 0$. Ahora sea $x \in B\pars{a}$ al ser abierto $A$ entonces $\exists \epsilon > 0$ tal que $B\pars{x,\epsilon}\subset A$ como una bola abierta es convexa entonces es arco conexo, por lo tanto $\forall y\in B\pars{x,\epsilon}$ existe un curva $f$ de $x$ a $y$, luego como $x\in B\pars{a}$ entonces existe un curva $g$ de $a$ a $x$, por lo tanto existe un curva $h$ de $a$ a $y$ por lo que $y \in B\pars{a}$ entonces $B\pars{x,\epsilon} \subset B\pars{a}$, por lo tanto $B\pars{a}$ es abierto. Análogamente sea $x\in A\setminus B\pars{a}$ al ser abierto $A$ entonces $\exists \epsilon > 0$ tal que $B\pars{x,\epsilon}\subset A$ como una bola abierta es convexa entonces es arco conexo, por lo tanto $\forall y\in B\pars{x,\epsilon}$ existe un curva $f$ de $x$ a $y$, por lo que $y\not\in B\pars{a}$ ya que de ser así entonces existiría un camino que une a $g$ que une a $a$ y $y$ y por que existiría un camino $h$ que une a $x$ y $a$ lo cual es una contradicción ya que $x\not\in B\pars{a}$, por lo que $B\pars{x,\epsilon} \subset A\setminus B\pars{a}$ entonces $A\setminus B\pars{a}$ es abierto, por lo tanto $B\pars{a}$. Como un conjunto $C$ es conexo si y sólo si los únicos conjuntos que son cerrados y abiertos a la vez en $C$ son $\emptyset$ y $C$, entonces $B\pars{a} = A$, por lo tanto concluimos que $A$ es arcoconexo.
+		\end{proof}
+
+	\end{enumerate}
+\end{document}
+

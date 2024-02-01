@@ -1,0 +1,204 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad Aplicada y Optimización \\ Tarea }
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Daniel Hernández Hernández}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item Sea $y$ un edtado de una cadena de Markov tal que $\PP_x\bracs{T_y \leq k} \geq \alpha > 0$ para toda $x$ en el espacio de estados $S$. Se cumple
+		
+		\[\PP_x\bracs{T_y > nk} \leq (1-\alpha)^n.\]
+
+		\begin{proof}
+			Procederemos a demostrar por inducción matemática.
+
+			\begin{itemize}
+				\item \textbf{Caso base: } $n = 1$
+				
+				Por definición $\PP_x\bracs{T_y \leq k} \geq \alpha > 0$, luego al ser $\PP_x$ una medida de probabilidad se cumple que
+
+				\[1-\PP_x\bracs{T_y > k} \geq \alpha,\]
+
+				lo cual es si y sólo si
+
+				\[\PP_x\bracs{T_y > k} \geq 1-\alpha.\]
+
+				Por lo tanto concluimos que es cierto $\PP_x\bracs{T_y > nk} \leq (1-\alpha)^n$ para $n=1$.
+
+				\item \textbf{Hipotesis de Inducción: }
+				
+				Se cumple para un $m\in \NN_0$ que
+
+				\[\PP_x\bracs{T_y > mk} \leq (1-\alpha)^m\]
+
+				%\pagebreak
+
+				\item \textbf{Paso de Inducción: }
+				
+				Al ser $\PP_x$ una medida de probabilidad entonces
+
+				\begin{align*}
+					\PP_x\bracs{T_y > (m+1)k} &= \PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y, X_{km+1} \neq y, \cdots, X_{(m+1)k} \neq y}\\
+					&\quad \ \text{Por definción de $T_y$}\\
+					&= \PP_x\bracs{X_{km+1} \neq y, \cdots, X_{(m+1)k} \neq y | X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Por multiplicidad de probabilidad condicional}\\
+					&= \PP_x\bracs{X_{km+1} \neq y, \cdots, X_{(m+1)k} \neq y | X_{km} \neq y}\\
+					&\quad \ \PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Por perdida de memoria de $X$ al ser de Markov}\\
+					&= \PP_x\bracs{X_{2} \neq y, \cdots, X_{k+1} \neq y | X_{1} \neq y}\PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Al ser homogéneo $X$}\\
+					&= \PP\bracs{X_{2} \neq y, \cdots, X_{k+1} \neq y | X_{0} = x, X_{1} \neq y}\PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Por definción de $\PP_x$}\\
+					&= \PP\bracs{X_{2} \neq y, \cdots, X_{k+1} \neq y | X_{1} \neq y}\PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Por perdida de memoria de $X$ al ser de Markov}\\
+					&= \PP\bracs{X_{1} \neq y, \cdots, X_{k} \neq y | X_{0} \neq y}\PP_x\bracs{X_1 \neq y, \cdots, X_{km} \neq y}\\
+					&\quad \ \text{Al ser homogéneo $X$}\\
+					&\leq \PP_x\bracs{X_{1} \neq y, \cdots, X_{k} \neq y | X_{0} \neq y}(1-\alpha)^m\\
+					&\leq (1-\alpha)^{m+1}
+				\end{align*}
+
+			\end{itemize}
+
+			Por Inducción Matemática concluimos que
+
+			\[\PP_x\bracs{T_y > nk} \leq (1-\alpha)^n.\]
+		\end{proof}
+		\item Dada una matriz de transición Q, describa el conjunto de vectores propios por la izquierda asociados a sus correspondientes valores propios, mencionando sus características principales en el caso particular de que Q sea irreducible.
+				
+		\begin{sol}
+			Puesto que el Teorema de Perron-Frobenious nos indica que para una matriz no negativa existe un valor propio por la izquierda $r$ tal que es mayor o igual en valor absoluto a cualquier auto valor de ella y con el un vector propio por la izquierda con entradas no negativas, pero al ser $Q$ irreducible entonces $Q$ tiene un vector propio $q$ por la izquierda con entradas no negativas. Multiplicando a $q$ por el inverso de la suma de sus entradas obtenemos $p$. Con esto aseguramos que es una distribución y además por construcción cumple que $pQ = p$. Al tener $p$ todas sus entradas positivas entonces es posible llegar a todos los estados, es decir todos los estados son recurrentes (como lo es en una matriz irreducible).
+		\end{sol}
+
+		\item Cuando el orden de la matriz de transición $Q$ no es grande, la ecuación lineal que da lugar a la búsqueda de las distribuciones estacionarias se puede realizar de manera rápida. Sin embargo, en caso de que el orden sea grande, proponga un método computacional para calcular tales distribuciones, y analice su tasa de convergencia.
+		
+		\begin{sol}
+			Si quisieramos calcular el valor propio $p$, puesto que este cumple que $pQ=p$, y que la suma de sus entradas es $1$, este puede ser planteado como una ecuación lineal y resolverla con el método de Gauss-Jordan. El problema con ello es que el cálculo de esto puede ser algo tardado ya que la complejidad computacional del algoritmo es $O(N)$ con $N$ la dimensión.
+
+			Ahora tenemos dos opciones calcular este mediante el cálculo de sus valores propios, lo cual sabemos que se puede o simulando.
+		\end{sol}
+	\end{enumerate}
+\end{document}
+

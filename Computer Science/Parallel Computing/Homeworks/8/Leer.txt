@@ -1,0 +1,9 @@
+LEER:
+
+new_small_full.mat es una matriz de 14x14 guardada de manera llena
+new_small_sparse.mat es una matriz de 14x14 guardada de manera comprimida
+
+new_small_full.mat es una matriz de 125x125 guardada de manera llena
+new_small_sparse.mat es una matriz de 125x125 guardada de manera comprimida
+
+Sugerencia: practicar la solución con matriz de 14x14

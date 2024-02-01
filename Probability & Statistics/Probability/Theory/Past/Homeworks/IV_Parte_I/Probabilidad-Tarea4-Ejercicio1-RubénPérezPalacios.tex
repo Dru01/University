@@ -1,0 +1,148 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{enumerate}
+\textheight=25cm \textwidth=18cm \topmargin=-2cm \oddsidemargin=-1cm
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[spanish,mexico]{babel}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\Ls}{\lim_{n\to \infty}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\Lp}{\mathcal{L}_p}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\pac}[1]{\left[#1\right]}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\pint}[1]{\langle #1 \rangle}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\iden}{\setlength{\parindent}{12pt}}
+\newcommand{\mat}{M_{n\times n}(\F)}
+\newcommand{\pai}{\left(}
+\newcommand{\pad}{\right)}
+
+\newcommand{\solfin}{\hfill\diamondsuit}
+\newcommand{\solin}{\iden\textit{Solución: }}
+\newtheorem{lemma}{Lema}
+\newtheorem{notac}{Notación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{obs}{Observación}
+\newtheorem{prop}{Proposición}
+\newtheorem{enunciado}{Enunciado}
+
+
+\title{Tarea 4\\Probabilidad\\Ejercicio 1}
+\author{
+    Ricardo Alberto Gloria Picazzo\\
+    Rubén Pérez Palacios\\
+    Mercé Nachón Moreno
+}
+\date{Octubre 2020}
+\begin{document}
+\maketitle
+
+(Ricardo Alberto Gloria Picazzo)
+\begin{lemma}
+    Si $\{X_n\}_{n\in \N}$ es una sucesión de variables aleatorias iid con distribución $Poisson(\lambda)$, entonces:
+    \[
+        \frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} \overset{d}{\to} Z
+        \]
+    dónde $Z\sim N(0, 1)$.
+\end{lemma}
+\begin{proof}
+    Como $X_n \sim  Poisson(\lambda)$ para $n\in \N$, entonces 
+    \[
+        \E[X_n] = Var(X_n) = \lambda
+        \] 
+    para toda $n\in \N$. Luego, por el Teorema del Límite central se sigue que 
+    \begin{align}
+        \frac{\overline{X_n}-\lambda}{\sqrt{\lambda}/\sqrt{n}} \overset{d}{\to} Z
+    \end{align}
+    dónde $Z\sim N(0, 1)$.
+
+    Por otra parte, por la ley debil de los grandes números se sigue que $\overline{X_n}  \overset{P}{\to} \lambda$. Aplicando el Teorema del mapeo continuo son la función $g_1(x) = 1/x$ se obtiene que $1/(\overline{X_n})  \overset{P}{\to} 1/\lambda$. Luego, aplicando nuevamente el teorema del mapeo continuo con la función $g_2(x)=\sqrt{x}$ se sigue que  $1/\sqrt{\overline{X_n}}  \overset{P}{\to} 1/\sqrt{\lambda}$. Finalemnte aplicando el teorema del mapeo continuo con la función continua $g_3(x)=\sqrt{\lambda}\cdot x$ se obtiene que 
+    \begin{align}
+        \frac{\sqrt{\lambda}}{\sqrt{\overline{X_n}}} \overset{P}{\to} 1.
+    \end{align}
+
+    Así aplicando el tercer literal del Toerema de Slutsky con (1) y (2) se obtiene que 
+    \begin{align*}
+        \frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} \overset{d}{\to} Z
+    \end{align*}
+    dónde $Z\sim N(0, 1)$.
+\end{proof}
+
+
+
+\begin{enunciado}
+    El medidor de temperatura de cierta maquinaria presenta fallas a lo largo del día. El archivo ``tarea4e3.txt'' contiene una muestra de fallas registradas durante 718 días distintos. Suponiendo que las fallas en cada día son independientes ¿se puede decir que el medidor presenta en promedio más de 5 fallas y menos de 10 fallas?
+\end{enunciado}
+
+
+
+\solin Dado el contexto del problema, modelemos la situación con variables aleatorias con distribución Poisson. Especificamente, modelemos el número de fallas en el $n$-ésimo día con una variable $X_n\sim Poisson(\lambda)$. Observamos así que $\{X_n\}_{n\in \N}$ es una sucesión de variables aleatorias identicamente distribuidas e independientes con espereanza y varianza $\lambda$. Se busca el promedio de fallas del medidor en un día. Hallemos, entonces un intervalo de $95\%$ de confianza para el parametro $\lambda$, el cual, como ya se mencionó, es el valor esperado de $X_n$ para cada $n\in \N$.
+
+Veamos que si $(a, b)\subset \R$ es un intervalo, entonces 
+\begin{align}
+    \P\left[a < \frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} < b \right] = 
+    \P\pac{\frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} < b } - \P\pac{\frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} \leq a}.
+\end{align}
+Del Lema 1 recordamos:
+\begin{align*}
+    \frac{\overline{X_n}-\lambda}{\sqrt{\overline{X_n}}/\sqrt{n}} \overset{d}{\to} Z
+\end{align*}
+dónde $Z\sim N(0, 1)$.  Nos intersa el caso $n=718$, por lo que considerando $n=718$ como ``suficientemente grande'', obtenemos de (3) que
+\begin{align}
+    \P\left[a < \frac{\overline{X_{718}}-\lambda}{\sqrt{\overline{X_{718}}}/\sqrt{718}} < b \right]  
+    &\approx \P[Z < b] - \P[Z \leq a] = F_Z(b) - F_Z(a).
+\end{align}
+Luego, se desea un intervalo del $95\%$ de confianza. Es decir, $a$ y $b$ son tales que 
+\begin{align}
+    \P\left[a < \frac{\overline{X_{718}}-\lambda}{\sqrt{\overline{X_{718}}}/\sqrt{718}} < b \right] \approx 1-\alpha = 0.95
+\end{align}
+con $\alpha = 0.05$. Elijamos así $a$ y $b$ de modo que $F_Z(b) = 1-0.025 = 0.975$ y $F_Z(a)=0.025$, pues de esta manera se cumple (5) debido a la relación (4). Entonces:
+\begin{align*}
+    a &:= F_Z^{-1}(0.025) = -1.9599639845400545,\\
+    b &:= F_Z^{-1}(0.975) = 1.9599639845400545.
+\end{align*}
+
+Observemos así que 
+\begin{align*}
+    0.95 &\approx \P\left[a < \frac{\overline{X_m}-\lambda}{\sqrt{\overline{X_m}}/\sqrt{m}} < b \right].\\
+    &= \P\left[  a\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} < \overline{X_m} - \lambda < b\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}}  \right].\\
+    &= \P\left[  a\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} - \overline{X_m}<  - \lambda < b\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} - \overline{X_m} \right].\\
+    &= \P\left[ \overline{X_m} -b\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}}  <  \lambda < \overline{X_m}-a\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} \right].
+\end{align*} 
+Dónde $m=718$. Se calcula $\overline{X_m}$ con la muestra dada. Así se obtiene que:
+\begin{align*}
+    t_0 := \overline{X_m} -b\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} &=  8.984193859877442.\\
+    t_1 := \overline{X_m}-a\cdot \frac{\sqrt{\overline{X_m}}}{\sqrt{m}} &=  9.42806240753203.
+\end{align*}
+Entonces,
+\[
+    \P[t_0 < \lambda < t_1] \approx 0.95.
+\]
+
+Por lo tanto, se concluye con un $95\%$ de confinaza que el promedio de fallas del medidor en un día es mayor a $t_0$ y menor a $t_1$. Entonces se puede decir con $95\%$ de confinaza que el promedio de fallas del medidor en un día es mayor a $5$ y menor a $10$.
+
+\textbf{Nota:} Los cálculos para obtener el valor de $a, b, t_0$ y $t_0$ fueron hechos en python. Se incluye el código. Para que el código funcioné se debe de borrar la primera línea del archivo ``tarea4e3.txt'' y se debe ejecutar en la misma carpeta dónde se encuntra el programa.
+
+$\hfill\diamondsuit$
+\end{document}

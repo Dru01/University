@@ -1,0 +1,21 @@
+Dru01
+
+735/Dart-a-Mania.cpp
+787/Maximum Sub-sequence Product.cpp
+927/Integer Sequences from Addition of Terms.cpp
+991/Safe Salutations.cpp
+1213/Sum of Different Primes.cpp
+10233/Dermuba Triangle.cpp
+10268/498-bis.cpp
+10408/Farey sequences.cpp
+10755/Garbage Heap.cpp
+10912/Simple Minded Hashing.cpp
+10916/Factstone Benchmark.cpp
+11100/The Trip, 2007.cpp
+11254/Consecutive Integers.cpp
+11420/Chest of Drawers.cpp
+11790/Murcia's Skyline.cpp
+11889/Benefit.cpp
+11951/Area.cpp
+11955/Binomial_Theorem.cpp
+12004/Bubble Sort.cpp

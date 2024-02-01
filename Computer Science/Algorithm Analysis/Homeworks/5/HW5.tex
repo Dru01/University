@@ -1,0 +1,145 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+        \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+        \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+        \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Análisis de Algoritmos e introducción a Matemáticas Discretas \\ Tarea 5}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Carlos Segura González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+\maketitle
+
+Podemos traducir el problema a tener un arreglo donde guardemos los id's de las pelotas o identificar que no hay pelota en esa posición. Luego nos piden responder el máximo id de las pelotas en un rango, también poder eliminar algunas de ellas y tirar de las pelotas a su derecha, o mover pelotas a distintos lugares.
+
+La complejidad de las query's anteriores debe ser de a lo más $O(log(n))$, por lo que hacer la fuerza bruta de cada una de ellas, es decir recorrer el rango para saber el máximo, eliminar una y recorrer cada una de las pelotas a su derecha una posición a la izquierda, o recorre las pelotas para poder mover una pelota; todas estas acciones son de $O(n)$, por lo que requerimos de una estructura de datos para poder reducir esta complejidad.
+
+Un treap es capaz de hacer todas las anteriores query's en $O(n)$. Nuestro treap representara nuestro arreglo, es decir en cada uno de los nodos almacenaremos el id de alguna pelota. La forma de implementar las query's es como sigue:
+
+\begin{itemize}
+	\item Máximo: Debemos agregar una variable $tmax$ a nuestra estructura de Nodo, donde almacenemos el máximo de de los id's del subárbol de ese nodo. Notemos que esta variable está en función de sus hijos ya que el máximo de de los id's del subárbol de ese nodo es el máximo de entre el máximo de los subárboles de sus hijos y del id del nodo. Para mantener actualizado el $tmax$ de este nodo basta con actualizar en funciones de sus hijos de él cada vez que hacemos un cambio a la estructura del treap dentro de las funciones split o merge.
+	\item Eliminar: Bastará con cortar nuestro treap alrededor del nodo de la posición que deseamos eliminar y juntar estos treap, para terminar simular el recorrido faltará agregar un nodo al final del treap que represente el espacio vacante.
+	\item Intercambiar: Bastará con eliminar el nodo de la posición de la pelota que deseamos mover e insertarla en el lugar donde deseemos dejarla.
+\end{itemize}
+
+El problema pide un tipo de query más, la cual es poder construir un "muro" la cual nos asegurá que no interferirá con el funcionamiento de las query's máximo e intercambiar, en cambio a la query eliminar si la afectara ya que cuando deseemos eliminar una pelota recorreremos solo las pelotas entre la posición de la pelota eliminada y el muro mas próximo a su derecha. En la implementación de nuestro treap de eliminar solo debemos modificar en donde insertar el espacio vacante, ya que este deberá ser insertado un lugar antes del muro más próximo a su derecha, de no existir entonces si hasta el final. Encontrar el muro deseado tendrá que ser de complejidad a lo más $O(log(n))$ por lo que bastará tener una estructura de datos donde tenga ordenadas las posiciones y poder preguntar ¿cuál es la posición del muro más próximo a nuestra derecha?
+
+\end{document}
+

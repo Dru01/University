@@ -1,0 +1,292 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Tarea 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Antonio Murillo Salas}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\textbf{Nota:} Justifique con claridad cada una de las respuestas.
+
+	\begin{enumerate}
+		\item Sea $\pars{X,Y}$ un vector aleatorio con función de probabilidades conjunta
+		
+		\[f_{X,Y}(x,y) = \begin{cases}
+			cx^2, &x,y\in\set{1,\cdots,N},\\
+			0, &\text{en otro caso},
+		\end{cases}\]
+
+		donde $N$ es un número natural y $c$ una constante positiva.
+
+		\begin{enumerate}
+			\item Determine el valor de $c$.
+			
+			\begin{sol}
+				Por definición de función de probabilidades tenemos que
+
+				\[\sum_{x=1}^N\sum_{y=1}^N f_{X,Y}(x,y) = 1,\]
+
+				entonces
+
+				\[1 = \sum_{x=1}^N\sum_{y=1}^N f_{X,Y}(x,y) = \sum_{x=1}^N\sum_{y=1}^N cx^2 = Nc \frac{N(N+1)(2N+1)}{6},\]
+
+				por lo tanto
+
+				\[c = \frac{6}{N^2(N+1)(2N+1)}.\]
+			\end{sol}
+
+			\item Encuentre las funciones de probabilidades marginal de $X$ y $Y$.
+			
+			\begin{sol}
+				Por definición de función de probabilidades tenemos que
+
+				\[f_X(x) = \sum_{y=1}^N f_{X,Y}(x,y),\]
+
+				entonces
+
+				\[f_X(x) = \sum_{y=1}^N f_{X,Y}(x,y) = \sum_{y=1}^N \frac{6}{N^2(N+1)(2N+1)}x^2 = \frac{6x^2}{N(N+1)(2N+1)},\]
+
+				claro si $x \in \set{1,\cdots,N}$ en otro caso $0$, y análogamente
+
+				\[f_Y(y) = \sum_{x=1}^N f_{X,Y}(x,y) = \sum_{x=1}^N \frac{6}{N^2(N+1)(2N+1)}x^2 = \frac{1}{N}.\]
+
+				si $y \in \set{1,\cdots,N}$ en otro caso $0$,
+			\end{sol}
+
+			\item ¿Son $X$ y $Y$ variables aleatorias independientes? 
+			
+			\begin{proof}
+				Puesto que
+
+				\[f_{X,Y}(x,y) = \frac{6}{N^2(N+1)(2N+1)}x^2 = \frac{6x^2}{N(N+1)(2N+1)} \frac{1}{N} = f_X(x) f_Y(y),\]
+
+				concluimos que $X$ y $Y$ son independientes.
+			\end{proof}
+		\end{enumerate}
+
+		\item Suponga que $\pars{X,Y}$ un vector aleatorio con función de probabilidades conjunta dada por
+		
+		\[f_{X,Y}(x,y) = \begin{cases}
+			cx, & x,y\in\set{1,\cdots,N}, x\leq y^2,\\
+			0, &\text{en otro caso},
+		\end{cases}\]
+
+		donde $N$ es un número natural y $c$ una constante positiva. Encuentre la función de probabilidades marginal de $X$ y $Y$.
+
+		\begin{sol}
+
+			Comenzaremos por encontrar el valor de $c$. Por definición de función de probabilidades tenemos que
+
+			\[\sum_{y=1}^{N^2}\sum_{x=1}^{y^2} f_{X,Y}(x,y) = 1,\]
+
+			entonces
+
+			\begin{align*}
+				1 &= \sum_{y=1}^{N^2}\sum_{x=1}^{y^2} f_{X,Y}(x,y)\\
+				&= \sum_{y=1}^{N^2}\sum_{x=1}^{y^2} cx\\
+				&= c\sum_{y=1}^{N^2} \frac{y^2(y^2+1)}{2}\\
+				&= \frac{c}{2} \sum_{y=1}^{N^2} y^4 + y^2\\
+				&= \frac{c}{2} \bracs{\frac{N^2(N^2+1)(2N^2+1)(3N^4+3N^2-1)}{30} + \frac{N^2(N^2+1)(2N^2+1)}{6}}\\
+				&= \frac{cN^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)}{60}.
+			\end{align*}
+
+			por lo tanto
+
+			\[c = \frac{60}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)}.\]
+
+			Ahora veamos que por definición de función de probabilidades tenemos que
+
+			\[f_X(x) = \sum_{y=\ceil{\sqrt{x}}}^{N^2} f_{X,Y}(x,y),\]
+
+			entonces
+
+			\begin{align*}
+				f_X(x) &= \sum_{y=\ceil{\sqrt{x}}}^{N^2} f_{X,Y}(x,y)\\
+				&= \sum_{y=\ceil{\sqrt{x}}}^{N^2} \frac{60}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)}x\\
+				&= \frac{60x}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)} \pars{N-\ceil{\sqrt{x}} + 1},
+			\end{align*}
+
+			claro si $x \in \set{1,\cdots,N^2}$ en otro caso $0$, y análogamente
+
+			\begin{align*}
+				f_Y(y) &= \sum_{x=1}^{\min\pars{y^2,N^2}} f_{X,Y}(x,y)\\
+				&= \sum_{x=1}^{\min\pars{y^2,N^2}} \frac{60}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)}x\\
+				&= \frac{60}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)} \sum_{x=1}^{\min\pars{y^2,N^2}} x\\
+				&= \frac{30\pars{\min\pars{y^2,N^2}(\min\pars{y^2,N^2}+1)}}{N^2(N^2+1)(2N^2+1)(3N^4+3N^2+4)}.
+			\end{align*}
+
+			si $y \in \set{1,\cdots,N^2}$ en otro caso $0$.
+
+			Notemos que en este caso $X$ y $Y$ no son independientes.
+			
+		\end{sol}
+
+		\item Suponga que $2N$ bolas se colocan al azar en cualquiera de $N$ cajas disponibles. Sea $X_i$ el número de bolas que quedan en la caja $i$. Encuentre la función de probabilidades conjunta de $X_1,\cdots,X_N$.
+		
+		\begin{sol}
+			Primero veamos que el total de formas de acomodar las $2N$ bolas en las $N$ cajas por seperadores es
+
+			\[A = \binom{3N-1}{N-1}.\]
+
+			% Ahora contaremos las formas de acomodar las $2N$ bolas en las $N$ cajas tal que si la caja $i$ tiene $a_i$ pelotas entonces $a_i\leq x_i$ con $x_i \in \NN_{0}$ tales que $x_1+\cdots+x_N \geq 2N$, $i = 1,\cdots, N$. Definamos $b_i = x_i - a_i \geq 0$ luego entonces $b_1+\cdots+b_N = \pars{x_1+\cdots+x_N} - a_1+\cdots+a_N = \pars{x_1+\cdots+x_N} - 2N \geq 0$, por lo que para contar lo anterior es lo análogo a contar de cuantas formas podemos acomodar $\pars{x_1+\cdots+x_N} - 2N$ objetos en $N$ urnas, por separadores tenemos que son
+
+			% \[B = \binom{\pars{x_1+\cdots+x_N} - 2N + N - 1}{N-1} = \binom{\pars{x_1+\cdots+x_N} - N - 1}{N - 1}.\]
+
+			Por lo tanto concluimos que la función de distirbución conjunta de $X_1,\cdots,X_N$ es
+
+			\[f_{x_1,\cdots,X_n}(x_1,\cdots,x_N) = \begin{cases}
+				\frac{1}{\binom{3N-1}{N-1}} & x_1+\cdots+x_N = 2N\\
+				0 & \text{en otro caso}.
+			\end{cases}\]
+		\end{sol}
+		
+		\item Considere un experimento aleatorio que tiene tres posibles resultados con probabilidades $p_1$,$p_2$ y $p_3$, respectivamente. Suponga que se realizan $N$ ensayos independientes y denote por $X_i$ el número de veces que ocurre el resultado $i$.
+		
+		\begin{enumerate}
+			\item Determine la distribución de $X_1+X_2$.
+			
+			\begin{sol}
+
+				Primero veamos que este experimento lo podemos ver para cada resultado $i$ con $i = 1,2,3$ como un experimento bernoulli (donde el experimento se considera exitoso si el resutlado es $i$ y fallido si no) con probabilidad $p = p_i$ y $q = 1 - p_i$, luego $X_i$ es la suma de $N$ ensayos independientes de estos experimentos bernoullis, por definición tenemos que $X_i\sim Binomial(N,p_i)$, entonces la suma de binomiales es $X_1+X_2\sim Binomial(N,p_1+p_2)$.
+
+			\end{sol}
+
+			\item Encuentre $\PP\bracs{X_2 = y | X_1+X_2=z}, y = 0,1,\cdots,z$.
+			
+			\begin{sol}
+				
+				Si $X_1+X_2=z$ entonces sabemos que de $z$ ensayos de un experimento tuvieron resultados $1,2$, ahora cada uno de esos $z$ ensayos son de un experimento bernoulli con dos posibles resultados $1,2$. Ahora calcularemos la probabilidad de que en un experimento $E$ el resultado sea $2$, por probabilidad condicional
+
+				\[\PP\bracs{E=2 | E\in\set{1,2}} = \frac{\PP[E=2,E\in\set{1,2}]}{\PP\bracs{E\in\set{1,2}}} = \frac{\PP\bracs{E=2}}{\PP\bracs{E\in\set{1,2}}} = \frac{p_2}{p_1+p_2}.\]
+
+				Entonces la variable aleatoria $X_2 = y | X_1+X_2=z$ tiene una distribución Binomial con parametros $z, \frac{p_2}{p_1+p_2}$. Por lo tanto concluimos que
+
+				\[\PP\bracs{X_2 = y | X_1+X_2=z} = \binom{z}{y} \pars{\frac{p_2}{p_1+p_2}}^{y}\pars{\frac{p_1}{p_1+p_2}}^{z-y}.\]
+
+			\end{sol}
+
+		\end{enumerate}
+	\end{enumerate}
+\end{document}
+

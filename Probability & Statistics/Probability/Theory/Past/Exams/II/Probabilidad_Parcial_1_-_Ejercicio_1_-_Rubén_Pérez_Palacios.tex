@@ -1,0 +1,171 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II - Ejercicio 1}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+        
+		\item (100 pts.) Sea $Z\sim N(0,1)$ y $X\sim\Gamma( \nu/2,1/2)$ con $\nu>0$ no precisamente entero. Utilice el Teorema de Cambio de Variable Multivariado para demostrar que $T=\frac{Z}{\sqrt{X/\nu}}$ tiene distribución $t_\nu$, bajo la hipótesis $Z\perp X$.
+		
+		Comenzaremos por ver la distribución de la densidad conjunta de $T$ y $X$. 
+		
+		Sea $g: \R^2\to\R^2$ $g(x,y) = \pars{\frac{x}{\sqrt{\frac{y}{\nu}}}, y}$, de la cual su función inversa es $g^{-1}(x,y) = \pars{x\sqrt{\frac{y}{\nu}}, y}$ cuyo determinante Jacobiano es
+		
+		\[J = \abs{\begin{array}{cc}
+			\sqrt{\frac{y}{v}} & \frac{x\sqrt{\frac{y}{\nu}}}{2x}\\
+			0 & 1
+		\end{array}} = \sqrt{\frac{y}{\nu}}.\]
+
+		entonces
+
+		\begin{align*}
+			f_{T,X}((z,x)) &= f_{Z,X}(g^{-1}(z,x)) * J &\text{Por el Teorema de Cambio de Variable Multivariado}\\
+			&= f_{Z,X}\pars{\pars{z\sqrt{\frac{x}{\nu}},x}} \sqrt{\frac{x}{\nu}}\\
+			&= f_{Z}\pars{z\sqrt{\frac{x}{\nu}}}f_{X}(x) \sqrt{\frac{x}{\nu}} & \text{Por la Independencia de Z y X}\\
+			&= \pars{\frac{e^{-\frac{z^2\frac{x}{\nu}}{2}}}{\sqrt{2\pi}}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} e^{-\frac{1}{2}x}}{\Gamma\pars{\frac{\nu}{2}}}} \sqrt{\frac{x}{\nu}}\\
+		\end{align*}
+
+		Ahora por definición de densidad marginal tenemos que
+
+		\[f_T(z) = \int_{0}^{\infty} f_{T,X}((z,x)) dx,\]
+
+		\newpage
+
+		por lo tanto
+
+		\begin{align*}
+			f_T(z) &= \int_{0}^{\infty} \pars{\frac{e^{-\frac{z^2\frac{x}{\nu}}{2}}}{\sqrt{2\pi}}} \pars{\frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} x^{\frac{\nu}{2}-1} e^{-\frac{1}{2}x}}{\Gamma\pars{\frac{\nu}{2}}}} \sqrt{\frac{x}{\nu}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}} \int_{0}^{\infty} \pars{e^{-\pars{\frac{z^2}{2\nu} + \frac{1}{2}}x}} \pars{x^{\frac{\nu}{2} + \frac{1}{2}}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}} \int_{0}^{\infty} \frac{\pars{e^{-\pars{\frac{z^2}{2\nu} + \frac{1}{2}}x}} \pars{x^{\frac{\nu}{2} + \frac{1}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}}{\Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}} dx\\
+			&= \frac{\pars{\frac{1}{2}}^{\frac{\nu}{2}} \Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{2\pi v}}{\Gamma\pars{\frac{\nu}{2}}}\pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{\frac{\nu}{2} + \frac{1}{2}}} \text{\quad Al ser la integral una Gamma con parametros $\pars{\frac{\nu}{2} + \frac{1}{2},\frac{z^2}{2\nu} + \frac{1}{2}}$}\\
+			&= \frac{\Gamma\pars{\frac{\nu}{2} + \frac{1}{2}}}{\pars{\sqrt{\pi v}}{\Gamma\pars{\frac{\nu}{2}}}} \pars{\frac{z^2}{2\nu} + \frac{1}{2}}^{-\pars{\frac{\nu}{2} + \frac{1}{2}}}.
+		\end{align*}
+
+		Al ser la función de densidad de $T$ de una $t_v$ concluimos que
+
+		\[T \sim t_v.\]
+
+		\newpage
+
+    \end{enumerate}
+
+	\end{document}
+			

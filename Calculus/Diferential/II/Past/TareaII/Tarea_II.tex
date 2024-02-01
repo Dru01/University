@@ -1,0 +1,302 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.2in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+	\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+    \title{Probabilidad \\Parcial II}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+		
+		\item Sea $\gamma : I \subset \R \to \R$ diferenciable. Prueba las siguientes afirmaciones e interpreta geométricamente:
+		
+		\begin{enumerate}
+			\item $\norm{\gamma(t)}$ es constante si y sólo si $\inprod{\gamma(t),\gamma'(t)} = 0$ para toda $t\in I$.
+			
+			Consideremos la función $s(t) = \norm{\gamma(t)}^2 = \inprod{t,t}$, entonces veamos que por linealidad del producto interior se cumple
+
+			\begin{align*}
+				\frac{s(t+h)-s(t)}{h} &= \frac{\inprod{\gamma(t+h),\gamma(t+h)} - \inprod{\gamma(t),\gamma(t)}}{h}\\
+				&= \frac{\inprod{\gamma(t+h),\gamma(t+h)} - \inprod{\gamma(t),\gamma(t+h)} + \inprod{\gamma(t+h),\gamma(t)} - \inprod{\gamma(t),\gamma(t)}}{h}\\
+				&= \frac{\inprod{\gamma(t+h) - \gamma(t),\gamma(t+h)} + \inprod{\gamma(t+h) - \gamma(t),\gamma(t)}}{h}\\
+				&= \frac{\inprod{\gamma(t+h) - \gamma(t),\gamma(t+h) + \gamma(t)}}{h}\\
+				&= \inprod{\frac{\gamma(t+h) - \gamma(t)}{h},\gamma(t+h) + \gamma(t)}\\
+			\end{align*}
+
+			Entonces
+
+			\begin{align*}
+				\limh \frac{s(t+h)-s(t)}{h} &= \limh \inprod{\frac{\gamma(t+h) - \gamma(t)}{h},\gamma(t+h) + \gamma(t)}\\
+				&= \inprod{\limh \frac{\gamma(t+h) - \gamma(t)}{h}, \limh \gamma(t+h) + \gamma(t)} = \inprod{\gamma'(t), 2\gamma(t)}\\
+				&= 2\inprod{\gamma'(t), \gamma(t)}.
+			\end{align*}
+
+			Por lo tanto $s'(t)=0$ si y sólo si $\inprod{\gamma(t),\gamma'(t)} = 0$. Como $\norm{\gamma(t)}$ es constante es si y sólo si $s(t)$ es constante y $s(t)$ es constante si y sólo si $s'(t) = 0$, entonces concluimos que $\norm{\gamma(t)}$ es constante si y sólo si $\inprod{\gamma(t),\gamma'(t)} = 0$ para toda $t\in I$.
+
+			\item Sea $r(t) = \norm{\gamma(t)}$. Si $r(t_0)$ es un máximo o un mínimo local de r, entonces $\inprod{\gamma(t),\gamma'(t)} = 0$.
+			
+			
+
+		\end{enumerate}
+        
+		\item Sea $gamma : [a,b] \subset \R \to \R^m$ continua con $\gamma = (\gamma_1,\cdots,\gamma_n)$ y definamos:
+		
+		\[\int_{a}^{b} \gamma(t) dt = \pars{\int_{a}^{b} \gamma_1(t)dt, \cdots, \int_{a}^{b} \gamma_m(t)dt}.\]
+
+		Prueba:
+
+		\begin{enumerate}
+			\item Si $c = \pars{c_1, \cdots, c_m}$ es un vector constante, entonces
+			
+			\[\int_{a}^{b} \inprod{c, \gamma(t)} dt = \inprod{c, \int_{a}^{b} \gamma(t)dt}.\] 
+
+			\begin{proof}
+				Por definición de producto punto
+
+				\[\inprod{c, \gamma(t)} = \sum_{i=1}^{m} c_i\gamma_i(t),\]
+
+				entonces
+
+				\[\int_{a}^{b} \inprod{c, \gamma(t)} dt = \int_{a}^{b} \pars{\sum_{i=1}^{m} c_i\gamma_i(t)} dt,\]
+
+				por linealidad de la integral obtenemos
+
+				\[\int_{a}^{b} \inprod{c, \gamma(t)} dt = \sum_{i=1}^{m} c_i\int_{a}^{b} \gamma_i(t) dt,\]
+
+				por definición de producto punto concluimos
+
+				\[\int_{a}^{b} \inprod{c, \gamma(t)} dt = \inprod{c, \int_{a}^{b} \gamma(t)dt}.\]
+
+			\end{proof}
+
+			\item H
+			
+			\[\norm{\int_{a}^{b} \gamma(t)dt} \leq \int_{a}^{b} \norm{\gamma(t)}dt,\]
+
+			\begin{proof}
+				Sea $s \in \bracs{a,b}$ entonces por linealidad de la integral tenemos
+
+				\[\norm{\int_{a}^{b} \gamma(t) dt}\pars{\int_{a}^{b} \norm{\gamma(s)}ds} = \int_{a}^{b} \norm{\int_{a}^{b} \gamma(t) dt}\norm{\gamma(s)}ds,\]
+
+				por la desigualdad de Cauchy-Schwarz obtenemos
+
+				\[\norm{\int_{a}^{b} \gamma(t) dt}\pars{\int_{a}^{b} \norm{\gamma(s)}ds} \geq \int_{a}^{b} \inprod{\int_{a}^{b} \gamma(t) dt,\gamma(s)}ds,\]
+
+				por el inciso anterior se cumple
+
+				\[\norm{\int_{a}^{b} \gamma(t) dt}\pars{\int_{a}^{b} \norm{\gamma(s)}ds} \geq \inprod{\int_{a}^{b} \gamma(t) dt, \int_{a}^{b} \gamma(s) ds},\]
+
+				por definición de norma esto es
+
+				\[\norm{\int_{a}^{b} \gamma(t) dt}\pars{\int_{a}^{b} \norm{\gamma(s)}ds} \geq \norm{\int_{a}^{b} \gamma(t) dt}^2,\]
+
+				por lo tanto concluimos
+
+				\[\int_{a}^{b} \norm{\gamma(s)}ds \geq \norm{\int_{a}^{b} \gamma(t) dt}\]
+			\end{proof}
+
+			\item si $\gamma$ es diferenciable entonces
+			
+			\[\norm{\gamma(b)-\gamma(a)} \leq \int_{a}^{b} \norm{\gamma'(t)}dt = \ell(\Gamma),\]
+			
+			donde $\Gamma = \gamma\pars{\bracs{a,b}}$.
+
+			\begin{proof}
+				Por el inciso anterior tenemos
+
+				\[\int_{a}^{b} \norm{\gamma'(s)}ds \geq \norm{\int_{a}^{b} \gamma'(t) dt},\]
+
+				por el Teorema fundamental del Cálculo concluimos
+
+				\[\int_{a}^{b} \norm{\gamma'(s)}ds \geq \norm{\gamma\pars{a}-\gamma\pars{b}}.\]
+			\end{proof}
+
+		\end{enumerate}
+
+		\item (Las líneas minimizan la distancia entre dos puntos) Sean $x,y \in \R^3$ y $\Gamma$ una curva que los une con parametrización diferenciable regular $\gamma : \bracs{a,b} \to \R^3$, i.e. $\gamma(a) = x$ y $\gamma(b) = y$. Prueba:
+		
+		\begin{enumerate}
+			\item Si $u \in R^3$ es un vector unitario cualquiera, entonces
+			
+			\[\inprod{\gamma'(t),u}\leq\norm{\gamma'(t)}, \quad (t\in\bracs{a,b}).\]
+
+			\begin{proof}
+				Por la desigualdad de Cauchy-Schwarz tenemos
+
+				\[\inprod{\gamma'(t),u}\leq\norm{\gamma'(t)}\norm{u},\]
+
+				al ser $u$ un vector unitario concluimos
+
+				\[\inprod{\gamma'(t),u}\leq\norm{\gamma'(t)}.\]
+				
+			\end{proof}
+
+			\item H
+			
+			\[\inprod{y-x, u} \leq \int_{a}^{b} \norm{\gamma'(t)}dt.\]
+
+			\begin{proof}
+				
+				Por el inciso anterior obtenemos
+
+				\[\int_{a}^{b}\inprod{\gamma'(t),u} dt \leq \int_{a}^{b}\norm{\gamma'(t)} dt,\]
+
+				por el ejercicio $4.a$ obtenemos
+
+				\[\inprod{\int_{a}^{b}\gamma'(t) dt,u} \leq \int_{a}^{b}\norm{\gamma'(t)} dt,\]
+
+				por el teorema fundamental del cálculo concluimos
+
+				\[\inprod{y-x,u} \leq \int_{a}^{b}\norm{\gamma'(t)} dt.\]
+
+			\end{proof}
+
+			\item haciendo $u = \frac{y-x}{\norm{y-x}}$ en el ejercicio anterior obtenemos
+			
+			\[\inprod{y-x,\frac{y-x}{\norm{y-x}}} \leq \int_{a}^{b}\norm{\gamma'(t)} dt,\]
+
+			por linealidad del producto punto obtenemos
+
+			\[\frac{\inprod{y-x,y-x}}{\norm{y-x}} \leq \int_{a}^{b}\norm{\gamma'(t)} dt,\]
+
+			por definición de norma esto es
+
+			\[\frac{\norm{y-x}^2}{\norm{y-x}} \leq \int_{a}^{b}\norm{\gamma'(t)} dt,\]
+
+			por lo tanto
+
+			\[\norm{y-x} \leq \int_{a}^{b}\norm{\gamma'(t)} dt.\]
+
+			Esto es, la curva de longitud más corta que une a los puntos $\gamma(a)$ con $\gamma(b)$ es el segmento de línea recta que los une.
+
+		\end{enumerate}
+
+		\item Prueba el teorema del valor intermedio para derivadas direccionales: Sean $a,b \in \Omega$ tales que el segmento $\bracs{a,b}\in\Omega$ y hagamos $u = \frac{b-a}{\norm{b-a}} \in \R^n$. Si $D_uf(x)$ existe para toda $X \in \bracs{a,b}$ entonces existe $\xi \in \pars{0,\norm{b-a}}$ tales que si $\widehat{\xi} = a + \xi u$ entonces
+		
+		\[f(b)-f(a) = \norm{b-a} D_uf(\widehat{\xi}).\]
+
+		\begin{proof}
+			Hola
+		\end{proof}
+
+    \end{enumerate}
+
+	\end{document}
+			

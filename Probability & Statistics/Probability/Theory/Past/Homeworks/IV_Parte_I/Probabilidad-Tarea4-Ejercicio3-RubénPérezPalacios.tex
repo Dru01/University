@@ -1,0 +1,243 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+	\title{Probabilidad \\Tarea IV - Ejercicio 3}
+    \author{Rubén Pérez Palacios\\Ricardo Alberto Gloria Picazzo\\Mercé Nachón Moreno\\Profesor: Dr. Ehyter Matías Martín González}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+    \begin{enumerate}
+		
+		\item (Rubén Pérez Palacios) Sea $\{\vec{X}_n\}$ vectores aleatorios iid de tamaño d con vector de medias $\vec{\mu}$ y matriz de covarianzas invertible $\Sigma$. Definamos el vector de medias muestral y la matriz de covarianzas muestral, respectivamente, como
+
+        \[\vec{\overline{X}}=\frac{1}{n}\sum\limits_{j=1}^n \vec{X}_j,\quad \mathcal{S}_n^2=\frac{1}{n-1}\sum\limits_{j=1}^n\pars{\vec{X}_j-\vec{\overline{X}}}^t\pars{\vec{X}_j-\vec{\overline{X}}}.\]
+        
+        Demuestre que 
+        \[\vec{Y}_n = \sqrt{n}\pars{\vec{\overline{X}}_n-\vec{\mu}}, \vec{Y}_n \sim N_d(\vec{0},\Sigma),\]
+        \[\mathcal{S}_n^2\overset{c.s.}{\to} \Sigma\ \text{ (entrada por entrada)}.\]
+        
+        \begin{itemize}
+        
+            \item Sea $\set{Z_1}$ una sucesión variables aleatorias iid con media $\mu$ y varianza $\sigma^2$ entonces
+			
+			\[\sqrt{n}\pars{\vec{\overline{Z}}_n-\mu} \overset{d}{\to} N\pars{0,sigma^2}.\]
+
+			\begin{proof}
+				Por el teorema del límite central tenemos
+
+				\[\frac{\pars{\vec{\overline{Z}}_n-\mu}}{\frac{\sigma}{\sqrt{n}}} \overset{d}{\to} N\pars{0,1},\]
+
+				luego como
+
+				\[\sigma N\pars{0,1} \sim N\pars{0,\sigma^2},\]
+
+				entonces por slutsky concluimos que
+
+				\[\sqrt{n}\pars{\vec{\overline{Z}}_n-\mu} \overset{d}{\to} N\pars{0,sigma^2}.\]
+			\end{proof}
+            
+            \newpage
+            
+            \item $\vec{Y}_n\sim N_d\pars{\vec{0},\Sigma}$
+            
+            \begin{proof}
+            
+                Comenzaremos por ver como se comporta una combinación lineal de las variables aleatorias $\set{Z_1,\cdots,Z_d}$. Entonces podemos ver que toda combinación lineal de estas variables aleatorias se puede expresar como $\vec{Z}a^t$, donde $\vec{Z}$ es el vector con coordenadas las $Z_i$ y $a\in \RR^d$. La media de $\vec{Z}a^t$ es por linealidad de la esperanza lo siguiente
+                
+                \[\EE\bracs{\sum_{i=1}^{n} a_i Z_i} = \sum_{i=1}^{n}a_i\EE\bracs{Z_i}.\]
+                
+                Así como la varianza es
+                
+                \begin{align*}
+                    Var\pars{\vec{Z}a^t} &= Cov(\sum_{i=1}^n a_i Z_i,\sum_{j=1}^n a_j Z_j) &\text{definición de varianza}\\
+                    &= \sum_{i=1}^n\sum_{j=1}^n Cov(a_i Z_i,a_j Z_j) &\text{linealidad de la covarianza}\\
+                    &= \sum_{i=1}^n Cov(a_i Z_i,a_i Z_i) + \sum_{1\leq i<j \leq n}^n Cov(a_i Z_i,a_j Z_j)&\text{reagrupando las sumas}\\
+                    &= \sum_{i=1}^n Var(a_i Z_i) + \sum_{1\leq i<j \leq n}^n Cov(a_i Z_i,a_j Z_j)&\text{definición de varianza}\\
+                    &= \sum_{i=1}^n a_i^2Var(Z_i) + \sum_{1\leq i<j \leq n}^n a_ia_jCov(Z_i, Z_j)&\text{linealidad de la var y la cov}\\
+                \end{align*}
+                
+                Ahora sea $\Sigma$ la matriz de covarianzas de $\vec{Z}$ entonces
+                
+                \[a\Sigma a^t = Var(\vec{Z}a^t).\]
+                
+                Ahora si nos fijamos en la función característica de $Y_n$ la cual es
+                
+                \[\Phi_{\vec{Y}_n}\pars{a} = \EE\bracs{e^{i\vec{Y}_na^t}} = \EE\bracs{e^{i\pars{\sqrt{n}\pars{\vec{\overline{X}}_n-\vec{\mu}}}a^t}},\]
+                
+                haciendo uso del inciso anterior sobre las $\vec{X}_n a^t$ cuyas esperanza es $\mu a^t$ y varianza es  $a\Sigma a^t$, obtenemos
+                
+                \[\sqrt{n}\pars{\vec{Y_n}-\mu}a^t \overset{d}{\to} N\pars{0,a\Sigma a^t},\]
+                
+                por lo tanto
+                
+                \[\phi_{\vec{Y}_n}(a) \to \phi_{N\pars{0,\Sigma}}(a),\]
+                
+                por el teorema 9.1 concluimos que
+                
+                \[\vec{Y}_n \sim N\pars{0,\sigma}.\]
+                
+            \end{proof}
+            
+            \newpage
+            
+            \item $\mathcal{S}_n^2\overset{c.s.}{\to} \Sigma\ \text{ (entrada por entrada)}$
+            
+            \begin{proof}
+            
+                Empezaremos por expresar a $S_n^2$ de una forma mas conveniente y así poder encontrar una expresión de sus entrada completamente en términos de las entradas del vector aleatorio.
+                
+                \begin{align*}
+                    \frac{n-1}{n} S_n^2 &= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j-\vec{\overline{X}}}^t \pars{\vec{X}_j-\vec{\overline{X}}}\\ &\text{por definición de var. muestral}\\
+                    &= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t-\vec{\overline{X}}^t} \pars{\vec{X}_j-\vec{\overline{X}}}\\ &\text{por linealidad de la transpuesta}\\
+                    &= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j - \vec{\overline{X}}^t\vec{X}_j - \vec{X}_j^t\vec{\overline{X}} + \vec{\overline{X}}^t\vec{\overline{X}}}\\  &\text{por la distrib. del prod. de matr.}\\
+                    &= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j} - \frac{1}{n}\sum_{j=1}^n \pars{\vec{\overline{X}}^t\vec{X}_j} - \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{\overline{X}}} + \frac{1}{n}\sum_{j=1}^n \pars{\vec{\overline{X}}^t\vec{\overline{X}}}\\
+					&= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j} - \frac{1}{n}\vec{\overline{X}}^t\sum_{j=1}^n \pars{\vec{X}_j} - \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t}\vec{\overline{X}} + \frac{1}{n}\sum_{j=1}^n \pars{\vec{\overline{X}}^t\vec{\overline{X}}}\\ &\text{por la distrib. del prod. de matr.}\\
+					&= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j} - \frac{1}{n}\vec{\overline{X}}^t\pars{n\vec{\overline{X}}} - \frac{1}{n}\pars{n\vec{\overline{X}}^t}\vec{\overline{X}} + \pars{\vec{\overline{X}}^t\vec{\overline{X}}}\\ &\text{por definición de varianza muestral}\\
+					&= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j} - \pars{\vec{\overline{X}}^t\vec{\overline{X}}} - \pars{\vec{\overline{X}}^t\vec{\overline{X}}} + \pars{\vec{\overline{X}}^t\vec{\overline{X}}}\\
+					&= \frac{1}{n}\sum_{j=1}^n \pars{\vec{X}_j^t\vec{X}_j} - \pars{\vec{\overline{X}}^t\vec{\overline{X}}},\\
+				\end{align*}
+				
+				Denotaremos por para un vector $Z$ a $(Z)_i$ como la $i-esima$ entrada, analogamente para una matriz $A$ denotaremos $(A)_{(i,j)}$ como la entrada en el renglón $i$ columna $j$. Ahora veamos como es la entrada $\pars{\frac{n-1}{n}S_n^2}_{(i,j)}$
+
+				\begin{align*}
+					\pars{\frac{n-1}{n}S_n^2}_{(i,j)} &= \frac{1}{n}\sum_{k=1}^n \pars{\vec{X}_k}_i\pars{\vec{X}_k}_j - \pars{\vec{\overline{X}}}_i\pars{\vec{\overline{X}}}_j\\
+				\end{align*}
+
+				por la ley de grandes números tenemos que
+
+				\begin{align*}
+					\frac{1}{n}\sum_{k=1}^n \pars{\vec{X}_k}_i\pars{\vec{X}_k}_j &\overset{a.s}{\to} \EE\bracs{\pars{\vec(X)_1}_i\pars{\vec(X)_1}_j}\\
+					\pars{\vec{\overline{X}}}_i &\overset{a.s}{\to} \pars{\mu}_i\\
+				\end{align*}
+				
+				al converger casi seguramente entonces podemos hacer operaciones con esto debido a las propiedades de los límites en los reales, entonces
+
+				\[\pars{\vec{\overline{X}}}_i\pars{\vec{\overline{X}}}_j \overset{a.s}{\to} \pars{\mu}_i\pars{\mu}_j,\]
+
+				y por lo tanto
+
+				\[\frac{1}{n}\sum_{k=1}^n \pars{\vec{X}_k}_i\pars{\vec{X}_k}_j - \pars{\vec{\overline{X}}}_i\pars{\vec{\overline{X}}}_j \overset{a.s}{\to} \EE\bracs{\pars{\vec(X)_1}_i\pars{\vec(X)_1}_j} - \pars{\mu}_i\pars{\mu}_j,\]
+
+				por definición de covarianza y al ser $\limninf \frac{n-1}{n} = 1$ concluimos
+
+				\[\pars{S_n^2}_{i,j} = Cov\pars{\pars{\vec{X}_1}_i,\pars{\vec{X}_1}_j}.\]
+
+            \end{proof}
+            
+        \end{itemize}
+
+    \end{enumerate}
+
+	\end{document}
+			

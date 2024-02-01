@@ -1,0 +1,246 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 0.8in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{Varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Examen Tarea 2}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Juan Carlos Pardo Millán}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item Sean $X_1, X_2, X_3$ variables aleatorias independientes con valores en los enteros positivos y con función de masas de probabilidad
+		
+		\[\PP\bracs{X_i = k} = \pars{1-p_i}p_i^{k-1}, \quad k = 1,2,\cdots\]
+		
+		e $i=1,2,3$. Probar que
+		
+		\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_1}\pars{1-p_2}p_2p_3^2}{\pars{1-p_2p_3}\pars{1-p_1p_2p_3}}.\]
+
+		Además calcule $\PP\bracs{X_1 \leq X_2 \leq X_3}$.
+		
+		\begin{sol}
+			Notemos que
+
+			\[\sum_{k=x+1}^{\infty} \pars{1-p}p^{k-1} = p^x(1)\]
+
+			al ser una suma telescópica.
+
+			Ahora por probabilidad total obtenemos que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{x1,x_2,x_3\in\NN} \PP\bracs{X_1 < X_2 < X_3|X_1 = x_1, X_2 = x_2, X_3 = x_3}\PP\bracs{X_1 = x_1, X_2 = x_2, X_3 = x_3},\]
+
+			esto es lo mismo que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{x1,x_2,x_3\in\NN} \PP\bracs{x_1 < x_2 < x_3}\PP\bracs{X_1 = x_1, X_2 = x_2, X_3 = x_3}.\]
+
+			Si no se cumple $x_1<x_2<x_3$ entonces $\PP\bracs{x_1 < x_2 < x_3} = 0$ y de lo contratio $\PP\bracs{x_1 < x_2 < x_3}=1$ por lo tanto
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{1\leq x1 < x_2 < x_3} \PP\bracs{X_1 = x_1, X_2 = x_2, X_3 = x_3}.\]
+
+			Al ser $X_1,X_2,X_3$ independientes entonces
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{1\leq x1 < x_2 < x_3} \PP\bracs{X_1 = x_1}\PP\bracs{X_2 = x_2}\PP\bracs{X_3 = x_3},\]
+
+			por distribución de $X_3$ tenemos que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{1 \leq x1 < x_2 < x_3} \PP\bracs{X_1 = x_1}\PP\bracs{X_2 = x_2}\pars{1-p_3}p_3^{x_3-1}.\]
+
+			Por (1) obtenemos
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{1 \leq x1 < x_2} \PP\bracs{X_1 = x_1}\PP\bracs{X_2 = x_2}p_3^{x_2},\]
+
+			nuevamente por distribución de $X_3$ tenemos que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \sum_{1 \leq x1 < x_2} \PP\bracs{X_1 = x_1}\pars{1-p_i}p_i^{x_2-1}p_3^{x_2},\]
+
+			lo cuál es lo mismo que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_2}p_3}{\pars{1-p_2p_3}}\sum_{1 \leq x1 < x_2} \PP\bracs{X_1 = x_1}\pars{1-p_2p_3}\pars{p_2p_3}^{x_2-1}.\]
+
+			Aplicando de nuevo (1) obtenemos
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_2}p_3}{\pars{1-p_2p_3}}\sum_{1 \leq x1} \PP\bracs{X_1 = x_1}\pars{p_2p_3}^{x_1},\]
+
+			sustiyendo la función de masas de $X_1$ obtenemos
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_2}p_3}{\pars{1-p_2p_3}}\sum_{1 \leq x1} \pars{1-p_1}p_1^{x_1-1}\pars{p_2p_3}^{x_1},\]
+
+			reorganizando tenemos que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_1}\pars{1-p_2}p_2p_3^2}{\pars{1-p_2p_3}\pars{1-p_1p_2p_3}}\sum_{1 \leq x1} \pars{1-p_1p_2p_3}\pars{p_1p_2p_3}^{x_1-1},\]
+
+			por último aplicando (1) concluimos que
+
+			\[\PP\bracs{X_1 < X_2 < X_3} = \frac{\pars{1-p_1}\pars{1-p_2}p_2p_3^2}{\pars{1-p_2p_3}\pars{1-p_1p_2p_3}}.\]
+
+			Analogamente veamos que
+
+			\begin{align*}
+				\PP\bracs{X_1 < X_2 < X_3} &= \sum_{1\leq x1 < x_2 < x_3} \PP\bracs{X_1 = x_1}\PP\bracs{X_2 = x_2}\PP\bracs{X_3 = x_3} & \text{Por prob. total e indep.}\\
+				&= \sum_{1\leq x1 < x_2 < x_3} \pars{1-p_1}\pars{1-p_2}\pars{1-p_3}p_1^{x_1-1}p_2^{x_2-1}p_3^{x_3-1} & \text{Por distribución de las $X_i$'s}\\
+				&= \sum_{1\leq x1 < x_2} \pars{1-p_1}\pars{1-p_2}p_1^{x_1-1}p_2^{x_2-1}p_3^{x_2-1} & \text{Por (1)}\\
+				&= \frac{\pars{1-p_1}\pars{1-p_2}}{\pars{1-p_2p_3}}\sum_{1\leq x1} p_1^{x_1-1}p_2^{x_1-1}p_3^{x_1-1} & \text{Por (1)}\\
+				&= \frac{\pars{1-p_1}\pars{1-p_2}}{\pars{1-p_2p_3}\pars{1-p_1p_2p_3}} & \text{Por (1)}
+			\end{align*}
+		\end{sol}
+
+		\newpage
+		\item Definamos la varianza condicional de $\xi$ dado $\eta$ por
+		\[Var\pars{\xi|\eta} = \EE\bracs{\xi^2|\eta}-\pars{\EE\bracs{\xi|\eta}}^2.\]
+		Sean $\xi$ y $\eta$ dos v.a. con segundo momento finito.
+		\begin{enumerate}
+			\item Muestre que
+			\[Var\pars{\xi} = \EE\bracs{Var\pars{\xi|\eta}} + Var\pars{\EE\bracs{\xi|\eta}}.\]
+			\begin{sol}
+				Empezaremos por desarrollar el primer sumando del termino derecho de nuestra expresión. Por la ley de esperanza total y linealidad de la esperanza obtenemos
+
+				\[\EE\bracs{Var\pars{\xi|\eta}} = \EE\bracs{\EE\bracs{\xi^2|\eta}-\pars{\EE\bracs{\xi|\eta}}^2} = \EE\bracs{\EE\bracs{\xi^2|\eta}}-\EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2} = \EE\bracs{\xi^2}-\EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2},\]
+
+				ahora desarrollaremos el segundo sumando del termino derecho de nuestra expresión. Por definición de varianza y la ley de esperanza total obtenemos
+
+				\[Var\pars{\EE\bracs{\xi|\eta}} = \EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2} - \EE\bracs{\EE\bracs{\xi|\eta}}^2 = \EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2} - \EE\bracs{\xi}^2.\]
+
+				Haciendo uso de los resultados anteriores y por definición de varianza concluimos que
+
+				\[\EE\bracs{Var\pars{\xi|\eta}} + Var\pars{\EE\bracs{\xi|\eta}} = \EE\bracs{\xi^2}-\EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2} + \EE\bracs{\pars{\EE\bracs{\xi|\eta}}^2} - \EE\bracs{\xi}^2 = \EE\bracs{\xi^2} - \EE\bracs{\xi}^2 = Var\pars{\xi}.\]
+			\end{sol}
+			\item Sea $\Delta$ otra v.a. Muestre la siguiente formula
+			\[Cov\pars{\xi,\eta} = \EE\bracs{Cov\pars{\pars{\xi,\eta}|\Delta}} + Cov\pars{\EE\bracs{\xi|\Delta},\EE\bracs{\eta|\Delta}},\]
+			donde
+			\[Cov\pars{\pars{\xi,\eta}|\Delta} = \EE\bracs{\xi\eta|\Delta}-\EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}.\]
+			\begin{sol}
+				Empezaremos por desarrollar el primer sumando del termino derecho de nuestra expresión. Por definición de covarianza condicional, la ley de esperanza total y linealidad de la esperanza obtenemos
+
+				\[\EE\bracs{Cov\pars{\pars{\xi,\eta}|\Delta}} = \EE\bracs{\EE\bracs{\xi\eta|\Delta}-\EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}} = \EE\bracs{\xi\eta}-\EE\bracs{\EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}}\]
+
+				ahora desarrollaremos el segundo sumando del termino derecho de nuestra expresión. Por definición de covarianza y la ley de esperanza total obtenemos
+
+				\[Cov\pars{\EE\bracs{\xi|\Delta},\EE\bracs{\eta|\Delta}} = \EE\bracs{\EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}} - \EE\bracs{\EE\bracs{\xi|\Delta}}\EE\bracs{\EE\bracs{\eta|\Delta}} = \EE\bracs{\EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}} - \EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta}.\]
+
+				Haciendo uso de los resultados anteriores y por definición de covarianza concluimos que
+
+				\[\EE\bracs{Cov\pars{\pars{\xi,\eta}|\Delta}} + Cov\pars{\EE\bracs{\xi|\Delta},\EE\bracs{\eta|\Delta}} = \EE\bracs{\xi\eta} - \EE\bracs{\xi|\Delta}\EE\bracs{\eta|\Delta} = Cov\pars{\xi,\eta}.\]
+			\end{sol}
+		\end{enumerate}
+	\end{enumerate}
+\end{document}
+

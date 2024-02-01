@@ -1,0 +1,278 @@
+% PREÁMBULO
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+	\usepackage{mathtools}
+	\usepackage[thinc]{esdiff}
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.4in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Ajustes
+	\allowdisplaybreaks	% Los align pueden cambiar de página
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	% \newcommand*{\QES}{\hfill\ensuremath{\boxplus}}
+	% \newcommand*{\qes}{\hfill\ensuremath{\boxminus}}
+	% \newcommand*{\qeshere}{\tag*{$\boxminus$}}
+	% \newcommand*{\QESHERE}{\tag*{$\boxplus$}}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\abs}[1]{\left\vert#1\right\vert}
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+% Membrete
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{14pt}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+	\cfoot{\thepage}
+
+% Datos
+    \title{Cálculo II\\Examen III}
+    \author{Rubén Pérez Palacios\\Profesor: Dr. Fernando Nuñez Medina}
+    \date{6 Mayo 2020}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+    \section*{Problemas}
+
+	\begin{enumerate}
+		
+		\item Demuestra que una sucesión convergente es siempre acotada.
+		\begin{proof}
+		
+			Sea $a_n$ una sucesión convergente a $l$, por definición tenemos que
+
+			\[\forall \varepsilon > 0, \exists N \in \N : \forall n \in \N, n \geq N \text{ se cumple que } |a_n - l| < \varepsilon.\]
+
+			Sea $\varepsilon = 1$ entonces existe un $N$ tal que para todo $n \in \N, n \geq N$ se cumple que
+
+			\[|a_n - l| < 1,\]
+
+			por la desigualdad del triangulo obtenemos
+
+			\[|a_n| = |a_n - l + l| \leq |a_n - l| + |l| < 1 + |l|.\]
+
+			Ahora sea $M = \sup(|a_1|, \cdots, |a_N|, 1+|l|)$, entonces por definición concluimos que
+
+			\[|a_n| \leq M \quad \forall n,\]
+
+			es decir la sucesión $a_n$ es acotada.
+
+		\end{proof}
+
+		\item Muestra que si $\sum_{n=1}^{\infty} a_n$ converge, entonces sus sumas parciales también.
+		
+		\begin{proof}
+			Sea $a_n$ una sucesión tal que $\sum_{n=1}^{\infty} a_n$ converge, entonces por definición la sumas parciales $s_n$ convergen digamos a $l$. Por el problema anterior concluimos que $s_n$ es acotada.
+		\end{proof}
+
+		\newpage
+
+		\item Sea
+		
+		\[f_n(x) = \frac{e^{-x^2}}{n}, x\in\R\]
+
+		\begin{enumerate}
+			\item Determina el límite puntual de $f_n(x)$.
+			
+			El límite puntal de $f_n(x)$ es
+			
+			\[\limninf f_n(x) = 0,\]
+			
+			Esto pues $e^{-x^2}$ con respecto a $n$ es constante y $\limninf \frac{c}{n} = 0$.
+
+			\item Determina si $f_n$ converge uniformemente a la función encontrada en $a)$.
+			
+			Veamos lo siguiente
+
+			\begin{align*}
+				0 &\leq x^2\\
+				1 &\leq e^{x^2}\\
+				e^{-x^2} &\leq 1\\
+				\frac{e^{-x^2}}{n} &\leq \frac{1}{n}\\
+			\end{align*}
+
+			y al ser 
+			
+			\[\frac{e^{-x^2}}{n} > 0\]
+
+			conlcuimos que
+
+			\[|f_n(x)| = \left|\frac{e^{-x^2}}{n}\right| \leq \frac{1}{n}\]
+
+		\end{enumerate}
+
+		\item Sea
+		
+		\[f(x) = \sum_{n=1}^{\infty} \frac{1}{1+n^2x}, x \in [1,2].\]
+
+		\begin{enumerate}
+			\item Determina si $f$ es continua.
+			
+			Por el problema 5 $f$ es derivable en $[1,2]$, por lo que es continua en $[1,2]$
+
+			\item Determina si $f$ es integrable.
+			
+			Al ser $f$ continua en $[1,2]$ por el teorema 3 del capítulo 13 del spivak $f$ es integrable en $[1,2]$
+
+		\end{enumerate}
+
+		\newpage
+
+		\item Determina si la función $f$ del ejercicio anterior es derivable.
+		
+		Sea $f_n(x) = \frac{1}{1+n^2x}$, por regla de la cadena obtenemos
+
+		\[f_n'(x) = -\frac{n^2}{(1+n^2x)^2}.\]
+
+		Puesto que, tanto $f_n$ y $f'$ son composición de funciones derivables entonces estas dos funciones son derivables y por tanto continuas.
+
+		Sea 
+		
+		\[M_n = \frac{n^2}{(1+n^2)^2},\]
+
+		como $1+n^2\leq1+n^2x$ ya que $x\in[1,2]$ entonces
+
+		\[|f_n'| \leq M_n.\]
+
+		Veamos que
+
+		\[\frac{n^2}{(1+n^2)^2} \leq \frac{n^2}{(n^2)^2} = \frac{1}{n^2}.\]
+
+		Puesto que
+
+		\[\sum_{n=1}^{\infty} \frac{1}{n^2}\]
+
+		converge entonces
+
+		\[\sum_{n=1}^{\infty} \frac{n^2}{(1+n^2)^2}\]
+
+		converge por la prueba de comparación, por lo tanto
+
+		\[\sum_{n = 1}^{\infty} M_n\]
+
+		converge.
+		
+		Por la prueba m de Weierstrass concluimos que
+
+		\[\sum_{n=1}^{\infty} f_n'\]
+
+		converge uniformemente, por el corolario de la definición de convergencía uniforme y que $f_n'$ son continuas concluimos que
+
+		\[f'(x) = \sum_{n=1}^{\infty} f_n'(x), \forall x \in [1,2].\]
+
+		\item Supon que $\{f_n\}$ es una sucesión de funciones acotadas (no necesariamente continuas) en $[a,b]$ que converge uniformemente hacia $f$ en $[a,b]$. Demuestra que $f$ es acotada en $[a,b]$.
+		
+		\begin{proof}
+			Sea $\{f_n\}$ una sucesión de funciones acotadas (no necesariamente continuas) en $[a,b]$ que converge uniformemente hacia $f$ en $[a,b]$. Por definición de convergencia uniforme tenemos que
+
+			\[\forall \varepsilon > 0, \exists N \in \N : \forall n \in \N, n \geq N \text{ se cumple que } |f(x) - f_n(x)| < \varepsilon.\]
+
+			Sea $\varepsilon = 1$ entonces existe un $N$ tal que para todo $n \in \N, n \geq N$ se cumple que
+
+			\[|f(x) - f_n(x)| < 1,\]
+
+			por la desigualdad del triangulo obtenemos
+
+			\[|f(x)| \leq |f(x) - f_n(x) + f_n(x)| \leq |f(x) - f_n(x)| + |f_n(x)| < 1 + |f_n(x)|,\]
+			
+			al ser $f_n$ acotada entonces existe un $M_n$ tal que $|f_n| < M_n$ por lo que
+
+			\[|f(x)| \leq 1 + M_n,\]
+
+			en particular
+
+			\[|f(x)| \leq 1 + M_N,\]
+
+			Por lo tanto $f$ es acotada.
+		\end{proof}
+
+
+	\end{enumerate}
+	
+\end{document}

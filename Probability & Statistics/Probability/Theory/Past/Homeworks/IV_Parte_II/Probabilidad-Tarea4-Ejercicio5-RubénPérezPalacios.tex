@@ -1,0 +1,317 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1.1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limxinf}{\lim_{x\to\infty}}
+	\newcommand{\limninf}{\lim_{n\to\infty}}
+	\newcommand{\dlimninf}{\displaystyle\lim_{n\to\infty}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{\varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+    \newcommand{\sTFC}{{\itshape 2do TFC\/}}
+    
+% Datos
+	\title{Gráficas y Combinatoria\\Examen I}
+	\author{Rubén Pérez Palacios\\Profesor: Dr. Octavio Arizmendi Echegaray}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+    
+    \section*{Problemas}
+
+	\begin{enumerate}
+
+		\item Resuelve las siguientes funciones en series
+		
+		\[f^{(k)}(x) - 2f^{(k+1)}(x) + f^{(k+2)}(x) = 0.\]
+
+		Con $f(x) = e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$, tambien con $f(x) = 0$.
+
+		\item Sea
+		
+		\[A = \begin{pmatrix}
+			1 & 1\\
+			1 & 0
+		\end{pmatrix}\]
+
+		\begin{enumerate}
+			\item Encuentra explicitamente $A^n$
+			
+			Demostraremos por inducción que
+
+			\[A^n = \begin{pmatrix}
+				F_{n+1} & F_n\\
+				F_n & F_{n-1}
+			\end{pmatrix}\]
+
+			\begin{itemize}
+				\item \textbf{Caso base:} n = 1
+				
+				\[\begin{pmatrix}
+					F_2 & F_1\\
+					F_1 & F_0
+				\end{pmatrix} =  \begin{pmatrix}
+					1 & 1\\
+					1 & 0
+				\end{pmatrix}.\]
+
+				\item \textbf{Hipotesis:}
+				
+				\[A^n = \begin{pmatrix}
+					F_{n+1} & F_n\\
+					F_n & F_{n-1}
+				\end{pmatrix}\]
+
+				\item \textbf{Paso Inductivo:}
+				
+				Por hipotesis de inducción tenemos que
+
+				\[A^n = \begin{pmatrix}
+					F_{n+1} & F_n\\
+					F_n & F_{n-1}
+				\end{pmatrix},\]
+
+				luego multiplicando por A a ambos lados obtenemos
+
+				\[A^{n+1} = \begin{pmatrix}
+					F_{n+1} & F_n\\
+					F_n & F_{n-1}
+				\end{pmatrix} \begin{pmatrix}
+					1 & 1\\
+					1 & 0
+				\end{pmatrix} = \begin{pmatrix}
+					F_{n+2} & F_{n+1}\\
+					F_{n+1} & F_n
+				\end{pmatrix}.\]
+			\end{itemize}
+
+			por inducción matemática concluimos
+
+			\[A^n = \begin{pmatrix}
+				F_{n+1} & F_n\\
+				F_n & F_{n-1}
+			\end{pmatrix}.\]
+
+			\item Muestra que
+			
+			\[F_{n-1}F_{n+1}-F_n^2 = \pars{-1}^n.\]
+
+			\begin{proof}
+				Puesto que $\det(AB) = \det(A)\det(B)$ entonces
+
+				\[\det(A^n) = \det(A)^n,\]
+
+				por lo que
+
+				\[\pars{-1}^n = \det(A)^n = \det(A^n) = F_{n-1}F_{n+1}-F_n^2.\]
+			\end{proof}
+
+			\item Sea $\set{a_n}_n$ una sucesión tal que $a_n = a_{n-1} + a_{n-2}$, describe los posibles límites de 
+			
+			\[\limninf \pars{a_n}^{\frac{1}{n}}.\]
+
+			Primero veamos como es 
+
+			\[\limninf \frac{a_{n+1}}{a_n},\]
+
+			digamos sea $l$ este límite entonces
+
+			\[l = \limninf \frac{a_{n+1}}{a_n} = \limninf \frac{a_{n} + a_{n-1}}{a_n} = 1 + \limninf \frac{a_{n-1}}{a_n} = 1 + \limninf \frac{1}{\frac{a_{n}}{a_n-1}} = 1 + \frac{1}{l},\]
+
+			por lo que
+
+			\[l - \frac{1}{l} = 1,\]
+
+			entonces tenemos que (ya que $l \geq \frac{1}{2}$)
+
+			\[l = \varphi.\]
+			
+			Ahora puesto que
+
+			\[limninf \frac{b_{n+1}}{b_n} = \limninf \pars{b}^{\frac{1}{n}},\]
+
+			concluimos que
+
+			\[\limninf \pars{a_n}^{\frac{1}{n}} = \varphi.\]
+
+		\end{enumerate}
+		
+		\item Supongamos que los enteros $\bracs{n} = \set{1,\cdots,n}$ se colocan ordenadamente alrededor de un círculo y sea $g(n)$ el número de formas de elegir un subconjunto $S$ de $\bracs{n}$ \textbf{sin} dos números concecutivos en el círculo. 
+		
+		Comencemos por ver que pasaría si estos no estuviesen en un círculo si no en una fila, sea $f$ el número de subconjuntos $S$. Tenemos dos opciones para que el $1$ este o no este en $S$, de estar en $S$ entonces el $2$ no podría estar el resto queda libre por lo que la cantidad de subconjuntos $S$ si el $1$ esta en $S$ son $f(n-2)$, si no esta entonces tenemos la libertad del resto de los números por lo que la cantidad de subconjuntos $S$ si el $1$ no esta en $S$ son $f(n-1)$. Por lo tanto
+
+		\[f(n) = f(n-1) + f(n-2).\]
+
+		Además si $n = 1$ entonces $f(n) = 2$ y si $n=0$ entonces $f(n) = 1$. Es decir $f(n) = F(n+2)$.
+
+		Ahora volvamos a cuando los enteros están en un círculo, fijemonos nuevamente en el elemento $1$, si este está en $S$ entonces ni $2$ ni $n$, pero el resto queda en total libertad por lo que es lo mismo que si los $n-3$ restantes estuviesen en una fila, por lo tanto la cantidad de subconjuntos $S$ tales que $1$ esta en $S$ son $f(n-3) = F(n-1)$, si el $1$ no esta en $S$ entonces el resto queda en total libertad por lo que es lo mismo que si los $n-1$ restantes estuviesen en una fila, por lo tanto la cantidad de subconjuntos $S$ tales que $1$ no esta en $S$ son $f(n-1) = F(n+1)$. Con lo que concluimos que la respuesta es
+
+		\[F_{n+1} + F_{n-1}.\]
+
+		\item Muestre que el número de $n-tuplas$ $\pars{a_1,cdots,a_n}$ de enteros no negativos $a_1+\cdots+a_i \leq i$ para $i = 1,\cdots,n-1$ y $a_1+\cdots+a_n=n$ está dado por el $n-esimo$ número de Catalan. 
+		
+		\begin{proof}
+			
+			Recordemos que los números de catalan cuentas cuantos caminos hay una cuadricula de $n\times n$ de la izquina inferior izquierda a la esquina superior derecha sin pasar sobre la diagonal de estas esquinas donde los movimientos son moverse ha la izquina superior o esquina dercha de donde estas. A estos caminos les nombraremos $chidos$
+	
+			Ahora veamos que hay una biyección entre los caminos chidos y las $n-tuplas$, dado por un camino $chido$ puede ser representado por la $n-tupla$ $\pars{a_1,\cdots,a_n}$ donde $a_j$ es la cantidad de movimientos que hiciste hacia arriba en la columna $j$, se cumple que $a_1+\cdots+a_i\leq i$ puesto que un camino $chido$ no puede pasar por la diagonal de la cuadrícula, luego $a_1+\cdots+a_n=n$ porque tiene que ir desde la esquina inferior izquierda hasta la esquina superior derecha para lo cual tiene que hacer $n$ movimientos hacía arriba, de está misma manera se ve que cada $n-tupla$ genera un camino $chido$. Por lo tanto concluimos que la cantidad de $n-tuplas$ que cumplen lo descrito en el problemos son
+	
+			\[C_n.\]
+
+		\end{proof}
+
+		\item Sea $P$ un COPO finito graduado. Y sea $G$ su diagrama de Hasse.
+		
+		\begin{itemize}
+			\item Muestre que $G$ es 2 colorable.
+			
+			Recordemos que un grafo es 2 coloreable si y sólo si no contiene un ciclo impar. Luego supongamos que $G$ no es 2 colorable entonces existe un ciclo impar, digamos que $u$ es el punto mas alto de del ciclo y que $v$ es el punto mas bajo del ciclo entonces nuestro ciclo se pude ver como la unión de caminos de $u$ a $v$ y el camino de $v$ a $u$, luego estos caminos tienen diferente longitud, luego entonces tomamos el maximal de estas dos caminos el cual existe al ser finito, entonces estos dos maximales compartirian todos los puntos a excepción de los que están entre $u$ y $v$ por lo que tendrían diferente longitud y por lo tanto $P$ no sería graduado, lo cual es una contradicción. Por lo tanto concluimos que $G$ es 2 colorable.
+
+			\item Si $G$ tiene $n$ componentes conexas y es 2 coloreable ¿De cuántas formas se puede colorear sin vecinos del mismo color con colores azul y rojo?
+			
+			Primero veamos que si $u$ un punto en una componente conexa de $G$ le asignamos un color entonces el resto de los puntos quedan designados por este color. Sea $v$ otro punto en $G$ luego sea $\set{u,u_1,\cdots,u_{k},v}$ un camino de $u$ a $v$ entonces si $u$ tiene designado un color entonces por inducción sobre la longitud de un camino podemos ver que todos los puntos en este camino tienen designado un color por lo que $v$ también lo tiene.
+
+			Entonces cada componente conexa se puede colorear de $2$ formas cuando $u$ es rojo o cuando es azul, por lo tanto concluimos que la respuesta es
+
+			\[2^n.\]
+
+			\item Al ser los minimales todos en color azul entonces todos los puntos en grado par serán de color azul y todos los de grado impar serán de color rojo, por lo que
+			
+			\[\frac{P(P,1) + (P,-1)}{2} = \sum_{i=0}{\floor{\frac{n}{2}}} P_{2i}x^{2i} = \text{número de puntos azules},\]
+
+			y por lo tanto
+
+			\[\frac{P(P,1) - (P,-1)}{2} = \sum_{i=0}{\floor{\frac{n}{2}}} P_{2i+1}x^{2i+1} = \text{número de puntos rojos}.\]
+			
+			\item Exhiba un COPO cuyo diagrama de $Hasse$ no sea 2 coloreable.
+			
+			Un ejemplo sería $P = \set{p_1,p_2,p_3,p_4,p_5}$ cuyo orden $\leq$ esta dado por
+
+			\[p_1 \geq p2, p_1 \geq p_4, p_2 \geq p_3, p_3 \geq p_5, p_4 \geq p_5,\]
+
+			y que permite transitividad, reflexividad, y antisimetría. Luego entonces su diagrama de Hasse sería un pentagono el cual al ser un ciclo de tamaño impar entonces no es 3 coloreable.
+			
+			\item Exhiba un COPO que no sea graduado pero cuyo diagrama de $Hasse$ sea 2 coloreable
+			
+			Un ejemplo sería $P = \set{p_1,p_2,p_3,p_4,p_5,p_6}$ cuyo orden $\leq$ esta dado por
+
+			\[p_1 \geq p2, p_2 \geq p_3, p_3 \geq p_4, p_5 \geq p_6\]
+
+			y que permite transitividad, reflexividad, y antisimetría. Luego entonces su diagrama de Hasse sería dos cadenas una de tamaño $4$ y otro de tamaño $2$ al ser arboles son coloreables, pero al ser maximales y de diferente tamaño entonces no es graduado.
+			
+			\item Exhiba una gráfica (no dirigida) que no corresponda al diagrama de Hasse de algún copo.
+			
+			Un triangulo. Digamos que son los puntos $u,v,w$ luego entonces si $u,v,w$ fuesen los puntos de algún al estar conectados así entonces no se cumpliria la antisimetría, ya que $u>v$ pero $v>w>v$.
+			
+		\end{itemize}
+		
+		\item Encuentra el número de particiones con exactamente 2 cruces.
+		
+		Primero veamos que dos cruces estan determinados por 3 o 4 parejas, esto puesto que un cruce esta determinado por exactamente un par de parejas, luego entonces para este par de parejas podemos reutilizar o no una de ellas para generar otro cruce de reutilizarla entonces tendriamos 3 parejas de no ser así entonces 4 parejas. Las formas de tener 2 cruces con 4 parejas son 4 y con 3 son 3.
+
+		Ahora escogiendo los puntos que generaran los cruces estos nos generan una partición de nuestro conjunto donde no puede haber parejas que esten contenidas en diferentes partes de nuestra partición, ya que de ser así entonces habría mas de 2 cruces, por lo tanto nuestro el número de particiones con exactamente dos cruces es el mismo número de particiones con un bloque de tamaño 3 o 4 y resto de bloques de tamaño 2 -claro faltaría contar de cuantas formas podemos hacer los 2 cruces-. Para esto último tenemos una formula por lo que concluimos que la respuesta es
+
+		\[4\pars{\pars{\frac{n(n-1)(n-2)(n-3)}{(n+4)(n+3)(n+2)24}C_n}} + 3\pars{\pars{\frac{n(n-1)(n-2)}{(n+3)(n+2)6} C_n}}.\]
+
+    \end{enumerate}
+
+	\end{document}
+			

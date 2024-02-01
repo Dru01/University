@@ -1,0 +1,195 @@
+% Preámbulo
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{enumitem}
+\usepackage{titling}
+
+% Símbolos
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{amsfonts}
+	\usepackage{mathtools}
+	\usepackage{bbm}
+	\usepackage[thinc]{esdiff}
+	\allowdisplaybreaks
+
+% Márgenes
+	\usepackage
+	[
+		margin = 1in
+	]
+	{geometry}
+
+% Imágenes
+	\usepackage{float}
+	\usepackage{graphicx}
+	\graphicspath{{imagenes/}}
+	\usepackage{subcaption}
+
+% Ambientes
+	\usepackage{amsthm}
+
+	\theoremstyle{definition}
+	\newtheorem{ejercicio}{Ejercicio}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{lema}{Lema}
+
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{sol}{Solución}
+	
+	\newtheoremstyle{lemathm}{4pt}{0pt}{\itshape}{0pt}{\bfseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemathm}
+	\newtheorem{theo}{Teorema}
+
+	\newtheoremstyle{lemademthm}{0pt}{10pt}{\itshape}{ }{\mdseries}{ --}{ }{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+	\theoremstyle{lemademthm}
+	\newtheorem*{lemadem}{Demostración}
+
+% Macros
+	\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+	\newcommand{\dint}[2]{\displaystyle\int_{#1}^{#2}}
+	\newcommand{\inte}[2]{\int_{#1}^{#2}}
+	\newcommand{\dlim}{\displaystyle\lim}
+	\newcommand{\limtoinf}[1]{\lim_{#1\to\infty}}
+	\newcommand{\dlimtoinf}[1]{\displaystyle\lim_{#1\to\infty}}
+	\newcommand{\limtozero}[1]{\lim_{#1\to0}}
+	\newcommand{\limh}{\lim_{h\to0}}
+	\newcommand{\ddx}{\dfrac{d}{dx}}
+	\newcommand{\txty}{\text{ y }}
+	\newcommand{\txto}{\text{ o }}
+	\newcommand{\Txty}{\quad\text{y}\quad}
+	\newcommand{\Txto}{\quad\text{o}\quad}
+	\newcommand{\si}{\text{si}\quad}
+
+	\newcommand{\etiqueta}{\stepcounter{equation}\tag{\theequation}}
+	\newcommand{\tq}{:}
+	\renewcommand{\o}{\circ}
+	\newcommand*{\QES}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\qes}{\hfill\ensuremath{\square}}
+	\newcommand*{\QESHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qeshere}{\tag*{$\square$}}
+	\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+	\newcommand*{\QEDHERE}{\tag*{$\blacksquare$}}
+	\newcommand*{\qel}{\hfill\ensuremath{\boxdot}}
+	\newcommand*{\qelhere}{\tag*{$\boxdot$}}
+	\renewcommand*{\qedhere}{\tag*{$\square$}}
+
+	\newcommand{\suc}[1]{\left(#1_n\right)_{n\in\N}}
+	\newcommand{\en}[2]{\binom{#1}{#2}}
+	\newcommand{\upsum}[2]{U(#1,#2)}
+	\newcommand{\lowsum}[2]{L(#1,#2)}
+	\newcommand{\abs}[1]{\left| #1 \right| }
+	\newcommand{\bars}[1]{\left \| #1 \right \| }
+	\newcommand{\pars}[1]{\left( #1 \right) }
+	\newcommand{\bracs}[1]{\left[ #1 \right] }
+	\newcommand{\inprod}[1]{\left\langle #1 \right\rangle }
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+	\newcommand{\floor}[1]{\left \lfloor #1 \right\rfloor }
+	\newcommand{\ceil}[1]{\left \lceil #1 \right\rceil }
+	\newcommand{\angles}[1]{\left \langle #1 \right\rangle }
+	\newcommand{\set}[1]{\left \{ #1 \right\} }
+	\newcommand{\norma}[2]{\left\| #1 \right\|_{#2} }
+
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\PP}{\mathbb{P}}
+    \newcommand{\EE}{\mathbb{E}}
+	\newcommand{\1}{\mathbbm{1}}
+	\newcommand{\eps}{Varepsilon}
+	\newcommand{\ttF}{\mathtt{F}}
+	\newcommand{\bfF}{\mathbf{F}}
+
+	\newcommand{\To}{\longrightarrow}
+	\newcommand{\mTo}{\longmapsto}
+	\newcommand{\ssi}{\Longleftrightarrow}
+	\newcommand{\sii}{\Leftrightarrow}
+	\newcommand{\then}{\Rightarrow}
+
+	\newcommand{\pTFC}{{\itshape 1er TFC\/}}
+	\newcommand{\sTFC}{{\itshape 2do TFC\/}}
+
+
+% Datos
+    \title{Probabilidad \\ Examen Tarea 4}
+    \author{Rubén Pérez Palacios Lic. Computación Matemática\\Profesor: Dr. Juan Carlos Pardo Millán}
+    \date{\today}
+
+% DOCUMENTO
+\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item Sea $\pars{X_n}_{n\geq 1}$ una susesión de v.a. que converge en probabilidad a la v.a. $X$. Demuestre que si para cada $n\geq 1$, $X_n\leq X_{n + 1}$ casi seguramente, entonces la sucesión converge casi seguramente.
+		
+		\begin{proof}
+			Sea $\pars{X_n}_{n\geq 1}$ una susesión de v.a. que 
+			
+			\[X_n \xlongrightarrow[n\to\infty]{P} X,\]
+
+			y además existe un $\Omega'$ tal que 
+			
+			\[\PP\bracs{\Omega'} = 1 \quad \text{y} \quad \omega\in\Omega', n\geq 1 \Longrightarrow X_n\pars{\omega} \leq X_{n + 1}\pars{\omega}.\]
+
+			Como toda sucesión que converge en probabilidad tiene una subsucesión que converge casi seguramente al mismo limite tenemos que existe una subsucesión $\pars{X_{n_k}}_{k\geq 1}$ tal que
+
+			\[X_{n_k} \xlongrightarrow[k\to\infty]{c.s.} X,\]
+
+			sea $\Omega''$ el conjunto con probabilidad $1$ donde $X_n$ converge a $X$.
+
+			Recordemos que que toda sucesión monotona de números reales con una subsucesión convergente implica que la sucesión converge al mismo limite. Sea $\Omega = \Omega' \cap \Omega''$ y $\omega \in \Omega$ entonces la sucesión de números reales $\pars{X_n}_{n\geq 1}$ es no decreciente, y debido a que la subsucesión 
+			
+			\[X_{n_k} \xrightarrow[k\to\infty]{} X(\omega),\]
+			
+			entonces 
+			
+			\[X_n \xrightarrow[n\to\infty]{} X(\omega).\]
+
+			Por último como $\Omega'$ y $\Omega''$ tienen probabilidad $1$ entonces $1 = \PP\bracs{\Omega'} \leq \PP\bracs{\Omega' \cup \Omega''} \leq 1$, por lo tanto 
+			
+			\[\PP\bracs{\Omega} = \PP\bracs{\Omega' \cap \Omega''} = \PP\bracs{\Omega'} + \PP\bracs{\Omega'} - \PP\bracs{\Omega' \cup \Omega''} = 1 + 1 - 1 = 1.\]
+			
+			Finalmente como para todo $\omega\in\Omega$ la sucesión $X_n(\omega)$ converge a $X(\omega)$ y $\PP\bracs{\Omega} = 1$ concluimos que
+			
+			\[X_n \xrightarrow[]{c.s} X.\]
+
+		\end{proof}
+		
+		\newpage
+
+		\item Sea $\pars{X_n}_{n\geq 1}$ una susesión de v.a. que converge en probabilidad a la v.a. $X$. y supongamos que $f$ es una función uniformemente continua. Demuestre que $\pars{f\pars{X_n}}_{n\geq 1}$ converge en probabilidad.
+		
+		\begin{proof}
+			
+			Sea $\pars{X_n}_{n\geq 1}$ una susesión de v.a. que converge en probabilidad a la v.a. $X$ y sea $f$ una función uniformemente continua. Entonces para todo $\varepsilon > 0$ existe un $\delta > 0$ tal que para todo $x,y\in\RR$
+			
+			\[\abs{x - y} \leq \delta \Rightarrow \abs{f(x) - f(y)} \leq \varepsilon,\]
+
+			por lo tanto
+
+			\[\abs{x - y} > \varepsilon \Rightarrow \abs{f(x) - f(y)} > \delta,\]
+
+			Sea $\varepsilon > 0$ y $\delta > 0$ como en la definición de uniforme continuidad, para todo $n\geq 1$ se cumple que
+
+			\[\PP\bracs{\abs{f\pars{X_n} - f\pars{X}} < \varepsilon} \leq \PP\bracs{\abs{X_n - X} < \delta}.\]
+
+			Como $\pars{X_n}_{n\geq 1}$ converge en probabilidad a $X$ entonces para todo $\delta > 0$ tenemos que
+
+			\[\limtoinf{n}\PP\bracs{\abs{X_n - X} < \delta} = 1.\]
+
+			Por lo tanto para todo $\varepsilon > 0$ tenemos que
+
+			\[\limtoinf{n}\PP\bracs{\abs{f(X_n) - f(X)} < \varepsilon} = 1.\]
+
+			Por lo tanto $\pars{f\pars{X_n}}_{n\geq 1}$ converge en probabilidad a $f(X)$.
+		\end{proof}
+	\end{enumerate}
+\end{document}
+
